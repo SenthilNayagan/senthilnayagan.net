@@ -8,11 +8,9 @@
   const THEME_OWNER = document.documentElement;
 
   // Check to see if the user previously set a site theme preference.
-  const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-  if (cachedTheme) {
-    // If they did, toggle data attribute immediately to prevent theme flash.
-    THEME_OWNER.dataset[THEME_STORAGE_KEY] = cachedTheme;
-  }
+  const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY) || Theme.LIGHT; // Default to light theme
+
+  THEME_OWNER.dataset[THEME_STORAGE_KEY] = cachedTheme;
 
   // Run this only after DOM parsing so we can grab refs to elements. Putting this code here so it's co-located with the above logic.
   document.addEventListener('DOMContentLoaded', () => {
@@ -30,8 +28,7 @@
     });
 
     // Sync toggle's checked state to reflect initial theme
-    const initialTheme = cachedTheme ?? Theme.AUTO;
-    if (initialTheme === Theme.DARK) {
+    if (cachedTheme === Theme.DARK) {
       themeToggle.checked = true;
     } else {
       themeToggle.checked = false;
