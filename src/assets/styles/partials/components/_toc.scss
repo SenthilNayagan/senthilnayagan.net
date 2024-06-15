@@ -11,6 +11,7 @@
   font-size: 1rem; // Adjust the font size as needed for the list items
 
   li {
-    margin-top: functions.spacing("-2");
+    margin-top: functions.spacing("-1"); // Reduced margin to decrease vertical space
+    line-height: 0.8; // Adjust line height to control vertical spacing
   }
 }
