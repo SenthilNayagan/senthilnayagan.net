@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option | Senthil Nayagan</title>
+  <meta name="description" content="Envelope encryption is a way of encrypting plaintext data using a key and then encrypting that key using an another key. This strategy is intended not just to make things more secure but also to enhance performance.">
+  <meta name="keywords" content="envelope-encryption, data-protection, root-key, data-key">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/envelope-encryption/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},n="theme",o=document.documentElement,c=localStorage.getItem(n);c&&(o.dataset[n]=c),document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");if(!e)return;e.addEventListener("change",()=>{const m=e.checked?t.DARK:t.LIGHT;o.dataset[n]=m,localStorage.setItem(n,m)}),(c??t.AUTO)===t.DARK?e.checked=!0:e.checked=!1})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option | Senthil Nayagan"><meta property="og:description" content="Envelope encryption is a way of encrypting plaintext data using a key and then encrypting that key using an another key. This strategy is intended not just to make things more secure but also to enhance performance.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/envelope-encryption/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option | Senthil Nayagan">
+  <meta name="twitter:description" content="Envelope encryption is a way of encrypting plaintext data using a key and then encrypting that key using an another key. This strategy is intended not just to make things more secure but also to enhance performance.">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"></head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <!-- <span class="site-name">Senthil Nayagan</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li><a
+            href="/tags/"
+            class="navbar-link"
+            >Tags</a>
+        </li><li><a
+            href="/contact/"
+            class="navbar-link"
+            >Contact</a>
+        </li><li>
+          <div id="theme-picker" class="theme-toggle">
+            <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2022-07-22" >July 22, 2022</time> - 8 min read</p>
+    <h1 class="post-title">Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/envelope-encryption/" class="post-tag" aria-label="envelope-encryption">envelope-encryption</a>
+        </li><li>
+          <a href="/tags/data-protection/" class="post-tag" aria-label="data-protection">data-protection</a>
+        </li></ul><p>&nbsp;</p>
+      <p class="post-subtitle">Envelope encryption is a way of encrypting plaintext data using a key and then encrypting that key using an another key. This strategy is intended not just to make things more secure but also to enhance performance.</p>
+      <hr><!-- <figure><a class="outline-offset" href="/assets/images/p2xEJC_1TE-1792.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/p2xEJC_1TE-400.webp 400w, /assets/images/p2xEJC_1TE-800.webp 800w, /assets/images/p2xEJC_1TE-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/p2xEJC_1TE-400.jpeg 400w, /assets/images/p2xEJC_1TE-800.jpeg 800w, /assets/images/p2xEJC_1TE-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/p2xEJC_1TE-1792.jpeg" alt="Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+
+<figure><a class="outline-offset" href="/assets/images/p2xEJC_1TE-1792.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/p2xEJC_1TE-400.webp 400w, /assets/images/p2xEJC_1TE-800.webp 800w, /assets/images/p2xEJC_1TE-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/p2xEJC_1TE-400.jpeg 400w, /assets/images/p2xEJC_1TE-800.jpeg 800w, /assets/images/p2xEJC_1TE-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/p2xEJC_1TE-1792.jpeg" alt="Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption></figure></header>
+  <div class="rhythm">
+    <p>Before we get into <em>envelop encryption</em>, let’s go over some of the fundamentals of encryption/decryption.</p>
+<h4 id="key-material"><a class="to-underline" href="#key-material">Key material</a></h4>
+<p>A key material is a random sequence of bits that is used in a cryptographic algorithm to convert plaintext to ciphertext (encrypted text) and vice versa. To prevent the ciphertext from being decoded back to plaintext, this key material must be kept secret. Note that <em>public key cryptography</em>, also known as <em>asymmetric cryptography</em>, employs <em>both</em> public and private key materials, with the public key material intended to be shared.</p>
+<h4 id="key"><a class="to-underline" href="#key">Key</a></h4>
+<p>A <em>key</em>, which is just a short name for an <em>encryption key</em>, has a <em>key-id</em> or <em>alias</em>, <em>key material</em>, and <em>other information about it</em>, such as who created it and so on.</p>
+<pre class="language-plain"><code tabindex="0" class="language-plain">Plaintext + Key = Ciphertext
+Ciphertext - Key = Plaintext
+
+Note: + and - signs indicate encryption and decryption actions, respectively.
+</code></pre>
+<p>The image below shows what a key is composed of in general:</p>
+<!-- <figure><a class="outline-offset" href="/assets/images/isR9Ch9Lfw-1476.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/isR9Ch9Lfw-400.webp 400w, /assets/images/isR9Ch9Lfw-800.webp 800w, /assets/images/isR9Ch9Lfw-1476.webp 1476w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/isR9Ch9Lfw-400.jpeg 400w, /assets/images/isR9Ch9Lfw-800.jpeg 800w, /assets/images/isR9Ch9Lfw-1476.jpeg 1476w" sizes="100vw">
+    <img width="1476" height="408" src="/assets/images/isR9Ch9Lfw-1476.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+<figure><a class="outline-offset" href="/assets/images/isR9Ch9Lfw-1476.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/isR9Ch9Lfw-400.webp 400w, /assets/images/isR9Ch9Lfw-800.webp 800w, /assets/images/isR9Ch9Lfw-1476.webp 1476w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/isR9Ch9Lfw-400.jpeg 400w, /assets/images/isR9Ch9Lfw-800.jpeg 800w, /assets/images/isR9Ch9Lfw-1476.jpeg 1476w" sizes="100vw">
+    <img width="1476" height="408" src="/assets/images/isR9Ch9Lfw-1476.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>A key with key id, key material and other metadata.</p></figcaption></figure>
+<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">key
+ |
+ |--- Key ID: 12t9c
+ |--- Key Material: 010101110101100
+ |--- Other Metadata: [Created By: User1, Created On: 08-01-2022, Modified By: User1, Modified On: 08-01-2022,...]
+</code></pre>
+<div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#key-material">Key material</a></li><li class="toc-item"><a class="toc-link" href="#key">Key</a></li><li class="toc-item"><a class="toc-link" href="#what-is-envelope-encryption">What is envelope encryption?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#how-can-root-keys-generated-in-plaintext-be-protected">How can root keys generated in plaintext be protected?</a></li><li class="toc-item"><a class="toc-link" href="#where-to-keep-the-data-keys">Where to keep the data keys?</a></li><li class="toc-item"><a class="toc-link" href="#benefits-of-envelop-encryption">Benefits of envelop encryption</a></li><li class="toc-item"><a class="toc-link" href="#key-rotation">Key rotation</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#automatic-key-rotation">Automatic key rotation</a></li><li class="toc-item"><a class="toc-link" href="#how-often-should-the-keys-be-rotated">How often should the keys be rotated?</a></li><li class="toc-item"><a class="toc-link" href="#benefits-of-key-rotation">Benefits of key rotation</a></li></ol></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<hr>
+<h1 id="what-is-envelope-encryption"><a class="to-underline" href="#what-is-envelope-encryption">What is envelope encryption?</a></h1>
+<p>When we encrypt our data using an <em>encryption key</em>, it is protected, but we also need to protect that encryption key. Envelope encryption is the method of first encrypting plaintext data using a key known as a <em>data key</em> and then encrypting that data key with a different key known as a <em>root key</em> or <em>master key</em>.</p>
+<p>When compared to a real-life use case, the envelope encryption approach is the action of locking the home with a key and keeping the key somewhere safe.</p>
+<p>It’s a two-step procedure:</p>
+<ol>
+<li>Encrypt data with a <em>data key</em> (aka <em>encryption key</em>).</li>
+<li>Further encrypt the <em>data key</em> with another key called the <em>root key</em> or <em>master key</em>.</li>
+</ol>
+<p>Having said that, the envelop encryption scheme generates two keys. The only key that is encrypted in this envelop encryption scheme is the data key; the root key is not. The root key has to be kept in plaintext so that it can be used to decrypt the data key.</p>
+<blockquote class="rhythm">
+<p>This two-step procedure can be made longer by encrypting with another encryption key and then encrypting the resulting encrypted key with yet another encryption key, and so on, as shown below.<br><br><em>Root key --&gt; Encryption-keyN --&gt; … Encryption-key1 --&gt; Data key --&gt; Data</em><br><br>But in the end, though, the top-level key must stay in plaintext so that we can decrypt the rest of the keys and our data. This top-level plaintext key is known as the <em>root key</em>.</p>
+</blockquote>
+<!-- <figure><a class="outline-offset" href="/assets/images/GQsJUr6e7v-1238.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/GQsJUr6e7v-400.webp 400w, /assets/images/GQsJUr6e7v-800.webp 800w, /assets/images/GQsJUr6e7v-1238.webp 1238w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/GQsJUr6e7v-400.jpeg 400w, /assets/images/GQsJUr6e7v-800.jpeg 800w, /assets/images/GQsJUr6e7v-1238.jpeg 1238w" sizes="100vw">
+    <img width="1238" height="593" src="/assets/images/GQsJUr6e7v-1238.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+<figure><a class="outline-offset" href="/assets/images/GQsJUr6e7v-1238.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/GQsJUr6e7v-400.webp 400w, /assets/images/GQsJUr6e7v-800.webp 800w, /assets/images/GQsJUr6e7v-1238.webp 1238w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/GQsJUr6e7v-400.jpeg 400w, /assets/images/GQsJUr6e7v-800.jpeg 800w, /assets/images/GQsJUr6e7v-1238.jpeg 1238w" sizes="100vw">
+    <img width="1238" height="593" src="/assets/images/GQsJUr6e7v-1238.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 2: </b>Envelope encryption high-level flow.</p></figcaption></figure>
+<h2 id="how-can-root-keys-generated-in-plaintext-be-protected"><a class="to-underline" href="#how-can-root-keys-generated-in-plaintext-be-protected">How can root keys generated in plaintext be protected?</a></h2>
+<p>Thankfully, the key vault saved the day! The key vault safeguards our root keys by securely storing and managing them using specialised cryptographic hardware with the highest level of security. In the case of AWS, the root keys are stored securely in the AWS KMS.</p>
+<h2 id="where-to-keep-the-data-keys"><a class="to-underline" href="#where-to-keep-the-data-keys">Where to keep the data keys?</a></h2>
+<p>We have just learnt that root keys are stored securely inside a key vault, but where are data keys stored securely? Can’t the data keys be safely kept in the same vault as the root keys? We certainly can, but why is it necessary? Remember that the data keys are inherently protected by encryption. So we should not be concerned about where the data keys are kept. We can put them anywhere, but it’s best to put them alongside the encrypted data.</p>
+<!-- <figure><a class="outline-offset" href="/assets/images/cIVwTCMUEy-1562.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/cIVwTCMUEy-400.webp 400w, /assets/images/cIVwTCMUEy-800.webp 800w, /assets/images/cIVwTCMUEy-1562.webp 1562w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/cIVwTCMUEy-400.jpeg 400w, /assets/images/cIVwTCMUEy-800.jpeg 800w, /assets/images/cIVwTCMUEy-1562.jpeg 1562w" sizes="100vw">
+    <img width="1562" height="1352" src="/assets/images/cIVwTCMUEy-1562.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+<figure><a class="outline-offset" href="/assets/images/cIVwTCMUEy-1562.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/cIVwTCMUEy-400.webp 400w, /assets/images/cIVwTCMUEy-800.webp 800w, /assets/images/cIVwTCMUEy-1562.webp 1562w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/cIVwTCMUEy-400.jpeg 400w, /assets/images/cIVwTCMUEy-800.jpeg 800w, /assets/images/cIVwTCMUEy-1562.jpeg 1562w" sizes="100vw">
+    <img width="1562" height="1352" src="/assets/images/cIVwTCMUEy-1562.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 3: </b>Envelope encryption flow.</p></figcaption></figure>
+<h2 id="benefits-of-envelop-encryption"><a class="to-underline" href="#benefits-of-envelop-encryption">Benefits of envelop encryption</a></h2>
+<p>This strategy isn’t meant to make things more secure; instead, it’s meant to improve performance. Public-key algorithms are often sluggish and use asymmetric algorithms. In contrast, symmetric algorithms are very fast. So, the data, considerably very large in size, is quickly encrypted with a symmetric algorithm using a random key. The random key is subsequently encrypted using a public-key scheme. This approach <em>combines the benefits of public-key scheme with the efficiency of symmetric encryption</em>.</p>
+<p>Envelope encryption reduces the network load since only the request and delivery of the considerably smaller data key go over the network. The data key is used locally in our application, so we don’t have to send the whole block of data to encrypt or decrypt it, which would cause network latency.</p>
+<h2 id="key-rotation"><a class="to-underline" href="#key-rotation">Key rotation</a></h2>
+<p>Key rotation is the process of retiring an encryption key and replacing it with a new cryptographic key. Changing the keys on a regular basis helps us meet industry standards and best practices for cryptography. A good security practice is to rotate keys on a regular and automated basis. Key rotation is required by several industrial requirements.</p>
+<p>It is important to note that key rotation changes <em>only</em> the key material, which is used in encryption or decryption operations. Regardless of how many times the key material changes, the <em>key id remains unchanged</em>. So every time we rotate the key, a new key material is created.</p>
+<!-- <figure><a class="outline-offset" href="/assets/images/vVouiiulSJ-1630.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/vVouiiulSJ-400.webp 400w, /assets/images/vVouiiulSJ-800.webp 800w, /assets/images/vVouiiulSJ-1630.webp 1630w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/vVouiiulSJ-400.jpeg 400w, /assets/images/vVouiiulSJ-800.jpeg 800w, /assets/images/vVouiiulSJ-1630.jpeg 1630w" sizes="100vw">
+    <img width="1630" height="632" src="/assets/images/vVouiiulSJ-1630.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+<figure><a class="outline-offset" href="/assets/images/vVouiiulSJ-1630.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/vVouiiulSJ-400.webp 400w, /assets/images/vVouiiulSJ-800.webp 800w, /assets/images/vVouiiulSJ-1630.webp 1630w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/vVouiiulSJ-400.jpeg 400w, /assets/images/vVouiiulSJ-800.jpeg 800w, /assets/images/vVouiiulSJ-1630.jpeg 1630w" sizes="100vw">
+    <img width="1630" height="632" src="/assets/images/vVouiiulSJ-1630.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 4: </b>Key rotation.</p></figcaption></figure>
+<p>In general, key-vault tools <em>safely keep all old versions of the key material forever</em>, so we can decrypt any data that was encrypted with that key and do not delete any rotated old key materials until we delete the keys. When we use a rotated key to encrypt data, the key-vault uses the current key material. When we use the rotated key to decrypt ciphertext, key-vault uses the key material version that was used to encrypt it.</p>
+<h3 id="automatic-key-rotation"><a class="to-underline" href="#automatic-key-rotation">Automatic key rotation</a></h3>
+<p>It’s recommended to rotate keys automatically on a regular schedule. The frequency of rotation is defined by a rotation schedule.</p>
+<p>The rotation schedule may be determined by:</p>
+<ul>
+<li>Age of the key</li>
+<li>Number or volume of data encrypted with a certain key version</li>
+</ul>
+<p>We may enable automatic key rotation for an existing key depending on the key-vault tool we use. When we set up automatic key rotation for the keys, key-vault tools usually make new key materials for those keys on a regular basis, like once a year.</p>
+<h3 id="how-often-should-the-keys-be-rotated"><a class="to-underline" href="#how-often-should-the-keys-be-rotated">How often should the keys be rotated?</a></h3>
+<p>Key rotations should ideally occur every few months, but once every three months is recommended. If we want to perform this more often, we:</p>
+<ul>
+<li>Have a large amount of data.</li>
+<li>Have a high-value data.</li>
+<li>Have a shared-environment.</li>
+</ul>
+<h3 id="benefits-of-key-rotation"><a class="to-underline" href="#benefits-of-key-rotation">Benefits of key rotation</a></h3>
+<ul>
+<li>Key rotation reduces the amount of data encrypted with the same key version, making assaults less likely.</li>
+<li>Regular key rotation ensures that our system is capable of handling manual key rotation, whether due to a security breach or for any other reason.</li>
+</ul>
+<hr>
+
+    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/envelope-encryption/"
+    },
+    "headline": "Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option",
+    "description": "Envelope encryption is a way of encrypting plaintext data using a key and then encrypting that key using an another key. This strategy is intended not just to make things more secure but also to enhance performance.",
+    
+    "datePublished": "2022-07-22T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b> | <a href="/privacyPolicy/" target="_blank">Privacy Policy</a>.</p>
+      <p>Hosted on <b>GitHub Pages</b> | This website DOES NOT use cookies.</p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+</body>
+</html>

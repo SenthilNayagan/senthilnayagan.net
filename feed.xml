@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Senthil Nayagan</title>
+  <subtitle>A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.</subtitle>
+  <link href="https://www.senthilnayagan.net/feed.xml" rel="self"/>
+  <link href="https://www.senthilnayagan.net/" rel="alternate" type="text/html"/>
+  <updated>2024-06-12T00:00:00.000Z</updated>
+  <id>https://www.senthilnayagan.net/</id>
+  <author>
+    <name>Senthil Nayagan</name>
+    <email>hello@senthilnayagan.net</email>
+  </author>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/</id>
+    <title>Rust’s Ownership and Borrowing Enforce Memory Safety</title>
+    <link href="https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/"/>
+    <published>2024-06-12T00:00:00.000Z</published>
+    <updated>2024-06-12T00:00:00.000Z</updated>
+    <category term="ownership" />
+    <category term="borrowing" />
+    <category term="memory-management" />
+    <content type="html">Rust&#39;s ownership and borrowing features prevent us from experiencing memory-related problems. Rust is a great choice when performance matters and it solves pain points that bother many other languages.</content>
+  </entry>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/windowing-in-kafka-streams/</id>
+    <title>Windowing in Kafka Streams</title>
+    <link href="https://www.senthilnayagan.net/blog/windowing-in-kafka-streams/"/>
+    <published>2024-02-25T00:00:00.000Z</published>
+    <updated>2024-02-25T00:00:00.000Z</updated>
+    <category term="kafka-streams" />
+    <category term="kafka" />
+    <category term="windowing" />
+    <content type="html">Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.</content>
+  </entry>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/envelope-encryption/</id>
+    <title>Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option</title>
+    <link href="https://www.senthilnayagan.net/blog/envelope-encryption/"/>
+    <published>2022-07-22T00:00:00.000Z</published>
+    <updated>2022-07-22T00:00:00.000Z</updated>
+    <category term="envelope-encryption" />
+    <category term="data-protection" />
+    <content type="html">Envelope encryption is a way of encrypting plaintext data using a key and then encrypting that key using an another key. This strategy is intended not just to make things more secure but also to enhance performance.</content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,9 @@
+/blog/dev/* /blog/:splat
+/blog/computer-science/* /blog/:splat
+/blog/off-topic/* /blog/:splat
+/assets/images/posts/:slug/*  /assets/images/:splat
+/assets/images/iomJzXpBY2-1280.png  /assets/images/iAape8KQe6-1200.png
+/assets/images/YVvOoXOAhY-1094.jpeg /assets/images/iAape8KQe6-1200.jpeg
+/assets/images/YVvOoXOAhY-1094.webp /assets/images/iAape8KQe6-1200.webp
+/assets/images/9LW1h6jx7k-1063.jpeg /assets/images/Z0MJRY8WpN-1271.jpeg
+/assets/images/9LW1h6jx7k-1063.webp /assets/images/Z0MJRY8WpN-1271.webp

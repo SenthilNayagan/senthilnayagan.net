@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Windowing in Kafka Streams | Senthil Nayagan</title>
+  <meta name="description" content="Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.">
+  <meta name="keywords" content="kafka-streams, kafka, windowing">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/windowing-in-kafka-streams/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},n="theme",o=document.documentElement,c=localStorage.getItem(n);c&&(o.dataset[n]=c),document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");if(!e)return;e.addEventListener("change",()=>{const m=e.checked?t.DARK:t.LIGHT;o.dataset[n]=m,localStorage.setItem(n,m)}),(c??t.AUTO)===t.DARK?e.checked=!0:e.checked=!1})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Windowing in Kafka Streams | Senthil Nayagan"><meta property="og:description" content="Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/windowing-in-kafka-streams/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Windowing in Kafka Streams | Senthil Nayagan">
+  <meta name="twitter:description" content="Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"></head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <!-- <span class="site-name">Senthil Nayagan</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li><a
+            href="/tags/"
+            class="navbar-link"
+            >Tags</a>
+        </li><li><a
+            href="/contact/"
+            class="navbar-link"
+            >Contact</a>
+        </li><li>
+          <div id="theme-picker" class="theme-toggle">
+            <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-02-25" >February 25, 2024</time> - 27 min read</p>
+    <h1 class="post-title">Windowing in Kafka Streams</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/kafka-streams/" class="post-tag" aria-label="kafka-streams">kafka-streams</a>
+        </li><li>
+          <a href="/tags/kafka/" class="post-tag" aria-label="kafka">kafka</a>
+        </li><li>
+          <a href="/tags/windowing/" class="post-tag" aria-label="windowing">windowing</a>
+        </li></ul><p>&nbsp;</p>
+      <p class="post-subtitle">Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.</p>
+      <hr><!-- <figure><a class="outline-offset" href="/assets/images/BJ8HA91nWs-1792.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/BJ8HA91nWs-400.webp 400w, /assets/images/BJ8HA91nWs-800.webp 800w, /assets/images/BJ8HA91nWs-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/BJ8HA91nWs-400.jpeg 400w, /assets/images/BJ8HA91nWs-800.jpeg 800w, /assets/images/BJ8HA91nWs-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/BJ8HA91nWs-1792.jpeg" alt="Windowing in Kafka Streams"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+
+<figure><a class="outline-offset" href="/assets/images/BJ8HA91nWs-1792.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/BJ8HA91nWs-400.webp 400w, /assets/images/BJ8HA91nWs-800.webp 800w, /assets/images/BJ8HA91nWs-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/BJ8HA91nWs-400.jpeg 400w, /assets/images/BJ8HA91nWs-800.jpeg 800w, /assets/images/BJ8HA91nWs-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/BJ8HA91nWs-1792.jpeg" alt="Windowing in Kafka Streams"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description">It's a visual metaphor for the nuanced working of Kafka Streams' windowed aggregation feature.</p><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption></figure></header>
+  <div class="rhythm">
+    <div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#overview">Overview</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#types-of-windows-supported-in-kafka-streams">Types of windows supported in Kafka streams</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#tumbling-windows">Tumbling windows</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#example">Example</a></li><li class="toc-item"><a class="toc-link" href="#code-example">Code example</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#hopping-windows">Hopping windows</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#example-1">Example</a></li><li class="toc-item"><a class="toc-link" href="#code-example-1">Code example</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#session-windows">Session windows</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#dynamic-duration">Dynamic Duration</a></li><li class="toc-item"><a class="toc-link" href="#inactivity-gap">Inactivity gap</a></li><li class="toc-item"><a class="toc-link" href="#key-and-no-overlap-for-a-given-key">Key and no overlap for a given key</a></li><li class="toc-item"><a class="toc-link" href="#vary-in-length">Vary in length</a></li><li class="toc-item"><a class="toc-link" href="#example-2">Example</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#session-window-analysis">Session window analysis</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#player-a">Player A</a></li><li class="toc-item"><a class="toc-link" href="#player-b">Player B</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#code-example-2">Code example</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#sliding-windows">Sliding windows</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#example-3">Example</a></li><li class="toc-item"><a class="toc-link" href="#code-example-3">Code example</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#summary">Summary</a></li><li class="toc-item"><a class="toc-link" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-does-the-grace-period-refer-to-in-kafka-streams">What does the “grace period” refer to in Kafka Streams?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<hr>
+<h1 id="overview"><a class="to-underline" href="#overview">Overview</a></h1>
+<p>Windowing in Kafka Streams is a powerful feature that allows us to manage and analyze data that enters a Kafka cluster in a time-sequenced order. It enables the grouping of records based on <strong>time intervals</strong>, or <strong>windows</strong>, which makes temporal operations on data streams easier. The term “temporal operations” refers to operations that are based on time. Having said that, windowing refers to the process of dividing a continuous stream of data into discrete segments, or “windows,” based on time. This feature is particularly useful for applications that require real-time analytics, aggregations, or other time-based processing on continuous streams of data.</p>
+<p>By segmenting the data temporally, windowing allows for more granular and time-sensitive analysis of streaming data. For example, calculating the average number of website visits per minute, detecting patterns of activity within a certain time frame, or summarizing financial transactions on an hourly basis.</p>
+<h2 id="types-of-windows-supported-in-kafka-streams"><a class="to-underline" href="#types-of-windows-supported-in-kafka-streams">Types of windows supported in Kafka streams</a></h2>
+<p>Kafka Streams supports various types of windowing operations to group events by time boundaries, allowing for time-sensitive processing of streaming data:</p>
+<ul>
+<li><a href="/kafka-streams/2024/windowing-in-kafka-streams#tumbling-windows">Tumbling windows</a></li>
+<li><a href="/kafka-streams/2024/windowing-in-kafka-streams#hopping-windows">Hopping windows</a></li>
+<li><a href="/kafka-streams/2024/windowing-in-kafka-streams#session-windows">Session windows</a></li>
+<li><a href="/kafka-streams/2024/windowing-in-kafka-streams#sliding-windows">Sliding windows</a></li>
+</ul>
+<p>Before we go further into explaining all these types of windows, let’s understand some of the core concepts:</p>
+<ul>
+<li><strong>Window size</strong>: The duration of each window. All events within this period are aggregated together.</li>
+<li><strong>Advance interval (Hop size)</strong>: The amount by which each window advances. If the advance interval is less than the window size, the windows will overlap.</li>
+</ul>
+<hr>
+<h1 id="tumbling-windows"><a class="to-underline" href="#tumbling-windows">Tumbling windows</a></h1>
+<p>Fixed-size, non-overlapping intervals of time. They are useful for cases where we want to perform an operation on non-overlapping segments of data.</p>
+<p><strong>Use case</strong>: A good use case for tumbling windows is inventory tracking because we only want the unique number of items sold per window.</p>
+<h2 id="example"><a class="to-underline" href="#example">Example</a></h2>
+<p>Let’s say we want to determine the average temperature every <strong>ten minutes</strong> from a stream of temperature signals from a sensor. To guarantee that every temperature reading is contained in <strong>a single 10-minute window</strong>, tumbling windows are used in this situation. Averages are then computed for these non-overlapping periods.</p>
+<p>Let’s say the sensor sends readings every minute: <strong><code>1, 3, 7, 11, 15, 18, 22, 25</code></strong>. Using 10-minute tumbling windows, the readings would be grouped and averaged as follows:</p>
+<ul>
+<li><strong>Window 1</strong> (0-10 minutes): Includes readings at minutes <strong><code>1, 3, 7</code></strong>. The average of these readings is calculated.</li>
+<li><strong>Window 2</strong> (10-20 minutes): Includes readings at minutes <strong><code>11, 15, 18</code></strong>. The average of these readings is calculated.</li>
+<li><strong>Window 3</strong> (20-30 minutes): Includes readings at minutes <strong><code>22, 25</code></strong>. The average of these readings is calculated.</li>
+</ul>
+<!-- <figure><a class="outline-offset" href="/assets/images/BhKQK4fPjS-1331.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/BhKQK4fPjS-400.webp 400w, /assets/images/BhKQK4fPjS-800.webp 800w, /assets/images/BhKQK4fPjS-1331.webp 1331w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/BhKQK4fPjS-400.jpeg 400w, /assets/images/BhKQK4fPjS-800.jpeg 800w, /assets/images/BhKQK4fPjS-1331.jpeg 1331w" sizes="100vw">
+    <img width="1331" height="389" src="/assets/images/BhKQK4fPjS-1331.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+<figure><a class="outline-offset" href="/assets/images/BhKQK4fPjS-1331.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/BhKQK4fPjS-400.webp 400w, /assets/images/BhKQK4fPjS-800.webp 800w, /assets/images/BhKQK4fPjS-1331.webp 1331w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/BhKQK4fPjS-400.jpeg 400w, /assets/images/BhKQK4fPjS-800.jpeg 800w, /assets/images/BhKQK4fPjS-1331.jpeg 1331w" sizes="100vw">
+    <img width="1331" height="389" src="/assets/images/BhKQK4fPjS-1331.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>Tumbling windows.</p></figcaption></figure>
+<p>Each reading is accounted for in exactly one window, with no overlap between windows.</p>
+<h2 id="code-example"><a class="to-underline" href="#code-example">Code example</a></h2>
+<p>Here’s how we might set up a tumbling window in Kafka Streams for aggregating temperature readings:</p>
+<pre class="language-java"><code tabindex="0" class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span></span><span class="token class-name">StreamsBuilder</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span>kstream<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">Duration</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TumblingWindowExample</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">StreamsBuilder</span> builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StreamsBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">KStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Double</span><span class="token punctuation">></span></span> temperatureReadings <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token string">"temperature-sensor"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">TimeWindows</span> tumblingWindows <span class="token operator">=</span> <span class="token class-name">TimeWindows</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofMinutes</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Define a 10-minute tumbling window</span>
+
+        <span class="token class-name">KTable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Windowed</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">,</span> <span class="token class-name">Double</span><span class="token punctuation">></span></span> averageTemperatures <span class="token operator">=</span> temperatureReadings
+            <span class="token punctuation">.</span><span class="token function">groupByKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Assuming the key is the sensor ID</span>
+            <span class="token punctuation">.</span><span class="token function">windowedBy</span><span class="token punctuation">(</span>tumblingWindows<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span>
+                <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token comment">// Initializer</span>
+                <span class="token punctuation">(</span>aggKey<span class="token punctuation">,</span> newValue<span class="token punctuation">,</span> aggValue<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">(</span>aggValue <span class="token operator">+</span> newValue<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token comment">// Aggregator</span>
+                <span class="token class-name">Materialized</span><span class="token punctuation">.</span><span class="token function">as</span><span class="token punctuation">(</span><span class="token string">"average-temperatures-store"</span><span class="token punctuation">)</span> <span class="token comment">// State store name</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Further processing or output the results to a topic</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<h1 id="hopping-windows"><a class="to-underline" href="#hopping-windows">Hopping windows</a></h1>
+<p>Fixed-size, overlapping intervals of time. They allow for operations over windows that move forward by a smaller step than the window size, providing overlapping data aggregates. This particular window is called hopping because each window moves forward by a fixed period, which is less than or equal to the size of the window itself. A hopping window is defined by a window size and the size of the time block at which it advances. This results in windows that overlap with each other, providing a way to analyze data points that are close in time across multiple windows.</p>
+<blockquote class="rhythm">
+<p><strong>Hop</strong>: Literally, “hop” means “lightly jump.” In our context, “advance by.” If the hop size is equal to the window size, then there’s no overlap, and the windows are referred to as tumbling windows.</p>
+</blockquote>
+<h2 id="example-1"><a class="to-underline" href="#example-1">Example</a></h2>
+<p>Imagine we are processing a stream of page views with a hopping window. We want to count the number of page views in windows of 5 minutes, but we want to update the count every minute. In this scenario:</p>
+<ul>
+<li><strong>Window Size</strong>: 5 minutes</li>
+<li><strong>Advance Interval (Hop Size)</strong>: 1 minute</li>
+</ul>
+<p>This configuration means that every minute, a new window starts, but each window covers data from the past 5 minutes. Therefore, at any given time, there are multiple overlapping windows active.</p>
+<p>Let’s say our events are timestamped as follows (in minutes): <strong><code>1, 2, 3, 4, 5, 6, 7, 8, 9, 10</code></strong>.</p>
+<ul>
+<li><strong>Window 1</strong> covers minutes <strong><code>1-5</code></strong> and sees events at <strong><code>1, 2, 3, 4, 5</code></strong>.</li>
+<li><strong>Window 2</strong> (starting at minute 2) covers <strong><code>2-6</code></strong> and sees events at <strong><code>2, 3, 4, 5, 6</code></strong>.</li>
+<li>…</li>
+<li><strong>Window 6</strong> (starting at minute 6) covers <strong><code>6-10</code></strong> and sees events at <strong><code>6, 7, 8, 9, 10</code></strong>.</li>
+</ul>
+<!-- <figure><a class="outline-offset" href="/assets/images/g_is3Ditkf-804.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/g_is3Ditkf-400.webp 400w, /assets/images/g_is3Ditkf-800.webp 800w, /assets/images/g_is3Ditkf-804.webp 804w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/g_is3Ditkf-400.jpeg 400w, /assets/images/g_is3Ditkf-800.jpeg 800w, /assets/images/g_is3Ditkf-804.jpeg 804w" sizes="100vw">
+    <img width="804" height="758" src="/assets/images/g_is3Ditkf-804.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+<figure><a class="outline-offset" href="/assets/images/g_is3Ditkf-804.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/g_is3Ditkf-400.webp 400w, /assets/images/g_is3Ditkf-800.webp 800w, /assets/images/g_is3Ditkf-804.webp 804w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/g_is3Ditkf-400.jpeg 400w, /assets/images/g_is3Ditkf-800.jpeg 800w, /assets/images/g_is3Ditkf-804.jpeg 804w" sizes="100vw">
+    <img width="804" height="758" src="/assets/images/g_is3Ditkf-804.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 2: </b>Hopping windows.</p></figcaption></figure>
+<p>Notice how each window overlaps with the next, sharing four minutes of data with it.</p>
+<h2 id="code-example-1"><a class="to-underline" href="#code-example-1">Code example</a></h2>
+<p>Here’s how we might define a hopping window in Kafka Streams for the above scenario:</p>
+<pre class="language-java"><code tabindex="0" class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span></span><span class="token class-name">StreamsBuilder</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span>kstream<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">Duration</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HoppingWindowExample</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">StreamsBuilder</span> builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StreamsBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">KStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> pageViews <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token string">"page-views"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">TimeWindows</span> hoppingWindows <span class="token operator">=</span> <span class="token class-name">TimeWindows</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofMinutes</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// Window size</span>
+                                                 <span class="token punctuation">.</span><span class="token function">advanceBy</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofMinutes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Advance interval</span>
+
+        <span class="token class-name">KTable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Windowed</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">,</span> <span class="token class-name">Long</span><span class="token punctuation">></span></span> pageViewCounts <span class="token operator">=</span> pageViews
+            <span class="token punctuation">.</span><span class="token function">groupBy</span><span class="token punctuation">(</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token operator">-></span> value<span class="token punctuation">)</span> <span class="token comment">// Group by page view event value (or some logic)</span>
+            <span class="token punctuation">.</span><span class="token function">windowedBy</span><span class="token punctuation">(</span>hoppingWindows<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token class-name">Materialized</span><span class="token punctuation">.</span><span class="token function">as</span><span class="token punctuation">(</span><span class="token string">"page-view-counts-store"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Store name for the state store</span>
+
+        <span class="token comment">// Further processing...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In this example, <code>pageViews</code> is a stream of page view events, possibly with a user ID as the key and some page identifier as the value. The events are grouped by page (or some other logic) and then counted within each window defined by <code>hoppingWindows</code>. The count operation will create a new <code>KTable</code> holding the counts of page views for each 5-minute window, updated every minute.</p>
+<p>Hopping windows are particularly useful for analyses where we want more frequent updates but also need to consider events over a longer period. They provide a balance between real-time and batch processing, making them suitable for a wide range of time-sensitive aggregation tasks.</p>
+<hr>
+<h1 id="session-windows"><a class="to-underline" href="#session-windows">Session windows</a></h1>
+<p>Dynamically sized windows based on periods of activity. <strong>Session windows do not overlap</strong>. Its size is <em>not based on time but on behavior instead</em>. It captures periods of activity <strong>separated by gaps of inactivity</strong>, making them particularly suited for scenarios where activity occurs in bursts. In other words, session windows are designed to group together events that are closely related in time, while allowing for gaps of inactivity.</p>
+<p>Session windows define a period of inactivity, and they expand in size as new events occur within that period. Unlike tumbling or hopping windows, which are based on fixed time intervals, session windows dynamically adjust their size based on the presence or absence of events. This capability allows for more flexible and meaningful aggregation of events that naturally occur in sessions or bursts<a href="#ref-1"><sup id="back-to-1">1</sup></a>.</p>
+<h2 id="dynamic-duration"><a class="to-underline" href="#dynamic-duration">Dynamic Duration</a></h2>
+<p>The size of a session window is determined by the timestamps of the events it contains. Imagine we start watching events (like messages or transactions) coming in one after another. A session window keeps track of these events, starting with the first one we see. Now, as long as events keep coming without taking too long of a break between them, they’re all considered part of the same session. But if there’s a pause — meaning no events come in for a while longer than a specific time we’ve decided on in advance — then we say the current session window is over.</p>
+<p>Once a new event comes in after that break, it starts a new session window. This way, each session window groups together a series of events that are closely related in time, with breaks indicating the end of one group and the start of another.</p>
+<h2 id="inactivity-gap"><a class="to-underline" href="#inactivity-gap">Inactivity gap</a></h2>
+<p>This is a configurable duration that defines how much time must pass without any events before a new session window is started, i.e., before new messages start arraying. If a subsequent event arrives within the inactivity gap, it is included in the current session window, potentially extending its duration.</p>
+<h2 id="key-and-no-overlap-for-a-given-key"><a class="to-underline" href="#key-and-no-overlap-for-a-given-key">Key and no overlap for a given key</a></h2>
+<p>The key is a crucial concept in session windows. It’s what Kafka Streams uses to group events into sessions. Each event in a Kafka stream has a key-value pair, and the key is used to identify which events are related. When processing streams, Kafka Streams uses these keys to organize data into windows.</p>
+<p>For session windows, events with the same key are considered part of the same user or entity’s activity, allowing the system to create windows that accurately reflect periods of activity for each unique entity represented by the key.</p>
+<p>Each key in our data represents a unique identifier for a group of related events. For example, if we’re processing user activity events, the key might be the User ID. Kafka Streams ensures that for any given key, session windows do not overlap. This means that each session window for a specific key is distinct and separated by a period of inactivity that exceeds the defined gap. There won’t be two session windows for the same key that cover overlapping time periods.</p>
+<h2 id="vary-in-length"><a class="to-underline" href="#vary-in-length">Vary in length</a></h2>
+<p>Since session windows are defined by periods of activity (events coming in) and inactivity (no events for a specified gap), they can vary in length. The duration of a session window is determined by how long the activity lasts before a period of inactivity that’s long enough to end the session. This means session windows can be short for brief bursts of activity or long for extended periods of activity, and this length can differ significantly from one session to another, even for the same key.</p>
+<h2 id="example-2"><a class="to-underline" href="#example-2">Example</a></h2>
+<p>Consider an online gaming platform where players log in, perform various activities (play games, chat, etc.), and then log out. We want to analyze the duration and frequency of individual gaming sessions.</p>
+<p>Let’s say we have the following events (login actions) for two players over time:</p>
+<ul>
+<li><strong>Player A’s events</strong>: <strong><code>10:00</code></strong>, <strong><code>10:05</code></strong>, and <strong><code>10:20</code></strong>.</li>
+<li><strong>Player B’s events</strong>: <strong><code>10:30</code></strong> and <strong><code>11:15</code></strong>.</li>
+<li><strong>Inactivity gap</strong>: <strong><code>10</code></strong> minutes.</li>
+</ul>
+<h3 id="session-window-analysis"><a class="to-underline" href="#session-window-analysis">Session window analysis</a></h3>
+<h4 id="player-a"><a class="to-underline" href="#player-a">Player A</a></h4>
+<ul>
+<li><strong>10:00 and 10:05</strong>: These two events are 5 minutes apart, which is less than the 10-minute inactivity gap. Therefore, they belong to the same session window.</li>
+<li><strong>10:05 and 10:20</strong>: The gap between these two events is 15 minutes, which is more than the 10-minute inactivity threshold. Therefore, the event at 10:20 starts a new session window.</li>
+</ul>
+<p>As a result, <strong>Player A</strong> has two session windows:</p>
+<ul>
+<li>One from <code>10:00</code> to <code>10:05</code></li>
+<li>Another starting at <code>10:20</code> and ending at the last event time (assuming no more events occur, this window ends at <code>10:20</code> itself).</li>
+</ul>
+<h4 id="player-b"><a class="to-underline" href="#player-b">Player B</a></h4>
+<ul>
+<li><strong>10:30 and 11:15</strong>: These two events are 45 minutes apart, which is significantly more than the 10-minute inactivity gap. Each event here would constitute its own session window because the gap between any two events is larger than the defined threshold.</li>
+</ul>
+<p>As a result, Player B has two separate session windows:</p>
+<ul>
+<li>One starting at <code>10:30</code> and ending at <code>10:30</code> (assuming no more events occur close to this time).</li>
+<li>Another starting at <code>11:15</code> and ending at <code>11:15</code> (assuming no more events occur close to this time).</li>
+</ul>
+<!-- <figure><a class="outline-offset" href="/assets/images/dcR5s_FjKM-3181.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/dcR5s_FjKM-400.webp 400w, /assets/images/dcR5s_FjKM-800.webp 800w, /assets/images/dcR5s_FjKM-3181.webp 3181w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/dcR5s_FjKM-400.jpeg 400w, /assets/images/dcR5s_FjKM-800.jpeg 800w, /assets/images/dcR5s_FjKM-3181.jpeg 3181w" sizes="100vw">
+    <img width="3181" height="486" src="/assets/images/dcR5s_FjKM-3181.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+<figure><a class="outline-offset" href="/assets/images/dcR5s_FjKM-3181.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/dcR5s_FjKM-400.webp 400w, /assets/images/dcR5s_FjKM-800.webp 800w, /assets/images/dcR5s_FjKM-3181.webp 3181w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/dcR5s_FjKM-400.jpeg 400w, /assets/images/dcR5s_FjKM-800.jpeg 800w, /assets/images/dcR5s_FjKM-3181.jpeg 3181w" sizes="100vw">
+    <img width="3181" height="486" src="/assets/images/dcR5s_FjKM-3181.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 3: </b>Session windows.</p></figcaption></figure>
+<p>Each session window starts with the first event and ends with the last event in that session, considering the inactivity gap.</p>
+<h2 id="code-example-2"><a class="to-underline" href="#code-example-2">Code example</a></h2>
+<pre class="language-java"><code tabindex="0" class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span></span><span class="token class-name">StreamsBuilder</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span>kstream<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">Duration</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SessionWindowExample</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">StreamsBuilder</span> builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StreamsBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">KStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> playerActions <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token string">"player-actions"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Duration</span> inactivityGap <span class="token operator">=</span> <span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofMinutes</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Define inactivity gap for session windows</span>
+
+        <span class="token class-name">KTable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Windowed</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">,</span> <span class="token class-name">Long</span><span class="token punctuation">></span></span> sessionCounts <span class="token operator">=</span> playerActions
+            <span class="token punctuation">.</span><span class="token function">groupByKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// Assuming the key is the player ID</span>
+            <span class="token punctuation">.</span><span class="token function">windowedBy</span><span class="token punctuation">(</span><span class="token class-name">SessionWindows</span><span class="token punctuation">.</span><span class="token keyword">with</span><span class="token punctuation">(</span>inactivityGap<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// Apply session windowing</span>
+            <span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token class-name">Materialized</span><span class="token punctuation">.</span><span class="token function">as</span><span class="token punctuation">(</span><span class="token string">"session-counts-store"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Count events in each session</span>
+
+        <span class="token comment">// Further processing or output the results to a topic</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><strong><code>playerActions</code></strong> is a <strong><code>KStream</code></strong> representing player actions, keyed by player ID.</li>
+<li><strong><code>groupByKey</code></strong> groups the actions by player ID, preparing them for windowed aggregation.</li>
+<li><strong><code>windowedBy(SessionWindows.with(inactivityGap))</code></strong> applies session windowing based on the specified inactivity gap. In our case, we set the inactivity gap to 10 minutes.</li>
+<li>The <strong><code>count</code></strong> method aggregates the number of actions within each session window for each player.</li>
+</ul>
+<p>Session windows are particularly useful for analyzing user behavior, session-based analytics, and any scenario where activity patterns are bursty or discontinuous. By dynamically adjusting window sizes based on actual activity, session windows offer a detailed view of event patterns compared to fixed-size windows.</p>
+<hr>
+<h1 id="sliding-windows"><a class="to-underline" href="#sliding-windows">Sliding windows</a></h1>
+<p>Sliding windows are defined by a <strong>fixed duration</strong>, and they are designed to allow <strong>overlapping windows</strong> that slide over the data stream for continuous updates. Like the session window, they can continue to grow in size because they are based on behavior. In other words, they allow for the aggregation of events within a specific time frame that “slides” over the data stream as time progresses.</p>
+<p>Having said that, they are defined by two parameters:</p>
+<ul>
+<li><strong>Window’s length</strong>: The duration of the window for which the data is aggregated.</li>
+<li><strong>Slide interval</strong> or <strong>Advance Interval</strong> or <strong>Slide</strong>: How often a new window starts.</li>
+</ul>
+<p>To better understand, imagine a river flowing by us, and we want to examine the water quality, but instead of checking the entire river at once, we decide to look at just a portion of the water that flows by us within a specific time frame. Let’s say we choose to examine the water every 5 minutes, but instead of starting a new check every 5 minutes on the dot, we start a new check every minute, each time including the water from the last 5 minutes.</p>
+<p>In the context of Kafka Streams and sliding windows, the “river” is our stream of data (events), and the “water quality check” is the aggregation or analysis we want to perform on that data. A sliding window is like the moving 5-minute period we use to check the water quality. As time moves forward, this 5-minute window “slides” along with the flow of the river (or the flow of our data). This means we’re constantly updating our analysis or aggregation based on the most recent 5 minutes of data, starting a new analysis every minute (or whatever our chosen interval is).</p>
+<p>In other words, we’re continuously summarizing or analyzing the most recent chunk of data, and this chunk moves forward over time, constantly capturing a fresh set of data based on the window’s duration and the sliding interval we’ve defined. This approach allows us to get a continuous, up-to-date view of what’s happening in our data stream, making it very useful for real-time monitoring and analysis.</p>
+<h2 id="example-3"><a class="to-underline" href="#example-3">Example</a></h2>
+<p>Let’s take the following case:</p>
+<ul>
+<li><strong>Window size</strong>: <strong><code>30</code></strong> minutes</li>
+<li><strong>Slide interval</strong>: <strong><code>10</code></strong> minutes</li>
+</ul>
+<p>This means every <em>10 minutes</em>, a new window starts, but each window covers data from the <em>past 30 minutes</em>. Therefore, windows will overlap each other.</p>
+<p>Imagine our click data stream over a timeline:</p>
+<!-- <figure><a class="outline-offset" href="/assets/images/BxnpQRftXF-1961.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/BxnpQRftXF-400.webp 400w, /assets/images/BxnpQRftXF-800.webp 800w, /assets/images/BxnpQRftXF-1961.webp 1961w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/BxnpQRftXF-400.jpeg 400w, /assets/images/BxnpQRftXF-800.jpeg 800w, /assets/images/BxnpQRftXF-1961.jpeg 1961w" sizes="100vw">
+    <img width="1961" height="435" src="/assets/images/BxnpQRftXF-1961.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+<figure><a class="outline-offset" href="/assets/images/BxnpQRftXF-1961.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/BxnpQRftXF-400.webp 400w, /assets/images/BxnpQRftXF-800.webp 800w, /assets/images/BxnpQRftXF-1961.webp 1961w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/BxnpQRftXF-400.jpeg 400w, /assets/images/BxnpQRftXF-800.jpeg 800w, /assets/images/BxnpQRftXF-1961.jpeg 1961w" sizes="100vw">
+    <img width="1961" height="435" src="/assets/images/BxnpQRftXF-1961.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 4: </b>Sliding windows.</p></figcaption></figure>
+<p>Clicks occur at minutes 5, 15, 25, 35, 45, 55, 65, 75, 85.</p>
+<ul>
+<li><strong>Window 1 (0-30)</strong>: Captures clicks at 5, 15, 25.</li>
+<li><strong>Window 2 (10-40) - Slides 10 minutes from Window 1</strong>: Captures clicks at 15, 25, 35.</li>
+<li><strong>Window 2 (20-50) - Slides 10 minutes from Window 2</strong>: Captures clicks at 25, 35, 45.</li>
+</ul>
+<p>And so on.</p>
+<p>To visualize this:</p>
+<pre class="language-scss"><code tabindex="0" class="language-scss">Initial State <span class="token punctuation">(</span>First Window<span class="token punctuation">)</span>
+[5<span class="token punctuation">,</span> 15<span class="token punctuation">,</span> 25]              &lt;- Window 1 <span class="token punctuation">(</span>0-30<span class="token punctuation">)</span>
+      [15<span class="token punctuation">,</span> 25<span class="token punctuation">,</span> 35]       &lt;- Window 2 <span class="token punctuation">(</span>10-40<span class="token punctuation">)</span> <span class="token punctuation">(</span>Starts after 10 minutes<span class="token punctuation">)</span>
+            [25<span class="token punctuation">,</span> 35<span class="token punctuation">,</span> 45] &lt;- Window 3 <span class="token punctuation">(</span>20-50<span class="token punctuation">)</span> <span class="token punctuation">(</span>Starts after another 10 minutes<span class="token punctuation">)</span>
+</code></pre>
+<p>Each bracket […] represents a window capturing clicks within that 30-minute period, sliding every 10 minutes, showing the overlap where consecutive windows include some of the same data points (clicks).</p>
+<h2 id="code-example-3"><a class="to-underline" href="#code-example-3">Code example</a></h2>
+<p>Here’s how we might set up a sliding window in Kafka Streams for calculating average temperatures:</p>
+<pre class="language-java"><code tabindex="0" class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>common<span class="token punctuation">.</span>serialization<span class="token punctuation">.</span></span><span class="token class-name">Serdes</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span></span><span class="token class-name">KafkaStreams</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span></span><span class="token class-name">KeyValue</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span></span><span class="token class-name">StreamsBuilder</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span></span><span class="token class-name">StreamsConfig</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>streams<span class="token punctuation">.</span>kstream<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>time<span class="token punctuation">.</span></span><span class="token class-name">Duration</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ClickCountSlidingWindow</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Properties</span> props <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token class-name">StreamsConfig</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_ID_CONFIG</span><span class="token punctuation">,</span> <span class="token string">"click-count-application"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token class-name">StreamsConfig</span><span class="token punctuation">.</span><span class="token constant">BOOTSTRAP_SERVERS_CONFIG</span><span class="token punctuation">,</span> <span class="token string">"localhost:9092"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token class-name">StreamsConfig</span><span class="token punctuation">.</span><span class="token constant">DEFAULT_KEY_SERDE_CLASS_CONFIG</span><span class="token punctuation">,</span> <span class="token class-name">Serdes<span class="token punctuation">.</span>String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        props<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token class-name">StreamsConfig</span><span class="token punctuation">.</span><span class="token constant">DEFAULT_VALUE_SERDE_CLASS_CONFIG</span><span class="token punctuation">,</span> <span class="token class-name">Serdes<span class="token punctuation">.</span>String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">StreamsBuilder</span> builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StreamsBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">KStream</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> clicks <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token string">"clicks-topic"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Define the sliding window</span>
+        <span class="token class-name">TimeWindows</span> slidingWindow <span class="token operator">=</span> <span class="token class-name">TimeWindows</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofMinutes</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">advanceBy</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofMinutes</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Count clicks in the sliding window</span>
+        <span class="token class-name">KTable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Windowed</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">,</span> <span class="token class-name">Long</span><span class="token punctuation">></span></span> clickCounts <span class="token operator">=</span> clicks
+                <span class="token punctuation">.</span><span class="token function">groupByKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">windowedBy</span><span class="token punctuation">(</span>slidingWindow<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token class-name">Materialized</span><span class="token punctuation">.</span><span class="token function">as</span><span class="token punctuation">(</span><span class="token string">"clicks-count-store"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// Further processing or output the results to a topic</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><code>TimeWindows</code>: Defines the sliding window with a size of 30 minutes and an advance interval of 10 minutes.</li>
+<li><code>groupByKey()</code>: Groups the click events by their key. In this case, the specific key doesn’t matter since we’re counting all clicks, but it’s necessary for windowed aggregation.</li>
+<li><code>windowedBy()</code>: Applies the sliding window definition to the grouped stream.</li>
+<li><code>count()</code>: Counts the number of events (clicks) within each window.</li>
+</ul>
+<p>Sliding windows are ideal for continuous calculations that need to be updated with each new event, providing a more granular and immediate view of data trends over time.</p>
+<hr>
+<h1 id="summary"><a class="to-underline" href="#summary">Summary</a></h1>
+<p>Hopefully, this clarifies the concepts of windowing in Kafka Streams. Below is a quick comparison of all the window types that we have learned about:</p>
+<table>
+<thead>
+<tr>
+<th>Feature/Type</th>
+<th>Tumbling Window</th>
+<th>Hopping Window</th>
+<th>Session Window</th>
+<th>Sliding Window</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Definition</strong></td>
+<td>A type of window that has a fixed size and does not overlap. Each record belongs to exactly one window.</td>
+<td>Similar to tumbling windows but can overlap. It is defined by two parameters: the window’s size and its advance interval (or hop).</td>
+<td>Dynamic windows that group events by activity sessions. Windows are defined by periods of activity and inactivity.</td>
+<td>A type of window that allows for overlapping windows where each window is defined by a fixed duration and can slide over the data stream.</td>
+</tr>
+<tr>
+<td><strong>Window Size</strong></td>
+<td>Fixed</td>
+<td>Fixed</td>
+<td>Dynamic, determined by inactivity gap</td>
+<td>Fixed</td>
+</tr>
+<tr>
+<td><strong>Overlap</strong></td>
+<td>No</td>
+<td>Yes, if the advance interval is smaller than the window size</td>
+<td>No, but windows are not fixed and can vary in length</td>
+<td>Yes, windows can overlap due to the sliding nature</td>
+</tr>
+<tr>
+<td><strong>Use Cases</strong></td>
+<td>Aggregations over a uniform time interval, such as hourly metrics.</td>
+<td>Aggregations where more frequent updates are needed within a fixed period, allowing overlap.</td>
+<td>Aggregations where the activity is bursty or irregular, such as user sessions in web analytics.</td>
+<td>Fine-grained aggregations where updates are needed for every event or at short intervals, capturing trends over time.</td>
+</tr>
+<tr>
+<td><strong>Key Characteristics</strong></td>
+<td>Simple and non-overlapping, making it suitable for clear-cut time intervals.</td>
+<td>Provides flexibility with overlapping windows, useful for more nuanced time-based aggregations.</td>
+<td>Ideal for handling irregular or event-driven data, adapting to the data’s inherent patterns.</td>
+<td>Offers the most granular control over windowing, allowing for continuous updates within overlapping periods.</td>
+</tr>
+</tbody>
+</table>
+<p align="center">
+    <sup><b>Table 1: </b>Comparison of all windows supported by Kafka Streams.</sup>
+</p>
+<hr>
+<h1 id="frequently-asked-questions-faqs"><a class="to-underline" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a></h1>
+<h2 id="what-does-the-grace-period-refer-to-in-kafka-streams"><a class="to-underline" href="#what-does-the-grace-period-refer-to-in-kafka-streams">What does the “grace period” refer to in Kafka Streams?</a></h2>
+<p>The “grace period” refers to a configurable time window that allows for late-arriving records to be included in windowed aggregations. In other words, the grace period specifies how much time after a window has technically expired (based on its defined duration) the system will continue to accept records for that window. This feature is particularly useful for dealing with out-of-order data, which is common in distributed systems due to network delays or other factors. By setting a grace period, you can accommodate these late-arriving records to ensure they are processed and included in the correct aggregation window, rather than being discarded or processed as part of a later window.</p>
+<p>For example, if we have a 1-minute tumbling window with a grace period of 30 seconds, records that arrive up to 30 seconds after the end of each 1-minute window can still be included in the corresponding windowed computation. After the grace period has elapsed, the window is closed, and no further records for that window are processed.</p>
+<p>The grace period is set via the <code>Materialized</code> or Windows configuration when defining windowed operations in Kafka Streams. It’s a crucial setting for ensuring data completeness and accuracy in real-time streaming applications, especially when handling data that may not arrive in perfect chronological order.</p>
+<pre class="language-java"><code tabindex="0" class="language-java"><span class="token comment">// Tumbling window</span>
+countStream<span class="token punctuation">.</span><span class="token function">groupByKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">.</span><span class="token function">windowedBy</span><span class="token punctuation">(</span><span class="token class-name">TimeWindows</span><span class="token punctuation">.</span><span class="token function">ofSizeAndGrace</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofMinutes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+		<span class="token punctuation">,</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofSeconds</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// Using 30 seconds for the grace period</span>
+	<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token class-name">Materialized</span><span class="token punctuation">.</span><span class="token function">as</span><span class="token punctuation">(</span><span class="token string">"Tumbling-window-counting-store"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Session window</span>
+countStream<span class="token punctuation">.</span><span class="token function">groupByKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">.</span><span class="token function">windowedBy</span><span class="token punctuation">(</span><span class="token class-name">SessionWindows</span><span class="token punctuation">.</span><span class="token function">ofInactivityGapAndGrace</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofMinutes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofSeconds</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// Using 30 seconds for the grace period</span>
+	<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token class-name">Materialized</span><span class="token punctuation">.</span><span class="token function">as</span><span class="token punctuation">(</span><span class="token string">"Session-window-counting-store"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="references">
+  <hr>
+  <h2>References</h2>
+  <ol>
+  <!-- <li>Nil</li> -->
+    <li id="ref-1">1. <strong>Bursts</strong>: In the context of Kafka Streams, the term “bursts” typically refers to sudden increases in the volume of data messages being processed by the stream. These bursts can occur due to various reasons, such as a rapid flood of events from producers, periodic increases in activity (e.g., during specific hours of the day or days of the week), or backlog processing after downtime or maintenance periods. <a href="#back-to-1" class="back-to-note">↩</a></li>
+  </ol>
+</div>
+    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/windowing-in-kafka-streams/"
+    },
+    "headline": "Windowing in Kafka Streams",
+    "description": "Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.",
+    
+    "datePublished": "2024-02-25T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b> | <a href="/privacyPolicy/" target="_blank">Privacy Policy</a>.</p>
+      <p>Hosted on <b>GitHub Pages</b> | This website DOES NOT use cookies.</p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+</body>
+</html>
