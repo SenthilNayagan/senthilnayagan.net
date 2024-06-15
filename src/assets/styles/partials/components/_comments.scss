@@ -1,0 +1,76 @@
+@use "sass:math";
+@use "../functions";
+@use "../mixins";
+
+#comments {
+  --spacing: calc(1.75 * var(--rhythm));
+  padding-top: var(--spacing);
+  margin-top: var(--spacing);
+  border-top: solid 1px var(--color-surface-5);
+}
+
+.comment-button {
+  display: flex;
+  align-items: center;
+  gap: functions.spacing("-2");
+}
+
+.post-comment {
+  --avatar-size: #{functions.spacing("5")};
+  --avatar-offset-left: #{functions.spacing("-2")};
+
+  &-meta > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &-avatar {
+    width: var(--avatar-size);
+  }
+
+  &-username {
+    @include mixins.font($family: "body", $weight: "bold");
+  }
+
+  &-edited {
+    font-style: italic;
+  }
+
+  &-author {
+    border-radius: functions.spacing("-4");
+    padding: functions.spacing("-3") functions.spacing("-2");
+  }
+
+  &-body {
+    ul {
+      list-style: disc;
+    }
+
+    @include mixins.headings {
+      @include mixins.font($size: "base");
+    }
+  }
+
+  @include mixins.tablet {
+    & {
+      padding-inline-start: calc(var(--avatar-size) + var(--avatar-offset-left));
+    }
+
+    &-meta {
+      position: relative;
+    }
+
+    &-avatar {
+      position: absolute;
+      transform: translateX(-100%);
+      left: calc(-1 * var(--avatar-offset-left));
+    }
+  }
+}
+
+#comments-count {
+  color: var(--color-text-soft);
+  vertical-align: middle;
+  padding-inline-start: 0.25ch;
+  @include mixins.font($size: "base");
+}

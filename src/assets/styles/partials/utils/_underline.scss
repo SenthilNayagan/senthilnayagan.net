@@ -1,0 +1,11 @@
+.to-underline {
+  text-decoration: none;
+
+  &:is(:hover, :focus) {
+    text-decoration: underline;
+  }
+}
+
+.no-decoration {
+  text-decoration: none;
+}

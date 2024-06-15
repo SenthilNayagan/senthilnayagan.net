@@ -1,0 +1,95 @@
+@use "../mixins";
+@use "../functions";
+
+.skip-navigation {
+  top: 50%;
+  transform: translate(#{functions.spacing("-2")}, -50%);
+  padding: functions.spacing("-2");
+  background-color: var(--color-navbar-bg);
+}
+
+.navbar {
+  @include mixins.theme-light {
+    --color-navbar-bg: var(--color-surface-8);
+    --color-navbar-bg-focus: var(--color-surface-7);
+  }
+
+  @include mixins.theme-dark {
+    --color-navbar-bg: var(--color-surface-2);
+    --color-navbar-bg-focus: var(--color-surface-3);
+  }
+
+  /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
+  flex-shrink: 0;
+  width: 100%;
+  padding-block: functions.spacing("-1");
+  background-color: var(--color-navbar-bg);
+  overflow-x: auto;
+  color: white;
+
+  a {
+    text-decoration: none;
+  }
+
+  nav {
+    // Don't wrap whitespace
+    white-space: nowrap;
+    // Distribute available space evenly, but don't shrink
+    flex: 1 0 auto;
+    // Relatively position the navbar for the skip link
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: functions.spacing("0");
+  }
+
+  &-logo {
+    width: functions.spacing("4");
+  }
+
+  &-link-home {
+    display: flex;
+    gap: functions.spacing("-3");
+    align-items: center;
+    padding: functions.spacing("-2");
+    @include mixins.font($family: "body", $weight: "bold");
+
+    .site-name {
+      font-size: 2rem;
+      display: inline-block;
+      // @include mixins.screen-reader-only;
+    }
+  }
+
+  &-links {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: functions.relative("-3");
+
+    > :first-child {
+      margin-inline-end: auto;
+    }
+  }
+
+  &-link {
+    padding: functions.relative("-2") functions.relative("-1");
+
+    &:is(:focus, :hover, [aria-current="page"]) {
+      background-color: var(--color-navbar-bg-focus);
+    }
+  }
+}
+
+@include mixins.mobile-lg {
+  .navbar {
+    padding-block: functions.spacing("2");
+    position: unset;
+
+    .site-name {
+      position: unset;
+      @include mixins.screen-reader-only-unset;
+    }
+  }
+}

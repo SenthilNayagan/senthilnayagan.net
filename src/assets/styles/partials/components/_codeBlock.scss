@@ -1,0 +1,191 @@
+/* stylelint-disable no-descending-specificity */
+@use "../functions";
+@use "../mixins";
+
+pre[class*="language-"] {
+  @include mixins.theme-light {
+    --color-code-background: var(--color-surface-2);
+    --color-code-overlay-1: hsl(0deg 0% 88%);
+    --color-code-overlay-2: hsl(0deg 0% 80%);
+    --color-code-selection: hsl(243.9deg 80.3% 33.9% / 20%);
+    --color-code-comment: hsl(120deg 100% 21.8%);
+    --color-code-text: hsl(0deg 0% 0%);
+    --color-code-keyword: hsl(233deg 100% 38%);
+    --color-code-number: var(--color-code-comment);
+    --color-code-attribute: var(--color-code-text);
+    --color-code-string: hsl(8deg 100% 38%);
+    --color-code-variable: var(--color-code-keyword);
+    --color-code-tag: var(--color-code-keyword);
+    --color-code-constant: var(--color-code-number);
+    --color-code-punctuation: var(--color-code-text);
+    --color-code-selector: var(--color-code-string);
+  }
+
+  @include mixins.theme-dark {
+    --color-code-background: var(--color-surface-2);
+    --color-code-overlay-1: var(--color-surface-3);
+    --color-code-overlay-2: var(--color-surface-6);
+
+    /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
+    --color-code-selection: hsl(210deg 100% 84% / 15%);
+    --color-code-comment: hsl(101deg 29% 47%);
+    --color-code-text: hsl(0deg 0% 90%);
+    --color-code-keyword: hsl(207deg 61% 59%);
+    --color-code-number: hsl(99deg 28% 73%);
+    --color-code-attribute: hsl(201deg 98% 80%);
+    --color-code-string: hsl(17deg 47% 64%);
+    --color-code-variable: var(--color-code-keyword);
+    --color-code-tag: var(--color-code-keyword);
+    --color-code-constant: var(--color-code-number);
+    --color-code-punctuation: #8a8a8a;
+    --color-code-selector: hsl(41deg 53% 67%);
+  }
+
+  --code-block-padding: #{functions.spacing("5")};
+  background: var(--color-code-background);
+  color: var(--color-code-text);
+  position: relative;
+  border-radius: functions.spacing("-3");
+
+  &:hover {
+    .copy-code-button {
+      opacity: 1;
+    }
+  }
+
+  code {
+    padding: var(--code-block-padding);
+    text-align: start;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 2;
+    line-height: functions.leading("sm");
+    overflow-x: auto;
+    display: block;
+
+    &[data-file] {
+      // File name
+      &::before {
+        content: "📁 " attr(data-file);
+        display: block;
+        margin-bottom: var(--code-block-padding);
+        color: var(--color-code-text);
+        @include mixins.font($family: "mono", $weight: "bold");
+      }
+    }
+  }
+
+  .namespace {
+    opacity: 0.7;
+  }
+
+  &::selection,
+  & *::selection {
+    text-shadow: none;
+    color: unset;
+    background: var(--color-code-selection);
+  }
+}
+
+.token {
+  &:is(.doctype, .doctype-tag) {
+    .name {
+      color: var(--color-code-attribute);
+    }
+  }
+
+  &.comment {
+    margin: 0;
+  }
+
+  &:is(.comment, .prolog) {
+    color: var(--color-code-comment);
+  }
+
+  &.number {
+    color: var(--color-code-constant);
+  }
+
+  &.script {
+    color: var(--color-code-text);
+  }
+
+  &.punctuation,
+  &.cdata {
+    color: var(--color-code-punctuation);
+  }
+
+  /* stylelint-disable-next-line max-line-length */
+  &:is(.keyword, .tag, .boolean, .constant, .inserted, .operator.arrow, .key.atrule, .rule, .keyword.module, .keyword.control-flow, .entity, .important, .punctuation.interpolation-punctuation, .doctype, .doctype-tag, .directive-hash),
+  &.atrule .url {
+    color: var(--color-code-keyword);
+  }
+
+  &:is(.selector, .string, .char, .builtin, .deleted, .regex, .attr-value),
+  &.attr-value &.punctuation {
+    color: var(--color-code-string);
+  }
+
+  &:is(.operator, .entity, .function),
+  &.atrule &.url &.punctuation,
+  &.attr-value &.punctuation.attr-equals,
+  &.function &.maybe-class-name {
+    color: var(--color-code-text);
+  }
+
+  &:is(.attr-name, .constant, .console, .property, .variable),
+  &.imports &.maybe-class-name,
+  &.exports &.maybe-class-name {
+    color: var(--color-code-attribute);
+  }
+
+  &.italic {
+    font-style: italic;
+  }
+}
+
+/* Language Specific */
+
+pre[class*="language-css"],
+pre[class*="language-scss"],
+pre[class*="language-sass"] {
+  .token.selector {
+    color: var(--color-code-selector);
+  }
+}
+
+pre[class*="language-bash"] {
+  .token:not(.comment) {
+    color: var(--color-code-text) !important;
+  }
+}
+
+.copy-code-button {
+  opacity: 0;
+  position: absolute;
+  right: var(--code-block-padding);
+  // For one-liners, cap to 50% from the top
+  /* stylelint-disable-next-line scss/no-global-function-names */
+  top: min(var(--code-block-padding) * 1.5, 50%);
+  transform: translateY(-50%);
+  display: none;
+  color: var(--color-code-text);
+  background-color: var(--color-code-overlay-1);
+  padding: functions.spacing("-3") functions.spacing("-1");
+  border-radius: functions.spacing("-3");
+  @include mixins.font($family: "mono", $weight: "regular");
+
+  &:is(.copied, :focus) {
+    opacity: 1;
+  }
+
+  &:is(.copied, :hover) {
+    color: black;
+    background-color: var(--color-code-overlay-2);
+  }
+
+  @include mixins.tablet {
+    display: unset;
+  }
+}

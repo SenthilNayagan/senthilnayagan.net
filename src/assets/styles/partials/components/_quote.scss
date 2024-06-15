@@ -1,0 +1,33 @@
+@use "../mixins";
+@use "../functions";
+
+blockquote {
+  font-style: italic;
+  border-inline-start: functions.spacing("-3") solid;
+  padding: 0 functions.relative("2");
+
+  p {
+    &:first-of-type {
+      &::before {
+        content: open-quote;
+      }
+    }
+
+    &:last-of-type {
+      &::after {
+        content: close-quote;
+      }
+    }
+  }
+}
+
+cite {
+  font-style: normal;
+  display: block;
+  @include mixins.font($size: "sm");
+
+  &::before {
+    content: "\2014";
+    user-select: none;
+  }
+}

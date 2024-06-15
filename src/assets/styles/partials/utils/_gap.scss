@@ -1,0 +1,10 @@
+@use "../tokens" as *;
+@use "../functions";
+
+$spacing-steps: functions.get($tokens, "size", "spacing");
+@each $step, $value in $spacing-steps {
+  /* stylelint-disable-next-line custom-property-pattern */
+  .gap-#{$step} {
+    gap: functions.spacing($step);
+  }
+}

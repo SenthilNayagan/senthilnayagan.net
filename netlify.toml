@@ -1,0 +1,25 @@
+[[plugins]]
+  package="netlify-plugin-checklinks"
+
+[[plugins]]
+  package = "netlify-plugin-11ty"
+  [plugins.inputs]
+    cache_img = './assets/images'
+    cache_img_httpHeader = true
+
+[dev]
+  command = "npm run serve"
+  targetPort = 4001
+  publish = "_site/"
+
+[build]
+  publish = "_site/"
+  command = "npm run build"
+
+[functions]
+  directory = "./api"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "frame-ancestors 'none';"

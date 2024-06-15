@@ -1,0 +1,41 @@
+<header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>
+            <!-- <span class="site-name">{{ site.author }}</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li>
+        {%- assign navLinks = "About,Tags,Contact" | split: ',' -%}
+        {%- for link in navLinks -%}
+        <li>
+          {%- assign href = link | downcase | prepend: "/" | append: "/" -%}
+          <a
+            href="{{ href }}"
+            class="navbar-link"
+            {% if permalink == href -%}
+            aria-current="page"
+            {%- endif -%}
+            {% if link == 'Blog' and isBlogPage -%}
+            aria-current="page"
+            {%- endif -%}
+          >
+            {{- link -}}
+          </a>
+        </li>
+        {%- endfor -%}
+        <li>
+          <div id="theme-picker" class="theme-toggle">
+            <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header>

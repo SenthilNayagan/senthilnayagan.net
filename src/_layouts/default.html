@@ -1,0 +1,34 @@
+---
+layout: base
+isThemed: true
+criticalCSS:
+  - css/criticalFontUsage.css
+stylesheets:
+  - /assets/styles/main.css
+scripts:
+  -
+    type: module
+    src: /assets/scripts/index.mjs
+eleventyComputed:
+  preloads:
+    -
+      as: style
+      type: text/css
+      href: /assets/styles/main.css
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.body.variants.roman.url }}"
+      crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.body.variants.roman.url }}"
+      crossorigin: true
+---
+
+{%- include "navbar.html" -%}
+<main id="page-content" class="container">
+  {{ content }}
+</main>
+{%- include "footer.html" -%}

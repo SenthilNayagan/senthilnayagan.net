@@ -1,0 +1,59 @@
+---
+title: Art
+description: Pushing pixels with CSS art.
+layout: base
+keywords:
+  - css art
+permalink: /art/
+stylesheets:
+  - /assets/styles/art.css
+eleventyComputed:
+  openGraph:
+    image: "{{ '/assets/images/art/art.png' | toAbsoluteUrl }}"
+    twitter:
+      card: summary_large_image
+  preloads:
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.mono.variants.roman.url }}"
+      crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.display.variants.regular.roman.url }}"
+      crossorigin: true
+---
+
+<main class="artwork-page">
+  <nav class="artwork-nav" aria-label="Primary">
+    <ol>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/about/">About</a>
+      </li>
+      <li>
+        <a href="/art/" aria-current="page">Art</a>
+      </li>
+      <li>
+        <a href="/blog/">Blog</a>
+      </li>
+    </ol>
+  </nav>
+  <header class="artwork-page-header" class="text-center">
+    <h1 class="title">CSS Art</h1>
+  </header>
+  <ol class="artwork-list col-wrap col-3">
+    {%- assign artCollection = collections.art | sortByKey: 'data.order' | reverse -%}
+    {%- for artwork in artCollection -%}
+      <li {% if artwork.data.columns %}class="col-{{ artwork.data.columns }}"{% endif %}>
+        {{ artwork.templateContent }}
+      </li>
+    {%- endfor -%}
+  </ol>
+</main>
+<footer class="artwork-page-footer">
+  <p>&copy; {{ site.author }}, 2019–Present.<br> No pixels were harmed in the production of this site.</p>
+</footer>

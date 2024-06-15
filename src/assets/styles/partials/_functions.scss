@@ -1,0 +1,98 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:string";
+@use "sass:map";
+@use "./tokens" as *;
+
+@function to-rems($value) {
+  // Check if the value, as a string, is already expressed in rems
+  @if ends-with("" + $value, "rem") {
+    @return $value;
+  }
+  $value-rems: math.div($value, 16px) * 1rem;
+  @return $value-rems;
+}
+
+/// Deep version of map.get
+@function get($map, $keys...) {
+  @each $key in $keys {
+    $map: map.get($map, $key);
+  }
+  @return $map;
+}
+
+/// Joins a list of values as a string, with the given separator
+@function string-join($list, $separator) {
+  $result: "";
+  @each $entry in $list {
+    @if string.length($result) > 0 {
+      $result: $result + $separator;
+    }
+    $result: $result + $entry;
+  }
+  @return $result;
+}
+
+/// Returns the name for the token at the given vararg path, in kebab case. Example: "size", "font", "base" => "size-font-base".
+@function get-token-name($path...) {
+  // Make sure that map actually exists. This will throw if it doesn't.
+  $token: get($tokens, $path);
+  // Kebab case
+  @return string-join($path, "-");
+}
+
+/// Returns the value for the given token, as a CSS var expression.
+@function get-token-value($path...) {
+  $token-name: get-token-name($path...);
+  @return var(--#{$token-name});
+}
+
+@function font-size($step) {
+  @return get-token-value("size", "font", $step);
+}
+
+@function spacing($step) {
+  @return get-token-value("size", "spacing", $step);
+}
+
+@function relative($step) {
+  @return get-token-value("size", "relative", $step);
+}
+
+@function leading($step) {
+  @return get-token-value("size", "leading", $step);
+}
+
+@function tracking($step) {
+  @return get-token-value("size", "tracking", $step);
+}
+
+/// Returns true if the given string ends with the given suffix.
+/// Adapted for use from: https://stackoverflow.com/a/40389473/5323344
+@function ends-with($string, $suffix) {
+  $string-length: string.length($string);
+  $suffix-length: string.length($suffix);
+  @return str-slice($string, ($string-length - $suffix-length + 1)) == $suffix;
+}
+
+/// Rounds the given number to the specified number of decimal places.
+/// Adapted for use from: https://gist.github.com/terkel/4373420
+@function rnd($number, $places: 0) {
+  $n: 1;
+  @if $places > 0 {
+    @for $i from 1 through $places {
+      $n: $n * 10;
+    }
+  }
+  @return math.div(math.round($number * $n), $n);
+}
+
+/// Returns a CSS clamp(...) declaration, with the responsive argument computed automatically.
+@function clamped($min-px, $max-px, $min-bp: get($tokens, "breakpoints", "mobile"), $max-bp: get($tokens, "breakpoints", "desktop")) {
+  $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
+  $slope-vw: rnd($slope * 100, 2);
+  $intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 2);
+  $min-rems: rnd(to-rems($min-px), 2);
+  $max-rems: rnd(to-rems($max-px), 2);
+  @return clamp(#{$min-rems}, #{$slope-vw}vw + #{$intercept-rems}, #{$max-rems});
+}

@@ -1,0 +1,18 @@
+@use "../functions";
+
+details {
+  summary {
+    cursor: pointer;
+    background-color: var(--color-surface-2);
+  }
+
+  summary,
+  .details-content {
+    padding: functions.spacing("2") functions.spacing("3");
+    border: functions.spacing("-4") solid var(--color-border);
+  }
+
+  .details-content {
+    border-top: none;
+  }
+}

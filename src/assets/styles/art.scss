@@ -1,0 +1,238 @@
+@use "partials/functions";
+@use "partials/mixins";
+@import "partials/tokens/animation";
+@import "partials/tokens/size";
+@import "partials/global/reset";
+@import "partials/utils/utils";
+@import "partials/components/code";
+@import "partials/components/figure";
+@import "partials/pages/art/index";
+
+html {
+  --color-surface-1: white;
+  --color-text: black;
+  --color-text-soft: hsl(0deg 0% 40%);
+  scroll-behavior: smooth;
+}
+
+body {
+  @include mixins.font($family: "mono", $weight: "regular", $size: "base");
+}
+
+.artwork {
+  --color-artwork-shadow: hsl(272deg 53% 20%);
+  height: 100%;
+  display: grid;
+  place-items: center;
+  gap: functions.spacing("0");
+  scroll-margin-top: functions.spacing("10");
+
+  /* Force each artwork to create its own stacking context since some art pieces use z-index
+  tricks to position individual elements higher or lower within that artwork's context. Without this,
+  they would leak into the global stacking context and potentially appear above other things (e.g., the navbar). */
+  isolation: isolate;
+  padding: functions.spacing("3");
+
+  &-page {
+    // https://www.magicpattern.design/tools/css-backgrounds
+    --color-lines: hsl(0deg 0% 15% / 4%);
+    background-image:
+      linear-gradient(
+        var(--color-lines) 3.6px,
+        transparent 3.6px
+      ),
+      linear-gradient(90deg, var(--color-lines) 3.6px, transparent 3.6px),
+      linear-gradient(var(--color-lines) 1.8px, transparent 1.8px),
+      linear-gradient(90deg, var(--color-lines) 1.8px, #fff 1.8px);
+    background-size: 90px 90px, 90px 90px, 18px 18px, 18px 18px;
+    background-position: -3.6px -3.6px, -3.6px -3.6px, -1.8px -1.8px, -1.8px -1.8px;
+
+    @include mixins.tablet-sm {
+      &::before,
+      &::after {
+        content: "";
+        width: 4px;
+        background: var(--color-text);
+        position: fixed;
+        height: 100vh;
+      }
+    }
+
+    &::before {
+      right: 1%;
+      top: 0;
+    }
+
+    &::after {
+      left: 1%;
+      top: 0;
+    }
+
+    a {
+      color: var(--color-text);
+    }
+
+    &-header {
+      padding: functions.spacing("12") functions.spacing("5");
+
+      .title {
+        --font-size-multiplier: 1.2;
+        width: fit-content;
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: functions.tracking("lg");
+        text-shadow: functions.to-rems(1px) functions.to-rems(1px);
+        font-size: calc(var(--font-size-multiplier) * #{functions.font-size("5xl")});
+        @include mixins.font($family: "display", $weight: "regular");
+
+        @include mixins.tablet-sm {
+          --font-size-multiplier: 2;
+          --color-shadow: hsl(0deg 0% 50% / 10%);
+        }
+
+        @include mixins.desktop-lg {
+          --font-size-multiplier: 2.5;
+        }
+
+        &::after {
+          --translate-x: 0;
+          --translate-y: 0;
+          --right: 0;
+          --rotation: 0deg;
+          --transform-base: rotate(var(--rotation)) translate(var(--translate-x), var(--translate-y));
+
+          @keyframes subtitle-pulse {
+            from {
+              transform: var(--transform-base) scale(1);
+            }
+
+            to {
+              transform: var(--transform-base) scale(1.1);
+            }
+          }
+
+          content: "Now with double the pixels!";
+          display: block;
+          width: fit-content;
+          margin-inline: auto;
+          text-shadow: none;
+          white-space: nowrap;
+          animation: subtitle-pulse 1s ease infinite alternate-reverse;
+          will-change: transform;
+          text-transform: none;
+          @include mixins.font($family: "cursive", $weight: "regular", $size: "md");
+
+          @include mixins.tablet-sm {
+            --translate-x: 0;
+            --translate-y: -50%;
+            --rotation: 2deg;
+            --left: unset;
+            --top: 0;
+            --right: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+        }
+      }
+    }
+
+    &-footer {
+      border-top: solid 4px;
+      padding: functions.spacing("5");
+      text-align: center;
+      line-height: functions.leading("xs");
+
+      > * {
+        max-width: 60ch;
+        margin-inline: auto;
+      }
+    }
+  }
+
+  &-nav {
+    width: 100%;
+
+    a {
+      --color-shadow: var(--color-text);
+      background-color: white;
+      position: relative;
+      padding: functions.relative("-2") functions.relative("0");
+      text-transform: uppercase;
+      letter-spacing: functions.tracking("lg");
+      text-decoration: none;
+      color: var(--color-text);
+      border: solid 2px;
+      box-shadow:
+        5px 5px,
+        4px 4px,
+        3px 3px,
+        2px 2px,
+        1px 1px;
+    }
+
+    ol {
+      display: flex;
+      gap: functions.spacing("0");
+      width: 100%;
+      padding: functions.spacing("0") functions.spacing("-2");
+      overflow-x: auto;
+      background: linear-gradient(0deg, transparent 45%, var(--color-text) 45%, var(--color-text) 50%, transparent 50%);
+
+      & > * {
+        display: flex;
+      }
+
+      & > :first-child {
+        margin-inline-end: auto;
+      }
+
+      @include mixins.tablet-sm {
+        gap: functions.spacing("5");
+        overflow-x: unset;
+        padding: functions.spacing("0") functions.spacing("5");
+      }
+    }
+  }
+
+  &-list {
+    padding: functions.spacing("5");
+  }
+
+  &-link {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &-caption {
+    @keyframes popin {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      60% {
+        transform: scale(1.1);
+        opacity: 0.6;
+      }
+    }
+    padding: functions.spacing("-3") functions.spacing("-1");
+    color: var(--color-text);
+    transform: scale(0);
+    text-align: center;
+    max-width: 30ch;
+    will-change: transform, opacity;
+    @include mixins.font($family: "cursive", $weight: "regular", $size: "lg", $leading: "3xs");
+    @include mixins.transition(opacity, transform);
+  }
+
+  &:is(:focus-within, :target, :hover) &-caption {
+    animation: popin 0.3s ease-in;
+    transform: scale(1);
+    opacity: 1;
+  }
+}

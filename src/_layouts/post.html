@@ -1,0 +1,68 @@
+---
+layout: default
+eleventyComputed:
+  preloads:
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.mono.variants.roman.url }}"
+      crossorigin: true
+---
+
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span>{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} &bull; Updated {% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}{% endif %} - {{ content | readingTime }}</p>
+    <h1 class="post-title">{{ title }}</h1>
+    <ul class="post-tags" aria-label="Tags">
+      {%- for category in categories -%}
+        <li>
+          <a href="/tags/{{ category }}/" class="post-tag" aria-label="{{ category }}">
+            {{- category -}}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if description -%}
+      <p>&nbsp;</p>
+      <p class="post-subtitle">{{ description }}</p>
+      <hr>
+    {%- endif -%}
+    {%- if draft -%}
+    <div class="draft-note">
+      <h2 class="draft-note-heading">Work in Progress</h2>
+      <p>If you have any suggestions for improving the content or notice any inaccuracies, please email me at <a href="mailto:{{ site.email }}">{{ site.email }}</a>. Thanks!</p>
+    </div>
+    {%- endif -%}
+    {%- if coverImage -%}
+      {% include "postImage.html" src: coverImage, alt: title, description: imageDescription, credits: imageCredits %}
+    {%- endif -%}
+  </header>
+  <div class="rhythm">
+    {{ content }}
+    <button id="show-comments-button" class="comments-button">Post Comments</button>
+    {%- include "disqus.html" -%}
+  </div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ page.url | toAbsoluteUrl }}"
+    },
+    "headline": {{ title | escape | toJson }},
+    "description": {{ description | strip | toJson }},
+    {% if openGraph.image %}
+    "image": ["{{ openGraph.image }}"],
+    {% endif %}
+    "datePublished": {{ page.date | toJson }},
+    {% if lastUpdated -%}
+    "dateModified": {{ lastUpdated | toJson }},
+    {% endif -%}
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.author }}"
+    }
+  }
+</script>

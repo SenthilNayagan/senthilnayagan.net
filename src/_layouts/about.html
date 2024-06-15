@@ -1,0 +1,17 @@
+---
+layout: default
+eleventyComputed:
+  preloads:
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.mono.variants.roman.url }}"
+      crossorigin: true
+---
+
+<article class="prose rhythm">
+  <h1 class="size-font-4xl">About Me</h1>
+  <div class="rhythm">
+    {{ content }}
+  </div>
+</article>

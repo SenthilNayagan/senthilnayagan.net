@@ -1,0 +1,75 @@
+@use "sass:math";
+@use "../tokens" as *;
+@use "../functions";
+@use "../mixins";
+
+$grey: #ccc;
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface-1);
+  color: var(--color-text-normal);
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  @include mixins.font($size: "base");
+}
+
+hr {
+  height: 1px;
+  width: 100%;
+  background: $grey;
+  border: none;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.author-img {
+  border-radius: 3%;
+  margin-left: 1rem;
+  // width: 200px;
+  // height: 200px;
+  object-fit: cover;
+}
+
+.image-description,
+.image-credits {
+  font-size: 0.875rem; /* Smaller font size */
+}
+
+#page-content {
+  flex-grow: 1;
+  padding-block: functions.clamped(functions.get($tokens, "size", "spacing", "5"), functions.get($tokens, "size", "spacing", "12"));
+}
+
+:is(code, kbd) {
+  @include mixins.font($family: "mono", $weight: "regular");
+
+  :is(strong, h1, h2, h3, h4, h5, h6) & {
+    @include mixins.font($family: "mono", $weight: "bold");
+  }
+}
+
+a {
+  color: var(--color-text-link);
+
+  // &[target="_blank"]::after {
+  //   content: "";
+  //   display: inline-block;
+  //   width: 0.6em; /* Adjust size if needed */
+  //   height: 0.6em; /* Adjust size if needed */
+  //   margin-left: 5px;
+  //   background-image: url("/assets/images/icons/arrow-up-right-from-square-solid.svg"); /* Adjust the path as needed */
+  //   background-size: contain;
+  //   background-repeat: no-repeat;
+  //   vertical-align: middle;
+  // }
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  color: var(--color-text-emphasis);
+}
+
+:is(h1, h2, h3, h4, h5, h6, label, th, strong) {
+  @include mixins.font($family: "body", $weight: "bold");
+}

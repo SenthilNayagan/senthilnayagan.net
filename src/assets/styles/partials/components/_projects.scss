@@ -1,0 +1,81 @@
+@use "../functions";
+@use "../mixins";
+
+.project {
+  &-wrapper {
+    --container-width: #{functions.to-rems(800px)};
+
+    // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
+    &:is(:hover, :focus-within) {
+      .project {
+        box-shadow: var(--card-box-shadow-focus);
+        transform: var(--card-offset-y-focus);
+      }
+    }
+  }
+
+  &-icon {
+    picture {
+      display: flex;
+      width: functions.relative(0);
+      aspect-ratio: 1;
+    }
+  }
+
+  &-rating {
+    display: flex;
+    align-items: center;
+    gap: functions.spacing("-4");
+    @include mixins.font($family: "mono", $weight: "regular");
+
+    svg {
+      width: functions.relative("0");
+      aspect-ratio: 1;
+      fill: var(--color-surface-7);
+    }
+  }
+
+  &-link {
+    text-decoration: none;
+
+    &:is(:focus, :focus-visible) {
+      outline: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  &-description {
+    margin-top: functions.spacing("-2");
+    @include mixins.font($size: "base");
+  }
+
+  &-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: functions.spacing("-2");
+    margin-top: functions.spacing("1");
+    @include mixins.font($family: "mono", $weight: "regular");
+  }
+
+  &-technology {
+    background-color: var(--color-surface-3);
+    padding: functions.spacing("-3") functions.spacing("-2");
+    border-radius: functions.spacing("-4");
+  }
+}
+
+.github-cta {
+  svg {
+    width: functions.spacing("8");
+    aspect-ratio: 1;
+    fill: currentcolor;
+  }
+}

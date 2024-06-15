@@ -1,0 +1,29 @@
+@use "../functions";
+@use "../mixins";
+
+.home-page {
+  gap: functions.spacing("8");
+
+  @include mixins.mobile-lg {
+    gap: functions.spacing("12");
+  }
+}
+
+.home-page-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: functions.spacing("5");
+}
+
+.home-hash-art {
+  display: none;
+
+  @include mixins.desktop {
+    display: unset;
+  }
+}
+
+.hash-art {
+  width: calc(4 * #{functions.spacing("9")});
+  height: auto;
+}

@@ -1,0 +1,91 @@
+@use "../functions";
+@use "../mixins";
+
+.post {
+  counter-reset: footnotes;
+
+  &-title {
+    text-wrap: pretty;
+    margin-bottom: functions.spacing("-2");
+  }
+
+  &-subtitle {
+    text-wrap: pretty;
+    margin-bottom: functions.spacing("-2");
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  &-date {
+    color: var(--color-text-soft);
+    margin-bottom: functions.spacing("-3");
+    @include mixins.font($size: "sm");
+
+    dt,
+    dd {
+      display: inline-block;
+    }
+  }
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: functions.spacing("-3") functions.spacing("-2");
+  }
+
+  &-tag {
+    color: var(--color-text-soft);
+
+    &::before {
+      content: "#";
+      user-select: none;
+    }
+  }
+}
+
+.draft-note {
+  border: 1px solid #d1d5da;
+  // background-color: #f6f8fa;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 50px;
+  font-size: 16px; /* Increase the font size for the content text */
+}
+
+.draft-note-heading {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 18px; /* Increase the font size for the heading */
+  font-weight: 600;
+}
+
+.draft-note p {
+  margin: 0;
+  font-size: 16px; /* Increase the font size for the content text */
+}
+
+.references {
+  font-size: 0.875rem; /* Adjust the font size as needed */
+}
+
+.references h2 {
+  font-size: 1rem; /* Adjust the font size for the heading */
+}
+
+.references ol {
+  list-style: none;
+  padding: 0;
+}
+
+.references li {
+  margin-bottom: 0.5rem;
+}
+
+.back-to-note {
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+a sup {
+  font-size: 0.875rem; /* Adjust the font size of the superscript as needed */
+}
