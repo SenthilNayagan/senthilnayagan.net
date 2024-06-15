@@ -15,7 +15,7 @@
 <link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
 <link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
 <link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
-<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},n="theme",o=document.documentElement,c=localStorage.getItem(n);c&&(o.dataset[n]=c),document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");if(!e)return;e.addEventListener("change",()=>{const m=e.checked?t.DARK:t.LIGHT;o.dataset[n]=m,localStorage.setItem(n,m)}),(c??t.AUTO)===t.DARK?e.checked=!0:e.checked=!1})})();
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
 </script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content=" | Senthil Nayagan"><meta property="og:description" content="A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.">
   <meta property="og:url" content="https://www.senthilnayagan.net/blog/README/">
   <meta property="og:type" content="article">
@@ -113,7 +113,7 @@
     "headline": "",
     "description": "",
     
-    "datePublished": "2024-06-15T15:40:24.280Z",
+    "datePublished": "2024-06-15T18:27:26.512Z",
     "author": {
       "@type": "Person",
       "name": "Senthil Nayagan"
