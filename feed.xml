@@ -4,12 +4,22 @@
   <subtitle>A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.</subtitle>
   <link href="https://www.senthilnayagan.net/feed.xml" rel="self"/>
   <link href="https://www.senthilnayagan.net/" rel="alternate" type="text/html"/>
-  <updated>2024-06-12T00:00:00.000Z</updated>
+  <updated>2024-06-16T00:00:00.000Z</updated>
   <id>https://www.senthilnayagan.net/</id>
   <author>
     <name>Senthil Nayagan</name>
     <email>hello@senthilnayagan.net</email>
   </author>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/introduction-to-rust-closure/</id>
+    <title>Introduction to Closure in Rust</title>
+    <link href="https://www.senthilnayagan.net/blog/introduction-to-rust-closure/"/>
+    <published>2024-06-16T00:00:00.000Z</published>
+    <updated>2024-06-16T00:00:00.000Z</updated>
+    <category term="closure" />
+    <category term="rust" />
+    <content type="html">A closure is a programming construct that allows a function to capture and reference variables and parameters from its surrounding lexical scope. Closures offer many benefits and are a key part of the language&#39;s expressive and flexible features.</content>
+  </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/</id>
     <title>Rust’s Ownership and Borrowing Enforce Memory Safety</title>

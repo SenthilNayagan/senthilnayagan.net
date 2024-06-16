@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Introduction to Closure in Rust | Senthil Nayagan</title>
+  <meta name="description" content="A closure is a programming construct that allows a function to capture and reference variables and parameters from its surrounding lexical scope. Closures offer many benefits and are a key part of the language's expressive and flexible features.">
+  <meta name="keywords" content="closure, rust">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/introduction-to-rust-closure/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Introduction to Closure in Rust | Senthil Nayagan"><meta property="og:description" content="A closure is a programming construct that allows a function to capture and reference variables and parameters from its surrounding lexical scope. Closures offer many benefits and are a key part of the language's expressive and flexible features.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/introduction-to-rust-closure/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Introduction to Closure in Rust | Senthil Nayagan">
+  <meta name="twitter:description" content="A closure is a programming construct that allows a function to capture and reference variables and parameters from its surrounding lexical scope. Closures offer many benefits and are a key part of the language's expressive and flexible features.">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"></head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <!-- <span class="site-name">Senthil Nayagan</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li><a
+            href="/tags/"
+            class="navbar-link"
+            >Tags</a>
+        </li><li><a
+            href="/contact/"
+            class="navbar-link"
+            >Contact</a>
+        </li><li>
+          <div id="theme-picker" class="theme-toggle">
+            <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-16" >June 16, 2024</time> - 11 min read</p>
+    <h1 class="post-title">Introduction to Closure in Rust</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/closure/" class="post-tag" aria-label="closure">closure</a>
+        </li><li>
+          <a href="/tags/rust/" class="post-tag" aria-label="rust">rust</a>
+        </li></ul><p>&nbsp;</p>
+      <p class="post-subtitle">A closure is a programming construct that allows a function to capture and reference variables and parameters from its surrounding lexical scope. Closures offer many benefits and are a key part of the language's expressive and flexible features.</p>
+      <p>&nbsp;</p>
+      <!-- <hr> --><!-- <figure><a class="outline-offset" href="/assets/images/rp02zRFTT4-1000.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/rp02zRFTT4-400.webp 400w, /assets/images/rp02zRFTT4-800.webp 800w, /assets/images/rp02zRFTT4-1000.webp 1000w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/rp02zRFTT4-400.jpeg 400w, /assets/images/rp02zRFTT4-800.jpeg 800w, /assets/images/rp02zRFTT4-1000.jpeg 1000w" sizes="100vw">
+    <img width="1000" height="571" src="/assets/images/rp02zRFTT4-1000.jpeg" alt="Introduction to Closure in Rust"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+
+<figure><a class="outline-offset" href="/assets/images/rp02zRFTT4-1000.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/rp02zRFTT4-400.webp 400w, /assets/images/rp02zRFTT4-800.webp 800w, /assets/images/rp02zRFTT4-1000.webp 1000w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/rp02zRFTT4-400.jpeg 400w, /assets/images/rp02zRFTT4-800.jpeg 800w, /assets/images/rp02zRFTT4-1000.jpeg 1000w" sizes="100vw">
+    <img width="1000" height="571" src="/assets/images/rp02zRFTT4-1000.jpeg" alt="Introduction to Closure in Rust"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-credits"><b>Image Credits: </b>AI-generated image by <a href='https://www.freepik.com/' target='_blank'>freepik</a>.</p></figcaption></figure></header>
+  <div class="rhythm">
+    <div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#overview">Overview</a></li><li class="toc-item"><a class="toc-link" href="#closure-in-rust">Closure in Rust</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#rusts-closures-are-anonymous-functions">Rust’s closures are anonymous functions</a></li><li class="toc-item"><a class="toc-link" href="#closures-vs-functions">Closures vs. functions</a></li><li class="toc-item"><a class="toc-link" href="#closures-closely-tied-to-its-ownership-and-borrowing">Closures closely tied to its ownership and borrowing</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#by-value-move-aka-move-closure">By Value (Move) aka move closure</a></li><li class="toc-item"><a class="toc-link" href="#by-reference-borrowing">By Reference (Borrowing)</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#rusts-motivation-for-closure">Rust’s motivation for closure</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#how-are-closures-and-anonymous-functions-related">How are closures and anonymous functions related?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<h1 id="overview"><a class="to-underline" href="#overview">Overview</a></h1>
+<p>In the world of programming, a “closure” is a type of function that has the ability to access and manipulate (modify) variables and parameters that are defined outside its own scope. Closures are like <strong>magic spells</strong><a href="#ref-1"><sup id="back-to-1">1</sup></a>, capable of performing actions by accessing and manipulating these external variables. Closures are also known as <strong>lexical closures</strong> or <strong>function closures</strong>. Having said that, closure allows a function to capture and reference variables from its surrounding <strong>lexical scope</strong><a href="#ref-2"><sup id="back-to-2">2</sup></a>, even after that scope has finished executing. Closures are also referred to as <strong>anonymous functions</strong><a href="#ref-3"><sup id="back-to-3">3</sup></a> or <strong>lambda functions</strong> in some programming languages, including Rust. This closure, or anonymous function, is defined without a name.</p>
+<!-- <figure><a class="outline-offset" href="/assets/images/6ySSPF9o2q-1792.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/6ySSPF9o2q-400.webp 400w, /assets/images/6ySSPF9o2q-800.webp 800w, /assets/images/6ySSPF9o2q-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/6ySSPF9o2q-400.jpeg 400w, /assets/images/6ySSPF9o2q-800.jpeg 800w, /assets/images/6ySSPF9o2q-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/6ySSPF9o2q-1792.jpeg" alt="Lifting a wallet from an unsuspecting man&#39;s pocket!"  loading="lazy" decoding="async">
+  </picture></a></figure> -->
+<figure><a class="outline-offset" href="/assets/images/6ySSPF9o2q-1792.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/6ySSPF9o2q-400.webp 400w, /assets/images/6ySSPF9o2q-800.webp 800w, /assets/images/6ySSPF9o2q-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/6ySSPF9o2q-400.jpeg 400w, /assets/images/6ySSPF9o2q-800.jpeg 800w, /assets/images/6ySSPF9o2q-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/6ySSPF9o2q-1792.jpeg" alt="Lifting a wallet from an unsuspecting man&#39;s pocket!"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>A gentleman in vintage attire is skillfully lifting a wallet from an unsuspecting man's pocket. This reminds us of how closures can sometimes feel like magic, performing tricks that seem almost sneaky yet are perfectly legal in the world of code.</p><p class="image-credits"><b>Image Credits: </b>Image generated by DALL-E.</p></figcaption></figure>
+<hr>
+<h1 id="closure-in-rust"><a class="to-underline" href="#closure-in-rust">Closure in Rust</a></h1>
+<p>A closure in Rust usually consists of an argument list, given between vertical bars, followed by an expression:</p>
+<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token comment">// Define a closure with a single argument. Rust infers the arguument and return types.</span>
+<span class="token keyword">let</span> is_even <span class="token operator">=</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>x<span class="token closure-punctuation punctuation">|</span></span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Define a closure with two integer parameters. Types are explicitly annoted here.</span>
+<span class="token keyword">let</span> add_numbers <span class="token operator">=</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>x<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token closure-punctuation punctuation">|</span></span> <span class="token punctuation">-></span> <span class="token keyword">i32</span> <span class="token punctuation">{</span>
+    x <span class="token operator">+</span> y
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Rust infers the argument types and return type (in <code>is_even</code> variable). We can also write them out explicitly as we did in <code>add_numbers</code>. Here, <code>|x: i32, y: i32|</code> declares a closure with two parameters <code>x</code> and <code>y</code>, both of type <code>i32</code> and <code>-&gt; i32</code> specifies that the closure returns an <code>i32</code> type. Note that Rust’s type inference is quite powerful, and in many cases, we don’t need to <em>explicitly</em> annotate the types as we did for <code>is_even</code> variable.</p>
+<p>In order to maintain syntactic coherence<a href="#ref-4"><sup id="back-to-4">4</sup></a>, the body of the closure must be a block if a return type is specified:</p>
+<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> is_even <span class="token operator">=</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>x<span class="token punctuation">:</span> <span class="token keyword">u64</span><span class="token closure-punctuation punctuation">|</span></span> <span class="token punctuation">-></span> <span class="token keyword">bool</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// error</span>
+
+<span class="token keyword">let</span> is_even <span class="token operator">=</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>x<span class="token punctuation">:</span> <span class="token keyword">u64</span><span class="token closure-punctuation punctuation">|</span></span> <span class="token punctuation">-></span> <span class="token keyword">bool</span> <span class="token punctuation">{</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// ok</span>
+</code></pre>
+<p>Calling a closure uses the same syntax as calling a function:</p>
+<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token macro property">assert_eq!</span><span class="token punctuation">(</span><span class="token function">is_even</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="rusts-closures-are-anonymous-functions"><a class="to-underline" href="#rusts-closures-are-anonymous-functions">Rust’s closures are anonymous functions</a></h2>
+<p>Having said that befofe, Rust’s closures are <strong>anonymous functions</strong> we can save in a variable or pass as arguments to other functions.</p>
+<h2 id="closures-vs-functions"><a class="to-underline" href="#closures-vs-functions">Closures vs. functions</a></h2>
+<p>Both closures and functions are used to define blocks of code that can be called or executed. However, there are some key differences between them:</p>
+<ul>
+<li><strong>Environment capture</strong>
+<ul>
+<li>
+<p><strong>Function</strong>: Functions do not capture variables from their surrounding environment or lexical scope. They rely on parameters passed to them explicitly.</p>
+</li>
+<li>
+<p><strong>Closure</strong>: Closures, on the other hand, can capture variables from their surrounding environment. This allows closures to “close over”<a href="#ref-5"><sup id="back-to-5">5</sup></a> or capture variables and use them even after the surrounding scope has finished executing. The ability to capture variables from the environment is a key feature that distinguishes closures from regular functions.</p>
+<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token comment">// Function</span>
+<span class="token keyword">fn</span> <span class="token function-definition function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">i32</span> <span class="token punctuation">{</span>
+    x <span class="token operator">+</span> y
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Closure capturing a variable, x from the environment</span>
+    <span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> closure <span class="token operator">=</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>y<span class="token closure-punctuation punctuation">|</span></span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> closure_result <span class="token operator">=</span> <span class="token function">closure</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><strong>Syntax</strong>
+<ul>
+<li><strong>Function</strong>: Functions are declared using the <code>fn</code> keyword, followed by the function name, parameters, return type, and the function body.</li>
+<li><strong>Closure</strong>: Closures, on the other hand, are anonymous function.</li>
+</ul>
+</li>
+</ul>
+<h2 id="closures-closely-tied-to-its-ownership-and-borrowing"><a class="to-underline" href="#closures-closely-tied-to-its-ownership-and-borrowing">Closures closely tied to its ownership and borrowing</a></h2>
+<p>Rust’s closures are closely tied to its <a href="/blog/rust-ownership-and-borrowing/" target="_blank"><strong>ownership and borrowing systems</strong></a>. Ownership and borrowing play a crucial role in enforcing memory safety and preventing data races. The way a closure captures variables from its surrounding environment determines how it interacts with ownership and borrowing:</p>
+<h3 id="by-value-move-aka-move-closure"><a class="to-underline" href="#by-value-move-aka-move-closure">By Value (Move) aka move closure</a></h3>
+<p>If a closure captures a variable by value by means of <code>move</code> keyword, it takes ownership of that variable. Once a value is moved into the closure, the original variable is no longer accessible in the surrounding scope:</p>
+<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> closure <span class="token operator">=</span> <span class="token keyword">move</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span><span class="token closure-punctuation punctuation">|</span></span> <span class="token punctuation">{</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// println!("{}", s1); Can't access s1 as it has moved into the clouser</span>
+<span class="token function">closure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="by-reference-borrowing"><a class="to-underline" href="#by-reference-borrowing">By Reference (Borrowing)</a></h3>
+<p>If a closure captures a variable by reference, it borrows the variable. This allows the closure to read or modify the variable without taking ownership. Borrowing is indicated by the absence of the <code>move</code> keyword.</p>
+<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> closure <span class="token operator">=</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span><span class="token closure-punctuation punctuation">|</span></span> <span class="token punctuation">{</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 's' is accessible since it's not moved to clouse. Instead, closuer borrowed.</span>
+<span class="token function">closure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 's' is still accessible after closure call</span>
+
+</code></pre>
+<h2 id="rusts-motivation-for-closure"><a class="to-underline" href="#rusts-motivation-for-closure">Rust’s motivation for closure</a></h2>
+<ul>
+<li><strong>Flexibility and expressiveness</strong>
+<ul>
+<li>Closures provide a concise and expressive way to define and use functions inline.</li>
+<li>Closures can be particularly useful when passing functions as arguments to other functions (aka higher-order functions).</li>
+<li>Closures can be a good fit for defining short-lived, anonymous functions.</li>
+</ul>
+</li>
+<li><strong>Encapsulation of state from its surrounding lexical scope</strong>
+<ul>
+<li>
+<p>Closures allow a function to capture and encapsulate variables from its surrounding lexical scope.</p>
+</li>
+<li>
+<p>Closures allowing for encapsulation of state within the closure.</p>
+</li>
+<li>
+<p>Closures enable the creation of functions that carry their environment with them, preserving state between invocations.</p>
+<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Counter closure that captures and preserves state</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> counter <span class="token operator">=</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span><span class="token closure-punctuation punctuation">|</span></span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">move</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span><span class="token closure-punctuation punctuation">|</span></span> <span class="token punctuation">{</span>
+            count <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Count: {}"</span><span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Creating two instances of the closure</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> counter1 <span class="token operator">=</span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> counter2 <span class="token operator">=</span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Invoking the closures</span>
+    <span class="token function">counter1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs: Count: 1</span>
+    <span class="token function">counter1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs: Count: 2</span>
+
+    <span class="token function">counter2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs: Count: 1</span>
+    <span class="token function">counter2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs: Count: 2</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="frequently-asked-questions-faqs"><a class="to-underline" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a></h1>
+<h2 id="how-are-closures-and-anonymous-functions-related"><a class="to-underline" href="#how-are-closures-and-anonymous-functions-related">How are closures and anonymous functions related?</a></h2>
+<p>Anonymous functions are frequently used to create closures. When an anonymous function captures variables from its enclosing scope, it forms a closure. This allows the anonymous function to maintain state across multiple invocations.</p>
+<div class="references">
+  <hr>
+  <h2>References</h2>
+  <ol>
+  <!-- <li>Nil</li> -->
+    <li id="ref-1">1. <strong>Magic spells</strong>: The term “magic spells” in this context is a metaphor. It’s used to convey the idea that closures have a special ability to perform seemingly magical actions, like accessing and manipulating variables outside their own scope. <a href="#back-to-1" class="back-to-note">↩</a>
+    </li>
+    <li id="ref-2">2. <strong>Lexical scope</strong>, also known as <em>static scope</em>, is a property of programming languages where the scope of a variable is determined by its location or position in the source code. In other words, the visibility and accessibility of a variable are defined by the placement of the variable's declaration within the structure of the program. In a language with lexical scope, when we define a variable inside a block or a function, that variable is accessible only within that block or function and any nested blocks or functions. <a href="#back-to-2" class="back-to-note">↩</a>
+    </li> 
+        <li id="ref-3">3. An <strong>anonymous function</strong>, also known as a <strong>lambda function</strong>, is a function defined without a name. Anonymous functions are a concise way to express a function without the need to declare it using a formal function name. They are frequently used as arguments to <em>higher-order functions</em>. <a href="#back-to-3" class="back-to-note">↩</a>
+    </li> 
+    </li> 
+        <li id="ref-4">4. <strong>Syntactic coherence</strong> is a term to emphasize the importance of code being written in a way that is not only syntactically correct but also adheres to a consistent and understandable syntax throughout. <a href="#back-to-4" class="back-to-note">↩</a>
+    </li>
+    </li> 
+        <li id="ref-5">5. In the context of closures, <strong>closing over</strong> or <strong>closing over variables</strong> refers to the ability of a closure to capture and retain the values of variables from the surrounding lexical scope, even after that scope has finished executing. <a href="#back-to-5" class="back-to-note">↩</a>
+    </li>              
+  </ol>
+</div>
+    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/introduction-to-rust-closure/"
+    },
+    "headline": "Introduction to Closure in Rust",
+    "description": "A closure is a programming construct that allows a function to capture and reference variables and parameters from its surrounding lexical scope. Closures offer many benefits and are a key part of the language's expressive and flexible features.",
+    
+    "datePublished": "2024-06-16T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b> | <a href="/privacyPolicy/" target="_blank">Privacy Policy</a> | <a href="/commentPolicy/" target="_blank">Comment Policy</a>.</p>
+      <p>Hosted on <b>GitHub Pages</b> | This website DOES NOT use cookies.</p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+</body>
+</html>
