@@ -35,7 +35,7 @@ eleventyComputed:
     </div>
     {%- endif -%}
     {%- if coverImage -%}
-      {% include "postImage.html" src: coverImage, alt: title, description: imageDescription, credits: imageCredits %}
+      {% include "postImage.html" src: coverImage, alt: title, description: imageDescription, credits: imageCredits, className: "full-width" %}
     {%- endif -%}
   </header>
   <div class="rhythm">

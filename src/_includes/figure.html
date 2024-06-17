@@ -1,11 +1,4 @@
-<!-- <figure>
-  {%- include "image.html" src: src, alt: alt, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, isLinked: isLinked, isLazy: isLazy -%}
-  {%- if caption -%}
-    <figcaption{% if isCaptionAriaHidden %} aria-hidden="true"{% endif %}>{{ caption | toHtml }}</figcaption>
-  {%- endif -%}
-</figure> -->
-
-<figure>
+<figure class="{{ className }}">
   {%- include "image.html" src: src, alt: alt, description: description, credits: credits, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, isLinked: isLinked, isLazy: isLazy -%}
   {%- if description or credits -%}
   <figcaption>

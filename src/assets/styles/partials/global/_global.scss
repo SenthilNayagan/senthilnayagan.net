@@ -37,6 +37,16 @@ hr {
   font-size: 0.875rem; /* Smaller font size */
 }
 
+.full-width {
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(50% - 50vw); /* Center the image */
+}
+
+figure.full-width {
+  width: 100vw; /* Ensure the figure element also spans the full viewport width */
+  margin-left: calc(50% - 50vw); /* Center the figure element */
+}
+
 #page-content {
   flex-grow: 1;
   padding-block: functions.clamped(functions.get($tokens, "size", "spacing", "5"), functions.get($tokens, "size", "spacing", "12"));
