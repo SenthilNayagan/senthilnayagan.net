@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Getting Started with Terraform - Understanding the Basics | Senthil Nayagan</title>
+  <meta name="description" content="Terraform is an open source infrastructure-as-code tool that allows us to programmatically provision the physical resources required for an application to run.">
+  <meta name="keywords" content="terraform, infrastructure-as-code, iac">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/terraform-basics/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Getting Started with Terraform - Understanding the Basics | Senthil Nayagan"><meta property="og:description" content="Terraform is an open source infrastructure-as-code tool that allows us to programmatically provision the physical resources required for an application to run.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/terraform-basics/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Getting Started with Terraform - Understanding the Basics | Senthil Nayagan">
+  <meta name="twitter:description" content="Terraform is an open source infrastructure-as-code tool that allows us to programmatically provision the physical resources required for an application to run.">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"></head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <!-- <span class="site-name">Senthil Nayagan</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li><a
+            href="/tags/"
+            class="navbar-link"
+            >Tags</a>
+        </li><li><a
+            href="/contact/"
+            class="navbar-link"
+            >Contact</a>
+        </li><li>
+          <div id="theme-picker" class="theme-toggle">
+            <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-01-16" >January 16, 2024</time> - 28 min read</p>
+    <h1 class="post-title">Getting Started with Terraform - Understanding the Basics</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/terraform/" class="post-tag" aria-label="terraform">terraform</a>
+        </li><li>
+          <a href="/tags/infrastructure-as-code/" class="post-tag" aria-label="infrastructure-as-code">infrastructure-as-code</a>
+        </li><li>
+          <a href="/tags/iac/" class="post-tag" aria-label="iac">iac</a>
+        </li></ul><p>&nbsp;</p>
+      <p class="post-subtitle">Terraform is an open source infrastructure-as-code tool that allows us to programmatically provision the physical resources required for an application to run.</p>
+      <p>&nbsp;</p>
+      <!-- <hr> --><figure class="full-width"><a class="outline-offset" href="/assets/images/2eACHVQ1Wl-1792.webp"><picture class="full-width">
+    <source type="image/webp" srcset="/assets/images/2eACHVQ1Wl-400.webp 400w, /assets/images/2eACHVQ1Wl-800.webp 800w, /assets/images/2eACHVQ1Wl-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/2eACHVQ1Wl-400.jpeg 400w, /assets/images/2eACHVQ1Wl-800.jpeg 800w, /assets/images/2eACHVQ1Wl-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/2eACHVQ1Wl-1792.jpeg" alt="Getting Started with Terraform - Understanding the Basics"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption></figure></header>
+  <div class="rhythm">
+    <div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#introducing-infrastructure-as-code-iac">Introducing infrastructure as code (IaC)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#its-a-version-control">It’s a version control</a></li><li class="toc-item"><a class="toc-link" href="#the-difficulty-of-manually-managing-infrastructure">The difficulty of manually managing infrastructure</a></li><li class="toc-item"><a class="toc-link" href="#uses-declarative-definition-files">Uses “declarative” definition files</a></li><li class="toc-item"><a class="toc-link" href="#benefits-of-infrastructure-as-code">Benefits of infrastructure as code</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#speed">Speed</a></li><li class="toc-item"><a class="toc-link" href="#consistency-with-reduced-errors">Consistency with reduced errors</a></li><li class="toc-item"><a class="toc-link" href="#traceability-with-the-help-of-a-version-control-system">Traceability with the help of a version control system</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#introduction-to-terraform">Introduction to Terraform</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#download-and-install">Download and install</a></li><li class="toc-item"><a class="toc-link" href="#terraform-core-concepts">Terraform core concepts</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#blocks">Blocks</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#block-syntax">Block syntax</a></li><li class="toc-item"><a class="toc-link" href="#block-example">Block example</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#providers">Providers</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#where-do-providers-come-from">Where do providers come from?</a></li><li class="toc-item"><a class="toc-link" href="#provider-syntax">Provider syntax</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#variables-and-outputs">Variables and outputs</a></li><li class="toc-item"><a class="toc-link" href="#modules">Modules</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-does-a-module-do">What does a module do?</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#state">State</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#remote-state">Remote state</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#data-sources">Data sources</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#data-source-example">Data source example</a></li><li class="toc-item"><a class="toc-link" href="#refreshing-data-sources">Refreshing data sources</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#resources">Resources</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#resource-syntax">Resource syntax</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#command-line-interface">Command line interface</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#terraform-cli-commands">Terraform CLI commands</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#policy-libraries">Policy libraries</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#hashicorp-configuration-language-hcl">HashiCorp Configuration Language (HCL)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#configuration-syntax">Configuration syntax</a></li><li class="toc-item"><a class="toc-link" href="#declarative-configuration">Declarative configuration</a></li><li class="toc-item"><a class="toc-link" href="#basic-configuration-elements">Basic configuration elements</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#blocks-1">Blocks</a></li><li class="toc-item"><a class="toc-link" href="#arguments">Arguments</a></li><li class="toc-item"><a class="toc-link" href="#expressions">Expressions</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#cdk-for-terraform-cdktf">CDK for Terraform (CDKTF)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#install-cdktf">Install CDKTF</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#install-cdktf-with-npm">Install CDKTF with npm</a></li><li class="toc-item"><a class="toc-link" href="#install-cdktf-using-homebrew">Install CDKTF using Homebrew</a></li><li class="toc-item"><a class="toc-link" href="#verify-the-cdktf-installation">Verify the CDKTF installation</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#how-does-cdk-for-terraform-work">How does CDK for Terraform work?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#cdktf-to-hcl">CDKTF to HCL</a></li><li class="toc-item"><a class="toc-link" href="#hcl-to-cdktf">HCL to CDKTF</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#cdktf-cli-commands">CDKTF CLI commands</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#how-does-terraform-work">How does Terraform work?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#definition-or-configuration-files">Definition or configuration files</a></li><li class="toc-item"><a class="toc-link" href="#working-directories">Working directories</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#working-directory-contents">Working directory contents</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#provisioning-infrastructure-with-terraform">Provisioning infrastructure with Terraform</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#init">Init</a></li><li class="toc-item"><a class="toc-link" href="#plan">Plan</a></li><li class="toc-item"><a class="toc-link" href="#apply">Apply</a></li><li class="toc-item"><a class="toc-link" href="#destroy">Destroy</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#terraform-in-action">Terraform in action</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#exercise-1-create-an-aws-ec2-instance">Exercise #1 - Create an AWS EC2 instance</a></li><li class="toc-item"><a class="toc-link" href="#exercise-2-create-a-compute-engine-in-gcp">Exercise #2 - Create a compute engine in GCP</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#pre-requisites">Pre-requisites</a></li></ol></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#conclusion">Conclusion</a></li></ol></nav><div id="toc-skipped"></div>
+<hr>
+<h1 id="introducing-infrastructure-as-code-iac"><a class="to-underline" href="#introducing-infrastructure-as-code-iac">Introducing infrastructure as code (IaC)</a></h1>
+<p>Infrastructure as Code (IaC) refers to the <em>process of managing and provisioning infrastructure using code</em> rather than manual processes. When we talk about “infrastructure as code,” we mean that we manage our IT infrastructure with code in the form of configuration files.</p>
+<p>Configuration files that describe our infrastructure are produced by IaC. Changes and sharing of configurations are made simpler as a result. An IaC process produces the same environment every time it deploys, just as the same source code always generates the same binary.</p>
+<h2 id="its-a-version-control"><a class="to-underline" href="#its-a-version-control">It’s a version control</a></h2>
+<p>Version control is an important aspect of IaC, and our configuration files, like any other software source code file, can be under source control.</p>
+<h2 id="the-difficulty-of-manually-managing-infrastructure"><a class="to-underline" href="#the-difficulty-of-manually-managing-infrastructure">The difficulty of manually managing infrastructure</a></h2>
+<p>Managing IT infrastructure was traditionally a manual process where the deployment team would physically install and configure servers. Unsurprisingly, this manual process would frequently result in several issues.</p>
+<h2 id="uses-declarative-definition-files"><a class="to-underline" href="#uses-declarative-definition-files">Uses “declarative” definition files</a></h2>
+<p>IaC uses <em>declarative</em> definition files, which are simply configuration files. It’s worth noting that in the declarative approach, we only specify the “what” but not the “how” in our definition files. A definition file specifies the parts and settings required by an environment, but it does not always specify how to obtain those settings. For example, the definition file may specify the required server version and configuration but not the process for installing and configuring the server—we specify the “what” part but not the “how” part.</p>
+<h2 id="benefits-of-infrastructure-as-code"><a class="to-underline" href="#benefits-of-infrastructure-as-code">Benefits of infrastructure as code</a></h2>
+<p>Because IaC is text-based, we can easily edit, copy, version, and distribute it.</p>
+<h3 id="speed"><a class="to-underline" href="#speed">Speed</a></h3>
+<p>The first major benefit of IaC is its speed. We can quickly set up your entire infrastructure by running a script with infrastructure as code. That is something we can do for any environment, from development to production.</p>
+<h3 id="consistency-with-reduced-errors"><a class="to-underline" href="#consistency-with-reduced-errors">Consistency with reduced errors</a></h3>
+<p>Manual processes are prone to errors. Infrastructure as a code solves this problem by making the configuration files the single source of truth. That way, we can be certain that the same configurations will be deployed repeatedly and without error.</p>
+<h3 id="traceability-with-the-help-of-a-version-control-system"><a class="to-underline" href="#traceability-with-the-help-of-a-version-control-system">Traceability with the help of a version control system</a></h3>
+<p>We have full traceability of the changes made to each configuration because we can version IaC configuration files like any other source code file, which allows us to save time troubleshooting the problem.</p>
+<h1 id="introduction-to-terraform"><a class="to-underline" href="#introduction-to-terraform">Introduction to Terraform</a></h1>
+<p>Terraform is an open-source <em>infrastructure as a code</em> tool from HashiCorp. It enables us to define both cloud and on-premises resources in <em>human-readable declarative definition files</em> (aka configuration files) that can be <em>versioned</em>, <em>reused</em>, and <em>shared</em>. These definition files contain the steps required to provision and maintain our infrastructure. We can edit, review, and version these definition files <em>just like code</em>.</p>
+<p>Terraform can create infrastructure on a variety of cloud platforms such as AWS, Azure, Google Cloud, etc.</p>
+<h2 id="download-and-install"><a class="to-underline" href="#download-and-install">Download and install</a></h2>
+<p>Terraform distribution consists of a single binary file, which can be obtained for free from Hashicorp’s <a href="https://www.terraform.io/downloads" :target="_blank" rel="noopener">download</a> page. There are no dependencies, so we can just copy the executable binary to a folder of our choice and run it from there. HashiCorp also offers a managed solution known as <a href="https://cloud.hashicorp.com/products/terraform" :target="_blank" rel="noopener">Terraform Cloud</a>.</p>
+<p>After we finish the installation, we can run the following command to ensure that everything is working properly:</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell">$ terraform <span class="token parameter variable">-v</span>
+Terraform v1.2.7
+on darwin_amd64
+</code></pre>
+<h2 id="terraform-core-concepts"><a class="to-underline" href="#terraform-core-concepts">Terraform core concepts</a></h2>
+<p>Below are the core Terraform concepts:</p>
+<h3 id="blocks"><a class="to-underline" href="#blocks">Blocks</a></h3>
+<p>Blocks are <em>containers</em> for other content, and they typically represent the configuration of an object, such as a <em>resource</em>. The block body is delimited by the <code>{</code> and <code>}</code> characters.</p>
+<p>Blocks have:</p>
+<ul>
+<li>A <em>block type</em></li>
+<li>Zero or more <em>labels</em></li>
+<li>A <em>body</em> that contains any number of arguments and nested blocks. Top-level blocks in a configuration file control the majority of Terraform’s features.</li>
+</ul>
+<h4 id="block-syntax"><a class="to-underline" href="#block-syntax">Block syntax</a></h4>
+<p>This is the Terraform block syntax:</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell"><span class="token operator">&lt;</span>BLOCK TYPE<span class="token operator">></span> <span class="token string">"&lt;BLOCK NAME>"</span> <span class="token string">"&lt;BLOCK LABEL>"</span> <span class="token punctuation">{</span>
+  <span class="token comment"># Block body</span>
+  <span class="token operator">&lt;</span>IDENTIFIER<span class="token operator">></span> <span class="token operator">=</span> <span class="token operator">&lt;</span>EXPRESSION<span class="token operator">></span> <span class="token comment"># Argument</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>These are some of the Terraform blocks:</p>
+<ul>
+<li><strong>providers</strong></li>
+<li><strong>resources</strong></li>
+<li><strong>variable</strong></li>
+<li><strong>output</strong></li>
+<li><strong>local</strong></li>
+<li><strong>module</strong></li>
+<li><strong>data</strong></li>
+</ul>
+<h4 id="block-example"><a class="to-underline" href="#block-example">Block example</a></h4>
+<pre class="language-plain"><code tabindex="0" class="language-plain">resource "aws_instance" "demo" {
+  ami = "ami-1fc93908a9403"
+
+  network_interface {
+    # ...
+  }
+}
+</code></pre>
+<p>In the above example, a block has a <em>type</em> as <code>resource</code>. The <code>resource</code> block type in our case expects two labels: <code>aws_instance</code> and <code>demo</code>.</p>
+<p>The Terraform language uses a limited number of top-level block types, which are blocks that can appear outside of any other block in a configuration file. The majority of Terraform’s features, such as resources, input variables, output values, data sources, and so on, are implemented as top-level blocks.</p>
+<h3 id="providers"><a class="to-underline" href="#providers">Providers</a></h3>
+<p>Terraform makes use of <em>providers</em> to connect the Terraform engine to the supported cloud platform. Other than a cloud platform, other things can be considered a provider, such as platform-as-a-service (PaaS) (e.g., Kubernetes) and other software-as-a-service (SaaS).</p>
+<p>It’s a <em>Terraform plugin</em> that serves as a <em>translation layer</em>, allowing Terraform to communicate with a variety of cloud providers, databases, and services.</p>
+<p>Terraform’s most popular providers, including major cloud providers:</p>
+<ul>
+<li>AWS</li>
+<li>Azure</li>
+<li>Google Cloud Platform</li>
+<li>Kubernetes</li>
+<li>Oracle Cloud Infrastructure</li>
+</ul>
+<p>Each provider adds a set of <em>resource types</em> and/or <em>data sources</em> that Terraform can manage. Every resource type is implemented by a provider; Terraform cannot manage any infrastructure without providers.</p>
+<h4 id="where-do-providers-come-from"><a class="to-underline" href="#where-do-providers-come-from">Where do providers come from?</a></h4>
+<p>The <a href="https://registry.terraform.io/browse/providers" :target="_blank" rel="noopener">Terraform Registry</a> is the primary directory of publicly available Terraform providers, hosting providers for the majority of major infrastructure platforms.</p>
+<h4 id="provider-syntax"><a class="to-underline" href="#provider-syntax">Provider syntax</a></h4>
+<p>The general syntax is as follows:</p>
+<pre class="language-plain"><code tabindex="0" class="language-plain">resource "&lt;PROVIDER>_&lt;TYPE>" "&lt;NAME>" {
+ [CONFIG...]
+}
+</code></pre>
+<p>The PROVIDER above is the name of the <em>provider</em> (e.g., aws). The TYPE is the type of <em>resource</em> to create in that provider (e.g., instance, which represents an EC2 instance). The NAME is the <em>identifier</em> we can use throughout the Terraform code to refer to this resource. The CONFIG consists of one or more arguments that are specific to that resource (e.g., ami = “ami-1fc93908a9403”).</p>
+<p>For instance, the <strong>aws_instance</strong> resource has many different arguments, but for now, we only need to set the following:</p>
+<ul>
+<li><strong><code>ami</code></strong>: The Amazon Machine Image (AMI) to run on the EC2 instance.</li>
+<li><strong><code>instance_type</code></strong>: The type of EC2 Instance that will be used. Each EC2 Instance type has a different amount of CPU, memory, disk space, and networking capacity. We use <code>t2.micro</code> instance. T2 instances are available to use in the <a href="http://aws.amazon.com/free" :target="_blank" rel="noopener">AWS Free Tier</a>, which includes 750 hours of Linux and Windows <code>t2.micro</code> instances each month for one year for new AWS customers.</li>
+</ul>
+<p>An example of a simple configuration is as follows:</p>
+<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">resource "aws_instance" "demo" {
+  ami = "ami-1fc93908a9403"
+  instance_type = "t2.micro"
+}
+</code></pre>
+<h3 id="variables-and-outputs"><a class="to-underline" href="#variables-and-outputs">Variables and outputs</a></h3>
+<p>Variables in Terraform are an excellent way to define centrally managed, reusable values. Information contained in Terraform variables is stored independently of deployment plans. Terraform supports multiple variable formats. Based on their usage, the variables are generally divided into:</p>
+<ul>
+<li><strong>Input variables</strong> - They serve as parameters for a Terraform module, allowing users to modify behavior without having to edit the source code.</li>
+<li><strong>Output values</strong> - They serve as return values for a Terraform module.</li>
+<li><strong>Local values</strong> - They are a convenience feature for assigning a short name to an expression.</li>
+</ul>
+<h3 id="modules"><a class="to-underline" href="#modules">Modules</a></h3>
+<p>Modules are <em>small</em>, <em>reusable Terraform configurations</em> that allow us to manage a <em>collection</em> of related resources as if <em>they were one</em>. A module serves as a <em>container</em> for multiple resources that are used together. To put it simply, a module is a set of Terraform configuration files (<code>.tf</code> files) in a <em>single directory</em> as shown below:</p>
+<pre class="language-bash"><code tabindex="0" class="language-bash"><span class="token builtin class-name">.</span>
+├── main.tf
+├── outputes.tf
+└── variables.tf
+</code></pre>
+<p>Even a single Terraform configuration file (.tf) in a directory becomes a module. When Terraform commands are executed directly from such a directory, the contents of that directory are considered the <em>root</em> module.</p>
+<p>Having said that, a module is a method for <em>packaging</em> and <em>reusing</em> configurations of resources.</p>
+<h4 id="what-does-a-module-do"><a class="to-underline" href="#what-does-a-module-do">What does a module do?</a></h4>
+<p>A module enables us to group related resources together and reuse them in the future, multiple times.</p>
+<p>Let’s assume we need to repeatedly create a virtual machine with a set of resources such as IP, firewall, storage, etc. This is where modules come in handy; we don’t want to repeatedly write the same configuration code over and over again.</p>
+<p>The below example demonstrates how our “server” module may be invoked. Here, we create <em>two</em> instances of “server” using a single set of configurations:</p>
+<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">module "server" {
+  count = 2
+  source = "./module/server"
+  ...
+  ...
+}
+</code></pre>
+<h3 id="state"><a class="to-underline" href="#state">State</a></h3>
+<p>Terraform must keep track of what infrastructure it creates in a <code>terraform.tfstate</code> Terraform state file-local state stored on the provisioning machine. Terraform uses this state to map real-world resources to our configuration. Terraform <em>state is stored locally by default</em>, but it can also be stored remotely, which is preferable in a team environment.</p>
+<p>This state file contains a custom JSON format that records a mapping from the Terraform resources in our templates to their real-world representation.</p>
+<blockquote class="rhythm">
+<p><strong>Avoid directly manipulating the state file!</strong> The state file is meant only for internal use within Terraform. This implies that we should never manually edit the Terraform state files or write code that directly reads them. If for some reason we need to manipulate the state file, use the <code>terraform import</code> or <code>terraform state</code> commands.</p>
+</blockquote>
+<p>Terraform makes use of this local state to create plans and modify our infrastructure. Terraform performs a refresh prior to any operation to update the state with the real infrastructure.</p>
+<h4 id="remote-state"><a class="to-underline" href="#remote-state">Remote state</a></h4>
+<p>When working with Terraform in a team, using a local file complicates Terraform usage because each user must ensure that they always have the most recent state data before running Terraform and that no one else runs Terraform at the same time.</p>
+<p>A <em>remote state</em> comes to our aid. Terraform writes the state data to a remote data store, which can then be shared by all team members.</p>
+<p>Terraform can store state in a variety of storage platforms, including, but not limited to:</p>
+<ul>
+<li>Terraform Cloud</li>
+<li>HashiCorp Consul</li>
+<li>Amazon S3</li>
+<li>Azure Blob Storage</li>
+<li>Google Cloud Storage</li>
+<li>Alibaba Cloud OSS</li>
+</ul>
+<p>Remote state is implemented by a <a href="https://www.terraform.io/language/settings/backends/configuration" :target="_blank" rel="noopener">backend</a> or by Terraform Cloud, both of which can be configured in the root module of our configuration.</p>
+<h3 id="data-sources"><a class="to-underline" href="#data-sources">Data sources</a></h3>
+<p>Terraform can use data sources to get information about resources that are <em>set up outside of Terraform</em> and use that information to set up Terraform resources. It’s a way of getting data from the outside world and making it available to your Terraform configuration.</p>
+<p>A data source is accessed through a special type of resource called a <em>data resource</em>, which is declared using a <code>data</code> block.</p>
+<h4 id="data-source-example"><a class="to-underline" href="#data-source-example">Data source example</a></h4>
+<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">data "azurerm_role_definition" "example" {
+  name = "Developer"
+}
+
+resource "azurerm_role_assignment" "example" {
+  role_definition_id = data.azurerm_role_definition.example.id
+}
+</code></pre>
+<p>In the above example, we have defined two blocks: <em>data</em> and <em>resource</em> blocks. We are sending the data from the data source directly into a role assignment resource.</p>
+<h4 id="refreshing-data-sources"><a class="to-underline" href="#refreshing-data-sources">Refreshing data sources</a></h4>
+<p>By default, before creating a <em>plan</em>, Terraform will refresh all data sources. Additionally, we can explicitly refresh all data sources by executing <code>terraform refresh</code> command.</p>
+<h3 id="resources"><a class="to-underline" href="#resources">Resources</a></h3>
+<p>The most important element of the Terraform language is resources. Each resource block describes one or more infrastructure objects, such as virtual networks, compute instances, and so on.</p>
+<h4 id="resource-syntax"><a class="to-underline" href="#resource-syntax">Resource syntax</a></h4>
+<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">resource "aws_instance" "web" {
+  ami           = "ami-a1b2c3d4"
+  instance_type = "t2.micro"
+}
+</code></pre>
+<p>In the above example, a <code>resource</code> block declares a resource of a given <em>type</em> (<code>aws_instance</code>) with a given local <em>name</em> (<code>web</code>). The name is used to refer to this resource from within the same Terraform module, but it has no significance outside of the module. The combination of the resource type and name serves as an identifier for a given resource and must therefore be unique within a module.</p>
+<h3 id="command-line-interface"><a class="to-underline" href="#command-line-interface">Command line interface</a></h3>
+<p>We can use the Terraform command line interface (CLI) to manage infrastructure, and interact with Terraform <em>state</em>, <em>providers</em>, <em>configuration files</em>, and <em>Terraform Cloud</em>.</p>
+<h4 id="terraform-cli-commands"><a class="to-underline" href="#terraform-cli-commands">Terraform CLI commands</a></h4>
+<p>Following shows some of the Terraform CLIs:</p>
+<ul>
+<li><code>terraform version</code></li>
+<li><code>terraform init [option]</code> - This command is used to <em>initialize a working directory</em> containing Terraform configuration files and <em>install the required plugin</em>.</li>
+</ul>
+<h3 id="policy-libraries"><a class="to-underline" href="#policy-libraries">Policy libraries</a></h3>
+<p>A library of policies that can be used within Terraform Cloud to accelerate our adoption of <em>policy as code</em>.</p>
+<h2 id="hashicorp-configuration-language-hcl"><a class="to-underline" href="#hashicorp-configuration-language-hcl">HashiCorp Configuration Language (HCL)</a></h2>
+<p>The HashiCorp Configuration Language (HCL) is a one-of-a-kind <em>configuration language</em> created by HashiCorp. HCL was created to work with HashiCorp tools, specifically Terraform. The Terraform language’s primary function is to declare resources, which represent infrastructure artifacts.</p>
+<h3 id="configuration-syntax"><a class="to-underline" href="#configuration-syntax">Configuration syntax</a></h3>
+<p>HCL is intended to <em>support multiple syntaxes</em> for configuration, but the native syntax is the primary format and is optimized for human authoring and maintenance rather than machine generation. The native configuration syntax of HCL is relatively easy for humans to read and write.</p>
+<p>The file extension of the configuration file written in HCL syntax is <code>.tf</code>. The Terraform language also allows us to define <em>resource dependencies</em>. A configuration can consist of multiple files and directories.</p>
+<h3 id="declarative-configuration"><a class="to-underline" href="#declarative-configuration">Declarative configuration</a></h3>
+<p>As previously stated, this configuration language is declarative, which means that we only describe the infrastructure we want, and Terraform will figure out how to build it. In other words, it means that we describe our intended goals (what to be done) rather than the steps (how to be done) to achieve those goals.</p>
+<p>The configuration files we write in the Terraform configuration language tell Terraform:</p>
+<ul>
+<li>What plugins to install?</li>
+<li>What infrastructure to create?</li>
+<li>What data to fetch?</li>
+</ul>
+<h3 id="basic-configuration-elements"><a class="to-underline" href="#basic-configuration-elements">Basic configuration elements</a></h3>
+<p>The syntax of the Terraform language consists of only a few basic elements:</p>
+<ul>
+<li><strong>Blocks</strong></li>
+<li><strong>Arguments</strong></li>
+<li><strong>Expressions</strong></li>
+</ul>
+<h4 id="blocks-1"><a class="to-underline" href="#blocks-1">Blocks</a></h4>
+<p>Refer <a href="/terraform/2022/terraform-basics#blocks">above</a> for more details.</p>
+<h4 id="arguments"><a class="to-underline" href="#arguments">Arguments</a></h4>
+<p>Arguments assign a <em>value</em> to a <em>name</em>. They can be found within <em>blocks</em>.</p>
+<pre class="language-plain"><code tabindex="0" class="language-plain">image_id = "abc123"
+</code></pre>
+<p>The identifier before the equals sign is the argument <em>name</em> (<code>image_id</code> in our case), and the expression after the equals sign is the argument’s <em>value</em> (<code>abc123</code> in our case).</p>
+<h4 id="expressions"><a class="to-underline" href="#expressions">Expressions</a></h4>
+<p>Expressions represent a value in one of two ways: directly or by referencing and combining other values.</p>
+<h2 id="cdk-for-terraform-cdktf"><a class="to-underline" href="#cdk-for-terraform-cdktf">CDK for Terraform (CDKTF)</a></h2>
+<p>The Cloud Development Kit for Terraform (CDKTF) enables us to define and provision infrastructure using familiar <em>programming languages</em>. You might wonder why we need CDKTF when HCL can do the same thing. As mentioned above, CDKTF enables us to define and provision infrastructure using familiar programming languages other than HCL or JSON syntax.</p>
+<p>At the time of writing this post, Terraform supports the following programming languages:</p>
+<ul>
+<li>Typescript</li>
+<li>Python</li>
+<li>Java</li>
+<li>C#</li>
+<li>Go</li>
+</ul>
+<p>CDKTF uses the Cloud Development Kit from AWS, which provides a set of language-native frameworks for defining infrastructure, as well as adapters that allow underlying provisioning tools to use those definitions.</p>
+<h3 id="install-cdktf"><a class="to-underline" href="#install-cdktf">Install CDKTF</a></h3>
+<p>We can install CDKTF with <code>npm</code> on most operating systems. We can also install CDKTF with Homebrew on MacOS.</p>
+<h4 id="install-cdktf-with-npm"><a class="to-underline" href="#install-cdktf-with-npm">Install CDKTF with npm</a></h4>
+<p>To install the most recent stable release of CDKTF, use <code>npm install</code> with the <code>@latest</code> tag as shown below:</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">--global</span> cdktf-cli@latest
+</code></pre>
+<h4 id="install-cdktf-using-homebrew"><a class="to-underline" href="#install-cdktf-using-homebrew">Install CDKTF using Homebrew</a></h4>
+<p>We can also use the <a href="https://brew.sh/" target="_blank">Homebrew package manager</a> to install CDKTF on MacOS systems.</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell">brew <span class="token function">install</span> cdktf
+</code></pre>
+<h4 id="verify-the-cdktf-installation"><a class="to-underline" href="#verify-the-cdktf-installation">Verify the CDKTF installation</a></h4>
+<p>Verify that you have CDKTF installed by running the <code>cdktf help</code> command to show the available subcommands.</p>
+<h3 id="how-does-cdk-for-terraform-work"><a class="to-underline" href="#how-does-cdk-for-terraform-work">How does CDK for Terraform work?</a></h3>
+<p>On a high level, we will follow these steps:</p>
+<ul>
+<li>
+<p><strong>Step 1 - Define infrastructure:</strong> As a first step, define the infrastructure we want to provision on one or more providers using any of the supported programming languages. CDKTF works by translating configurations defined in an imperative programming language to JSON configuration files for Terraform.</p>
+</li>
+<li>
+<p><strong>Step 2 - Deploy:</strong> Use <code>cdktf</code> CLI commands to provision infrastructure with Terraform or synthesize (translate to other form) our code into a JSON configuration file that others can use with Terraform directly.</p>
+</li>
+</ul>
+<h4 id="cdktf-to-hcl"><a class="to-underline" href="#cdktf-to-hcl">CDKTF to HCL</a></h4>
+<p>The <code>cdktf synth</code> command synthesizes (generate code/configuration) Terraform configuration for the given app. CDKTF stores the synthesized configuration in the <code>cdktf.out</code> directory, unless you use the <code>--output</code> flag to specify a different location.</p>
+<p>The output folder is ephemeral (short lived) and might be erased for each <code>synth</code> that we run manually or that happens automatically when we run <code>deploy</code>, <code>diff</code>, or <code>destroy</code>.</p>
+<h4 id="hcl-to-cdktf"><a class="to-underline" href="#hcl-to-cdktf">HCL to CDKTF</a></h4>
+<p>Use the <code>cdktf convert</code> command to translate Terraform configuration written in HCL to the equivalent configuration in our preferred language.</p>
+<p>Convert a local file:</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell"><span class="token function">cat</span> main.tf <span class="token operator">|</span> cdktf convert <span class="token operator">></span> imported.ts
+</code></pre>
+<h3 id="cdktf-cli-commands"><a class="to-underline" href="#cdktf-cli-commands">CDKTF CLI commands</a></h3>
+<p>The following are some of the CDKTF CLI commands:</p>
+<ul>
+<li><code>cdktf version</code></li>
+</ul>
+<h1 id="how-does-terraform-work"><a class="to-underline" href="#how-does-terraform-work">How does Terraform work?</a></h1>
+<p>As stated above, Terraform uses definition files to create and manage resources on cloud or on-premises platforms, as well as other services via their APIs. Terraform’s primary function is to <em>create</em>, <em>modify</em>, and <em>destroy</em> infrastructure resources as described in a Terraform configuration.</p>
+<h2 id="definition-or-configuration-files"><a class="to-underline" href="#definition-or-configuration-files">Definition or configuration files</a></h2>
+<p>Terraform requires infrastructure configuration or definition files written in either HashiCorp Configuration Language (HCL) or JSON syntax.</p>
+<h2 id="working-directories"><a class="to-underline" href="#working-directories">Working directories</a></h2>
+<p>Terraform expects to be invoked from a <em>working directory</em> containing Terraform language configuration files. Terraform uses configuration content from this working directory to store <em>settings</em>, <em>cached plugins and modules</em>, and occasionally <em>state data</em>.</p>
+<h3 id="working-directory-contents"><a class="to-underline" href="#working-directory-contents">Working directory contents</a></h3>
+<p>A Terraform working directory typically contains:</p>
+<ul>
+<li>A <strong>Terraform configuration</strong> (<code>.tf</code> files) that defines the resources that Terraform should manage. This configuration is likely to change over time.</li>
+<li>A hidden <strong><code>.terraform</code> directory</strong>, which Terraform uses to manage cached provider plugins and modules, record which workspace is currently active, and record the last known backend configuration in case it needs to migrate state on the next run. This directory is automatically managed by Terraform, and is created during initialization.</li>
+<li><strong>State data</strong>, if the configuration uses the default <code>local</code> backend. This is managed by Terraform in a <code>terraform.tfstate</code> file (if the directory only uses the default workspace) or a <code>terraform.tfstate.d</code> directory (if the directory uses multiple workspaces).</li>
+</ul>
+<p>The following shows all the files in a working directory, including the hidden ones:</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell">$ tree <span class="token parameter variable">-a</span>
+
+├── .terraform
+│   └── providers
+│       └── registry.terraform.io
+│           └── hashicorp
+│               └── <span class="token builtin class-name">local</span>
+│                   └── <span class="token number">1.4</span>.0
+│                       └── darwin_amd64
+│                           └── terraform-provider-local_v1.4.0_x4
+├── .terraform.lock.hcl
+├── hello.txt
+├── main.tf
+└── terraform.tfstate
+</code></pre>
+<h2 id="provisioning-infrastructure-with-terraform"><a class="to-underline" href="#provisioning-infrastructure-with-terraform">Provisioning infrastructure with Terraform</a></h2>
+<p>The provisioning workflow (Terraform’s life cycle) in Terraform is based on the following commands:</p>
+<ul>
+<li><code>init</code></li>
+<li><code>plan</code></li>
+<li><code>apply</code></li>
+<li><code>destroy</code></li>
+</ul>
+<figure class=""><a class="outline-offset" href="/assets/images/1bCXcILddR-1634.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/1bCXcILddR-400.webp 400w, /assets/images/1bCXcILddR-800.webp 800w, /assets/images/1bCXcILddR-1634.webp 1634w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/1bCXcILddR-400.jpeg 400w, /assets/images/1bCXcILddR-800.jpeg 800w, /assets/images/1bCXcILddR-1634.jpeg 1634w" sizes="100vw">
+    <img width="1634" height="203" src="/assets/images/1bCXcILddR-1634.jpeg" alt="Terraform life cycle"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>Terraform life cycle.</p></figcaption></figure>
+<h3 id="init"><a class="to-underline" href="#init">Init</a></h3>
+<p>Init command initializes the working directories. A working directory must be <em>initialized</em> before Terraform can perform any operations on it, such as provisioning infrastructure or changing state.</p>
+<p>Why do we need to initialize the working directory, and what happens during initialization? The <code>terraform</code> binary contains the basic functionality of Terraform, but it does not include the code for any of the providers (e.g., the AWS provider, Azure provider, GCP provider, and so on), so when we first start using Terraform, we must run the <code>terraform init</code> command to instruct Terraform to scan the code (configuration file), determine which providers we are using, and download the code from the <a href="https://registry.terraform.io/browse/providers" :target="_blank" rel="noopener">Terraform Registry</a>. The provider code is downloaded by default into a <code>.terraform</code> directory.</p>
+<blockquote class="rhythm">
+<p><strong>Note:</strong> It’s safe to run init multiple times because the command is idempotent.</p>
+</blockquote>
+<p>After initialization, we will be able to perform other commands, like <code>terraform plan</code> and <code>terraform apply</code>.</p>
+<h3 id="plan"><a class="to-underline" href="#plan">Plan</a></h3>
+<p>After we’ve initialized the working directory, we’ll use the <code>plan</code> command to see what actions Terraform will take to create our resources. This step works similar to the “dry run” feature found in other build systems. This is an excellent way to double-check our changes before releasing them.</p>
+<p>The plan command’s output is similar to the diff command’s output:</p>
+<ul>
+<li>Resources with a plus sign (<code>+</code>) will be created.</li>
+<li>Resources with a minus sign (<code>-</code>) will be deleted.</li>
+<li>Resources with a tilde sign (<code>~</code>) will be modified in-place.</li>
+</ul>
+<pre class="language-shell"><code tabindex="0" class="language-shell">$ terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  <span class="token comment"># local_file.hello will be created</span>
+  + resource <span class="token string">"local_file"</span> <span class="token string">"hello"</span> <span class="token punctuation">{</span>
+      + content              <span class="token operator">=</span> <span class="token string">"Hello, Terraform"</span>
+      + directory_permission <span class="token operator">=</span> <span class="token string">"0777"</span>
+      + file_permission      <span class="token operator">=</span> <span class="token string">"0777"</span>
+      + filename             <span class="token operator">=</span> <span class="token string">"hello.txt"</span>
+      + <span class="token function">id</span>                   <span class="token operator">=</span> <span class="token punctuation">(</span>known after apply<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+Plan: <span class="token number">1</span> to add, <span class="token number">0</span> to change, <span class="token number">0</span> to destroy.
+</code></pre>
+<p>Terraform’s <code>plan</code> output indicates that it needs to create a new resource, which is expected given that it does not yet exist. We can also see the provided values that we’ve specified, as well as a pair of permission attributes. Because we did not include them in our resource definition, the provider will use the default values.</p>
+<h3 id="apply"><a class="to-underline" href="#apply">Apply</a></h3>
+<p>We can now use the <code>apply</code> command to create actual resources:</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell">$ terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  <span class="token comment"># local_file.hello will be created</span>
+  + resource <span class="token string">"local_file"</span> <span class="token string">"hello"</span> <span class="token punctuation">{</span>
+      + content              <span class="token operator">=</span> <span class="token string">"Hello, Terraform"</span>
+      + directory_permission <span class="token operator">=</span> <span class="token string">"0777"</span>
+      + file_permission      <span class="token operator">=</span> <span class="token string">"0777"</span>
+      + filename             <span class="token operator">=</span> <span class="token string">"hello.txt"</span>
+      + <span class="token function">id</span>                   <span class="token operator">=</span> <span class="token punctuation">(</span>known after apply<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+Plan: <span class="token number">1</span> to add, <span class="token number">0</span> to change, <span class="token number">0</span> to destroy.
+╷
+│ Warning: Version constraints inside provider configuration blocks are deprecated
+│
+│   on main.tf line <span class="token number">2</span>, <span class="token keyword">in</span> provider <span class="token string">"local"</span><span class="token builtin class-name">:</span>
+│    <span class="token number">2</span>:   version <span class="token operator">=</span> <span class="token string">"~> 1.4"</span>
+│
+│ Terraform <span class="token number">0.13</span> and earlier allowed provider version constraints inside the provider configuration block, but that is now deprecated and
+│ will be removed <span class="token keyword">in</span> a future version of Terraform. To silence this warning, move the provider version constraint into the
+│ required_providers block.
+╵
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only <span class="token string">'yes'</span> will be accepted to approve.
+
+  Enter a value: <span class="token function">yes</span>
+
+local_file.hello: Creating<span class="token punctuation">..</span>.
+local_file.hello: Creation complete after 0s <span class="token punctuation">[</span>id<span class="token operator">=</span>392b5481eae4ab2178340f62b752297f72695d57<span class="token punctuation">]</span>
+
+Apply complete<span class="token operator">!</span> Resources: <span class="token number">1</span> added, <span class="token number">0</span> changed, <span class="token number">0</span> destroyed.
+</code></pre>
+<p>We can now confirm that the file was created with the desired content:</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell">$ <span class="token function">cat</span> hello.txt
+Hello, Terraform
+</code></pre>
+<p>Also, after running <code>terraform apply</code>, the <code>terraform.tfstate</code> file has been created with the following content:</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell">$ <span class="token function">cat</span> terraform.tfstate
+
+<span class="token punctuation">{</span>
+  <span class="token string">"version"</span><span class="token builtin class-name">:</span> <span class="token number">4</span>,
+  <span class="token string">"terraform_version"</span><span class="token builtin class-name">:</span> <span class="token string">"1.2.7"</span>,
+  <span class="token string">"serial"</span><span class="token builtin class-name">:</span> <span class="token number">1</span>,
+  <span class="token string">"lineage"</span><span class="token builtin class-name">:</span> <span class="token string">"bd8530c6-6781-a52a-2c26-dd1164afc7cd"</span>,
+  <span class="token string">"outputs"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>,
+  <span class="token string">"resources"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token string">"mode"</span><span class="token builtin class-name">:</span> <span class="token string">"managed"</span>,
+      <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"local_file"</span>,
+      <span class="token string">"name"</span><span class="token builtin class-name">:</span> <span class="token string">"hello"</span>,
+      <span class="token string">"provider"</span><span class="token builtin class-name">:</span> <span class="token string">"provider[<span class="token entity" title="\&quot;">\"</span>registry.terraform.io/hashicorp/local<span class="token entity" title="\&quot;">\"</span>]"</span>,
+      <span class="token string">"instances"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token string">"schema_version"</span><span class="token builtin class-name">:</span> <span class="token number">0</span>,
+          <span class="token string">"attributes"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"content"</span><span class="token builtin class-name">:</span> <span class="token string">"Hello, Terraform"</span>,
+            <span class="token string">"content_base64"</span><span class="token builtin class-name">:</span> null,
+            <span class="token string">"directory_permission"</span><span class="token builtin class-name">:</span> <span class="token string">"0777"</span>,
+            <span class="token string">"file_permission"</span><span class="token builtin class-name">:</span> <span class="token string">"0777"</span>,
+            <span class="token string">"filename"</span><span class="token builtin class-name">:</span> <span class="token string">"hello.txt"</span>,
+            <span class="token string">"id"</span><span class="token builtin class-name">:</span> <span class="token string">"392b5481eae4ab2178340f62b752297f72695d57"</span>,
+            <span class="token string">"sensitive_content"</span><span class="token builtin class-name">:</span> null
+          <span class="token punctuation">}</span>,
+          <span class="token string">"sensitive_attributes"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>,
+          <span class="token string">"private"</span><span class="token builtin class-name">:</span> <span class="token string">"bnVsbA=="</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="destroy"><a class="to-underline" href="#destroy">Destroy</a></h3>
+<p>When we’re finished experimenting with Terraform, we should delete all of the resources we created so the cloud service provider doesn’t charge us for them.</p>
+<p>Cleanup is simple because Terraform keeps track of what resources we created. All we have to do is execute the destroy command.</p>
+<pre class="language-shell"><code tabindex="0" class="language-shell">$ terraform destroy
+</code></pre>
+<p>When we type “yes” and press enter, Terraform will create the dependency graph and delete all the resources in the correct order, using as much parallelism as possible.</p>
+<h2 id="terraform-in-action"><a class="to-underline" href="#terraform-in-action">Terraform in action</a></h2>
+<p>In this section, let’s perform a series of exercises.</p>
+<h3 id="exercise-1-create-an-aws-ec2-instance"><a class="to-underline" href="#exercise-1-create-an-aws-ec2-instance">Exercise #1 - Create an AWS EC2 instance</a></h3>
+<p>Create a Terraform configuration file with the content as shown below and save it in the <code>main.tf</code> file:</p>
+<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">provider "aws" {
+  profile    = "default"
+  region     = "us-east-1"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
+</code></pre>
+<p>The above definition file uses two blocks: <em>provider</em> followed by <em>resource</em> blocks.</p>
+<p>In the provider block, we use AWS as our cloud provider and the default AWS profile, which indicates the use of the default credentials (ACCESS KEY ID and SECRET ACCESS KEY) from the <code>/.aws/credentials</code> file.</p>
+<p>In the resource block, the AWS resource (resource type) to be created has been specified. In this example, we specified <code>aws_instance</code>, which represents the EC2 instance. Also, we specified additional parameters such as <code>ami</code> and <code>instance_type</code> that might be required for the creation of an EC2 instance.</p>
+<p>The following steps will be performed in order to create an EC2 instance:</p>
+<ul>
+<li><strong>Step 1:</strong> Initialize the working directory by executing the command <code>terraform init</code>.</li>
+<li><strong>Step 2:</strong> (Optional) Validate the configuration file (<code>main.tf</code>) by executing the command <code>terraform validate</code>.</li>
+<li><strong>Step 3:</strong> Perform a dry run to see what changes occur when the command <code>terraform plan</code> is executed.</li>
+<li><strong>Step 4:</strong> Execute Terraform by running the command <code>terraform apply</code>. This is the <em>actual execution step</em> where Terraform, after successfully authenticating, creates an EC2 instance.</li>
+<li><strong>Step 5:</strong> (Optional) Destroys the instance we created in the above step by executing the command <code>terraform destroy -target aws_instance.example</code>.</li>
+</ul>
+<blockquote class="rhythm">
+<p><strong>Note:</strong> As previously mentioned, Terraform keeps track of the infrastructure it creates in a state file called <code>terraform.tfstate</code>, which is stored locally on the provisioning machine by default. This state file is generated during the execution of Terraform, i.e., when the <code>apply</code> command is executed.</p>
+</blockquote>
+<p>Once Terraform has been successfully executed, a new EC2 instance is created in our AWS account as shown below:</p>
+<figure class=""><a class="outline-offset" href="/assets/images/lGqqOKg7wF-1874.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/lGqqOKg7wF-400.webp 400w, /assets/images/lGqqOKg7wF-800.webp 800w, /assets/images/lGqqOKg7wF-1874.webp 1874w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/lGqqOKg7wF-400.jpeg 400w, /assets/images/lGqqOKg7wF-800.jpeg 800w, /assets/images/lGqqOKg7wF-1874.jpeg 1874w" sizes="100vw">
+    <img width="1874" height="1440" src="/assets/images/lGqqOKg7wF-1874.jpeg" alt="New EC2 instance created in AWS"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 2: </b>New EC2 instance created in AWS.</p></figcaption></figure>
+<p>As shown in the screenshot, an EC2 instance was created with the given instance type <code>t2.mirco</code> and the AMI ID specified in our definition file.</p>
+<h3 id="exercise-2-create-a-compute-engine-in-gcp"><a class="to-underline" href="#exercise-2-create-a-compute-engine-in-gcp">Exercise #2 - Create a compute engine in GCP</a></h3>
+<p>In this exercise, a compute engine instance will be created.</p>
+<h4 id="pre-requisites"><a class="to-underline" href="#pre-requisites">Pre-requisites</a></h4>
+<ul>
+<li>GCP account</li>
+<li><code>gcloud</code> CLI must be installed.</li>
+<li>Ensure we have a IAM <em>service account</em> with role as <em>Owner</em>. To verify, use the following command to list the service-accounts: <code>gcloud iam service-accounts list</code></li>
+<li>Create a key for the service account so that Terraform can connect to GCP using this key. Use the following command for the same: <code>gcloud iam service-accounts keys create google-key.json --iam-account &lt;service account email id&gt;</code>. This would create a new key file named <code>google-key.json</code> in the current directory. We can also generate key via Google Cloud web console.</li>
+<li>We must enable <em>Compute Engine API</em> by visiting the Google Cloud console’s Compute Engine page.</li>
+</ul>
+<p>Create a Terraform configuration file with the content as shown below and save it in the <code>main.tf</code> file:</p>
+<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">provider "google" {
+	credentials = file("proud-sweep-359704-f460da53c31e.json")
+	project = "proud-sweep-359704"
+	region = "us-central1"
+	zone = "us-central1-c"
+}
+
+resource "google_compute_network" "vpc_network" {
+	name = "demo-network"
+}
+
+resource "google_compute_instance" "dev_instance" {
+	name = "dev-instance"
+	machine_type = "f1-micro"
+	zone = "us-central1-c"
+	boot_disk {
+		initialize_params {
+			image = "centos-cloud/centos-7"
+		}	
+	}
+	network_interface {
+		network = "default"  // This enable private IP address
+		access_config {  // This enable private IP address
+		}
+	}
+}
+</code></pre>
+<p>To create a Compute Engine instance (it’s a VM) in GCP, the following steps will be performed:</p>
+<ul>
+<li><strong>Step 1:</strong> <code>terraform init</code>.</li>
+<li><strong>Step 2:</strong> (Optional) <code>terraform validate</code>.</li>
+<li><strong>Step 3:</strong> <code>terraform plan</code>.</li>
+<li><strong>Step 4:</strong> <code>terraform apply</code>.</li>
+<li><strong>Step 5:</strong> (Optional) <code>terraform destroy -target google_compute_instance.dev_instance</code>.</li>
+</ul>
+<p>Once Terraform has been successfully executed, a new Google Compute Engine (GCE) instance is created in our GCP account as shown below:</p>
+<figure class=""><a class="outline-offset" href="/assets/images/MAcRMx7N_7-2194.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/MAcRMx7N_7-400.webp 400w, /assets/images/MAcRMx7N_7-800.webp 800w, /assets/images/MAcRMx7N_7-2194.webp 2194w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/MAcRMx7N_7-400.jpeg 400w, /assets/images/MAcRMx7N_7-800.jpeg 800w, /assets/images/MAcRMx7N_7-2194.jpeg 2194w" sizes="100vw">
+    <img width="2194" height="976" src="/assets/images/MAcRMx7N_7-2194.jpeg" alt="New EC2 instance created"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 3: </b>A new GCE instance created in GCP.</p></figcaption></figure>
+<h1 id="conclusion"><a class="to-underline" href="#conclusion">Conclusion</a></h1>
+<p>This should help you understand the fundamentals of Terraform and how infrastructure as code can be set up quickly and efficiently. The declarative language simplifies the process of describing the infrastructure we intend to build, as opposed to describing how to build it. Before putting our changes into action, we use the <code>plan</code> command to test them and look for potential bugs.</p>
+<p>This is merely a summary of how efficiently infrastructure as code can be implemented with Terraform. I attempted to make this post as clear as possible while still providing sufficient detail for you to understand the ideas. For more details, check out their online <a href="https://learn.hashicorp.com/terraform" target="_blank">documentation</a>.</p>
+
+    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/terraform-basics/"
+    },
+    "headline": "Getting Started with Terraform - Understanding the Basics",
+    "description": "Terraform is an open source infrastructure-as-code tool that allows us to programmatically provision the physical resources required for an application to run.",
+    
+    "datePublished": "2024-01-16T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b> | <a href="/privacyPolicy/" target="_blank">Privacy Policy</a> | <a href="/commentPolicy/" target="_blank">Comment Policy</a>.</p>
+      <p>Hosted on <b>GitHub Pages</b> | This website DOES NOT use cookies.</p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+</body>
+</html>
