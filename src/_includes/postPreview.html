@@ -5,7 +5,7 @@
     <h{{ titleLevel }} class="post-preview-title">
       <a class="post-preview-link to-underline" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
-    <p class="post-preview-description">{{- post.data.description -}}</p>
+    <p class="post-preview-description">{{- post.data.description | truncate: 251 -}}</p>
     <ul class="post-preview-tags" aria-label="Tags">
       {%- for category in post.data.categories -%}
         <li>

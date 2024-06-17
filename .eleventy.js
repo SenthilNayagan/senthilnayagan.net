@@ -100,6 +100,12 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('pathParse', pathParse);
   eleventyConfig.addFilter('pathJoin', pathJoin);
   eleventyConfig.addFilter('readingTime', calculateReadingTime);
+  eleventyConfig.addFilter("truncate", function(str, len) {
+    if (str.length > len) {
+      return str.substring(0, len) + "...";
+    }
+    return str;
+  });
 
   // Custom collections
   eleventyConfig.addCollection('posts', getAllPosts);
