@@ -65,7 +65,7 @@
   
 <article class="post prose rhythm">
   <header class="post-header">
-    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2022-07-22" >July 22, 2022</time> - 8 min read</p>
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2022-07-22" >July 22, 2022</time> - 7 min read</p>
     <h1 class="post-title">Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option</h1>
     <ul class="post-tags" aria-label="Tags"><li>
           <a href="/tags/envelope-encryption/" class="post-tag" aria-label="envelope-encryption">envelope-encryption</a>
@@ -74,13 +74,7 @@
         </li></ul><p>&nbsp;</p>
       <p class="post-subtitle">Envelope encryption is a way of encrypting plaintext data using a key and then encrypting that key using an another key. This strategy is intended not just to make things more secure but also to enhance performance.</p>
       <p>&nbsp;</p>
-      <!-- <hr> --><!-- <figure><a class="outline-offset" href="/assets/images/p2xEJC_1TE-1792.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/p2xEJC_1TE-400.webp 400w, /assets/images/p2xEJC_1TE-800.webp 800w, /assets/images/p2xEJC_1TE-1792.webp 1792w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/p2xEJC_1TE-400.jpeg 400w, /assets/images/p2xEJC_1TE-800.jpeg 800w, /assets/images/p2xEJC_1TE-1792.jpeg 1792w" sizes="100vw">
-    <img width="1792" height="1024" src="/assets/images/p2xEJC_1TE-1792.jpeg" alt="Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-
-<figure><a class="outline-offset" href="/assets/images/p2xEJC_1TE-1792.webp"><picture >
+      <!-- <hr> --><figure class="full-width"><a class="outline-offset" href="/assets/images/p2xEJC_1TE-1792.webp"><picture class="full-width">
     <source type="image/webp" srcset="/assets/images/p2xEJC_1TE-400.webp 400w, /assets/images/p2xEJC_1TE-800.webp 800w, /assets/images/p2xEJC_1TE-1792.webp 1792w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/p2xEJC_1TE-400.jpeg 400w, /assets/images/p2xEJC_1TE-800.jpeg 800w, /assets/images/p2xEJC_1TE-1792.jpeg 1792w" sizes="100vw">
     <img width="1792" height="1024" src="/assets/images/p2xEJC_1TE-1792.jpeg" alt="Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option"  loading="lazy" decoding="async">
@@ -97,12 +91,7 @@ Ciphertext - Key = Plaintext
 Note: + and - signs indicate encryption and decryption actions, respectively.
 </code></pre>
 <p>The image below shows what a key is composed of in general:</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/isR9Ch9Lfw-1476.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/isR9Ch9Lfw-400.webp 400w, /assets/images/isR9Ch9Lfw-800.webp 800w, /assets/images/isR9Ch9Lfw-1476.webp 1476w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/isR9Ch9Lfw-400.jpeg 400w, /assets/images/isR9Ch9Lfw-800.jpeg 800w, /assets/images/isR9Ch9Lfw-1476.jpeg 1476w" sizes="100vw">
-    <img width="1476" height="408" src="/assets/images/isR9Ch9Lfw-1476.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/isR9Ch9Lfw-1476.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/isR9Ch9Lfw-1476.webp"><picture >
     <source type="image/webp" srcset="/assets/images/isR9Ch9Lfw-400.webp 400w, /assets/images/isR9Ch9Lfw-800.webp 800w, /assets/images/isR9Ch9Lfw-1476.webp 1476w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/isR9Ch9Lfw-400.jpeg 400w, /assets/images/isR9Ch9Lfw-800.jpeg 800w, /assets/images/isR9Ch9Lfw-1476.jpeg 1476w" sizes="100vw">
     <img width="1476" height="408" src="/assets/images/isR9Ch9Lfw-1476.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -131,12 +120,7 @@ Note: + and - signs indicate encryption and decryption actions, respectively.
 <blockquote class="rhythm">
 <p>This two-step procedure can be made longer by encrypting with another encryption key and then encrypting the resulting encrypted key with yet another encryption key, and so on, as shown below.<br><br><em>Root key --&gt; Encryption-keyN --&gt; … Encryption-key1 --&gt; Data key --&gt; Data</em><br><br>But in the end, though, the top-level key must stay in plaintext so that we can decrypt the rest of the keys and our data. This top-level plaintext key is known as the <em>root key</em>.</p>
 </blockquote>
-<!-- <figure><a class="outline-offset" href="/assets/images/GQsJUr6e7v-1238.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/GQsJUr6e7v-400.webp 400w, /assets/images/GQsJUr6e7v-800.webp 800w, /assets/images/GQsJUr6e7v-1238.webp 1238w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/GQsJUr6e7v-400.jpeg 400w, /assets/images/GQsJUr6e7v-800.jpeg 800w, /assets/images/GQsJUr6e7v-1238.jpeg 1238w" sizes="100vw">
-    <img width="1238" height="593" src="/assets/images/GQsJUr6e7v-1238.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/GQsJUr6e7v-1238.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/GQsJUr6e7v-1238.webp"><picture >
     <source type="image/webp" srcset="/assets/images/GQsJUr6e7v-400.webp 400w, /assets/images/GQsJUr6e7v-800.webp 800w, /assets/images/GQsJUr6e7v-1238.webp 1238w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/GQsJUr6e7v-400.jpeg 400w, /assets/images/GQsJUr6e7v-800.jpeg 800w, /assets/images/GQsJUr6e7v-1238.jpeg 1238w" sizes="100vw">
     <img width="1238" height="593" src="/assets/images/GQsJUr6e7v-1238.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -145,12 +129,7 @@ Note: + and - signs indicate encryption and decryption actions, respectively.
 <p>Thankfully, the key vault saved the day! The key vault safeguards our root keys by securely storing and managing them using specialised cryptographic hardware with the highest level of security. In the case of AWS, the root keys are stored securely in the AWS KMS.</p>
 <h2 id="where-to-keep-the-data-keys"><a class="to-underline" href="#where-to-keep-the-data-keys">Where to keep the data keys?</a></h2>
 <p>We have just learnt that root keys are stored securely inside a key vault, but where are data keys stored securely? Can’t the data keys be safely kept in the same vault as the root keys? We certainly can, but why is it necessary? Remember that the data keys are inherently protected by encryption. So we should not be concerned about where the data keys are kept. We can put them anywhere, but it’s best to put them alongside the encrypted data.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/cIVwTCMUEy-1562.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/cIVwTCMUEy-400.webp 400w, /assets/images/cIVwTCMUEy-800.webp 800w, /assets/images/cIVwTCMUEy-1562.webp 1562w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/cIVwTCMUEy-400.jpeg 400w, /assets/images/cIVwTCMUEy-800.jpeg 800w, /assets/images/cIVwTCMUEy-1562.jpeg 1562w" sizes="100vw">
-    <img width="1562" height="1352" src="/assets/images/cIVwTCMUEy-1562.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/cIVwTCMUEy-1562.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/cIVwTCMUEy-1562.webp"><picture >
     <source type="image/webp" srcset="/assets/images/cIVwTCMUEy-400.webp 400w, /assets/images/cIVwTCMUEy-800.webp 800w, /assets/images/cIVwTCMUEy-1562.webp 1562w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/cIVwTCMUEy-400.jpeg 400w, /assets/images/cIVwTCMUEy-800.jpeg 800w, /assets/images/cIVwTCMUEy-1562.jpeg 1562w" sizes="100vw">
     <img width="1562" height="1352" src="/assets/images/cIVwTCMUEy-1562.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -161,12 +140,7 @@ Note: + and - signs indicate encryption and decryption actions, respectively.
 <h2 id="key-rotation"><a class="to-underline" href="#key-rotation">Key rotation</a></h2>
 <p>Key rotation is the process of retiring an encryption key and replacing it with a new cryptographic key. Changing the keys on a regular basis helps us meet industry standards and best practices for cryptography. A good security practice is to rotate keys on a regular and automated basis. Key rotation is required by several industrial requirements.</p>
 <p>It is important to note that key rotation changes <em>only</em> the key material, which is used in encryption or decryption operations. Regardless of how many times the key material changes, the <em>key id remains unchanged</em>. So every time we rotate the key, a new key material is created.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/vVouiiulSJ-1630.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/vVouiiulSJ-400.webp 400w, /assets/images/vVouiiulSJ-800.webp 800w, /assets/images/vVouiiulSJ-1630.webp 1630w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/vVouiiulSJ-400.jpeg 400w, /assets/images/vVouiiulSJ-800.jpeg 800w, /assets/images/vVouiiulSJ-1630.jpeg 1630w" sizes="100vw">
-    <img width="1630" height="632" src="/assets/images/vVouiiulSJ-1630.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/vVouiiulSJ-1630.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/vVouiiulSJ-1630.webp"><picture >
     <source type="image/webp" srcset="/assets/images/vVouiiulSJ-400.webp 400w, /assets/images/vVouiiulSJ-800.webp 800w, /assets/images/vVouiiulSJ-1630.webp 1630w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/vVouiiulSJ-400.jpeg 400w, /assets/images/vVouiiulSJ-800.jpeg 800w, /assets/images/vVouiiulSJ-1630.jpeg 1630w" sizes="100vw">
     <img width="1630" height="632" src="/assets/images/vVouiiulSJ-1630.jpeg" alt="Created by Author"  loading="lazy" decoding="async">

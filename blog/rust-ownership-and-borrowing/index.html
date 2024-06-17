@@ -65,7 +65,7 @@
   
 <article class="post prose rhythm">
   <header class="post-header">
-    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-12" >June 12, 2024</time> - 48 min read</p>
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-12" >June 12, 2024</time> - 45 min read</p>
     <h1 class="post-title">Rust’s Ownership and Borrowing Enforce Memory Safety</h1>
     <ul class="post-tags" aria-label="Tags"><li>
           <a href="/tags/ownership/" class="post-tag" aria-label="ownership">ownership</a>
@@ -76,13 +76,7 @@
         </li></ul><p>&nbsp;</p>
       <p class="post-subtitle">Rust's ownership and borrowing features prevent us from experiencing memory-related problems. Rust is a great choice when performance matters and it solves pain points that bother many other languages.</p>
       <p>&nbsp;</p>
-      <!-- <hr> --><!-- <figure><a class="outline-offset" href="/assets/images/3kiE7FvuqQ-1792.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/3kiE7FvuqQ-400.webp 400w, /assets/images/3kiE7FvuqQ-800.webp 800w, /assets/images/3kiE7FvuqQ-1792.webp 1792w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/3kiE7FvuqQ-400.jpeg 400w, /assets/images/3kiE7FvuqQ-800.jpeg 800w, /assets/images/3kiE7FvuqQ-1792.jpeg 1792w" sizes="100vw">
-    <img width="1792" height="1024" src="/assets/images/3kiE7FvuqQ-1792.jpeg" alt="Rust’s Ownership and Borrowing Enforce Memory Safety"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-
-<figure><a class="outline-offset" href="/assets/images/3kiE7FvuqQ-1792.webp"><picture >
+      <!-- <hr> --><figure class="full-width"><a class="outline-offset" href="/assets/images/3kiE7FvuqQ-1792.webp"><picture class="full-width">
     <source type="image/webp" srcset="/assets/images/3kiE7FvuqQ-400.webp 400w, /assets/images/3kiE7FvuqQ-800.webp 800w, /assets/images/3kiE7FvuqQ-1792.webp 1792w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/3kiE7FvuqQ-400.jpeg 400w, /assets/images/3kiE7FvuqQ-800.jpeg 800w, /assets/images/3kiE7FvuqQ-1792.jpeg 1792w" sizes="100vw">
     <img width="1792" height="1024" src="/assets/images/3kiE7FvuqQ-1792.jpeg" alt="Rust’s Ownership and Borrowing Enforce Memory Safety"  loading="lazy" decoding="async">
@@ -100,12 +94,7 @@
 <p>Before we go further about Rust’s ownership and borrowing, let’s first understand what <em>memory safety</em> and <em>memory leak</em> are and how programming languages deal with them.</p>
 <h1 id="what-is-memory-safety"><a class="to-underline" href="#what-is-memory-safety">What is memory safety?</a></h1>
 <p>Memory safety refers to the state of a software application where memory pointers or references always refer to valid memory. Because memory corruption is a possibility, there are very few guarantees about a program’s behaviour if it is not memory safe. Simply put, if a program isn’t really memory safe, there are few assurances about its functionality. When dealing with a memory-unsafe program, a malicious party is able to use the flaw to read secrets or execute arbitrary code on someone else’s machine.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/BXiOhmkw8n-2000.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/BXiOhmkw8n-400.webp 400w, /assets/images/BXiOhmkw8n-800.webp 800w, /assets/images/BXiOhmkw8n-2000.webp 2000w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/BXiOhmkw8n-400.jpeg 400w, /assets/images/BXiOhmkw8n-800.jpeg 800w, /assets/images/BXiOhmkw8n-2000.jpeg 2000w" sizes="100vw">
-    <img width="2000" height="1333" src="/assets/images/BXiOhmkw8n-2000.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/BXiOhmkw8n-2000.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/BXiOhmkw8n-2000.webp"><picture >
     <source type="image/webp" srcset="/assets/images/BXiOhmkw8n-400.webp 400w, /assets/images/BXiOhmkw8n-800.webp 800w, /assets/images/BXiOhmkw8n-2000.webp 2000w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/BXiOhmkw8n-400.jpeg 400w, /assets/images/BXiOhmkw8n-800.jpeg 800w, /assets/images/BXiOhmkw8n-2000.jpeg 2000w" sizes="100vw">
     <img width="2000" height="1333" src="/assets/images/BXiOhmkw8n-2000.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
@@ -138,12 +127,7 @@ int y = &amp;x // can't access x from here; creates dangling reference
 <hr>
 <h1 id="what-is-a-memory-leak"><a class="to-underline" href="#what-is-a-memory-leak">What is a memory leak?</a></h1>
 <p>It’s important to understand what a memory leak is and what its consequences are.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/NY3J4o21lj-3500.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/NY3J4o21lj-400.webp 400w, /assets/images/NY3J4o21lj-800.webp 800w, /assets/images/NY3J4o21lj-3500.webp 3500w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/NY3J4o21lj-400.jpeg 400w, /assets/images/NY3J4o21lj-800.jpeg 800w, /assets/images/NY3J4o21lj-3500.jpeg 3500w" sizes="100vw">
-    <img width="3500" height="2100" src="/assets/images/NY3J4o21lj-3500.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/NY3J4o21lj-3500.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/NY3J4o21lj-3500.webp"><picture >
     <source type="image/webp" srcset="/assets/images/NY3J4o21lj-400.webp 400w, /assets/images/NY3J4o21lj-800.webp 800w, /assets/images/NY3J4o21lj-3500.webp 3500w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/NY3J4o21lj-400.jpeg 400w, /assets/images/NY3J4o21lj-800.jpeg 800w, /assets/images/NY3J4o21lj-3500.jpeg 3500w" sizes="100vw">
     <img width="3500" height="2100" src="/assets/images/NY3J4o21lj-3500.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
@@ -161,12 +145,7 @@ int y = &amp;x // can't access x from here; creates dangling reference
 <hr>
 <h1 id="memory-unsafety-vs-memory-leaks"><a class="to-underline" href="#memory-unsafety-vs-memory-leaks">Memory unsafety vs. memory leaks</a></h1>
 <p>Memory leaks and memory unsafety are the two types of issues that have received the greatest attention in terms of prevention and remediation. It’s important to note that fixing one does not automatically fix the other.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/fuv5Y3ok1X-2022.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/fuv5Y3ok1X-400.webp 400w, /assets/images/fuv5Y3ok1X-800.webp 800w, /assets/images/fuv5Y3ok1X-2022.webp 2022w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/fuv5Y3ok1X-400.jpeg 400w, /assets/images/fuv5Y3ok1X-800.jpeg 800w, /assets/images/fuv5Y3ok1X-2022.jpeg 2022w" sizes="100vw">
-    <img width="2022" height="1029" src="/assets/images/fuv5Y3ok1X-2022.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/fuv5Y3ok1X-2022.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/fuv5Y3ok1X-2022.webp"><picture >
     <source type="image/webp" srcset="/assets/images/fuv5Y3ok1X-400.webp 400w, /assets/images/fuv5Y3ok1X-800.webp 800w, /assets/images/fuv5Y3ok1X-2022.webp 2022w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/fuv5Y3ok1X-400.jpeg 400w, /assets/images/fuv5Y3ok1X-800.jpeg 800w, /assets/images/fuv5Y3ok1X-2022.jpeg 2022w" sizes="100vw">
     <img width="2022" height="1029" src="/assets/images/fuv5Y3ok1X-2022.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -249,23 +228,13 @@ int y = &amp;x // can't access x from here; creates dangling reference
 <h1 id="how-does-rust-guarantee-memory-safety"><a class="to-underline" href="#how-does-rust-guarantee-memory-safety">How does Rust guarantee memory safety?</a></h1>
 <p>Some languages provide <em>garbage collection</em>, which looks for memory that is no longer in use while the program runs; others require the programmer to <em>explicitly allocate and release memory</em>. Both of these models have benefits and drawbacks. Garbage collection, though perhaps the most widely used, has some drawbacks; it makes life easy for developers at the expense of resources and performance.</p>
 <p>Having said that, one gives efficient memory management <em>control</em>, while the other provides higher <em>safety</em> by eliminating dangling references and memory leaks. Rust combines the benefits of both worlds.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/T1hLYpIqhX-566.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/T1hLYpIqhX-400.webp 400w, /assets/images/T1hLYpIqhX-566.webp 566w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/T1hLYpIqhX-400.jpeg 400w, /assets/images/T1hLYpIqhX-566.jpeg 566w" sizes="100vw">
-    <img width="566" height="505" src="/assets/images/T1hLYpIqhX-566.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/T1hLYpIqhX-566.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/T1hLYpIqhX-566.webp"><picture >
     <source type="image/webp" srcset="/assets/images/T1hLYpIqhX-400.webp 400w, /assets/images/T1hLYpIqhX-566.webp 566w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/T1hLYpIqhX-400.jpeg 400w, /assets/images/T1hLYpIqhX-566.jpeg 566w" sizes="100vw">
     <img width="566" height="505" src="/assets/images/T1hLYpIqhX-566.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
   </picture></a><figcaption><p class="image-description"><b>Figure 4: </b>Rust has better control over memory management and provide higher safety with no memory issues.</p></figcaption></figure>
 <p>Rust takes a different approach to things than the other two, based on an ownership model with a set of rules that the compiler verifies to ensure memory safety. The program will not compile if any of these rules are violated. In fact, ownership replaces runtime garbage collection with compile-time checks for memory safety.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/s83HyE3YeP-1554.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/s83HyE3YeP-400.webp 400w, /assets/images/s83HyE3YeP-800.webp 800w, /assets/images/s83HyE3YeP-1554.webp 1554w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/s83HyE3YeP-400.jpeg 400w, /assets/images/s83HyE3YeP-800.jpeg 800w, /assets/images/s83HyE3YeP-1554.jpeg 1554w" sizes="100vw">
-    <img width="1554" height="578" src="/assets/images/s83HyE3YeP-1554.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/s83HyE3YeP-1554.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/s83HyE3YeP-1554.webp"><picture >
     <source type="image/webp" srcset="/assets/images/s83HyE3YeP-400.webp 400w, /assets/images/s83HyE3YeP-800.webp 800w, /assets/images/s83HyE3YeP-1554.webp 1554w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/s83HyE3YeP-400.jpeg 400w, /assets/images/s83HyE3YeP-800.jpeg 800w, /assets/images/s83HyE3YeP-1554.jpeg 1554w" sizes="100vw">
     <img width="1554" height="578" src="/assets/images/s83HyE3YeP-1554.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -273,24 +242,14 @@ int y = &amp;x // can't access x from here; creates dangling reference
 <p>It takes some time to get used to ownership because it is a new concept for many programmers, like myself.</p>
 <hr>
 <h1 id="ownership"><a class="to-underline" href="#ownership">Ownership</a></h1>
-<!-- <figure><a class="outline-offset" href="/assets/images/cLMuMlijwm-1792.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/cLMuMlijwm-400.webp 400w, /assets/images/cLMuMlijwm-800.webp 800w, /assets/images/cLMuMlijwm-1792.webp 1792w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/cLMuMlijwm-400.jpeg 400w, /assets/images/cLMuMlijwm-800.jpeg 800w, /assets/images/cLMuMlijwm-1792.jpeg 1792w" sizes="100vw">
-    <img width="1792" height="1024" src="/assets/images/cLMuMlijwm-1792.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/cLMuMlijwm-1792.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/cLMuMlijwm-1792.webp"><picture >
     <source type="image/webp" srcset="/assets/images/cLMuMlijwm-400.webp 400w, /assets/images/cLMuMlijwm-800.webp 800w, /assets/images/cLMuMlijwm-1792.webp 1792w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/cLMuMlijwm-400.jpeg 400w, /assets/images/cLMuMlijwm-800.jpeg 800w, /assets/images/cLMuMlijwm-1792.jpeg 1792w" sizes="100vw">
     <img width="1792" height="1024" src="/assets/images/cLMuMlijwm-1792.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
   </picture></a><figcaption><p class="image-description"><b>Figure 6: </b>Metaphorically reflects Rust's ownership.</p><p class="image-credits"><b>Image Credits: </b>Image generated by DALL-E.</p></figcaption></figure>
 <p>At this point, we have a basic understanding of how data is stored in memory. Let’s look at <em>ownership</em> in Rust more closely. Rust’s biggest distinguishing feature is ownership, which ensures memory safety at compile-time.</p>
 <p>To begin, let’s define “ownership” in its most literal sense. Ownership is the state of “owning” and “controlling” legal possession of “something”. With that said, we must identify <em>who the owner is</em> and <em>what the owner owns and controls</em>. In Rust, each value has a variable called its <em>owner</em>. To put it simply, a variable is an owner, and the value of a variable is what the owner owns and controls.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/FzEesPiBC4-1416.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/FzEesPiBC4-400.webp 400w, /assets/images/FzEesPiBC4-800.webp 800w, /assets/images/FzEesPiBC4-1416.webp 1416w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/FzEesPiBC4-400.jpeg 400w, /assets/images/FzEesPiBC4-800.jpeg 800w, /assets/images/FzEesPiBC4-1416.jpeg 1416w" sizes="100vw">
-    <img width="1416" height="288" src="/assets/images/FzEesPiBC4-1416.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/FzEesPiBC4-1416.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/FzEesPiBC4-1416.webp"><picture >
     <source type="image/webp" srcset="/assets/images/FzEesPiBC4-400.webp 400w, /assets/images/FzEesPiBC4-800.webp 800w, /assets/images/FzEesPiBC4-1416.webp 1416w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/FzEesPiBC4-400.jpeg 400w, /assets/images/FzEesPiBC4-800.jpeg 800w, /assets/images/FzEesPiBC4-1416.jpeg 1416w" sizes="100vw">
     <img width="1416" height="288" src="/assets/images/FzEesPiBC4-1416.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -328,12 +287,7 @@ int y = &amp;x // can't access x from here; creates dangling reference
 <p>In Rust, there are two kinds of strings: <code>String</code> (heap allocated, and growable) and <code>&amp;str</code> (fixed size, and can’t be mutated).</p>
 </blockquote>
 <p>Because <code>x</code> is stored on the stack, copying its value to produce another copy for <code>y</code> is easier. This is not the case for a value that is stored on the heap. This is how the stack frame looks:</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/3m8GzaG8E_-1416.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/3m8GzaG8E_-400.webp 400w, /assets/images/3m8GzaG8E_-800.webp 800w, /assets/images/3m8GzaG8E_-1416.webp 1416w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/3m8GzaG8E_-400.jpeg 400w, /assets/images/3m8GzaG8E_-800.jpeg 800w, /assets/images/3m8GzaG8E_-1416.jpeg 1416w" sizes="100vw">
-    <img width="1416" height="612" src="/assets/images/3m8GzaG8E_-1416.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/3m8GzaG8E_-1416.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/3m8GzaG8E_-1416.webp"><picture >
     <source type="image/webp" srcset="/assets/images/3m8GzaG8E_-400.webp 400w, /assets/images/3m8GzaG8E_-800.webp 800w, /assets/images/3m8GzaG8E_-1416.webp 1416w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/3m8GzaG8E_-400.jpeg 400w, /assets/images/3m8GzaG8E_-800.jpeg 800w, /assets/images/3m8GzaG8E_-1416.jpeg 1416w" sizes="100vw">
     <img width="1416" height="612" src="/assets/images/3m8GzaG8E_-1416.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -352,34 +306,19 @@ int y = &amp;x // can't access x from here; creates dangling reference
 <li><strong>Capacity</strong> - it’s the total amount of memory, in bytes, that the <code>String</code> has received from the allocator.</li>
 </ul>
 <p>To put it in other words, the metadata is kept on the stack while the actual data is kept on the heap.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/QKqWjlWxQW-1414.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/QKqWjlWxQW-400.webp 400w, /assets/images/QKqWjlWxQW-800.webp 800w, /assets/images/QKqWjlWxQW-1414.webp 1414w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/QKqWjlWxQW-400.jpeg 400w, /assets/images/QKqWjlWxQW-800.jpeg 800w, /assets/images/QKqWjlWxQW-1414.jpeg 1414w" sizes="100vw">
-    <img width="1414" height="552" src="/assets/images/QKqWjlWxQW-1414.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/QKqWjlWxQW-1414.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/QKqWjlWxQW-1414.webp"><picture >
     <source type="image/webp" srcset="/assets/images/QKqWjlWxQW-400.webp 400w, /assets/images/QKqWjlWxQW-800.webp 800w, /assets/images/QKqWjlWxQW-1414.webp 1414w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/QKqWjlWxQW-400.jpeg 400w, /assets/images/QKqWjlWxQW-800.jpeg 800w, /assets/images/QKqWjlWxQW-1414.jpeg 1414w" sizes="100vw">
     <img width="1414" height="552" src="/assets/images/QKqWjlWxQW-1414.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
   </picture></a><figcaption><p class="image-description"><b>Figure 9: </b>The stack holds the metadata while the heap holds the actual contents.</p></figcaption></figure>
 <p>When we assign <code>s1</code> to <code>s2</code>, the <code>String</code> metadata is copied, meaning we copy the pointer, the length, and the capacity that are on the stack. We do not copy the data on the heap that the pointer refers to. The data representation in memory looks like the one below:</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/myV3o2w8oE-1520.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/myV3o2w8oE-400.webp 400w, /assets/images/myV3o2w8oE-800.webp 800w, /assets/images/myV3o2w8oE-1520.webp 1520w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/myV3o2w8oE-400.jpeg 400w, /assets/images/myV3o2w8oE-800.jpeg 800w, /assets/images/myV3o2w8oE-1520.jpeg 1520w" sizes="100vw">
-    <img width="1520" height="1080" src="/assets/images/myV3o2w8oE-1520.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/myV3o2w8oE-1520.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/myV3o2w8oE-1520.webp"><picture >
     <source type="image/webp" srcset="/assets/images/myV3o2w8oE-400.webp 400w, /assets/images/myV3o2w8oE-800.webp 800w, /assets/images/myV3o2w8oE-1520.webp 1520w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/myV3o2w8oE-400.jpeg 400w, /assets/images/myV3o2w8oE-800.jpeg 800w, /assets/images/myV3o2w8oE-1520.jpeg 1520w" sizes="100vw">
     <img width="1520" height="1080" src="/assets/images/myV3o2w8oE-1520.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
   </picture></a><figcaption><p class="image-description"><b>Figure 10: </b>Variable `s2` gets a copy of the pointer, length, and capacity of `s1`.</p></figcaption></figure>
 <p>It’s worth noting that the representation does <em>not</em> look like the one below, which is what memory would look like if Rust copied the heap data as well. If Rust performed this, the <code>s2 = s1</code> operation could be extremely slow in terms of runtime performance if the heap data were large.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/ejzCsxo5wb-1420.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/ejzCsxo5wb-400.webp 400w, /assets/images/ejzCsxo5wb-800.webp 800w, /assets/images/ejzCsxo5wb-1420.webp 1420w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/ejzCsxo5wb-400.jpeg 400w, /assets/images/ejzCsxo5wb-800.jpeg 800w, /assets/images/ejzCsxo5wb-1420.jpeg 1420w" sizes="100vw">
-    <img width="1420" height="900" src="/assets/images/ejzCsxo5wb-1420.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/ejzCsxo5wb-1420.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/ejzCsxo5wb-1420.webp"><picture >
     <source type="image/webp" srcset="/assets/images/ejzCsxo5wb-400.webp 400w, /assets/images/ejzCsxo5wb-800.webp 800w, /assets/images/ejzCsxo5wb-1420.webp 1420w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/ejzCsxo5wb-400.jpeg 400w, /assets/images/ejzCsxo5wb-800.jpeg 800w, /assets/images/ejzCsxo5wb-1420.jpeg 1420w" sizes="100vw">
     <img width="1420" height="900" src="/assets/images/ejzCsxo5wb-1420.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -412,12 +351,7 @@ error[E0382]: borrow of moved value: `s1`
 For more information about this error, try `rustc --explain E0382`.
 </code></pre>
 <p>As Rust “moved” <code>s1</code>’s ownership of the memory to <code>s2</code> after the line <code>let s2 = s1</code>, it considered <code>s1</code> invalid. Here is the memory representation after s1 has been invalidated:</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/lLgkIntV8M-1436.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/lLgkIntV8M-400.webp 400w, /assets/images/lLgkIntV8M-800.webp 800w, /assets/images/lLgkIntV8M-1436.webp 1436w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/lLgkIntV8M-400.jpeg 400w, /assets/images/lLgkIntV8M-800.jpeg 800w, /assets/images/lLgkIntV8M-1436.jpeg 1436w" sizes="100vw">
-    <img width="1436" height="756" src="/assets/images/lLgkIntV8M-1436.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/lLgkIntV8M-1436.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/lLgkIntV8M-1436.webp"><picture >
     <source type="image/webp" srcset="/assets/images/lLgkIntV8M-400.webp 400w, /assets/images/lLgkIntV8M-800.webp 800w, /assets/images/lLgkIntV8M-1436.webp 1436w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/lLgkIntV8M-400.jpeg 400w, /assets/images/lLgkIntV8M-800.jpeg 800w, /assets/images/lLgkIntV8M-1436.jpeg 1436w" sizes="100vw">
     <img width="1436" height="756" src="/assets/images/lLgkIntV8M-1436.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -431,12 +365,7 @@ For more information about this error, try `rustc --explain E0382`.
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"s1 = {}, s2 = {}"</span><span class="token punctuation">,</span> s1<span class="token punctuation">,</span> s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>When using the clone method, the heap data does get copied into s2. This works perfectly and produces the following behaviour:</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/D7kFX9xKHN-1416.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/D7kFX9xKHN-400.webp 400w, /assets/images/D7kFX9xKHN-800.webp 800w, /assets/images/D7kFX9xKHN-1416.webp 1416w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/D7kFX9xKHN-400.jpeg 400w, /assets/images/D7kFX9xKHN-800.jpeg 800w, /assets/images/D7kFX9xKHN-1416.jpeg 1416w" sizes="100vw">
-    <img width="1416" height="892" src="/assets/images/D7kFX9xKHN-1416.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/D7kFX9xKHN-1416.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/D7kFX9xKHN-1416.webp"><picture >
     <source type="image/webp" srcset="/assets/images/D7kFX9xKHN-400.webp 400w, /assets/images/D7kFX9xKHN-800.webp 800w, /assets/images/D7kFX9xKHN-1416.webp 1416w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/D7kFX9xKHN-400.jpeg 400w, /assets/images/D7kFX9xKHN-800.jpeg 800w, /assets/images/D7kFX9xKHN-1416.jpeg 1416w" sizes="100vw">
     <img width="1416" height="892" src="/assets/images/D7kFX9xKHN-1416.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -450,12 +379,7 @@ For more information about this error, try `rustc --explain E0382`.
 </code></pre>
 <h2 id="ownership-rule-2"><a class="to-underline" href="#ownership-rule-2">Ownership rule 2</a></h2>
 <p>There can only be one owner of a value at a given time. One can have many pets, but when it comes to the ownership model, there is only one value at any given moment :-)</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/bAltImWMG7-1480.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/bAltImWMG7-400.webp 400w, /assets/images/bAltImWMG7-800.webp 800w, /assets/images/bAltImWMG7-1480.webp 1480w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/bAltImWMG7-400.jpeg 400w, /assets/images/bAltImWMG7-800.jpeg 800w, /assets/images/bAltImWMG7-1480.jpeg 1480w" sizes="100vw">
-    <img width="1480" height="947" src="/assets/images/bAltImWMG7-1480.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/bAltImWMG7-1480.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/bAltImWMG7-1480.webp"><picture >
     <source type="image/webp" srcset="/assets/images/bAltImWMG7-400.webp 400w, /assets/images/bAltImWMG7-800.webp 800w, /assets/images/bAltImWMG7-1480.webp 1480w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/bAltImWMG7-400.jpeg 400w, /assets/images/bAltImWMG7-800.jpeg 800w, /assets/images/bAltImWMG7-1480.jpeg 1480w" sizes="100vw">
     <img width="1480" height="947" src="/assets/images/bAltImWMG7-1480.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
@@ -467,12 +391,7 @@ For more information about this error, try `rustc --explain E0382`.
 </code></pre>
 <p>We have taken 10 and assigned it to <code>x</code>; in other words, <code>x</code> owns 10. Then we’re taking <code>x</code> and assigning it to <code>y</code> and we’re also assigning it to <code>z</code>. We know that there can only be one owner at a given time, but we’re not getting any errors here. So what’s going on here is that the compiler is making copies of <code>x</code> every time we assign it to a new variable.</p>
 <p>The stack frame for this would be as follows: <code>x = 10</code>, <code>y = 10</code> and <code>z = 10</code>. This, however, does not appear to be the case as this: <code>x = 10</code>, <code>y = x</code>, and <code>z = x</code>. As we know, <code>x</code> is the sole owner of this value 10, and neither <code>y</code> nor <code>z</code> can own this value.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/6od6-UU1io-1432.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/6od6-UU1io-400.webp 400w, /assets/images/6od6-UU1io-800.webp 800w, /assets/images/6od6-UU1io-1432.webp 1432w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/6od6-UU1io-400.jpeg 400w, /assets/images/6od6-UU1io-800.jpeg 800w, /assets/images/6od6-UU1io-1432.jpeg 1432w" sizes="100vw">
-    <img width="1432" height="628" src="/assets/images/6od6-UU1io-1432.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/6od6-UU1io-1432.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/6od6-UU1io-1432.webp"><picture >
     <source type="image/webp" srcset="/assets/images/6od6-UU1io-400.webp 400w, /assets/images/6od6-UU1io-800.webp 800w, /assets/images/6od6-UU1io-1432.webp 1432w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/6od6-UU1io-400.jpeg 400w, /assets/images/6od6-UU1io-800.jpeg 800w, /assets/images/6od6-UU1io-1432.jpeg 1432w" sizes="100vw">
     <img width="1432" height="628" src="/assets/images/6od6-UU1io-1432.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -513,12 +432,7 @@ For more information about this error, try `rustc --explain E0382`.
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}, world!"</span><span class="token punctuation">,</span> s1<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Won't compile. The value of s1 has already been dropped.</span>
 </code></pre>
 <p>The value of <code>s1</code> has dropped after <code>s1</code> is assigned to <code>s2</code> (in the <code>let s2 = s1</code> assignment statement). Thus, <code>s1</code> is no longer valid after this assignment. Here is the memory representation after s1 has been dropped:</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/afCzHr6kT2-1436.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/afCzHr6kT2-400.webp 400w, /assets/images/afCzHr6kT2-800.webp 800w, /assets/images/afCzHr6kT2-1436.webp 1436w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/afCzHr6kT2-400.jpeg 400w, /assets/images/afCzHr6kT2-800.jpeg 800w, /assets/images/afCzHr6kT2-1436.jpeg 1436w" sizes="100vw">
-    <img width="1436" height="774" src="/assets/images/afCzHr6kT2-1436.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/afCzHr6kT2-1436.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/afCzHr6kT2-1436.webp"><picture >
     <source type="image/webp" srcset="/assets/images/afCzHr6kT2-400.webp 400w, /assets/images/afCzHr6kT2-800.webp 800w, /assets/images/afCzHr6kT2-1436.webp 1436w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/afCzHr6kT2-400.jpeg 400w, /assets/images/afCzHr6kT2-800.jpeg 800w, /assets/images/afCzHr6kT2-1436.jpeg 1436w" sizes="100vw">
     <img width="1436" height="774" src="/assets/images/afCzHr6kT2-1436.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
@@ -598,12 +512,7 @@ For more information about this error, try `rustc --explain E0382`.
 <p>Hopefully, this gives us a basic understanding of what an <em>ownership</em> model is and how it influences the way Rust handles values, such as assigning them to one another and passing them into and out of functions.</p>
 <p>Hold on. One more thing…</p>
 <p>Rust’s ownership model, as with all good things, does have certain drawbacks. We quickly realize certain inconveniences once we begin working on Rust. We may have observed that taking ownership and then returning ownership with each function is a little inconvenient.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/R3VbWQtxaH-1466.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/R3VbWQtxaH-400.webp 400w, /assets/images/R3VbWQtxaH-800.webp 800w, /assets/images/R3VbWQtxaH-1466.webp 1466w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/R3VbWQtxaH-400.jpeg 400w, /assets/images/R3VbWQtxaH-800.jpeg 800w, /assets/images/R3VbWQtxaH-1466.jpeg 1466w" sizes="100vw">
-    <img width="1466" height="918" src="/assets/images/R3VbWQtxaH-1466.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/R3VbWQtxaH-1466.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/R3VbWQtxaH-1466.webp"><picture >
     <source type="image/webp" srcset="/assets/images/R3VbWQtxaH-400.webp 400w, /assets/images/R3VbWQtxaH-800.webp 800w, /assets/images/R3VbWQtxaH-1466.webp 1466w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/R3VbWQtxaH-400.jpeg 400w, /assets/images/R3VbWQtxaH-800.jpeg 800w, /assets/images/R3VbWQtxaH-1466.jpeg 1466w" sizes="100vw">
     <img width="1466" height="918" src="/assets/images/R3VbWQtxaH-1466.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
@@ -624,12 +533,7 @@ For more information about this error, try `rustc --explain E0382`.
 <hr>
 <h1 id="borrowing"><a class="to-underline" href="#borrowing">Borrowing</a></h1>
 <p>Borrowing, in its literal sense, refers to receiving something with the promise of returning it. In the context of Rust, <em>borrowing</em> is a way of accessing value without claiming ownership of it, as it must be returned to its owner at some point.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/FjalXJPaof-1792.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/FjalXJPaof-400.webp 400w, /assets/images/FjalXJPaof-800.webp 800w, /assets/images/FjalXJPaof-1792.webp 1792w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/FjalXJPaof-400.jpeg 400w, /assets/images/FjalXJPaof-800.jpeg 800w, /assets/images/FjalXJPaof-1792.jpeg 1792w" sizes="100vw">
-    <img width="1792" height="1024" src="/assets/images/FjalXJPaof-1792.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/FjalXJPaof-1792.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/FjalXJPaof-1792.webp"><picture >
     <source type="image/webp" srcset="/assets/images/FjalXJPaof-400.webp 400w, /assets/images/FjalXJPaof-800.webp 800w, /assets/images/FjalXJPaof-1792.webp 1792w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/FjalXJPaof-400.jpeg 400w, /assets/images/FjalXJPaof-800.jpeg 800w, /assets/images/FjalXJPaof-1792.jpeg 1792w" sizes="100vw">
     <img width="1792" height="1024" src="/assets/images/FjalXJPaof-1792.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
@@ -675,12 +579,7 @@ Deref of y=5
 </code></pre>
 <p>In the above code, we create a reference to an <code>i32</code> type value and then use the dereference operator to follow the reference to the data. The variable <code>x</code> holds an <code>i32</code> type value, <code>5</code>. We set <code>y</code> equal to a reference to <code>x</code>.</p>
 <p>This is how the stack memory appears:</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/-9VVUjBJ25-1428.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/-9VVUjBJ25-400.webp 400w, /assets/images/-9VVUjBJ25-800.webp 800w, /assets/images/-9VVUjBJ25-1428.webp 1428w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/-9VVUjBJ25-400.jpeg 400w, /assets/images/-9VVUjBJ25-800.jpeg 800w, /assets/images/-9VVUjBJ25-1428.jpeg 1428w" sizes="100vw">
-    <img width="1428" height="206" src="/assets/images/-9VVUjBJ25-1428.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/-9VVUjBJ25-1428.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/-9VVUjBJ25-1428.webp"><picture >
     <source type="image/webp" srcset="/assets/images/-9VVUjBJ25-400.webp 400w, /assets/images/-9VVUjBJ25-800.webp 800w, /assets/images/-9VVUjBJ25-1428.webp 1428w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/-9VVUjBJ25-400.jpeg 400w, /assets/images/-9VVUjBJ25-800.jpeg 800w, /assets/images/-9VVUjBJ25-1428.jpeg 1428w" sizes="100vw">
     <img width="1428" height="206" src="/assets/images/-9VVUjBJ25-1428.jpeg" alt="Created by Author"  loading="lazy" decoding="async">

@@ -74,13 +74,7 @@
         </li></ul><p>&nbsp;</p>
       <p class="post-subtitle">A closure is a programming construct that allows a function to capture and reference variables and parameters from its surrounding lexical scope. Closures offer many benefits and are a key part of the language's expressive and flexible features.</p>
       <p>&nbsp;</p>
-      <!-- <hr> --><!-- <figure><a class="outline-offset" href="/assets/images/rp02zRFTT4-1000.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/rp02zRFTT4-400.webp 400w, /assets/images/rp02zRFTT4-800.webp 800w, /assets/images/rp02zRFTT4-1000.webp 1000w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/rp02zRFTT4-400.jpeg 400w, /assets/images/rp02zRFTT4-800.jpeg 800w, /assets/images/rp02zRFTT4-1000.jpeg 1000w" sizes="100vw">
-    <img width="1000" height="571" src="/assets/images/rp02zRFTT4-1000.jpeg" alt="Introduction to Closure in Rust"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-
-<figure><a class="outline-offset" href="/assets/images/rp02zRFTT4-1000.webp"><picture >
+      <!-- <hr> --><figure class="full-width"><a class="outline-offset" href="/assets/images/rp02zRFTT4-1000.webp"><picture class="full-width">
     <source type="image/webp" srcset="/assets/images/rp02zRFTT4-400.webp 400w, /assets/images/rp02zRFTT4-800.webp 800w, /assets/images/rp02zRFTT4-1000.webp 1000w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/rp02zRFTT4-400.jpeg 400w, /assets/images/rp02zRFTT4-800.jpeg 800w, /assets/images/rp02zRFTT4-1000.jpeg 1000w" sizes="100vw">
     <img width="1000" height="571" src="/assets/images/rp02zRFTT4-1000.jpeg" alt="Introduction to Closure in Rust"  loading="lazy" decoding="async">
@@ -93,12 +87,7 @@
 <nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#overview">Overview</a></li><li class="toc-item"><a class="toc-link" href="#closure-in-rust">Closure in Rust</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#rusts-closures-are-anonymous-functions">Rust’s closures are anonymous functions</a></li><li class="toc-item"><a class="toc-link" href="#closures-vs-functions">Closures vs. functions</a></li><li class="toc-item"><a class="toc-link" href="#closures-closely-tied-to-its-ownership-and-borrowing">Closures closely tied to its ownership and borrowing</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#by-value-move-aka-move-closure">By Value (Move) aka move closure</a></li><li class="toc-item"><a class="toc-link" href="#by-reference-borrowing">By Reference (Borrowing)</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#rusts-motivation-for-closure">Rust’s motivation for closure</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#how-are-closures-and-anonymous-functions-related">How are closures and anonymous functions related?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
 <h1 id="overview"><a class="to-underline" href="#overview">Overview</a></h1>
 <p>In the world of programming, a “closure” is a type of function that has the ability to access and manipulate (modify) variables and parameters that are defined outside its own scope. Closures are like <strong>magic spells</strong><a href="#ref-1"><sup id="back-to-1">1</sup></a>, capable of performing actions by accessing and manipulating these external variables. Closures are also known as <strong>lexical closures</strong> or <strong>function closures</strong>. Having said that, closure allows a function to capture and reference variables from its surrounding <strong>lexical scope</strong><a href="#ref-2"><sup id="back-to-2">2</sup></a>, even after that scope has finished executing. Closures are also referred to as <strong>anonymous functions</strong><a href="#ref-3"><sup id="back-to-3">3</sup></a> or <strong>lambda functions</strong> in some programming languages, including Rust. This closure, or anonymous function, is defined without a name.</p>
-<!-- <figure><a class="outline-offset" href="/assets/images/6ySSPF9o2q-1792.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/6ySSPF9o2q-400.webp 400w, /assets/images/6ySSPF9o2q-800.webp 800w, /assets/images/6ySSPF9o2q-1792.webp 1792w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/6ySSPF9o2q-400.jpeg 400w, /assets/images/6ySSPF9o2q-800.jpeg 800w, /assets/images/6ySSPF9o2q-1792.jpeg 1792w" sizes="100vw">
-    <img width="1792" height="1024" src="/assets/images/6ySSPF9o2q-1792.jpeg" alt="Lifting a wallet from an unsuspecting man&#39;s pocket!"  loading="lazy" decoding="async">
-  </picture></a></figure> -->
-<figure><a class="outline-offset" href="/assets/images/6ySSPF9o2q-1792.webp"><picture >
+<figure class=""><a class="outline-offset" href="/assets/images/6ySSPF9o2q-1792.webp"><picture >
     <source type="image/webp" srcset="/assets/images/6ySSPF9o2q-400.webp 400w, /assets/images/6ySSPF9o2q-800.webp 800w, /assets/images/6ySSPF9o2q-1792.webp 1792w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/6ySSPF9o2q-400.jpeg 400w, /assets/images/6ySSPF9o2q-800.jpeg 800w, /assets/images/6ySSPF9o2q-1792.jpeg 1792w" sizes="100vw">
     <img width="1792" height="1024" src="/assets/images/6ySSPF9o2q-1792.jpeg" alt="Lifting a wallet from an unsuspecting man&#39;s pocket!"  loading="lazy" decoding="async">
