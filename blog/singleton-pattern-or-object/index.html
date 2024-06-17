@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Singleton Pattern | Senthil Nayagan</title>
+  <meta name="description" content="The singleton pattern ensures controlled access to a single instance of a class. While it offers significant benefits in terms of resource management and access control, developers must be mindful of its downsides, such as potential scalability issues and the introduction of global states. When used carefully, it can be an invaluable design choice for managing resources and coordinating actions across complex systems.">
+  <meta name="keywords" content="design-patterns, singleton-pattern, coding-principles">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/singleton-pattern-or-object/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Singleton Pattern | Senthil Nayagan"><meta property="og:description" content="The singleton pattern ensures controlled access to a single instance of a class. While it offers significant benefits in terms of resource management and access control, developers must be mindful of its downsides, such as potential scalability issues and the introduction of global states. When used carefully, it can be an invaluable design choice for managing resources and coordinating actions across complex systems.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/singleton-pattern-or-object/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Singleton Pattern | Senthil Nayagan">
+  <meta name="twitter:description" content="The singleton pattern ensures controlled access to a single instance of a class. While it offers significant benefits in terms of resource management and access control, developers must be mindful of its downsides, such as potential scalability issues and the introduction of global states. When used carefully, it can be an invaluable design choice for managing resources and coordinating actions across complex systems.">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"></head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <!-- <span class="site-name">Senthil Nayagan</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li><a
+            href="/tags/"
+            class="navbar-link"
+            >Tags</a>
+        </li><li><a
+            href="/contact/"
+            class="navbar-link"
+            >Contact</a>
+        </li><li>
+          <div id="theme-picker" class="theme-toggle">
+            <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-01-16" >January 16, 2024</time> - 7 min read</p>
+    <h1 class="post-title">Singleton Pattern</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/design-patterns/" class="post-tag" aria-label="design-patterns">design-patterns</a>
+        </li><li>
+          <a href="/tags/singleton-pattern/" class="post-tag" aria-label="singleton-pattern">singleton-pattern</a>
+        </li><li>
+          <a href="/tags/coding-principles/" class="post-tag" aria-label="coding-principles">coding-principles</a>
+        </li></ul><p>&nbsp;</p>
+      <p class="post-subtitle">The singleton pattern ensures controlled access to a single instance of a class. While it offers significant benefits in terms of resource management and access control, developers must be mindful of its downsides, such as potential scalability issues and the introduction of global states. When used carefully, it can be an invaluable design choice for managing resources and coordinating actions across complex systems.</p>
+      <p>&nbsp;</p>
+      <!-- <hr> --><figure class="full-width"><a class="outline-offset" href="/assets/images/3RcKqBcG1K-1792.webp"><picture class="full-width">
+    <source type="image/webp" srcset="/assets/images/3RcKqBcG1K-400.webp 400w, /assets/images/3RcKqBcG1K-800.webp 800w, /assets/images/3RcKqBcG1K-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/3RcKqBcG1K-400.jpeg 400w, /assets/images/3RcKqBcG1K-800.jpeg 800w, /assets/images/3RcKqBcG1K-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/3RcKqBcG1K-1792.jpeg" alt="Singleton Pattern"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption></figure></header>
+  <div class="rhythm">
+    <div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#overview">Overview</a></li><li class="toc-item"><a class="toc-link" href="#use-cases">Use cases</a></li><li class="toc-item"><a class="toc-link" href="#creation-of-a-singleton-object">Creation of a singleton object</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#singleton-in-python">Singleton in Python</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#issues-and-challenges-associated-with-the-singleton-pattern">Issues and challenges associated with the singleton pattern</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#global-state">Global State</a></li><li class="toc-item"><a class="toc-link" href="#tight-coupling">Tight coupling</a></li><li class="toc-item"><a class="toc-link" href="#scalability-concerns">Scalability concerns</a></li><li class="toc-item"><a class="toc-link" href="#testing-difficulties">Testing difficulties</a></li><li class="toc-item"><a class="toc-link" href="#unpredictable-behavior">Unpredictable behavior</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<hr>
+<h1 id="overview"><a class="to-underline" href="#overview">Overview</a></h1>
+<p>A singleton pattern limits the number of instances of a class to one. It falls under a creational <em>design pattern</em><a href="#ref-1"><sup id="back-to-1">1</sup></a> because it deals with an object creation procedure. The singleton pattern ensures that a class has only one instance and provides a <em>global access point</em><a href="#ref-2"><sup id="back-to-2">2</sup></a> to it. With that said, its primary purpose is to control object creation, limiting the number of instances to just one, thereby preventing the instantiation of more than one object of a class.</p>
+<p>Except for the special creation method (magic method in Python), the singleton pattern prevents the creation of objects via any other means. If an object has already been created, this method either returns it or creates a new one if needed.</p>
+<blockquote class="rhythm">
+<p><strong>Dunder methods:</strong> The dunder methods are special methods that start and end with double underscores. These double underscores are referred by the acronym “dunder.”</p>
+</blockquote>
+<hr>
+<h1 id="use-cases"><a class="to-underline" href="#use-cases">Use cases</a></h1>
+<p>Who would want to limit the number of instances a class has? The most common justification for this is to manage access to a shared resource, such a file or database.</p>
+<h1 id="creation-of-a-singleton-object"><a class="to-underline" href="#creation-of-a-singleton-object">Creation of a singleton object</a></h1>
+<h2 id="singleton-in-python"><a class="to-underline" href="#singleton-in-python">Singleton in Python</a></h2>
+<p>The following shows the creation of a singleton object in Python. Here, <code>__new__</code> is a special or magic method (aka the dunder method). This method is invoked every time a class is instantiated. Note that the <code>__new__</code> method is invoked before the <code>__init__</code> method gets called.</p>
+<blockquote class="rhythm">
+<p>When we attempt to create an object inside of the <code>__new__</code> method in the usual way <code>(ClassName())</code>, it runs recursively. It loops back on itself until the maximum recursion depth is reached and a <code>RecursionError</code> error is thrown.</p>
+</blockquote>
+<pre class="language-python"><code tabindex="0" class="language-python"><span class="token keyword">class</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Represents Singleton class."""</span>
+
+    __instance <span class="token operator">=</span> <span class="token boolean">None</span>
+
+    <span class="token comment"># This __new__ method is invoked every time a class is instantiated.</span>
+    <span class="token comment"># It's invoked before the __init__ method gets called.</span>
+    <span class="token keyword">def</span> <span class="token function">__new__</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> cls<span class="token punctuation">.</span>__instance<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Creating singleton object..."</span><span class="token punctuation">)</span>
+            cls<span class="token punctuation">.</span>__instance <span class="token operator">=</span> <span class="token builtin">super</span><span class="token punctuation">(</span>Singleton<span class="token punctuation">,</span> cls<span class="token punctuation">)</span><span class="token punctuation">.</span>__new__<span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+            <span class="token comment"># cls.__instance = object.__new__(cls, *args, **kwargs)  # Other way of creating an object</span>
+            <span class="token comment"># cls.__instance = Singleton() #  Will get into a RecursionError error</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">.</span>__instance
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    singleton_object_1 <span class="token operator">=</span> Singleton<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    singleton_object_2 <span class="token operator">=</span> Singleton<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Output:</p>
+<pre class="language-text"><code tabindex="0" class="language-text">Creating singleton object...
+</code></pre>
+<p>The output shows that the new object is created just once.</p>
+<hr>
+<h1 id="issues-and-challenges-associated-with-the-singleton-pattern"><a class="to-underline" href="#issues-and-challenges-associated-with-the-singleton-pattern">Issues and challenges associated with the singleton pattern</a></h1>
+<p>Singleton pattern is popular in software engineering for various applications, including logging, driver objects, caching, thread pools, and configuration settings. However, it also introduces several issues and challenges, including:</p>
+<h2 id="global-state"><a class="to-underline" href="#global-state">Global State</a></h2>
+<p>Global state refers to data that is accessible from anywhere in an application, at any time, without being passed through the application flow. In the context of the singleton pattern, the single instance of the class that is globally accessible acts as this global state.</p>
+<p><strong>Issue with global state</strong>: Consider an application that manages configuration settings for different parts of the system. Let’s say these settings are accessed via a singleton instance, say for example <code>ConfigManager</code>, which loads settings from a file and provides global access to these settings. While initially, this approach might seem convenient, it can lead to several problems as follows:</p>
+<h2 id="tight-coupling"><a class="to-underline" href="#tight-coupling">Tight coupling</a></h2>
+<p>Let’s take the same example of <code>ConfigManager</code>. All components in the application directly depend on <code>ConfigManager</code> for configuration data, making them tightly coupled to this singleton. This coupling makes it harder to modify or replace <code>ConfigManager</code> without affecting the entire system.</p>
+<h2 id="scalability-concerns"><a class="to-underline" href="#scalability-concerns">Scalability concerns</a></h2>
+<p>Scalability issues with the singleton pattern arise mainly because it enforces a single shared instance across an application, leading to problems in a distributed system or a system that requires concurrency. Consider an application using the singleton pattern for managing database connections through a <code>DatabaseConnectionManager</code> class. This class ensures that there is only one global database connection throughout the application, which seems efficient at first glance. However, as the application scales and the number of simultaneous user requests increases, several problems can emerge. For instance, as the number of concurrent requests increases, the single connection becomes a bottleneck. Requests may start to queue up, waiting for their turn to use the connection, leading to increased response times and degraded application performance.</p>
+<h2 id="testing-difficulties"><a class="to-underline" href="#testing-difficulties">Testing difficulties</a></h2>
+<p>Because singletons are accessible throughout the application, isolating tests to check individual components can be challenging. When tests run, they may inadvertently alter the singleton’s state, which could affect other tests.
+- <strong>Global state and side effects</strong>: The <code>Logger</code> instance maintains a global state through its logs. When multiple tests log different messages, they can interfere with each other. For example, one test might expect the logs to contain specific messages, but if tests are run in parallel, previous test cases might have left residual data, leading to unpredictable results.
+- <strong>Difficulty in mocking</strong>: The difficulty in mocking singleton instances in unit tests is a common challenge that stems from the pattern’s design, which ensures a class has only one instance throughout the application’s lifecycle. This design makes it hard to replace a singleton with a mock object during testing.</p>
+<h2 id="unpredictable-behavior"><a class="to-underline" href="#unpredictable-behavior">Unpredictable behavior</a></h2>
+<p>Since any part of the application can modify the global state, tracking down who changed the state can become difficult. For example, if one component changes a setting in <code>ConfigManager</code>, it might have unintended side effects on other parts of the system that rely on that setting, leading to bugs that are hard to diagnose and fix immediately.</p>
+<div class="references">
+  <hr>
+  <h2>References</h2>
+  <ol>
+  <!-- <li>Nil</li> -->
+    <li id="ref-1">1. <strong>Design patterns</strong>: In software engineering, a design pattern is a general, reusable solution to a commonly occurring problem in software design. It’s not a fully finished design that can be put into source code right away. Instead, it serves as a description, model, or template for problem-solving that may be used in a variety of situations. <a href="#back-to-1" class="back-to-note">↩</a>
+    </li>
+    <li id="ref-2">2. <strong>Global access</strong>: Singleton provides a global access point to that instance, making it easily accessible from any point in the application without passing the object around. <a href="#back-to-2" class="back-to-note">↩</a>
+    </li>    
+  </ol>
+</div>
+    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/singleton-pattern-or-object/"
+    },
+    "headline": "Singleton Pattern",
+    "description": "The singleton pattern ensures controlled access to a single instance of a class. While it offers significant benefits in terms of resource management and access control, developers must be mindful of its downsides, such as potential scalability issues and the introduction of global states. When used carefully, it can be an invaluable design choice for managing resources and coordinating actions across complex systems.",
+    
+    "datePublished": "2024-01-16T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b> | <a href="/privacyPolicy/" target="_blank">Privacy Policy</a> | <a href="/commentPolicy/" target="_blank">Comment Policy</a>.</p>
+      <p>Hosted on <b>GitHub Pages</b> | This website DOES NOT use cookies.</p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+</body>
+</html>

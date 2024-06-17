@@ -21,6 +21,17 @@
     <content type="html">A closure is a programming construct that allows a function to capture and reference variables and parameters from its surrounding lexical scope. Closures offer many benefits and are a key part of the language&#39;s expressive and flexible features.</content>
   </entry>
   <entry>
+    <id>https://www.senthilnayagan.net/blog/algorithms-and-data-structures-simplified-for-beginners/</id>
+    <title>Algorithms and Data Structures Simplified for Beginners</title>
+    <link href="https://www.senthilnayagan.net/blog/algorithms-and-data-structures-simplified-for-beginners/"/>
+    <published>2024-06-15T00:00:00.000Z</published>
+    <updated>2024-06-15T00:00:00.000Z</updated>
+    <category term="algorithms-and-data-structures" />
+    <category term="algorithms" />
+    <category term="data-structures" />
+    <content type="html">An algorithm is a series of instructions in a particular order for performing a specific task.</content>
+  </entry>
+  <entry>
     <id>https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/</id>
     <title>Rust’s Ownership and Borrowing Enforce Memory Safety</title>
     <link href="https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/"/>
@@ -63,6 +74,17 @@
     <category term="infrastructure-as-code" />
     <category term="iac" />
     <content type="html">Terraform is an open source infrastructure-as-code tool that allows us to programmatically provision the physical resources required for an application to run.</content>
+  </entry>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/singleton-pattern-or-object/</id>
+    <title>Singleton Pattern</title>
+    <link href="https://www.senthilnayagan.net/blog/singleton-pattern-or-object/"/>
+    <published>2024-01-16T00:00:00.000Z</published>
+    <updated>2024-01-16T00:00:00.000Z</updated>
+    <category term="design-patterns" />
+    <category term="singleton-pattern" />
+    <category term="coding-principles" />
+    <content type="html">The singleton pattern ensures controlled access to a single instance of a class. While it offers significant benefits in terms of resource management and access control, developers must be mindful of its downsides, such as potential scalability issues and the introduction of global states. When used carefully, it can be an invaluable design choice for managing resources and coordinating actions across complex systems.</content>
   </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/anti-pattern/</id>

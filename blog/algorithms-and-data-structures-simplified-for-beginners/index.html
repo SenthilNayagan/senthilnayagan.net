@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Algorithms and Data Structures Simplified for Beginners | Senthil Nayagan</title>
+  <meta name="description" content="An algorithm is a series of instructions in a particular order for performing a specific task.">
+  <meta name="keywords" content="algorithms-and-data-structures, algorithms, data-structures">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/algorithms-and-data-structures-simplified-for-beginners/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Algorithms and Data Structures Simplified for Beginners | Senthil Nayagan"><meta property="og:description" content="An algorithm is a series of instructions in a particular order for performing a specific task.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/algorithms-and-data-structures-simplified-for-beginners/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Algorithms and Data Structures Simplified for Beginners | Senthil Nayagan">
+  <meta name="twitter:description" content="An algorithm is a series of instructions in a particular order for performing a specific task.">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"></head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <!-- <span class="site-name">Senthil Nayagan</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li><a
+            href="/tags/"
+            class="navbar-link"
+            >Tags</a>
+        </li><li><a
+            href="/contact/"
+            class="navbar-link"
+            >Contact</a>
+        </li><li>
+          <div id="theme-picker" class="theme-toggle">
+            <label class="switch">
+              <input type="checkbox" id="theme-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-15" >June 15, 2024</time> - 11 min read</p>
+    <h1 class="post-title">Algorithms and Data Structures Simplified for Beginners</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/algorithms-and-data-structures/" class="post-tag" aria-label="algorithms-and-data-structures">algorithms-and-data-structures</a>
+        </li><li>
+          <a href="/tags/algorithms/" class="post-tag" aria-label="algorithms">algorithms</a>
+        </li><li>
+          <a href="/tags/data-structures/" class="post-tag" aria-label="data-structures">data-structures</a>
+        </li></ul><p>&nbsp;</p>
+      <p class="post-subtitle">An algorithm is a series of instructions in a particular order for performing a specific task.</p>
+      <p>&nbsp;</p>
+      <!-- <hr> --><div class="draft-note">
+      <h2 class="draft-note-heading">Work in Progress</h2>
+      <p>If you have any suggestions for improving the content or notice any inaccuracies, please email me at <a href="mailto:hello@senthilnayagan.net">hello@senthilnayagan.net</a>. Thanks!</p>
+    </div><figure class="full-width"><a class="outline-offset" href="/assets/images/CR8PswKTZi-1792.webp"><picture class="full-width">
+    <source type="image/webp" srcset="/assets/images/CR8PswKTZi-400.webp 400w, /assets/images/CR8PswKTZi-800.webp 800w, /assets/images/CR8PswKTZi-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/CR8PswKTZi-400.jpeg 400w, /assets/images/CR8PswKTZi-800.jpeg 800w, /assets/images/CR8PswKTZi-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/CR8PswKTZi-1792.jpeg" alt="Algorithms and Data Structures Simplified for Beginners"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption></figure></header>
+  <div class="rhythm">
+    <div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-an-algorithm">What is an algorithm?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-characteristics-or-guidelines-do-algorithms-possess">What characteristics or guidelines do algorithms possess?</a></li><li class="toc-item"><a class="toc-link" href="#big-o-notation">Big-O notation</a></li><li class="toc-item"><a class="toc-link" href="#efficiency-of-an-algorithm">Efficiency of an algorithm</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#time-complexity-speed">Time complexity (Speed)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#constant-time-complexity">Constant time complexity</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#space-complexity-memory">Space complexity (Memory)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#space-complexity-vs-auxiliary-space">Space complexity vs. auxiliary space</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#linear-search-algorithm">Linear search algorithm</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#what-is-data-structure">What is data structure?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#types-of-data-structure">Types of data structure</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#linear-data-structure">Linear data structure</a></li><li class="toc-item"><a class="toc-link" href="#non-linear-data-structure">Non-linear data structure</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#asymptotic-analysis">Asymptotic analysis</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#frequently-asked-questions-faq">Frequently asked questions (FAQ)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#array-vs-linked-list">Array vs. linked list</a></li><li class="toc-item"><a class="toc-link" href="#o1-vs-ologn">O(1) vs. O(log(n))</a></li><li class="toc-item"><a class="toc-link" href="#what-is-asymptotic-analysis">What is asymptotic analysis?</a></li><li class="toc-item"><a class="toc-link" href="#what-are-the-common-approaches-for-developing-algorithms">What are the common approaches for developing algorithms?</a></li><li class="toc-item"><a class="toc-link" href="#how-constant-time-differs-from-linear-time">How constant time differs from linear time?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-amortized-time-complexity">What is amortized time complexity?</a></li><li class="toc-item"><a class="toc-link" href="#what-operations-are-available-for-stacks">What operations are available for stacks?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<hr>
+<h1 id="what-is-an-algorithm"><a class="to-underline" href="#what-is-an-algorithm">What is an algorithm?</a></h1>
+<p>An algorithm is a set of steps or instructions in a particular order for performing a specific task.</p>
+<p>If we have ever written code before, we have written an algorithm. The code can be considered an algorithm. There are multiple problems in computer science, but some of them are pretty common regardless of the project we’re working on. Different people have developed various solutions to these common problems, and the field of computer science has, over time, identified several that perform well for a particular task.</p>
+<h2 id="what-characteristics-or-guidelines-do-algorithms-possess"><a class="to-underline" href="#what-characteristics-or-guidelines-do-algorithms-possess">What characteristics or guidelines do algorithms possess?</a></h2>
+<ul>
+<li>An algorithm should have a clearly defined problem statement, input, and output.</li>
+<li>The algorithm’s steps must be performed in a very specific order.</li>
+<li>The steps of an algorithm must be distinct; it should not be possible to subdivide them further.</li>
+<li>The  algorithm should produce a result; each instance of a given input must produce the same output <em>every time</em>.</li>
+<li>The algorithm must finish within a finite amount of time.</li>
+</ul>
+<p>These guidelines not only aid in defining what an algorithm is, but also in validating its correctness.</p>
+<h2 id="big-o-notation"><a class="to-underline" href="#big-o-notation">Big-O notation</a></h2>
+<p>Big O notation uses algebraic terms to describe the <em>complexity of our code</em>. It describes an asymptotic <strong>upper bound</strong> i.e., <strong>worst case scenario</strong>.</p>
+<p>No mathematical knowledge is necessary to understand Big-O notation. Each Big-O notation defines a curve’s (XY graph) shape. The shape of the curve represents the relationship between the <em>size</em> of a dataset (amount of data) and the <em>time</em> it takes to process that data.</p>
+<p>The performance of the following Big-O notations is ranked from best (<code>O(1)</code>) to worst (<code>O(n!)</code>). Here, the letter <code>n</code> represents the input size.</p>
+<ul>
+<li><strong>O(1)</strong> - <strong>Constant complexity</strong> that takes the <em>same</em> amount of space regardless of the input size.</li>
+<li><strong>O(log n)</strong> - <strong>Logarithmic complexity</strong>. It’s better than <code>O(n)</code> and close to that of <code>O(1)</code>. Every time <code>n</code> (input size) increases by an amount <code>k</code>, the time or space increases by <code>k/2</code>.</li>
+<li><strong>O(n)</strong> - <strong>Linear complexity</strong>.</li>
+<li><strong>O(n log n)</strong> - <strong>Log linear complexity</strong></li>
+<li><strong>O(n^2)</strong> - <strong>Quadratic complexity</strong> with a growth rate of <code>n</code><sup><code>2</code></sup> i.e., <code>n x n</code> times.</li>
+<li><strong>O(2^n)</strong> - <strong>Exponential complexity</strong></li>
+<li><strong>O(n!)</strong> - <strong>Factorial complexity</strong></li>
+</ul>
+<h2 id="efficiency-of-an-algorithm"><a class="to-underline" href="#efficiency-of-an-algorithm">Efficiency of an algorithm</a></h2>
+<p>A problem can be solved in more than one way. So, it is possible to come up with more than one solution or algorithm for a given problem. In such a case, we must compare them to determine which is the most effective.</p>
+<p>There are two measures of efficiency when it comes to algorithms:</p>
+<ul>
+<li><strong>Time</strong> (aka time complexity)</li>
+<li><strong>Space</strong> (aka space complexity)</li>
+</ul>
+<h3 id="time-complexity-speed"><a class="to-underline" href="#time-complexity-speed">Time complexity (Speed)</a></h3>
+<p>The efficiency measured in terms of time is known as time complexity. Time complexity is a measure of how long an algorithm takes to execute. Time complexity is defined as a <em>function of the input size <code>n</code> using Big-O notation as <code>O(n)</code></em>, where <code>n</code> is the size of the input and <code>O</code> is the growth rate function for the worst-case scenario.</p>
+<blockquote class="rhythm">
+<p><strong>Big-O notation:</strong> The Big-O notation enables a standard comparison of the worst-case performance (aka upper bound) of our algorithms.</p>
+</blockquote>
+<h4 id="constant-time-complexity"><a class="to-underline" href="#constant-time-complexity">Constant time complexity</a></h4>
+<p>If an algorithm’s time complexity is <em>constant</em>, its execution time remains the same regardless of the <em>input size</em> and the <em>number of times it is executed</em>. The constant time is denoted by <code>O(1)</code> in Big-O notation. If we can create an algorithm that solves the problem in <code>O(1)</code>, we are likely at our top performance. Note that <code>O(1)</code> has the least complexity.</p>
+<h3 id="space-complexity-memory"><a class="to-underline" href="#space-complexity-memory">Space complexity (Memory)</a></h3>
+<p>In an algorithm, time is not the only thing that matters. We may also worry about the amount of memory or space an algorithm requires. Space complexity is the amount of memory space that an algorithm or a problem takes during execution. Put simply, it corresponds to the amount of memory a program or algorithm uses. The memory here is required for storing the variables, data, temporary results, constants and many more. In other words, the space complexity is not only determined by the amount of storage space consumed by the algorithm or program, but it also takes into account the amount of storage space required for the input data.</p>
+<p>For example, creating an array of size n will require <code>O(n)</code> space. <code>O(n2)</code> space is required for a two-dimensional array of size <code>n x n</code>.</p>
+<h4 id="space-complexity-vs-auxiliary-space"><a class="to-underline" href="#space-complexity-vs-auxiliary-space">Space complexity vs. auxiliary space</a></h4>
+<p>People have a tendency to get space complexity and <strong>auxiliary space</strong> confused with one another. Let’s get one thing out of the way first: they are two different terminology.</p>
+<p>Auxiliary space is the temporary space that our program allocates in order to solve the problem with respect to the amount of data that is supplied as input. Note that the size of the supplied <em>input data does not account</em> for this auxiliary space in any way. However, space complexity includes both auxililary space and space used input data.</p>
+<blockquote class="rhythm">
+<p><strong>Auxiliary space</strong> = Total space - Size of input data<br/><strong>Space complexity</strong> = Auxiliary space + Size of input data</p>
+</blockquote>
+<p>An efficient algorithm must be able to achieve a balance between both time and space complexity measures. For example, it might not matter if we have a super-fast algorithm if it uses up all the memory we have.</p>
+<blockquote class="rhythm">
+<p><strong>Ideal efficiency:</strong> The most efficient algorithm could be one that performs all of its operations in the shortest time possible and uses the least amount of memory.</p>
+</blockquote>
+<h2 id="linear-search-algorithm"><a class="to-underline" href="#linear-search-algorithm">Linear search algorithm</a></h2>
+<p>For a given value of <code>n</code>, linear search will require <code>n</code> attempts to locate the value in the worst case. By evaluating a worst-case scenario, we avoid having to perform the necessary work. We are aware of the actual or potential outcome. As the value gets really large, the running time of the algorithm gets large as well.</p>
+<h1 id="what-is-data-structure"><a class="to-underline" href="#what-is-data-structure">What is data structure?</a></h1>
+<p>A data structure is a way to <em>organize</em>, <em>manage</em>, and <em>store data</em> that makes it <em>easy</em> to access its values and change them. To efficiently access or utilize data, we must first store it efficiently.</p>
+<p>Data structures are essential ingredients in creating fast and powerful algorithms. They make code cleaner and easier to understand.</p>
+<p>The following five operations are commonly performed on any data structure:</p>
+<ul>
+<li><strong>Insertion</strong></li>
+<li><strong>Deletion</strong></li>
+<li><strong>Traversal</strong></li>
+<li><strong>Searching</strong></li>
+<li><strong>Sorting</strong></li>
+</ul>
+<h2 id="types-of-data-structure"><a class="to-underline" href="#types-of-data-structure">Types of data structure</a></h2>
+<p>Generally, data structures fall into two categories:</p>
+<ul>
+<li><strong>Linear data structure</strong></li>
+<li><strong>Non-linear data structure</strong></li>
+</ul>
+<h3 id="linear-data-structure"><a class="to-underline" href="#linear-data-structure">Linear data structure</a></h3>
+<p>Data elements are arranged <em>sequentially</em> in a linear data structure. These elements can be <em>ordered in any manner</em> (ascending or descending). In a linear data structure, each element must have an element before it, and if it is not the last element, it may also have an element after it.</p>
+<h3 id="non-linear-data-structure"><a class="to-underline" href="#non-linear-data-structure">Non-linear data structure</a></h3>
+<p>TODO</p>
+<h2 id="asymptotic-analysis"><a class="to-underline" href="#asymptotic-analysis">Asymptotic analysis</a></h2>
+<h1 id="frequently-asked-questions-faq"><a class="to-underline" href="#frequently-asked-questions-faq">Frequently asked questions (FAQ)</a></h1>
+<h2 id="array-vs-linked-list"><a class="to-underline" href="#array-vs-linked-list">Array vs. linked list</a></h2>
+<p>Inserting an element at the beginning of the sequential list is way faster in the <em>linked list</em> than in the <em>array</em>.</p>
+<h2 id="o1-vs-ologn"><a class="to-underline" href="#o1-vs-ologn">O(1) vs. O(log(n))</a></h2>
+<p><code>O(log(n))</code> is more complex than <code>O(1)</code>. <code>O(1)</code> indicates that the execution time of an algorithm is <em>independent</em> of the size of the input, whereas <code>O(log n)</code> denotes that as input size <code>n</code> increases exponentially, the running time increases linearly.</p>
+<p>In some instances, <code>O(log(n))</code> may be faster than <code>O(1)</code>, but <code>O(1)</code> will outperform <code>O(log(n))</code> as <code>n</code> grows, because <code>O(1)</code> is independent of the input size <code>n</code>.</p>
+<h2 id="what-is-asymptotic-analysis"><a class="to-underline" href="#what-is-asymptotic-analysis">What is asymptotic analysis?</a></h2>
+<p>Asymptotic analysis is the process of <em>calculating the execution or running time of an algorithm in mathematical units</em> in order to determine the program’s limitations or run-time performance. Using asymptotic analysis, we can determine the <em>worst case</em>, <em>average case</em>, and <em>best case</em> execution times of an algorithm.</p>
+<p>Following are the asymptotic notations for each of the three execution time cases:</p>
+<ul>
+<li><strong>Worst case</strong> is represented by <code>Ο(n)</code> notation; represents <em>upper bound</em>.</li>
+<li><strong>Average case</strong> is represented by <code>Θ(n)</code> notation aka <em>Big-Theta</em>; represents <em>tight bound</em>.</li>
+<li><strong>Best case</strong> is represented by <code>Ω(n)</code> notation aka <em>Big-Omega</em>; represents <em>lower bound</em>.</li>
+</ul>
+<h2 id="what-are-the-common-approaches-for-developing-algorithms"><a class="to-underline" href="#what-are-the-common-approaches-for-developing-algorithms">What are the common approaches for developing algorithms?</a></h2>
+<p>There are three common approaches for developing algorithms:</p>
+<ul>
+<li><strong>Greedy approach</strong>
+<ul>
+<li>It’s  a <em>simple and straightforward approach</em>.</li>
+<li>Identifying a solution by selecting the <em>next component</em> that provides the most obvious and immediate benefit, i.e. the next-best option.</li>
+<li>It identifies the feasible solution, which <em>may or may not be the optimal solution</em>.</li>
+<li>In this method, a decision is made <em>based on the information currently available</em>, without consideration for the long-term consequences.</li>
+</ul>
+</li>
+<li><strong>Divide and conquer approach</strong>
+<ul>
+<li>The <em>divide</em> strategy involves dividing the problem into smaller subproblems until those subproblems are simple enough to be solved directly.</li>
+<li>The <em>conquer</em> strategy solves subproblems by calling recursively until all subproblems have been resolved.</li>
+<li>After resolving all subproblems, <em>combine</em> them to arrive at the final solution for the entire problem.</li>
+<li>The divide-and-conquer approach is often <em>used to find an optimal solution</em> to a problem.</li>
+<li>The standard algorithms that follow the divide and conquer algorithm/approach are listed below:
+<ul>
+<li><strong>Binary search</strong></li>
+<li><strong>Quicksort</strong></li>
+<li><strong>Merge sort</strong></li>
+<li><strong>Closest pair of points</strong></li>
+<li><strong>Strassen’s algorithm</strong></li>
+<li><strong>Cooley–tukey fast fourier transform (FFT) algorithm</strong></li>
+<li><strong>The karatsuba algorithm</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Dynamic programming</strong>
+<ul>
+<li>It is similar to the divide and conquer strategy because it divides the problem into smaller sub-problems.</li>
+<li>In dynamic programming, <em>sub-problems are interdependent</em>; therefore, the <em>results of subproblems are stored for future use</em> so that they do not need to be recalculated.</li>
+<li>Before calculating the solution to a current subproblem, the <em>previous solutions are examined</em>. If any of the previously solved sub-problems are similar to the current one, the result of that sub-problem is utilized. Finally, the solution to the original problem is obtained by combining the solutions to the subproblems.</li>
+</ul>
+</li>
+</ul>
+<h2 id="how-constant-time-differs-from-linear-time"><a class="to-underline" href="#how-constant-time-differs-from-linear-time">How constant time differs from linear time?</a></h2>
+<p>When it comes to time complexity, no matter how big the constant is and how slow the linear increase is, linear will at some point surpass (exceed) the constant.</p>
+<figure class=""><a class="outline-offset" href="/assets/images/3b57Gl7MTE-324.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/3b57Gl7MTE-324.webp 324w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/3b57Gl7MTE-324.jpeg 324w" sizes="100vw">
+    <img width="324" height="364" src="/assets/images/3b57Gl7MTE-324.jpeg" alt="Created by Author"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>Time complexity - O(1) vs. O(s).</p></figcaption></figure>
+<h2 id="what-is-amortized-time-complexity"><a class="to-underline" href="#what-is-amortized-time-complexity">What is amortized time complexity?</a></h2>
+<p>Amortized time complexity occurs when an operation is extremely slow <em>once in a while</em> (occasionally) and has expensive worst-case time complexity, but the operations are faster the majority of the time.</p>
+<p>In the case of a dynamic array, if its size reaches capacity, it immediately expands to double its original size. For example, if an array’s starting size is 10, and it fills up, the size will be increased to 20.</p>
+<p>The following steps are taken when the dynamic array is filled:</p>
+<ul>
+<li>Allocate memory for a larger array size, generally twice the size of the previous array. Its time complexity is <code>O(2n)</code>, where <code>n</code> is the size.</li>
+<li>Copy all the contents of the old array to a new one. Its time complexity is <code>O(n)</code>.</li>
+<li>Insert the new element. Its time complexity is <code>O(1)</code> for each insertion.</li>
+</ul>
+<h2 id="what-operations-are-available-for-stacks"><a class="to-underline" href="#what-operations-are-available-for-stacks">What operations are available for stacks?</a></h2>
+<p>The operations listed below can be performed on a stack:</p>
+<ul>
+<li><strong>push()</strong> - Adds an item to stack</li>
+<li><strong>pop()</strong> - Removes the top item in the stack</li>
+<li><strong>peek()</strong> - Gives top item’s value without removing it</li>
+<li><strong>isempty()</strong> - Checks if stack is empty</li>
+<li><strong>isfull()</strong> - Checks if stack is full</li>
+</ul>
+
+    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/algorithms-and-data-structures-simplified-for-beginners/"
+    },
+    "headline": "Algorithms and Data Structures Simplified for Beginners",
+    "description": "An algorithm is a series of instructions in a particular order for performing a specific task.",
+    
+    "datePublished": "2024-06-15T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b> | <a href="/privacyPolicy/" target="_blank">Privacy Policy</a> | <a href="/commentPolicy/" target="_blank">Comment Policy</a>.</p>
+      <p>Hosted on <b>GitHub Pages</b> | This website DOES NOT use cookies.</p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+</body>
+</html>
