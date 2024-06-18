@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Senthil Nayagan">
   <link rel="canonical" href="https://www.senthilnayagan.net/blog/envelope-encryption/">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
 <link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
 <link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
 <link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
@@ -73,8 +73,42 @@
           <a href="/tags/data-protection/" class="post-tag" aria-label="data-protection">data-protection</a>
         </li></ul><p>&nbsp;</p>
       <p class="post-subtitle">Envelope encryption is a way of encrypting plaintext data using a key and then encrypting that key using an another key. This strategy is intended not just to make things more secure but also to enhance performance.</p>
-      <p>&nbsp;</p>
-      <!-- <hr> --><figure class="full-width"><a class="outline-offset" href="/assets/images/p2xEJC_1TE-1792.webp"><picture class="full-width">
+      <p>&nbsp;</p><!-- Share the post --><div class="social-share">
+    <a href="https://api.whatsapp.com/send?text=Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option%20https://www.senthilnayagan.net/blog/envelope-encryption/" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?text=Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option&url=https://www.senthilnayagan.net/blog/envelope-encryption/" target="_blank" aria-label="Share on Twitter" class="social-icon">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.senthilnayagan.net/blog/envelope-encryption/" target="_blank" aria-label="Share on Facebook" class="social-icon">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/envelope-encryption/&title=Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+    <a href="#" id="copy-link" aria-label="Copy link" class="social-icon">
+      <i class="fa-solid fa-link"></i>
+    </a>
+    <span id="copy-message" class="copy-message">Copied to clipboard</span>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyLink = document.getElementById('copy-link');
+      const copyMessage = document.getElementById('copy-message');
+      
+      copyLink.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+        const mainUrl = window.location.href.split('#')[0]; // Get URL without hash
+        navigator.clipboard.writeText(mainUrl).then(() => {
+          copyMessage.style.visibility = 'visible';
+          setTimeout(() => {
+            copyMessage.style.visibility = 'hidden';
+          }, 2000);
+        });
+      });
+    });
+  </script><figure class="full-width"><a class="outline-offset" href="/assets/images/p2xEJC_1TE-1792.webp"><picture class="full-width">
     <source type="image/webp" srcset="/assets/images/p2xEJC_1TE-400.webp 400w, /assets/images/p2xEJC_1TE-800.webp 800w, /assets/images/p2xEJC_1TE-1792.webp 1792w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/p2xEJC_1TE-400.jpeg 400w, /assets/images/p2xEJC_1TE-800.jpeg 800w, /assets/images/p2xEJC_1TE-1792.jpeg 1792w" sizes="100vw">
     <img width="1792" height="1024" src="/assets/images/p2xEJC_1TE-1792.jpeg" alt="Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option"  loading="lazy" decoding="async">
@@ -216,7 +250,6 @@ Note: + and - signs indicate encryption and decryption actions, respectively.
     }
   }
 </script>
-
 </main><footer class="page-footer size-font-sm">
   <div class="page-footer-container container">
     <div class="stack gap--1">
