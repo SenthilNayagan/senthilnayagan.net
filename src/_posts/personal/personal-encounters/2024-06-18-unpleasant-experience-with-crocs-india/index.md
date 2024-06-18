@@ -1,6 +1,6 @@
 ---
 title: My Unpleasant Experience with Crocs India - A Cautionary Tale
-description: I recently had an incredibly frustrating experience with crocs India, which I feel compelled to share as a cautionary tale for anyone considering making a purchase from their website.
+description: I recently had an incredibly frustrating experience with Crocs India, which I feel compelled to share as a cautionary tale for anyone considering making a purchase from their website.
 keywords: [crocs-india, customer-care, crocs]
 categories: [crocs-india, customer-care, crocs]
 coverImage: ./images/wrost-customer-care-service.webp
@@ -10,7 +10,7 @@ type: personal
 
 # The initial excitement
 
-For the first time, I decided to order a pair of crocs slides from <a href="https://www.crocs.in/" target="_blank">crocs india</a>. During the checkout process, I carefully entered my billing and shipping addresses, ensuring there would be no confusion about where my slides should be delivered. The invoice generated post-payment confirmed that both addresses were correctly recorded, with the shipping address clearly marked as the destination.
+For the first time, I decided to order a pair of Crocs slides from <a href="https://www.crocs.in/" target="_blank">Crocs India</a>. During the checkout process, I carefully entered my billing and shipping addresses, ensuring there would be no confusion about where my slides should be delivered. The invoice generated post-payment confirmed that both addresses were correctly recorded, with the shipping address clearly marked as the destination.
 
 # The frustration begins
 
