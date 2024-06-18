@@ -18,9 +18,17 @@ Before we go any further, let’s know what a **primitive data type** is. In c
 
 # What is primitive obsession?
 
-Primitive obsession is one of the **code smells**<a href="#ref-1"><sup id="back-to-1">1</sup></a> that occurs when primitive data types (e.g., `integer`, `string`, `boolean`) are used excessively to represent domain concepts instead of creating dedicated classes or types. 
+Primitive obsession is one of the **code smells** that occurs when primitive data types (e.g., `integer`, `string`, `boolean`) are used excessively to represent domain concepts instead of creating dedicated classes or types.
 
-This can lead to several issues, such as: 
+> **Code smells:** Code smells in programming are like those suspicious odors in our refrigerator that tell us something might be going wrong inside! A bad smell doesn't always indicate that our food has spoiled; rather, it's a sign that we should investigate, not necessarily throw everything out. Similarly, code smells aren't bugs themselves—they don’t stop our program from running—but they're warning signs that our code might need a cleanup. They suggest underlying issues in our design that can slow us down over time, making our application harder to maintain and update. Think of them as red flags that smart developers look for to keep their code healthy and robust!
+
+{% include "postImage.html" src: "./images/code-smell.webp", alt: "Code smell!", description: "<b>Figure 1: </b>An imaginary oil painting depicts the concept of code smell in a vintage office setting. The characters react to the computer’s bad smell, adding a fun touch to this traditional scene by <b>DALL-E</b>." %}
+
+It's a common but often overlooked issue in the codebase. This coding pitfall emerges when these primitive types are used over and over to represent complex ideas, bypassing the rich expressiveness offered by dedicated classes or custom types.
+
+Primitive types are considered simple to use because they are straightforward and familiar to most programmers. While simple to use, this approach can blur the code's clarity and purpose, making it tougher to manage and improve over time. 
+
+Excessive usage of primitive types can lead to several issues, such as: 
 
 - Lack of encapsulation
 - Increased complexity
@@ -136,14 +144,4 @@ public class Order {
 3. **Encapsulate collections:** Create classes to encapsulate collections and their operations rather than passing raw lists or maps.
 4. **Refactor regularly:** Identify and refactor primitives that represent domain concepts to dedicated classes.
 
-By addressing Primitive Obsession, we can make our code more robust, readable, and maintainable, leading to better overall software design.
-
-
-<div class="references">
-  <hr>
-  <h2>References</h2>
-  <ol>
-  <!-- <li>Nil</li> -->
-    <li id="ref-1">1. <strong>Code Smells</strong>: In the context of Kafka Streams, the term “bursts” typically refers to sudden increases in the volume of data messages being processed by the stream. These bursts can occur due to various reasons, such as a rapid flood of events from producers, periodic increases in activity (e.g., during specific hours of the day or days of the week), or backlog processing after downtime or maintenance periods. <a href="#back-to-1" class="back-to-note">↩</a></li>
-  </ol>
-</div>
+By addressing primitive obsession, we can make our code more robust, readable, and maintainable, leading to better overall software design.
