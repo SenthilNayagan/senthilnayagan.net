@@ -23,13 +23,14 @@ eleventyComputed:
       {%- endfor -%}
     </ul>
     {%- if description -%}
-      <p>&nbsp;</p>
+      <p class="spacer"></p>
       <p class="post-subtitle">{{ description }}</p>
-      <p>&nbsp;</p>
+      <p class="spacer"></p>
     {%- endif -%}
     <!-- Share the post -->
     {%- include "socialShare.html" -%}
     {%- if draft -%}
+    <p class="spacer"></p>
     <div class="draft-note">
       <h2 class="draft-note-heading">Work in Progress</h2>
       <p>If you have any suggestions for improving the content or notice any inaccuracies, please email me at <a href="mailto:{{ site.email }}">{{ site.email }}</a>. Thanks!</p>

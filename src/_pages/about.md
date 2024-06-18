@@ -5,7 +5,7 @@ permalink: /about/
 layout: about
 ---
 
-My name is **Senthil Nayagan**. I am a seasoned IT professional with years of expertise in designing and building complex business solutions. I've been working in the field of Data Engineering for the past few years. If I were to describe myself in a few words, I would say that I am a Data Engineer by profession, a Rustacean by interest, and an avid tech-blog writer at present. Currently, I am based in Chennai, India.
+Hello! I’m **Senthil Nayagan**, hailing from **India**, a land of vibrant software engineers. I am a seasoned IT professional with years of experience in designing and building complex business solutions. I’ve been working in the ever-evolving world of Data Engineering for the past few years. If I were to describe myself in a few words, I would say that I am a Data Engineer by profession and a Rustacean by interest. When I’m not immersed in data or coding, you can find me sharing insights and explorations on my tech blog, where I connect with fellow enthusiasts and curious minds.
 
 ![Senthil Nayagan]({{ site.authorGravatar }})
 
@@ -14,6 +14,10 @@ My name is **Senthil Nayagan**. I am a seasoned IT professional with years of ex
 I enjoy working with open-source software (OSS). They are open and free to all. They encourage the free exchange of thoughts. I appreciate the freedom they provide. We (developers) are able to engage in ways that wouldn't be possible otherwise. In the end, they deal with our common problems.
 
 The community and open-source software have been a huge help and source of inspiration for me ever since I began coding. In return, I want to contribute back to the community in whatever manner I can. One thing I can do right away is share my knowledge with others through blogging.
+
+Furthermore, working with OSS keeps me on the cutting edge of technology. The rapid pace of development and the exposure to a wide range of projects and technologies help me stay current and continuously improve my skills. It’s a dynamic environment where learning and growth are constants. 
+
+To give back, I actively participate in discussions, contribute code, and help with documentation.
 
 ### Wrting tech-blogs
 
@@ -25,11 +29,15 @@ Personally, I like writing technical blogs. Blogging has been an excellent way f
 
 ### My blog
 
-This is my personal blog, where I make up stories about my personal thoughts, design and coding principles, and a variety of topics related to data engineering and analytics, which is my primary area of interest. I'm attempting to make all of my posts as clear as possible while yet providing sufficient information for you to grasp the concepts.
+This personal blog is my little corner of the internet where I delve into personal thoughts, share my design and coding principles, and explore a variety of topics. I'm attempting to make all of my posts as clear as possible while yet providing sufficient information for you to grasp the concepts.
 
 ### Hobbies and interests
 
-I have a lot of interests and hobbies. Street photography, collecting old paper money, making jingles, exploring gadgets, etc. are just a few. I will write about them in detail sooner.
+I am a person who has been fascinated by various interests and hobbies since childhood. Right from my school days, I used to collect stamps, coins, paper money, and more. As I grew up, my interests and hobbies didn’t fade away; instead, more and more got added to the list, and some of these hobbies have even taken on a professional dimension.
+
+In recent times, I’ve developed a fondness for street photography, capturing the vibrant life and unique moments of everyday scenes. I also enjoy composing and arranging short jingles, blending my love for music with creativity. Additionally, I’ve started collecting brass and bronze idols, appreciating the artistry and cultural significance they hold.
+
+These hobbies provide me with a constant source of joy and inspiration. They allow me to explore new facets of creativity and connect with diverse communities. I look forward to sharing more about these interests in detail soon, diving into the stories behind each passion and how they continue to shape my journey.
 
 Well accomplished if you've made it this far :-) 
 
