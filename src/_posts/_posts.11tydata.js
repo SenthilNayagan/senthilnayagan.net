@@ -4,7 +4,21 @@ const featureFlags = require('../_data/featureFlags');
 
 module.exports = {
   layout: 'post',
-  permalink: (data) => `/blog/${data?.page?.fileSlug}/`,
+  // permalink: (data) => `/blog/tech/${data?.page?.fileSlug}/`,
+  permalink: (data) => {
+    const type = data?.type || 'tech';
+    let prefix;
+
+    if (type === 'tech') {
+      prefix = 'blog/tech';
+    } else if (type === 'personal') {
+      prefix = 'blog/personal';
+    } else {
+      prefix = 'blog';
+    }
+
+    return `/${prefix}/${data?.page?.fileSlug}/`;
+  },
   isPost: true,
   eleventyComputed: {
     scripts: (data) => {
