@@ -13,8 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: List files for debugging
-        run: ls -R src/_posts/data
+      - name: List tech blog files for debugging
+        run: ls -R src/_posts/tech
+
+      - name: List personal blog files for debugging
+        run: ls -R src/_posts/personal
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
