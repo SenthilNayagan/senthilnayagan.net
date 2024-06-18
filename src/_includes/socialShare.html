@@ -1,0 +1,36 @@
+<div class="social-share">
+    <a href="https://api.whatsapp.com/send?text={{ title }}%20{{ page.url | toAbsoluteUrl }}" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?text={{ title }}&url={{ page.url | toAbsoluteUrl }}" target="_blank" aria-label="Share on Twitter" class="social-icon">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | toAbsoluteUrl }}" target="_blank" aria-label="Share on Facebook" class="social-icon">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | toAbsoluteUrl }}&title={{ title }}" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+    <a href="#" id="copy-link" aria-label="Copy link" class="social-icon">
+      <i class="fa-solid fa-link"></i>
+    </a>
+    <span id="copy-message" class="copy-message">Copied to clipboard</span>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyLink = document.getElementById('copy-link');
+      const copyMessage = document.getElementById('copy-message');
+      
+      copyLink.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+        const mainUrl = window.location.href.split('#')[0]; // Get URL without hash
+        navigator.clipboard.writeText(mainUrl).then(() => {
+          copyMessage.style.visibility = 'visible';
+          setTimeout(() => {
+            copyMessage.style.visibility = 'hidden';
+          }, 2000);
+        });
+      });
+    });
+  </script>

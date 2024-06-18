@@ -26,8 +26,9 @@ eleventyComputed:
       <p>&nbsp;</p>
       <p class="post-subtitle">{{ description }}</p>
       <p>&nbsp;</p>
-      <!-- <hr> -->
     {%- endif -%}
+    <!-- Share the post -->
+    {%- include "socialShare.html" -%}
     {%- if draft -%}
     <div class="draft-note">
       <h2 class="draft-note-heading">Work in Progress</h2>

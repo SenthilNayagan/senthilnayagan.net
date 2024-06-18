@@ -90,3 +90,41 @@
 a sup {
   font-size: 0.875rem; /* Adjust the font size of the superscript as needed */
 }
+
+.social-share {
+  display: flex;
+  align-items: center;
+  gap: 20px; // Increased gap between icons
+  margin-top: 1rem; // Adjust the margin as needed
+}
+
+.social-share p {
+  margin: 0;
+}
+
+.social-icon {
+  text-decoration: none;
+  font-size: 1.5rem; // Adjust icon size
+  color: inherit;
+}
+
+.social-icon:hover {
+  color: rgb(128, 128, 128);
+}
+
+.copy-message {
+  visibility: hidden;
+  margin-left: 10px;
+  color: #fff;
+  background-color: #444;
+  font-size: 0.875rem; // Adjust font size
+  padding: 5px 10px; /* Add padding for space around the text */
+  border-radius: 4px; /* Optional: Add rounded corners */
+  transition: visibility 0.3s ease, opacity 0.3s ease; /* Smooth transition for visibility and opacity */
+}
+
+/* Show the message */
+.show-copy-message {
+  visibility: visible;
+  opacity: 1;
+}
