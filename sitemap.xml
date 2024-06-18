@@ -1,61 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-        <loc>https://www.senthilnayagan.net/blog/envelope-encryption/</loc>
+        <loc>https://www.senthilnayagan.net/blog/tech/envelope-encryption/</loc>
         <lastmod>2022-07-22T00:00:00.000Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/anti-pattern/</loc>
+        <loc>https://www.senthilnayagan.net/blog/tech/anti-pattern/</loc>
         <lastmod>2024-01-16T00:00:00.000Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/singleton-pattern-or-object/</loc>
+        <loc>https://www.senthilnayagan.net/blog/tech/singleton-pattern-or-object/</loc>
         <lastmod>2024-01-16T00:00:00.000Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/terraform-basics/</loc>
+        <loc>https://www.senthilnayagan.net/blog/tech/terraform-basics/</loc>
         <lastmod>2024-01-16T00:00:00.000Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/windowing-in-kafka-streams/</loc>
+        <loc>https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/</loc>
         <lastmod>2024-02-25T00:00:00.000Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/yanked-release/</loc>
+        <loc>https://www.senthilnayagan.net/blog/tech/yanked-release/</loc>
         <lastmod>2024-03-07T00:00:00.000Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/</loc>
+        <loc>https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/</loc>
         <lastmod>2024-06-12T00:00:00.000Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/algorithms-and-data-structures-simplified-for-beginners/</loc>
+        <loc>https://www.senthilnayagan.net/blog/tech/algorithms-and-data-structures-simplified-for-beginners/</loc>
         <lastmod>2024-06-15T00:00:00.000Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/introduction-to-rust-closure/</loc>
+        <loc>https://www.senthilnayagan.net/blog/tech/introduction-to-rust-closure/</loc>
         <lastmod>2024-06-16T00:00:00.000Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/primitive-obsession/</loc>
+        <loc>https://www.senthilnayagan.net/blog/personal/unpleasant-experience-with-crocs-india/</loc>
+        <lastmod>2024-06-18T00:00:00.000Z</lastmod>
+    </url><url>
+        <loc>https://www.senthilnayagan.net/blog/tech/primitive-obsession/</loc>
         <lastmod>2024-06-18T00:00:00.000Z</lastmod>
     </url><url>
         <loc>https://www.senthilnayagan.net/about/</loc>
-        <lastmod>2024-06-18T12:53:52.276Z</lastmod>
+        <lastmod>2024-06-18T16:57:15.627Z</lastmod>
     </url><url>
         <loc>https://www.senthilnayagan.net/art/</loc>
-        <lastmod>2024-06-18T12:53:52.276Z</lastmod>
+        <lastmod>2024-06-18T16:57:15.627Z</lastmod>
     </url><url>
         <loc>https://www.senthilnayagan.net/blog/</loc>
-        <lastmod>2024-06-18T12:53:52.276Z</lastmod>
+        <lastmod>2024-06-18T16:57:15.627Z</lastmod>
     </url><url>
         <loc>https://www.senthilnayagan.net/commentPolicy/</loc>
-        <lastmod>2024-06-18T12:53:52.276Z</lastmod>
+        <lastmod>2024-06-18T16:57:15.627Z</lastmod>
     </url><url>
         <loc>https://www.senthilnayagan.net/contact/</loc>
-        <lastmod>2024-06-18T12:53:52.276Z</lastmod>
+        <lastmod>2024-06-18T16:57:15.627Z</lastmod>
     </url><url>
         <loc>https://www.senthilnayagan.net/</loc>
-        <lastmod>2024-06-18T12:53:52.276Z</lastmod>
+        <lastmod>2024-06-18T16:57:15.627Z</lastmod>
     </url><url>
         <loc>https://www.senthilnayagan.net/privacyPolicy/</loc>
-        <lastmod>2024-06-18T12:53:52.276Z</lastmod>
+        <lastmod>2024-06-18T16:57:15.627Z</lastmod>
     </url><url>
-        <loc>https://www.senthilnayagan.net/blog/README/</loc>
-        <lastmod>2024-06-18T12:53:52.276Z</lastmod>
+        <loc>https://www.senthilnayagan.net/blog/tech/README/</loc>
+        <lastmod>2024-06-18T16:57:15.631Z</lastmod>
     </url><url>
         <loc>https://www.senthilnayagan.net/googlee2ec0427acbadbba/</loc>
-        <lastmod>2024-06-18T12:53:52.352Z</lastmod>
+        <lastmod>2024-06-18T16:57:15.707Z</lastmod>
     </url>
 </urlset>

@@ -6,7 +6,7 @@
   <meta name="keywords" content="ownership, borrowing, memory-management">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Senthil Nayagan">
-  <link rel="canonical" href="https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
 <link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
 <link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
@@ -17,7 +17,7 @@
 <link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
 <link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
 </script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Rust’s Ownership and Borrowing Enforce Memory Safety | Senthil Nayagan"><meta property="og:description" content="Rust's ownership and borrowing features prevent us from experiencing memory-related problems. Rust is a great choice when performance matters and it solves pain points that bother many other languages.">
-  <meta property="og:url" content="https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@SenthilNayagan">
@@ -76,16 +76,16 @@
         </li></ul><p class="spacer"></p>
       <p class="post-subtitle">Rust's ownership and borrowing features prevent us from experiencing memory-related problems. Rust is a great choice when performance matters and it solves pain points that bother many other languages.</p>
       <p class="spacer"></p><!-- Share the post --><div class="social-share">
-    <a href="https://api.whatsapp.com/send?text=Rust’s Ownership and Borrowing Enforce Memory Safety%20https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+    <a href="https://api.whatsapp.com/send?text=Rust’s Ownership and Borrowing Enforce Memory Safety%20https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <a href="https://twitter.com/intent/tweet?text=Rust’s Ownership and Borrowing Enforce Memory Safety&url=https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/" target="_blank" aria-label="Share on Twitter" class="social-icon">
+    <a href="https://twitter.com/intent/tweet?text=Rust’s Ownership and Borrowing Enforce Memory Safety&url=https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/" target="_blank" aria-label="Share on Twitter" class="social-icon">
       <i class="fa-brands fa-x-twitter"></i>
     </a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/" target="_blank" aria-label="Share on Facebook" class="social-icon">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/" target="_blank" aria-label="Share on Facebook" class="social-icon">
       <i class="fa-brands fa-facebook"></i>
     </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/&title=Rust’s Ownership and Borrowing Enforce Memory Safety" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/&title=Rust’s Ownership and Borrowing Enforce Memory Safety" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
       <i class="fa-brands fa-linkedin"></i>
     </a>
     <a href="#" id="copy-link" aria-label="Copy link" class="social-icon">
@@ -290,7 +290,7 @@ int y = &amp;x // can't access x from here; creates dangling reference
   </picture></a><figcaption><p class="image-description"><b>Figure 7: </b>Variable binding shows the owner and its value/resource.</p></figcaption></figure>
 <p>With an ownership model, memory is automatically released (freed) once the variable that owns it goes out of scope. When values go out of scope or their lifetimes end for some other reason, their destructors are called. A destructor, particularly an automated destructor, is a function that removes traces of a value from the program by deleting references and frees up memory.</p>
 <h2 id="borrow-checker"><a class="to-underline" href="#borrow-checker">Borrow checker</a></h2>
-<p>Rust implements ownership through the <em>borrow checker</em>, a <a href="https://en.wikipedia.org/wiki/Static_program_analysis" :target="_blank" rel="noopener">static analyzer</a>. The borrow checker is a component in the Rust compiler that keeps track of where data is used throughout the program, and by following ownership rules, it’s able to determine where data needs to be released. Furthermore, the borrow checker ensures that deallocated memory can never be accessed at runtime. It even eliminates the possibility of data races caused by concurrent mutation (modification).</p>
+<p>Rust implements ownership through the <em>borrow checker</em>, a <a href="https://en.wikipedia.org/wiki/Static_program_analysis" target="_blank">static analyzer</a>. The borrow checker is a component in the Rust compiler that keeps track of where data is used throughout the program, and by following ownership rules, it’s able to determine where data needs to be released. Furthermore, the borrow checker ensures that deallocated memory can never be accessed at runtime. It even eliminates the possibility of data races caused by concurrent mutation (modification).</p>
 <h2 id="ownership-rules"><a class="to-underline" href="#ownership-rules">Ownership rules</a></h2>
 <p>As previously stated, the ownership model is built on a set of rules known as the <em>ownership rules</em>, and these rules are relatively straightforward. The Rust compiler (rustc) enforces these rules:</p>
 <ul>
@@ -736,7 +736,7 @@ Deref of y=5
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/"
+      "@id": "https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/"
     },
     "headline": "Rust’s Ownership and Borrowing Enforce Memory Safety",
     "description": "Rust's ownership and borrowing features prevent us from experiencing memory-related problems. Rust is a great choice when performance matters and it solves pain points that bother many other languages.",

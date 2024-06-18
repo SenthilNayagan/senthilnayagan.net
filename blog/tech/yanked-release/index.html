@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <meta charset="utf-8"><title> | Senthil Nayagan</title>
-  <meta name="description" content="A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.">
-  <meta name="keywords" content="Senthil Nayagan">
+  <meta charset="utf-8"><title>What does yanked release mean? | Senthil Nayagan</title>
+  <meta name="description" content="Released and yanked are terms used in software development to indicate the state of a software package or library. These terms specify whether a given package version is suitable for usage or need to be avoided.">
+  <meta name="keywords" content="yanked-release, version-control, release-management, sdlc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Senthil Nayagan">
-  <link rel="canonical" href="https://www.senthilnayagan.net/blog/README/">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/tech/yanked-release/">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
 <link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
 <link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
@@ -16,13 +16,13 @@
 <link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
 <link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
 <link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
-</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content=" | Senthil Nayagan"><meta property="og:description" content="A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.">
-  <meta property="og:url" content="https://www.senthilnayagan.net/blog/README/">
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="What does yanked release mean? | Senthil Nayagan"><meta property="og:description" content="Released and yanked are terms used in software development to indicate the state of a software package or library. These terms specify whether a given package version is suitable for usage or need to be avoided.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/tech/yanked-release/">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@SenthilNayagan">
-  <meta name="twitter:title" content=" | Senthil Nayagan">
-  <meta name="twitter:description" content="A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.">
+  <meta name="twitter:title" content="What does yanked release mean? | Senthil Nayagan">
+  <meta name="twitter:description" content="Released and yanked are terms used in software development to indicate the state of a software package or library. These terms specify whether a given package version is suitable for usage or need to be avoided.">
       <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
       <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
       <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
@@ -65,19 +65,27 @@
   
 <article class="post prose rhythm">
   <header class="post-header">
-    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-18" >June 18, 2024</time> - 1 min read</p>
-    <h1 class="post-title"></h1>
-    <ul class="post-tags" aria-label="Tags"></ul><!-- Share the post --><div class="social-share">
-    <a href="https://api.whatsapp.com/send?text=%20https://www.senthilnayagan.net/blog/README/" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-03-07" >March 07, 2024</time> - 2 min read</p>
+    <h1 class="post-title">What does yanked release mean?</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/yanked-release/" class="post-tag" aria-label="yanked-release">yanked-release</a>
+        </li><li>
+          <a href="/tags/version-control/" class="post-tag" aria-label="version-control">version-control</a>
+        </li><li>
+          <a href="/tags/release-management/" class="post-tag" aria-label="release-management">release-management</a>
+        </li></ul><p class="spacer"></p>
+      <p class="post-subtitle">Released and yanked are terms used in software development to indicate the state of a software package or library. These terms specify whether a given package version is suitable for usage or need to be avoided.</p>
+      <p class="spacer"></p><!-- Share the post --><div class="social-share">
+    <a href="https://api.whatsapp.com/send?text=What does yanked release mean?%20https://www.senthilnayagan.net/blog/tech/yanked-release/" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <a href="https://twitter.com/intent/tweet?text=&url=https://www.senthilnayagan.net/blog/README/" target="_blank" aria-label="Share on Twitter" class="social-icon">
+    <a href="https://twitter.com/intent/tweet?text=What does yanked release mean?&url=https://www.senthilnayagan.net/blog/tech/yanked-release/" target="_blank" aria-label="Share on Twitter" class="social-icon">
       <i class="fa-brands fa-x-twitter"></i>
     </a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.senthilnayagan.net/blog/README/" target="_blank" aria-label="Share on Facebook" class="social-icon">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.senthilnayagan.net/blog/tech/yanked-release/" target="_blank" aria-label="Share on Facebook" class="social-icon">
       <i class="fa-brands fa-facebook"></i>
     </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/README/&title=" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/yanked-release/&title=What does yanked release mean?" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
       <i class="fa-brands fa-linkedin"></i>
     </a>
     <a href="#" id="copy-link" aria-label="Copy link" class="social-icon">
@@ -102,11 +110,36 @@
         });
       });
     });
-  </script></header>
+  </script><figure class="full-width"><a class="outline-offset" href="/assets/images/59UpVpj1gK-1792.webp"><picture class="full-width">
+    <source type="image/webp" srcset="/assets/images/59UpVpj1gK-400.webp 400w, /assets/images/59UpVpj1gK-800.webp 800w, /assets/images/59UpVpj1gK-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/59UpVpj1gK-400.jpeg 400w, /assets/images/59UpVpj1gK-800.jpeg 800w, /assets/images/59UpVpj1gK-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/59UpVpj1gK-1792.jpeg" alt="What does yanked release mean?"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption></figure></header>
   <div class="rhythm">
-    <h1 id="archived"><a class="to-underline" href="#archived">Archived</a></h1>
-<p>Articles that I no longer want to display in my post feed. Can still be viewed if you know the URL/slug.</p>
-
+    <div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-does-yanked-release-mean">What does “yanked” release mean?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#released-vs-yanked">Released vs. yanked</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<hr>
+<h1 id="what-does-yanked-release-mean"><a class="to-underline" href="#what-does-yanked-release-mean">What does “yanked” release mean?</a></h1>
+<p>“Released” and “yanked” are terms used in software development to indicate the state of a software package or library, especially in the context of package management systems like PyPI (Python Package Index), npm (Node.js Package Manager), and others. These terms specify whether a given package version is suitable for usage or need to be avoided. The word “yanked” may not be as well known as “released,” but it is still regularly used.</p>
+<h2 id="released-vs-yanked"><a class="to-underline" href="#released-vs-yanked">Released vs. yanked</a></h2>
+<p>When a version of a software package is “released,” it indicates that this version is considered stable, tested, and suitable for general use. Developers are able to add it as a dependency to their projects. The released software package is expected to be reliable and well-documented.</p>
+<p>When a version of a software package is “yanked,” it means that this version is considered problematic or potentially unstable. It is no longer recommended for use in new projects, and developers are advised to avoid using it. When using <code>pip install</code>, a yanked release is always ignored unless it is the only release that matches a version specifier (using either <code>==</code>).</p>
+<p>There could be various reasons for yanking, which include:</p>
+<ul>
+<li><strong>Security vulnerabilities</strong>: The version may have known security issues.</li>
+<li><strong>Critical bugs</strong>: The version may have critical bugs that could lead to any serious problems.</li>
+<li><strong>Incompatibility</strong>: The version may be incompatible with other packages.</li>
+<li><strong>Legal issues</strong>: There may be licensing or copyright concerns with the version.</li>
+</ul>
+<p>A yanked release can be spotted in the snapshot below taken from the Python Package Index (PyPI). PyPi is a repository of software for the Python programming language. What shows here is the <code>great-expectations</code> library, which is one of the OSS data quality tools. We shouldn’t use the release version <code>0.17.20</code> since it has been flagged as “yanked” for some reason.</p>
+<figure class=""><a class="outline-offset" href="/assets/images/IdZsSEIKwJ-2971.webp"><picture >
+    <source type="image/webp" srcset="/assets/images/IdZsSEIKwJ-400.webp 400w, /assets/images/IdZsSEIKwJ-800.webp 800w, /assets/images/IdZsSEIKwJ-2971.webp 2971w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/IdZsSEIKwJ-400.jpeg 400w, /assets/images/IdZsSEIKwJ-800.jpeg 800w, /assets/images/IdZsSEIKwJ-2971.jpeg 2971w" sizes="100vw">
+    <img width="2971" height="2263" src="/assets/images/IdZsSEIKwJ-2971.jpeg" alt="Yanked release from PyPI"  loading="lazy" decoding="async">
+  </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>Yanked release from PyPI.</p></figcaption></figure>
     <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
 <script type="text/javascript">
   var disqus_shortname = 'senthilnayagan'; 
@@ -143,12 +176,12 @@
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.senthilnayagan.net/blog/README/"
+      "@id": "https://www.senthilnayagan.net/blog/tech/yanked-release/"
     },
-    "headline": "",
-    "description": "",
+    "headline": "What does yanked release mean?",
+    "description": "Released and yanked are terms used in software development to indicate the state of a software package or library. These terms specify whether a given package version is suitable for usage or need to be avoided.",
     
-    "datePublished": "2024-06-18T12:53:52.276Z",
+    "datePublished": "2024-03-07T00:00:00.000Z",
     "author": {
       "@type": "Person",
       "name": "Senthil Nayagan"

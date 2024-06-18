@@ -11,9 +11,9 @@
     <email>hello@senthilnayagan.net</email>
   </author>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/primitive-obsession/</id>
+    <id>https://www.senthilnayagan.net/blog/tech/primitive-obsession/</id>
     <title>Primitive Obsession - The Hidden Enemy of Clean Code</title>
-    <link href="https://www.senthilnayagan.net/blog/primitive-obsession/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/primitive-obsession/"/>
     <published>2024-06-18T00:00:00.000Z</published>
     <updated>2024-06-18T00:00:00.000Z</updated>
     <category term="primitive-obsession" />
@@ -23,9 +23,20 @@
     <content type="html">Primitive Obsession is a code smell where primitives are overused for domain concepts, leading to poor encapsulation and maintainability issues.</content>
   </entry>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/introduction-to-rust-closure/</id>
+    <id>https://www.senthilnayagan.net/blog/personal/unpleasant-experience-with-crocs-india/</id>
+    <title>My Unpleasant Experience with Crocs India - A Cautionary Tale</title>
+    <link href="https://www.senthilnayagan.net/blog/personal/unpleasant-experience-with-crocs-india/"/>
+    <published>2024-06-18T00:00:00.000Z</published>
+    <updated>2024-06-18T00:00:00.000Z</updated>
+    <category term="crocs-india" />
+    <category term="customer-care" />
+    <category term="crocs" />
+    <content type="html">I recently had an incredibly frustrating experience with crocs India, which I feel compelled to share as a cautionary tale for anyone considering making a purchase from their website.</content>
+  </entry>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/tech/introduction-to-rust-closure/</id>
     <title>Introduction to Closure in Rust</title>
-    <link href="https://www.senthilnayagan.net/blog/introduction-to-rust-closure/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/introduction-to-rust-closure/"/>
     <published>2024-06-16T00:00:00.000Z</published>
     <updated>2024-06-16T00:00:00.000Z</updated>
     <category term="closure" />
@@ -33,9 +44,9 @@
     <content type="html">A closure is a programming construct that allows a function to capture and reference variables and parameters from its surrounding lexical scope. Closures offer many benefits and are a key part of the language&#39;s expressive and flexible features.</content>
   </entry>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/algorithms-and-data-structures-simplified-for-beginners/</id>
+    <id>https://www.senthilnayagan.net/blog/tech/algorithms-and-data-structures-simplified-for-beginners/</id>
     <title>Algorithms and Data Structures Simplified for Beginners</title>
-    <link href="https://www.senthilnayagan.net/blog/algorithms-and-data-structures-simplified-for-beginners/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/algorithms-and-data-structures-simplified-for-beginners/"/>
     <published>2024-06-15T00:00:00.000Z</published>
     <updated>2024-06-15T00:00:00.000Z</updated>
     <category term="algorithms-and-data-structures" />
@@ -44,9 +55,9 @@
     <content type="html">Data structures and algorithms are fundamental concepts in computer science that involve organizing and manipulating data efficiently. Data structures such as arrays, linked lists, stacks, queues, trees, graphs, and hash tables provide various ways to store and access data. Algorithms, including sorting, searching, dynamic programming, graph algorithms, and divide and conquer techniques, are step-by-step procedures for solving problems and manipulating these data structures. Proficiency in data structures and algorithms is essential for developing software that performs well and uses resources effectively, enabling efficient data management and problem-solving.</content>
   </entry>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/</id>
+    <id>https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/</id>
     <title>Rust’s Ownership and Borrowing Enforce Memory Safety</title>
-    <link href="https://www.senthilnayagan.net/blog/rust-ownership-and-borrowing/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/"/>
     <published>2024-06-12T00:00:00.000Z</published>
     <updated>2024-06-12T00:00:00.000Z</updated>
     <category term="ownership" />
@@ -55,9 +66,9 @@
     <content type="html">Rust&#39;s ownership and borrowing features prevent us from experiencing memory-related problems. Rust is a great choice when performance matters and it solves pain points that bother many other languages.</content>
   </entry>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/yanked-release/</id>
+    <id>https://www.senthilnayagan.net/blog/tech/yanked-release/</id>
     <title>What does yanked release mean?</title>
-    <link href="https://www.senthilnayagan.net/blog/yanked-release/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/yanked-release/"/>
     <published>2024-03-07T00:00:00.000Z</published>
     <updated>2024-03-07T00:00:00.000Z</updated>
     <category term="yanked-release" />
@@ -66,9 +77,9 @@
     <content type="html">Released and yanked are terms used in software development to indicate the state of a software package or library. These terms specify whether a given package version is suitable for usage or need to be avoided.</content>
   </entry>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/windowing-in-kafka-streams/</id>
+    <id>https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/</id>
     <title>Windowing in Kafka Streams</title>
-    <link href="https://www.senthilnayagan.net/blog/windowing-in-kafka-streams/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/"/>
     <published>2024-02-25T00:00:00.000Z</published>
     <updated>2024-02-25T00:00:00.000Z</updated>
     <category term="kafka-streams" />
@@ -77,9 +88,9 @@
     <content type="html">Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.</content>
   </entry>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/terraform-basics/</id>
+    <id>https://www.senthilnayagan.net/blog/tech/terraform-basics/</id>
     <title>Getting Started with Terraform - Understanding the Basics</title>
-    <link href="https://www.senthilnayagan.net/blog/terraform-basics/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/terraform-basics/"/>
     <published>2024-01-16T00:00:00.000Z</published>
     <updated>2024-01-16T00:00:00.000Z</updated>
     <category term="terraform" />
@@ -88,9 +99,9 @@
     <content type="html">Terraform is an open source infrastructure-as-code tool that allows us to programmatically provision the physical resources required for an application to run.</content>
   </entry>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/singleton-pattern-or-object/</id>
+    <id>https://www.senthilnayagan.net/blog/tech/singleton-pattern-or-object/</id>
     <title>Singleton Pattern</title>
-    <link href="https://www.senthilnayagan.net/blog/singleton-pattern-or-object/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/singleton-pattern-or-object/"/>
     <published>2024-01-16T00:00:00.000Z</published>
     <updated>2024-01-16T00:00:00.000Z</updated>
     <category term="design-patterns" />
@@ -99,9 +110,9 @@
     <content type="html">The singleton pattern ensures controlled access to a single instance of a class. While it offers significant benefits in terms of resource management and access control, developers must be mindful of its downsides, such as potential scalability issues and the introduction of global states. When used carefully, it can be an invaluable design choice for managing resources and coordinating actions across complex systems.</content>
   </entry>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/anti-pattern/</id>
+    <id>https://www.senthilnayagan.net/blog/tech/anti-pattern/</id>
     <title>Anti-Pattern</title>
-    <link href="https://www.senthilnayagan.net/blog/anti-pattern/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/anti-pattern/"/>
     <published>2024-01-16T00:00:00.000Z</published>
     <updated>2024-01-16T00:00:00.000Z</updated>
     <category term="anti-pattern" />
@@ -109,9 +120,9 @@
     <content type="html">Anti-patterns at first seem to be quick and reasonable, they typically have adverse effects in the future. They are design and code smells. It affects our software badly and adds technical debt. We should avoid them at all costs.</content>
   </entry>
   <entry>
-    <id>https://www.senthilnayagan.net/blog/envelope-encryption/</id>
+    <id>https://www.senthilnayagan.net/blog/tech/envelope-encryption/</id>
     <title>Envelope Encryption - Putting Your Encryption Key in an Envelope Is the Safer Option</title>
-    <link href="https://www.senthilnayagan.net/blog/envelope-encryption/"/>
+    <link href="https://www.senthilnayagan.net/blog/tech/envelope-encryption/"/>
     <published>2022-07-22T00:00:00.000Z</published>
     <updated>2022-07-22T00:00:00.000Z</updated>
     <category term="envelope-encryption" />
