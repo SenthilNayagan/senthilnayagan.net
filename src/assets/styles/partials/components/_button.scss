@@ -14,9 +14,22 @@
   }
 }
 
+/* Post comments button - Start */
+:root {
+  --button-bg: rgb(128, 128, 128); /* Default background color for light theme */
+  --button-color: hsl(0deg, 0%, 100%); /* Default text color for light theme */
+  --button-hover-bg: #444; /* Hover background color for light theme */
+}
+
+[data-theme="dark"] {
+  --button-bg: #444; /* Background color for dark theme */
+  --button-color: hsl(0deg, 0%, 100%); /* Text color for dark theme */
+  --button-hover-bg: rgb(128, 128, 128); /* Hover background color for dark theme */
+}
+
 .comments-button {
-  background-color: rgb(128 128 128);
-  color: hsl(0deg 0% 100%);
+  background-color: var(--button-bg);
+  color: var(--button-color);
   border: none;
   padding: 10px 20px;
   text-align: center;
@@ -26,9 +39,10 @@
   margin: 20px 0; /* Add margin to create space */
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .comments-button:hover {
-  background-color: #444;
+  background-color: var(--button-hover-bg);
 }
+/* Post comments button - End */
