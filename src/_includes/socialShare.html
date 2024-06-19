@@ -8,15 +8,21 @@
     <a href="https://twitter.com/intent/tweet?text={{ title }}&url={{ page.url | toAbsoluteUrl }}" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon">
       <i class="fa-brands fa-x-twitter"></i>
     </a>
-    <!-- <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | toAbsoluteUrl }}" title="Share on Facebook" target="_blank" aria-label="Share on Facebook" class="social-icon">
-      <i class="fa-brands fa-facebook"></i>
-    </a> -->
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | toAbsoluteUrl }}&title={{ title }}" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
-      <i class="fa-brands fa-linkedin"></i>
-    </a>
-    <a href="https://www.reddit.com/submit?url={{ page.url | toAbsoluteUrl }}&title={{ title }}" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
-      <i class="fa-brands fa-reddit"></i>
-    </a>
+    {%- if page.url contains "/blog/personal/" -%}
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | toAbsoluteUrl }}" title="Share on Facebook" target="_blank" aria-label="Share on Facebook" class="social-icon">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+    {%- endif -%}
+
+    {%- if page.url contains "/blog/tech/" -%}
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | toAbsoluteUrl }}&title={{ title }}" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://www.reddit.com/submit?url={{ page.url | toAbsoluteUrl }}&title={{ title }}" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
+        <i class="fa-brands fa-reddit"></i>
+      </a>
+    {%- endif -%}
+
     <a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
       <i class="fa-solid fa-link"></i>
     </a>
