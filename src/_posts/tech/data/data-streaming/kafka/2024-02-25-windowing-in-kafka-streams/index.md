@@ -1,5 +1,5 @@
 ---
-title: Windowing in Kafka Streams
+title: Unlocking the Power of Windowing in Kafka Streams
 description: Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.
 keywords: [kafka-streams, kafka, windowing]
 categories: [kafka-streams, kafka, windowing]

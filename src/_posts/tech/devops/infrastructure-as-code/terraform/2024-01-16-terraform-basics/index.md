@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Terraform - Understanding the Basics
+title: "Getting Started with Terraform: Understanding the Basics"
 description: Terraform is an open source infrastructure-as-code tool that allows us to programmatically provision the physical resources required for an application to run.
 keywords: [terraform, infrastructure-as-code, iac]
 categories: [terraform, infrastructure-as-code, iac]

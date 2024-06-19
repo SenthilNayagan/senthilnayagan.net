@@ -1,6 +1,6 @@
 ---
-title: Primitive Obsession - The Hidden Enemy of Clean Code
-description: Primitive Obsession is a code smell where primitives are overused for domain concepts, leading to poor encapsulation and maintainability issues.
+title: "Primitive Obsession: The Hidden Enemy of Clean Code"
+description: Primitive obsession is a code smell where primitives are overused for domain concepts, leading to poor encapsulation and maintainability issues.
 keywords: [primitive-obsession, code-smell, code-quality, clean-code]
 categories: [primitive-obsession, code-smell, code-quality, clean-code]
 coverImage: ./images/primitive-obsession.webp
