@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <meta charset="utf-8"><title>Windowing in Kafka Streams | Senthil Nayagan</title>
+  <meta charset="utf-8"><title>Unlocking the Power of Windowing in Kafka Streams | Senthil Nayagan</title>
   <meta name="description" content="Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.">
   <meta name="keywords" content="kafka-streams, kafka, windowing">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,12 +16,12 @@
 <link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
 <link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
 <link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
-</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Windowing in Kafka Streams | Senthil Nayagan"><meta property="og:description" content="Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.">
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Unlocking the Power of Windowing in Kafka Streams | Senthil Nayagan"><meta property="og:description" content="Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.">
   <meta property="og:url" content="https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@SenthilNayagan">
-  <meta name="twitter:title" content="Windowing in Kafka Streams | Senthil Nayagan">
+  <meta name="twitter:title" content="Unlocking the Power of Windowing in Kafka Streams | Senthil Nayagan">
   <meta name="twitter:description" content="Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.">
       <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
       <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
@@ -66,7 +66,7 @@
 <article class="post prose rhythm">
   <header class="post-header">
     <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-02-25" >February 25, 2024</time> - 27 min read</p>
-    <h1 class="post-title">Windowing in Kafka Streams</h1>
+    <h1 class="post-title">Unlocking the Power of Windowing in Kafka Streams</h1>
     <ul class="post-tags" aria-label="Tags"><li>
           <a href="/tags/kafka-streams/" class="post-tag" aria-label="kafka-streams">kafka-streams</a>
         </li><li>
@@ -76,19 +76,25 @@
         </li></ul><p class="spacer"></p>
       <p class="post-subtitle">Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.</p>
       <p class="spacer"></p><!-- Share the post --><div class="social-share">
-    <a href="https://api.whatsapp.com/send?text=Windowing in Kafka Streams%20https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+    <a href="mailto:?subject=Unlocking the Power of Windowing in Kafka Streams&body=https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon">
+      <i class="fa-regular fa-envelope"></i>
+    </a>
+    <a href="https://api.whatsapp.com/send?text=Unlocking the Power of Windowing in Kafka Streams%20https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/" title="Share on WhatsApp" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <a href="https://twitter.com/intent/tweet?text=Windowing in Kafka Streams&url=https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/" target="_blank" aria-label="Share on Twitter" class="social-icon">
+    <a href="https://twitter.com/intent/tweet?text=Unlocking the Power of Windowing in Kafka Streams&url=https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon">
       <i class="fa-brands fa-x-twitter"></i>
     </a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/" target="_blank" aria-label="Share on Facebook" class="social-icon">
+    <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/" title="Share on Facebook" target="_blank" aria-label="Share on Facebook" class="social-icon">
       <i class="fa-brands fa-facebook"></i>
-    </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/&title=Windowing in Kafka Streams" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+    </a> -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/&title=Unlocking the Power of Windowing in Kafka Streams" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
       <i class="fa-brands fa-linkedin"></i>
     </a>
-    <a href="#" id="copy-link" aria-label="Copy link" class="social-icon">
+    <a href="https://www.reddit.com/submit?url=https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/&title=Unlocking the Power of Windowing in Kafka Streams" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
+      <i class="fa-brands fa-reddit"></i>
+    </a>
+    <a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
       <i class="fa-solid fa-link"></i>
     </a>
     <span id="copy-message" class="copy-message">Copied to clipboard</span>
@@ -113,7 +119,7 @@
   </script><figure class="full-width"><a class="outline-offset" href="/assets/images/BJ8HA91nWs-1792.webp"><picture class="full-width">
     <source type="image/webp" srcset="/assets/images/BJ8HA91nWs-400.webp 400w, /assets/images/BJ8HA91nWs-800.webp 800w, /assets/images/BJ8HA91nWs-1792.webp 1792w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/BJ8HA91nWs-400.jpeg 400w, /assets/images/BJ8HA91nWs-800.jpeg 800w, /assets/images/BJ8HA91nWs-1792.jpeg 1792w" sizes="100vw">
-    <img width="1792" height="1024" src="/assets/images/BJ8HA91nWs-1792.jpeg" alt="Windowing in Kafka Streams"  loading="lazy" decoding="async">
+    <img width="1792" height="1024" src="/assets/images/BJ8HA91nWs-1792.jpeg" alt="Unlocking the Power of Windowing in Kafka Streams"  loading="lazy" decoding="async">
   </picture></a><figcaption><p class="image-description">It's a visual metaphor for the nuanced working of Kafka Streams' windowed aggregation feature.</p><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption></figure></header>
   <div class="rhythm">
     <div class="relative">
@@ -513,7 +519,7 @@ countStream<span class="token punctuation">.</span><span class="token function">
       "@type": "WebPage",
       "@id": "https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/"
     },
-    "headline": "Windowing in Kafka Streams",
+    "headline": "Unlocking the Power of Windowing in Kafka Streams",
     "description": "Windowing refers to the process of dividing a continuous stream of data into discrete segments, or windows, based on time. These windows then serve as the basis for applying computational operations, such as aggregations or transformations, to the data contained within them.",
     
     "datePublished": "2024-02-25T00:00:00.000Z",

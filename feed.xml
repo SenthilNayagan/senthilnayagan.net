@@ -12,7 +12,7 @@
   </author>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/primitive-obsession/</id>
-    <title>Primitive Obsession - The Hidden Enemy of Clean Code</title>
+    <title>Primitive Obsession: The Hidden Enemy of Clean Code</title>
     <link href="https://www.senthilnayagan.net/blog/tech/primitive-obsession/"/>
     <published>2024-06-18T00:00:00.000Z</published>
     <updated>2024-06-18T00:00:00.000Z</updated>
@@ -20,7 +20,7 @@
     <category term="code-smell" />
     <category term="code-quality" />
     <category term="clean-code" />
-    <content type="html">Primitive Obsession is a code smell where primitives are overused for domain concepts, leading to poor encapsulation and maintainability issues.</content>
+    <content type="html">Primitive obsession is a code smell where primitives are overused for domain concepts, leading to poor encapsulation and maintainability issues.</content>
   </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/personal/unpleasant-experience-with-crocs-india/</id>
@@ -35,7 +35,7 @@
   </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/introduction-to-rust-closure/</id>
-    <title>Introduction to Closure in Rust</title>
+    <title>Unlocking the Magic of Closures in Rust</title>
     <link href="https://www.senthilnayagan.net/blog/tech/introduction-to-rust-closure/"/>
     <published>2024-06-16T00:00:00.000Z</published>
     <updated>2024-06-16T00:00:00.000Z</updated>
@@ -56,7 +56,7 @@
   </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/</id>
-    <title>Rust’s Ownership and Borrowing Enforce Memory Safety</title>
+    <title>The Secret to Unbreakable Memory Safety: Rust&#39;s Ownership and Borrowing</title>
     <link href="https://www.senthilnayagan.net/blog/tech/rust-ownership-and-borrowing/"/>
     <published>2024-06-12T00:00:00.000Z</published>
     <updated>2024-06-12T00:00:00.000Z</updated>
@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/</id>
-    <title>Windowing in Kafka Streams</title>
+    <title>Unlocking the Power of Windowing in Kafka Streams</title>
     <link href="https://www.senthilnayagan.net/blog/tech/windowing-in-kafka-streams/"/>
     <published>2024-02-25T00:00:00.000Z</published>
     <updated>2024-02-25T00:00:00.000Z</updated>
@@ -89,7 +89,7 @@
   </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/terraform-basics/</id>
-    <title>Getting Started with Terraform - Understanding the Basics</title>
+    <title>Getting Started with Terraform: Understanding the Basics</title>
     <link href="https://www.senthilnayagan.net/blog/tech/terraform-basics/"/>
     <published>2024-01-16T00:00:00.000Z</published>
     <updated>2024-01-16T00:00:00.000Z</updated>
