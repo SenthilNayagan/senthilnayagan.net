@@ -29,6 +29,13 @@ Concerned and eager to correct this mistake, I immediately tried calling Crocs�
 
 I tried calling customer care again the following day, only to be met with the same silence. Frustrated and curious, I turned to Google to see if others had faced similar issues. To my surprise and disappointment, I discovered numerous complaints from other customers who had also found it impossible to reach Crocs’ customer support. It seemed that Crocs’ customer service was notorious for being unreachable.
 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">No one answering calls on customer care. No option to exchange my clogs so had to return the earlier one and order another pair. Been 10 days of my return. Refund not initiated yet. Is this how you work things out ? <a href="https://twitter.com/Crocs?ref_src=twsrc%5Etfw">@Crocs</a> <a href="https://twitter.com/CrocsIndia?ref_src=twsrc%5Etfw">@CrocsIndia</a></p>&mdash; Rimjhim Sharma (@rimjhimsharma_) <a href="https://twitter.com/rimjhimsharma_/status/1794973740083650830?ref_src=twsrc%5Etfw">May 27, 2024</a></blockquote>
+<p class="spacer"></p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hey Crocs, seems like you guys dont want me to wear crocs. Its been 3 days, i ordered from ur official site and it is still showing processing. When it will be processed and delivered. Ur customer care never answers nor U reply on email. Order id # 163431467</p>&mdash; Kapil Jain (@Kapil_J13) <a href="https://twitter.com/Kapil_J13/status/1800771557960331620?ref_src=twsrc%5Etfw">June 12, 2024</a></blockquote>
+<p class="spacer"></p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Before placing any order with them.. try calling their customer care number mentioned in the website 022 6835 3126 .. No one would respond to any of your calls or emails.. Returning your product is next to impossible..</p>&mdash; Wanderlust (@shanaz1369) <a href="https://twitter.com/shanaz1369/status/1734094977762983951?ref_src=twsrc%5Etfw">December 11, 2023</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 # The unfortunate resolution
 
 With no other options left, I resigned myself to the fact that my slides would be delivered to my billing address. This meant that my elderly parents had to take on the burden of arranging for the slides to be shipped to my current address, incurring additional courier charges. Beyond the financial cost, it was the inconvenience and effort my parents had to endure that frustrated me the most.
