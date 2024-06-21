@@ -1,8 +1,22 @@
-<fieldset id="theme-picker">
-  <legend class="screen-reader-only">Theme:</legend>
-  <span class="visible-label" aria-hidden="true">Theme:</span>
-  <label class="switch">
-    <input type="checkbox" id="theme-toggle">
-    <span class="slider round"></span>
-  </label>
-</fieldset>
+<div id="theme-picker" class="theme-toggle">
+  <i id="theme-icon" class="fa-solid fa-moon"></i>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    // Set the initial theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeIcon.classList.toggle('fa-sun', currentTheme === 'dark');
+    themeIcon.classList.toggle('fa-moon', currentTheme === 'light');
+
+    themeIcon.addEventListener('click', () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeIcon.classList.toggle('fa-sun', newTheme === 'dark');
+      themeIcon.classList.toggle('fa-moon', newTheme === 'light');
+    });
+  });
+</script>
