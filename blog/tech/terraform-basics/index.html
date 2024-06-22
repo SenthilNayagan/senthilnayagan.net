@@ -560,7 +560,7 @@ Hello, Terraform
 <p>In this section, let’s perform a series of exercises.</p>
 <h3 id="exercise-1-create-an-aws-ec2-instance"><a class="to-underline" href="#exercise-1-create-an-aws-ec2-instance">Exercise #1 - Create an AWS EC2 instance</a></h3>
 <p>Create a Terraform configuration file with the content as shown below and save it in the <code>main.tf</code> file:</p>
-<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">provider "aws" {
+<pre class="language-plaintext"><code data-copyable="true" tabindex="0" class="language-plaintext">provider "aws" {
   profile    = "default"
   region     = "us-east-1"
 }
@@ -602,7 +602,7 @@ resource "aws_instance" "example" {
 <li>We must enable <em>Compute Engine API</em> by visiting the Google Cloud console’s Compute Engine page.</li>
 </ul>
 <p>Create a Terraform configuration file with the content as shown below and save it in the <code>main.tf</code> file:</p>
-<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">provider "google" {
+<pre class="language-plaintext"><code data-copyable="true" tabindex="0" class="language-plaintext">provider "google" {
 	credentials = file("proud-sweep-359704-f460da53c31e.json")
 	project = "proud-sweep-359704"
 	region = "us-central1"

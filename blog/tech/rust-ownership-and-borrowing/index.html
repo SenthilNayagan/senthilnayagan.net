@@ -153,7 +153,7 @@
     <img width="2000" height="1333" src="/assets/images/BXiOhmkw8n-2000.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
   </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>Stealing.</p><p class="image-credits"><b>Image Credits: </b>Designed by Freepik</p></figcaption></figure>
 <p>Let’s use a pseudocode to see what valid memory is.</p>
-<pre class="language-text"><code tabindex="0" class="language-text">// pseudocode #1 - shows valid reference
+<pre class="language-text"><code data-copyable="true" tabindex="0" class="language-text">// pseudocode #1 - shows valid reference
 { // scope starts here
   int x = 5  
   int y = &amp;x
@@ -162,7 +162,7 @@
 <p>In the above pseudocode, we’ve created a variable <code>x</code> assigned with a value of <code>10</code>. We use the <code>&amp;</code> operator or keyword to create a reference. Thus, the <code>&amp;x</code> syntax lets us create a reference that refers to the value of <code>x</code>. To put it simply, we’ve created a variable <code>x</code> that owns <code>5</code> and a variable <code>y</code> that is a reference to <code>x</code>.</p>
 <p>Since both variables <code>x</code> and <code>y</code> are in the same block or scope, variable <code>y</code> has a valid reference that refers to the value of <code>x</code>. As a result, variable <code>y</code> has a value of <code>5</code>.</p>
 <p>Take a look at the below pseudocode. As we can see, the scope of <code>x</code> is limited to the block in which it’s created. We get into dangling references when we try to access <code>x</code> outside of its scope. Dangling reference…? What exactly is it?</p>
-<pre class="language-text"><code tabindex="0" class="language-text">// pseudocode #2 - shows invalid reference aka dangling reference
+<pre class="language-text"><code data-copyable="true" tabindex="0" class="language-text">// pseudocode #2 - shows invalid reference aka dangling reference
 { // scope starts here
   int x = 5
 } // scope ends here
@@ -331,7 +331,7 @@ int y = &amp;x // can't access x from here; creates dangling reference
 <blockquote class="rhythm">
 <p>It’s worth noting that primitive types with fixed-size implement the copy trait to make copies.</p>
 </blockquote>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> y <span class="token operator">=</span> x<span class="token punctuation">;</span>
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// hello</span>
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">// hello</span>
@@ -348,7 +348,7 @@ int y = &amp;x // can't access x from here; creates dangling reference
 <p>Duplicating data increases program runtime and memory consumption. Therefore, copying isn’t a good fit for large chunks of data.</p>
 <h3 id="move"><a class="to-underline" href="#move">move</a></h3>
 <p>In Rust terminology, “move” means the ownership of the memory is transferred to another owner. Consider the case of complex types that are stored on the heap.</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> s2 <span class="token operator">=</span> s1<span class="token punctuation">;</span>
 </code></pre>
 <p>We might assume that the second line (i.e. <code>let s2 = s1;</code>) would make a copy of the value in <code>s1</code> and bind it to <code>s2</code>. But this is not the case.</p>
@@ -380,7 +380,7 @@ int y = &amp;x // can't access x from here; creates dangling reference
 <p>As previously stated, when we assign <code>s1</code> to <code>s2</code>, variable <code>s2</code> receives a copy of <code>s1</code>’s metadata (pointer, length, and capacity). But what happens to <code>s1</code> once it’s been assigned to <code>s2</code>? Rust no longer considers <code>s1</code> to be valid. Yes, you read that correctly.</p>
 <p>Let’s think about this <code>let s2 = s1</code> assignment for a moment. Consider what happens if Rust still considers <code>s1</code> as valid after this assignment. When <code>s2</code> and <code>s1</code> go out of scope, they will both try to free the same memory. Uh-oh, that’s not good. This is referred to as a <em>double free error</em>, and it is one of the memory safety bugs. Memory corruption can result from freeing memory twice, posing a security risk.</p>
 <p>To ensure memory safety, Rust considered <code>s1</code> invalid after the line <code>let s2 = s1</code>. Therefore, when <code>s1</code> is no longer in scope, Rust does not need to release anything. Examine what happens if we try to use <code>s1</code> after <code>s2</code> has been created.</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> s2 <span class="token operator">=</span> s1<span class="token punctuation">;</span>
 
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}, world!"</span><span class="token punctuation">,</span> s1<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Won't compile. We'll get an error.</span>
@@ -412,7 +412,7 @@ For more information about this error, try `rustc --explain E0382`.
 <p>When only <code>s2</code> remains valid, it alone will free the memory when it goes out of scope. As a result, the potential for a <em>double free error</em> is eliminated in Rust. That’s wonderful!</p>
 <h3 id="clone"><a class="to-underline" href="#clone">clone</a></h3>
 <p>If we <em>do</em> want to deeply copy the heap data of the <code>String</code>, not just the stack data, we can use a method called <code>clone</code>. Here’s an example of how to use the clone method:</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> s2 <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"s1 = {}, s2 = {}"</span><span class="token punctuation">,</span> s1<span class="token punctuation">,</span> s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -427,7 +427,7 @@ For more information about this error, try `rustc --explain E0382`.
 <p>By now, we should be able to distinguish between copy, move, and clone. Let’s look at each ownership rule in more detail now.</p>
 <h2 id="ownership-rule-1"><a class="to-underline" href="#ownership-rule-1">Ownership rule 1</a></h2>
 <p>Each value has a variable called its owner. It implies that all values are owned by variables. In the example below, variable <code>s</code> owns the pointer to our string, and in the second line, variable <code>x</code> owns a value 1.</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"Rule 1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"Rule 1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> n <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 </code></pre>
 <h2 id="ownership-rule-2"><a class="to-underline" href="#ownership-rule-2">Ownership rule 2</a></h2>
@@ -438,7 +438,7 @@ For more information about this error, try `rustc --explain E0382`.
     <img width="1480" height="947" src="/assets/images/bAltImWMG7-1480.jpeg" alt="Designed by Freepik"  loading="lazy" decoding="async">
   </picture></a><figcaption><p class="image-description"><b>Figure 14: </b>A guy walking with dogs.</p></figcaption></figure>
 <p>Let’s look at the example using <em>primitives</em>, which are fixed-size known at compile time.</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> y <span class="token operator">=</span> x<span class="token punctuation">;</span>
 <span class="token keyword">let</span> z <span class="token operator">=</span> x<span class="token punctuation">;</span>
 </code></pre>
@@ -453,7 +453,7 @@ For more information about this error, try `rustc --explain E0382`.
 <p>At this point, the behaviour of <em><a href="https://en.wikipedia.org/wiki/Name_binding" rel="noopener">variable binding</a></em> is similar to that of other programming languages. To illustrate the rules of ownership, we need a complex data type.</p>
 <p>Let’s look at data that is stored on the heap and see how Rust understands when to clean it up; the String type is an excellent example for this use case. We’ll focus on String’s ownership-related behaviour; these principles, however, also apply to other complex data types.</p>
 <p>The complex type, as we know, manages data on the heap, and its contents are unknown at compile time. Let’s look at the same example we have seen before:</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> s2 <span class="token operator">=</span> s1<span class="token punctuation">;</span>
 
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}, world!"</span><span class="token punctuation">,</span> s1<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Won't compile. We'll get an error.</span>
@@ -479,7 +479,7 @@ For more information about this error, try `rustc --explain E0382`.
 </blockquote>
 <h2 id="ownership-rule-3"><a class="to-underline" href="#ownership-rule-3">Ownership rule 3</a></h2>
 <p>When the owner goes out of scope, the value will be dropped. Consider the preceding case again:</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> s2 <span class="token operator">=</span> s1<span class="token punctuation">;</span>
 
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}, world!"</span><span class="token punctuation">,</span> s1<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Won't compile. The value of s1 has already been dropped.</span>
@@ -499,7 +499,7 @@ For more information about this error, try `rustc --explain E0382`.
 </ol>
 <h3 id="passing-value-to-a-function"><a class="to-underline" href="#passing-value-to-a-function">Passing value to a function</a></h3>
 <p>Passing a value to a function has semantics that are similar to assigning a value to a variable. Just like assignment, passing a variable to a function causes it to move or copy. Take a look at this example, which shows both the <em>copy</em> and <em>move</em> use cases:</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// s comes into scope</span>
 
     <span class="token function">move_ownership</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// s's value moves into the function...</span>
@@ -529,7 +529,7 @@ For more information about this error, try `rustc --explain E0382`.
 <p>If we tried to use <code>s</code> after the call to <code>move_ownership</code>, Rust would throw a compile-time error.</p>
 <h3 id="returning-from-a-function"><a class="to-underline" href="#returning-from-a-function">Returning from a function</a></h3>
 <p>Returning values can also transfer ownership. The example below shows a function that returns a value, with annotations identical to those in the previous example.</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token function">gives_ownership</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// gives_ownership moves its return</span>
                                         <span class="token comment">// value into s1</span>
 
@@ -572,7 +572,7 @@ For more information about this error, try `rustc --explain E0382`.
   </picture></a><figcaption><p class="image-description"><b>Figure 17: </b>Woman going through nervous breakdown.</p></figcaption></figure>
 <p>It’s annoying that everything we pass into a function must be returned if we want to use it again, in addition to any other data returned by that function. What if we want a function to use a value without taking ownership of it?</p>
 <p>Consider the following example. The below code will result in an error because variable, <code>v</code> can no longer be used by the <code>main</code> function (in <code>println!</code>) that initially owned it once the ownership is transferred to the <code>print_vector</code> function.</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
    <span class="token keyword">let</span> v <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
    <span class="token function">print_vector</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// this line gives us an error</span>
@@ -594,7 +594,7 @@ For more information about this error, try `rustc --explain E0382`.
 <p>When we borrow a value, we reference its memory address with the <code>&amp;</code> operator. A <code>&amp;</code> is called a <em>reference</em>. The references themselves are nothing special—under the hood, they’re just addresses. For those familiar with C pointers, a reference is a <em>pointer</em> to memory that contains a value that belongs to (aka <em>owned</em> by) another variable. It’s worth noting that a reference can’t be null in Rust. In fact, a <em>reference is a pointer</em>; it’s the most basic type of pointer. There is just one type of pointer in most languages, but Rust has different kinds of pointers, rather than just one. Pointers and their various kinds are a different topic that will be discussed separately.</p>
 <p>To put it simply, Rust refers to creating a reference to some value as borrowing the value, which must eventually return to its owner.</p>
 <p>Let’s look at a simple example below:</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token operator">&amp;</span>x<span class="token punctuation">;</span>
 
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Value y={}"</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -602,7 +602,7 @@ For more information about this error, try `rustc --explain E0382`.
 <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Deref of y={}"</span><span class="token punctuation">,</span> <span class="token operator">*</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The above produces the following output:</p>
-<pre class="language-text"><code tabindex="0" class="language-text">Value y=5
+<pre class="language-text"><code data-copyable="true" tabindex="0" class="language-text">Value y=5
 Address of y=0x7fff6c0f131c
 Deref of y=5
 </code></pre>
@@ -611,7 +611,7 @@ Deref of y=5
 <p><strong>Dereference:</strong> In the above code, “*” (i.e., an asterisk) is a <em>dereference</em> operator that operates on a reference variable. This dereferencing operator allows us to get the value stored in the memory address of a pointer.</p>
 </blockquote>
 <p>Let’s look at how a function can use a value without taking ownership through borrowing:</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
    <span class="token keyword">let</span> v <span class="token operator">=</span> <span class="token macro property">vec!</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
    <span class="token function">print_vector</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// can access v here as references can't move the value</span>
@@ -624,7 +624,7 @@ Deref of y=5
 <p>We are passing a reference (<code>&amp;v</code>) (aka <em>pass-by-reference</em>) to the <code>print_vector</code> function rather than transferring the ownership (i.e., <em>pass-by-value</em>). As a result, after calling the <code>print_vector</code> function in the main function, we can access <code>v</code>.</p>
 <h2 id="following-the-pointer-to-the-value-with-the-dereference-operator"><a class="to-underline" href="#following-the-pointer-to-the-value-with-the-dereference-operator">Following the pointer to the value with the dereference operator</a></h2>
 <p>As stated previously, a reference is a kind of pointer, and a pointer may be thought of as an arrow pointing to a value stored elsewhere. Consider the below example:</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token operator">&amp;</span>x<span class="token punctuation">;</span>
 
 <span class="token macro property">assert_eq!</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -648,14 +648,14 @@ Deref of y=5
 <p>Because they’re different types, comparing a number and a reference to a number isn’t permitted. Hence, we must use the dereference operator to follow the reference to the value it’s pointing to.</p>
 <h2 id="references-are-immutable-by-default"><a class="to-underline" href="#references-are-immutable-by-default">References are immutable by default</a></h2>
 <p>Like variable, a reference is immutable by default—it can be made mutable with <code>mut</code>, but only if its owner is also mutable:</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> <span class="token keyword">mut</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> <span class="token keyword">mut</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> x<span class="token punctuation">;</span>
 </code></pre>
 <blockquote class="rhythm">
 <p>Immutable references are also known as <em>shared references</em>, whereas mutable references are also known as <em>exclusive references</em>.</p>
 </blockquote>
 <p>Consider the below case. We’re granting read-only access to references since we’re using the <code>&amp;</code> operator instead of <code>&amp;mut</code>. Even if the source <code>n</code> is mutable, <code>ref_to_n</code>, and <code>another_ref_to_n</code> are not, as they are read-only n borrows.</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> <span class="token keyword">mut</span> n <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> <span class="token keyword">mut</span> n <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> ref_to_n <span class="token operator">=</span> <span class="token operator">&amp;</span>n<span class="token punctuation">;</span>
 <span class="token keyword">let</span> another_ref_to_n <span class="token operator">=</span> <span class="token operator">&amp;</span>n<span class="token punctuation">;</span>
 </code></pre>
@@ -679,7 +679,7 @@ Deref of y=5
 </ol>
 <h3 id="reference-must-not-outlive-the-owner"><a class="to-underline" href="#reference-must-not-outlive-the-owner">Reference must not outlive the owner</a></h3>
 <p>A reference’s scope must be contained within the scope of the owner of the value. Otherwise, the reference may refer to a freed value, resulting in a <em>use-after-free</em> error.</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">let</span> x<span class="token punctuation">;</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">let</span> x<span class="token punctuation">;</span>
 <span class="token punctuation">{</span> 
     <span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     x <span class="token operator">=</span> <span class="token operator">&amp;</span>y<span class="token punctuation">;</span>
@@ -691,7 +691,7 @@ Deref of y=5
 <p>We can have as many immutable references (aka shared references) to a particular piece of data at a time, but only one mutable reference (aka exclusive reference) allowed at a moment. This rules exists to eliminate <em>data races</em>. When two references point to the same memory location at the same time, at least one of them is writing, and their actions are <em>not</em> synchronized, this is known as a data race.</p>
 <p>We may have as many immutable references as we like because they don’t change the data. Borrowing, on the other hand, restricts us to just keeping one mutable reference (<code>&amp;mut</code>) at a time to prevent the possibility of data races at compile time.</p>
 <p>Let’s look at this one:</p>
-<pre class="language-rust"><code tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> <span class="token keyword">mut</span> s <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">let</span> r1 <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> s<span class="token punctuation">;</span>
