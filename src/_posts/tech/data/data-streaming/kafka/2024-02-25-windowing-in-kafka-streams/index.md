@@ -59,7 +59,7 @@ Each reading is accounted for in exactly one window, with no overlap between win
 
 Here's how we might set up a tumbling window in Kafka Streams for aggregating temperature readings:
 
-```java
+```java {data-copyable=true}
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.*;
 
@@ -118,7 +118,7 @@ Notice how each window overlaps with the next, sharing four minutes of data with
 
 Here’s how we might define a hopping window in Kafka Streams for the above scenario:
 
-```java
+```java {data-copyable=true}
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.*;
 
@@ -213,7 +213,7 @@ Each session window starts with the first event and ends with the last event in 
 
 ## Code example
 
-```java
+```java {data-copyable=true}
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.*;
 
@@ -296,7 +296,7 @@ Each bracket [...] represents a window capturing clicks within that 30-minute pe
 
 Here's how we might set up a sliding window in Kafka Streams for calculating average temperatures:
 
-```java
+```java {data-copyable=true}
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.KeyValue;

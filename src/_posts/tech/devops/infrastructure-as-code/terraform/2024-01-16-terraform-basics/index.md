@@ -598,7 +598,7 @@ In this section, let's perform a series of exercises.
 
 Create a Terraform configuration file with the content as shown below and save it in the `main.tf` file:
 
-```terraform
+```terraform {data-copyable=true}
 provider "aws" {
   profile    = "default"
   region     = "us-east-1"
@@ -645,7 +645,7 @@ In this exercise, a compute engine instance will be created.
 
 Create a Terraform configuration file with the content as shown below and save it in the `main.tf` file:
 
-```terraform
+```terraform {data-copyable=true}
 provider "google" {
 	credentials = file("proud-sweep-359704-f460da53c31e.json")
 	project = "proud-sweep-359704"

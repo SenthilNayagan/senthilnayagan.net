@@ -29,7 +29,7 @@ Memory safety refers to the state of a software application where memory pointer
 
 Let’s use a pseudocode to see what valid memory is.
 
-```text
+```text {data-copyable=true}
 // pseudocode #1 - shows valid reference
 { // scope starts here
   int x = 5  
@@ -43,7 +43,7 @@ Since both variables `x` and `y` are in the same block or scope, variable `y` ha
 
 Take a look at the below pseudocode. As we can see, the scope of `x` is limited to the block in which it’s created. We get into dangling references when we try to access `x` outside of its scope. Dangling reference…? What exactly is it?
 
-```text
+```text {data-copyable=true}
 // pseudocode #2 - shows invalid reference aka dangling reference
 { // scope starts here
   int x = 5
@@ -250,7 +250,7 @@ A type with a fixed size (particularly primitive types) can be stored on the *st
 
 > It's worth noting that primitive types with fixed-size implement the copy trait to make copies.
 
-```rust
+```rust {data-copyable=true}
 let x = "hello";
 let y = x;
 println!("{}", x) // hello
@@ -269,7 +269,7 @@ Duplicating data increases program runtime and memory consumption. Therefore, co
 
 In Rust terminology, "move" means the ownership of the memory is transferred to another owner. Consider the case of complex types that are stored on the heap.
 
-```rust
+```rust {data-copyable=true}
 let s1 = String::from("hello");
 let s2 = s1;
 ```
@@ -302,7 +302,7 @@ Let's think about this `let s2 = s1` assignment for a moment. Consider what happ
 
 To ensure memory safety, Rust considered `s1` invalid after the line `let s2 = s1`. Therefore, when `s1` is no longer in scope, Rust does not need to release anything. Examine what happens if we try to use `s1` after `s2` has been created.
 
-```rust
+```rust {data-copyable=true}
 let s1 = String::from("hello");
 let s2 = s1;
 
@@ -340,7 +340,7 @@ When only `s2` remains valid, it alone will free the memory when it goes out of 
 
 If we *do* want to deeply copy the heap data of the `String`, not just the stack data, we can use a method called `clone`. Here's an example of how to use the clone method:
 
-```rust
+```rust {data-copyable=true}
 let s1 = String::from("hello");
 let s2 = s1.clone();
 
@@ -359,7 +359,7 @@ By now, we should be able to distinguish between copy, move, and clone. Let's lo
 
 Each value has a variable called its owner. It implies that all values are owned by variables. In the example below, variable `s` owns the pointer to our string, and in the second line, variable `x` owns a value 1.
 
-```rust
+```rust {data-copyable=true}
 let s = String::from("Rule 1");
 let n = 1;
 ```
@@ -372,7 +372,7 @@ There can only be one owner of a value at a given time. One can have many pets, 
 
 Let’s look at the example using *primitives*, which are fixed-size known at compile time.
 
-```rust
+```rust {data-copyable=true}
 let x = 10;
 let y = x;
 let z = x;
@@ -392,7 +392,7 @@ Let's look at data that is stored on the heap and see how Rust understands when 
 
 The complex type, as we know, manages data on the heap, and its contents are unknown at compile time. Let’s look at the same example we have seen before:
 
-```rust
+```rust {data-copyable=true}
 let s1 = String::from("hello");
 let s2 = s1;
 
@@ -422,7 +422,7 @@ Let's back to business. In Rust, for complex types, operations like assigning a 
 
 When the owner goes out of scope, the value will be dropped. Consider the preceding case again:
 
-```rust
+```rust {data-copyable=true}
 let s1 = String::from("hello");
 let s2 = s1;
 
@@ -445,7 +445,7 @@ There are three ways to transfer ownership from one variable to another in a Rus
 
 Passing a value to a function has semantics that are similar to assigning a value to a variable. Just like assignment, passing a variable to a function causes it to move or copy. Take a look at this example, which shows both the *copy* and *move* use cases:
 
-```rust
+```rust {data-copyable=true}
 fn main() {
     let s = String::from("hello");  // s comes into scope
 
@@ -480,7 +480,7 @@ If we tried to use `s` after the call to `move_ownership`, Rust would throw a co
 
 Returning values can also transfer ownership. The example below shows a function that returns a value, with annotations identical to those in the previous example.
 
-```rust
+```rust {data-copyable=true}
 fn main() {
     let s1 = gives_ownership();         // gives_ownership moves its return
                                         // value into s1
@@ -528,7 +528,7 @@ It's annoying that everything we pass into a function must be returned if we wan
 
 Consider the following example. The below code will result in an error because variable, `v` can no longer be used by the `main` function (in `println!`) that initially owned it once the ownership is transferred to the `print_vector` function.
 
-```rust
+```rust {data-copyable=true}
 fn main() {
    let v = vec![10,20,30];
    print_vector(v);
@@ -556,7 +556,7 @@ To put it simply, Rust refers to creating a reference to some value as borrowing
 
 Let’s look at a simple example below:
 
-```rust
+```rust {data-copyable=true}
 let x = 5;
 let y = &x;
 
@@ -567,7 +567,7 @@ println!("Deref of y={}", *y);
 
 The above produces the following output:
 
-```text
+```text {data-copyable=true}
 Value y=5
 Address of y=0x7fff6c0f131c
 Deref of y=5
@@ -579,7 +579,7 @@ Here, the `y` variable *borrows* the number *owned* by variable `x`, while `x` s
 
 Let's look at how a function can use a value without taking ownership through borrowing:
 
-```rust
+```rust {data-copyable=true}
 fn main() {
    let v = vec![10,20,30];
    print_vector(&v);
@@ -597,7 +597,7 @@ We are passing a reference (`&v`) (aka *pass-by-reference*) to the `print_vector
 
 As stated previously, a reference is a kind of pointer, and a pointer may be thought of as an arrow pointing to a value stored elsewhere. Consider the below example:
 
-```rust
+```rust {data-copyable=true}
 let x = 5;
 let y = &x;
 
@@ -629,7 +629,7 @@ Because they're different types, comparing a number and a reference to a number 
 
 Like variable, a reference is immutable by default—it can be made mutable with `mut`, but only if its owner is also mutable:
 
-```rust
+```rust {data-copyable=true}
 let mut x = 5;
 let y = &mut x;
 ```
@@ -638,7 +638,7 @@ let y = &mut x;
 
 Consider the below case. We're granting read-only access to references since we're using the `&` operator instead of `&mut`. Even if the source `n` is mutable, `ref_to_n`, and `another_ref_to_n` are not, as they are read-only n borrows.
 
-```rust
+```rust {data-copyable=true}
 let mut n = 10;
 let ref_to_n = &n;
 let another_ref_to_n = &n;
@@ -671,7 +671,7 @@ Borrowing has its own set of rules, which the *borrow checker* strictly enforces
 
 A reference's scope must be contained within the scope of the owner of the value. Otherwise, the reference may refer to a freed value, resulting in a *use-after-free* error.
 
-```rust
+```rust {data-copyable=true}
 let x;
 { 
     let y = 0;
@@ -690,7 +690,7 @@ We may have as many immutable references as we like because they don't change th
 
 Let’s look at this one:
 
-```rust
+```rust {data-copyable=true}
 fn main() {
     let mut s = String::from("hello");
 
