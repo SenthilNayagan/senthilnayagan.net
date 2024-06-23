@@ -1,0 +1,51 @@
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <p>This site uses cookies to improve your browsing, personalize content, and analyze traffic.</p>
+    <button id="accept-cookies" class="cookie-button">I Agree</button>
+    <button id="decline-cookies" class="cookie-button">I Disagree</button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptCookiesButton = document.getElementById('accept-cookies');
+      const declineCookiesButton = document.getElementById('decline-cookies');
+  
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+  
+      function getCookie(name) {
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for(let i = 0; i < cookieArray.length; i++) {
+          let cookie = cookieArray[i].trim();
+          if (cookie.indexOf(name + "=") == 0) {
+            return cookie.substring(name.length + 1, cookie.length);
+          }
+        }
+        return "";
+      }
+  
+      function checkCookie() {
+        const cookiesAccepted = getCookie("cookiesAccepted");
+        if (cookiesAccepted !== "true" && cookiesAccepted !== "false") {
+          cookieBanner.style.display = "block";
+        }
+      }
+  
+      acceptCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "true", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      declineCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "false", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      checkCookie();
+    });
+</script>
