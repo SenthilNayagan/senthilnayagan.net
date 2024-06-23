@@ -214,6 +214,37 @@
     </div>
   </div>
 </footer>
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-banner" class="cookie-banner">
+    <p>This site uses cookies to improve your browsing, personalize content, and analyze traffic.</p>
+    <button id="accept-cookies" class="cookie-button">I Agree</button>
+    <button id="decline-cookies" class="cookie-button">I Disagree</button>
+    <!-- <button id="cookie-settings" class="cookie-button">Cookie Settings</button> -->
+  </div>
+  
+  <!-- Cookie Settings Modal -->
+  <div id="cookie-settings-modal" class="cookie-settings-modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Cookie Settings</h2>
+      <form id="cookie-settings-form">
+        <label>
+          <input type="checkbox" id="essential-cookies" disabled checked>
+          Essential Cookies
+        </label><br>
+        <label>
+          <input type="checkbox" id="analytics-cookies">
+          Analytics Cookies
+        </label><br>
+        <label>
+          <input type="checkbox" id="marketing-cookies">
+          Marketing Cookies
+        </label><br>
+        <button type="submit" class="cookie-button">Save Preferences</button>
+      </form>
+    </div>
+  </div>
+
   <!-- Back to top icon/button -->
   <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
   <script>addBackToTop({
@@ -221,6 +252,96 @@
       backgroundColor: 'rgb(128, 128, 128)',
       textColor: '#fff'
       })
+  </script>
+
+  <!-- Cookie Consent Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptCookies = document.getElementById('accept-cookies');
+      const declineCookies = document.getElementById('decline-cookies');
+      const cookieSettings = document.getElementById('cookie-settings');
+      const cookieSettingsModal = document.getElementById('cookie-settings-modal');
+      const closeModal = document.querySelector('.close');
+      const cookieSettingsForm = document.getElementById('cookie-settings-form');
+      const analyticsCookiesCheckbox = document.getElementById('analytics-cookies');
+      const marketingCookiesCheckbox = document.getElementById('marketing-cookies');
+  
+      acceptCookies.addEventListener('click', () => {
+        document.cookie = "cookieConsent=accepted; path=/; max-age=31536000";
+        enableAnalyticsCookies();
+        enableMarketingCookies();
+        cookieBanner.style.display = 'none';
+      });
+  
+      declineCookies.addEventListener('click', () => {
+        document.cookie = "cookieConsent=declined; path=/; max-age=31536000";
+        disableAnalyticsCookies();
+        disableMarketingCookies();
+        cookieBanner.style.display = 'none';
+      });
+  
+      cookieSettings.addEventListener('click', () => {
+        cookieSettingsModal.style.display = 'block';
+      });
+  
+      closeModal.addEventListener('click', () => {
+        cookieSettingsModal.style.display = 'none';
+      });
+  
+      window.addEventListener('click', (event) => {
+        if (event.target === cookieSettingsModal) {
+          cookieSettingsModal.style.display = 'none';
+        }
+      });
+  
+      cookieSettingsForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (analyticsCookiesCheckbox.checked) {
+          enableAnalyticsCookies();
+        } else {
+          disableAnalyticsCookies();
+        }
+        if (marketingCookiesCheckbox.checked) {
+          enableMarketingCookies();
+        } else {
+          disableMarketingCookies();
+        }
+        document.cookie = "cookieConsent=custom; path=/; max-age=31536000";
+        cookieSettingsModal.style.display = 'none';
+        cookieBanner.style.display = 'none';
+      });
+  
+      const consent = document.cookie.split('; ').find(row => row.startsWith('cookieConsent='));
+      if (consent) {
+        cookieBanner.style.display = 'none';
+      }
+  
+      function enableAnalyticsCookies() {
+        // Enable Google Analytics
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-XXXXX-Y', 'auto');
+        ga('send', 'pageview');
+      }
+  
+      function disableAnalyticsCookies() {
+        // Disable Google Analytics
+        window['ga-disable-UA-XXXXX-Y'] = true;
+      }
+  
+      function enableMarketingCookies() {
+        // Enable marketing cookies
+        console.log("Marketing cookies enabled");
+      }
+  
+      function disableMarketingCookies() {
+        // Disable marketing cookies
+        console.log("Marketing cookies disabled");
+      }
+    });
   </script>
 </body>
 </html>
