@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Starting with AI: A Beginner’s Journey into Artificial Intelligence | Senthil Nayagan</title>
+  <meta name="description" content="Begin an exciting journey into the world of artificial intelligence. This beginner-friendly guide covers fundamental concepts, demystifies AI, and provides practical steps to get started.">
+  <meta name="keywords" content="ai, artificial-intelligence">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/tech/starting-with-ai-a-beginners-journey-into-ai/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Starting with AI: A Beginner’s Journey into Artificial Intelligence | Senthil Nayagan"><meta property="og:description" content="Begin an exciting journey into the world of artificial intelligence. This beginner-friendly guide covers fundamental concepts, demystifies AI, and provides practical steps to get started.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/tech/starting-with-ai-a-beginners-journey-into-ai/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Starting with AI: A Beginner’s Journey into Artificial Intelligence | Senthil Nayagan">
+  <meta name="twitter:description" content="Begin an exciting journey into the world of artificial intelligence. This beginner-friendly guide covers fundamental concepts, demystifies AI, and provides practical steps to get started.">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8JWFCGCDB4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8JWFCGCDB4');
+</script>
+<!-- End Google tag (gtag.js) -->
+</head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <!-- <span class="site-name">Senthil Nayagan</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li>
+          <div id="theme-picker" class="theme-toggle">
+  <i id="theme-icon" class="fa-solid fa-moon"></i>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    // Set the initial theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeIcon.classList.toggle('fa-sun', currentTheme === 'dark');
+    themeIcon.classList.toggle('fa-moon', currentTheme === 'light');
+
+    themeIcon.addEventListener('click', () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeIcon.classList.toggle('fa-sun', newTheme === 'dark');
+      themeIcon.classList.toggle('fa-moon', newTheme === 'light');
+    });
+  });
+</script>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-24" >June 24, 2024</time> - 5 min read</p>
+    <h1 class="post-title">Starting with AI: A Beginner’s Journey into Artificial Intelligence</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/ai/" class="post-tag" aria-label="ai">ai</a>
+        </li><li>
+          <a href="/tags/artificial-intelligence/" class="post-tag" aria-label="artificial-intelligence">artificial-intelligence</a>
+        </li></ul><p class="spacer"></p>
+      <p class="post-subtitle">Begin an exciting journey into the world of artificial intelligence. This beginner-friendly guide covers fundamental concepts, demystifies AI, and provides practical steps to get started.</p>
+      <p class="spacer"></p><!-- Share the post --><div class="social-share">
+    <a href="mailto:?subject=Starting with AI: A Beginner’s Journey into Artificial Intelligence&body=https://www.senthilnayagan.net/blog/tech/starting-with-ai-a-beginners-journey-into-ai/" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon">
+      <i class="fa-regular fa-envelope"></i>
+    </a>
+    <a href="https://api.whatsapp.com/send?text=Starting with AI: A Beginner’s Journey into Artificial Intelligence%20https://www.senthilnayagan.net/blog/tech/starting-with-ai-a-beginners-journey-into-ai/" title="Share on WhatsApp" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?text=Starting with AI: A Beginner’s Journey into Artificial Intelligence&url=https://www.senthilnayagan.net/blog/tech/starting-with-ai-a-beginners-journey-into-ai/" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/starting-with-ai-a-beginners-journey-into-ai/&title=Starting with AI: A Beginner’s Journey into Artificial Intelligence" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <!-- <a href="https://www.reddit.com/submit?url=https://www.senthilnayagan.net/blog/tech/starting-with-ai-a-beginners-journey-into-ai/&title=Starting with AI: A Beginner’s Journey into Artificial Intelligence" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
+        <i class="fa-brands fa-reddit"></i>
+      </a> --><a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
+      <i class="fa-solid fa-link"></i>
+    </a>
+    <span id="copy-message" class="copy-message">Copied to clipboard</span>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyLink = document.getElementById('copy-link');
+      const copyMessage = document.getElementById('copy-message');
+      
+      copyLink.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+        const mainUrl = window.location.href.split('#')[0]; // Get URL without hash
+        navigator.clipboard.writeText(mainUrl).then(() => {
+          copyMessage.style.visibility = 'visible';
+          setTimeout(() => {
+            copyMessage.style.visibility = 'hidden';
+          }, 2000);
+        });
+      });
+    });
+  </script><p class="spacer"></p>
+    <div class="draft-note">
+      <h2 class="draft-note-heading">Work in Progress</h2>
+      <p>If you have any suggestions for improving the content or notice any inaccuracies, please email me at <a href="mailto:hello@senthilnayagan.net">hello@senthilnayagan.net</a>. Thanks!</p>
+    </div><figure class="full-width"><picture class="full-width">
+    <source type="image/webp" srcset="/assets/images/uo1r5wlmAs-400.webp 400w, /assets/images/uo1r5wlmAs-800.webp 800w, /assets/images/uo1r5wlmAs-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/uo1r5wlmAs-400.jpeg 400w, /assets/images/uo1r5wlmAs-800.jpeg 800w, /assets/images/uo1r5wlmAs-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/uo1r5wlmAs-1792.jpeg" alt="Starting with AI: A Beginner’s Journey into Artificial Intelligence"  loading="lazy" decoding="async">
+  </picture><figcaption><p class="image-description">An image depicting machine-based intelligence used in ancient times.</p><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption></figure></header>
+  <div class="rhythm">
+    <p>Artificial Intelligence (AI) is revolutionizing the way we live, work, and interact with the world. Before diving into the vast and fascinating domain of AI, it’s essential to grasp the foundational concepts. Understanding what AI is, the different types of AI, and the current developments in this field will equip us with the knowledge needed to navigate this complex and rapidly evolving landscape.</p>
+<hr>
+<div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-ai">What is AI?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#high-level-steps-involved-in-ai-development">High-level steps involved in AI development</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<hr>
+<h1 id="what-is-ai"><a class="to-underline" href="#what-is-ai">What is AI?</a></h1>
+<p>At its core, Artificial Intelligence refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. These intelligent systems can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation. The goal of AI is to create systems that can function autonomously and improve their performance over time through learning and adaptation.</p>
+<h2 id="high-level-steps-involved-in-ai-development"><a class="to-underline" href="#high-level-steps-involved-in-ai-development">High-level steps involved in AI development</a></h2>
+<p>Creating an AI system involves several high-level steps, each crucial to developing a functional and effective AI solution. Here is an overview of these steps in the order they typically occur:</p>
+<ol>
+<li><strong>Problem definition and goal setting</strong>
+<ul>
+<li>Identify the specific problem we want to solve with AI.</li>
+<li>Define clear and measurable goals for the AI system.</li>
+<li>Determine the scope and constraints of the project.</li>
+</ul>
+</li>
+<li><strong>Data collection</strong>
+<ul>
+<li>Gather relevant and high-quality data from various sources.</li>
+<li>Ensure the data is comprehensive and representative of the problem domain.</li>
+<li>Data can be collected from databases, APIs, web scraping, sensors, or manual entry</li>
+</ul>
+</li>
+<li><strong>Data preparation</strong>
+<ul>
+<li>Clean the data to remove any inconsistencies, errors, or missing values.</li>
+<li>Preprocess the data by normalizing, scaling, or encoding categorical variables.</li>
+<li>Split the data into training, validation, and test sets to evaluate the AI model’s performance.</li>
+</ul>
+</li>
+<li><strong>Feature<a href="#ref-1"><sup id="back-to-1">1</sup></a> engineering</strong>
+<ul>
+<li>Select and create meaningful features from the raw data that will be used as input for the AI model.</li>
+<li>Transform and combine features to enhance the model’s predictive power.</li>
+<li>Feature engineering is a critical step that can significantly impact the model’s performance.</li>
+</ul>
+</li>
+<li><strong>Model<a href="#ref-2"><sup id="back-to-2">2</sup></a> selection</strong>
+<ul>
+<li>Choose the appropriate AI model or algorithm based on the problem type (e.g., classification, regression, clustering).</li>
+<li>Evaluate models based on their suitability for the specific problem and data characteristics.</li>
+</ul>
+</li>
+<li><strong>Model training</strong>
+<ul>
+<li>Train the selected AI model using the training data.</li>
+<li>Optimize the model’s parameters<a href="#ref-3"><sup id="back-to-3">3</sup></a> and hyperparameters to improve its accuracy and performance.</li>
+<li>Use techniques like cross-validation to ensure the model generalizes well to new data.</li>
+</ul>
+</li>
+<li><strong>Model evaluation</strong>
+<ul>
+<li>Assess the model’s performance using the validation and test data sets.</li>
+<li>Evaluate key metrics such as accuracy, precision, recall, F1-score, and others, depending on the problem.</li>
+<li>Identify any potential issues like overfitting or underfitting and address them.</li>
+</ul>
+</li>
+<li><strong>Model deployment</strong>
+<ul>
+<li>Deploy the trained AI model into a production environment where it can be used to make predictions or decisions.</li>
+<li>Integrate the model with existing systems, applications, or workflows.</li>
+<li>Ensure the deployment process includes monitoring and maintenance mechanisms.</li>
+</ul>
+</li>
+<li><strong>Model monitoring and maintenance</strong>
+<ul>
+<li>Continuously monitor the AI model’s performance in the real world.</li>
+<li>Update the model as needed based on new data, changing conditions, or performance degradation.</li>
+<li>Implement feedback loops to retrain and improve the model over time.</li>
+</ul>
+</li>
+<li><strong>Iterative improvement</strong>
+<ul>
+<li>AI development is an iterative process that involves continuous learning and improvement.</li>
+<li>Regularly review and refine the model based on new insights, data, and technological advancements.</li>
+<li>Iterate through the steps to enhance the AI system’s effectiveness and adapt to evolving requirements.</li>
+</ul>
+</li>
+</ol>
+<p>By following these high-level steps, we can develop and deploy AI systems in a step-by-step manner that addresses real-world problems and delivers meaningful results.</p>
+<!-- ---
+
+# Frequently asked questions (FAQs)
+
+## Q1?
+
+TODO -->
+<div class="references">
+  <hr>
+  <h2>References</h2>
+  <ol>
+  <!-- <li>Nil</li> -->
+    <li id="ref-1">1. <strong>Feature</strong>: A feature, also known as an <em>attribute</em> or <em>variable</em>, is an individual measurable property or characteristic of a phenomenon being observed. In the context of machine learning, features are the inputs used by models to make predictions. They play a crucial role in determining the performance and accuracy of a model. Features can be thought of as the independent variables that the model uses to learn patterns and relationships within the data. There are various types of features: 1. Numerical features (takes specific integer value, such as the count of sales, etc.), 2. Categorical feature (represent categories without any inherent order. For example, colors [red, green, blue], types of fruits [apple, banana, cherry]), 3. Binary feature (have only two possible values, often represented as 0 and 1. For example, gender [male, female], outcome [success, failure]), 4. Time-based feature (represents temporal data. For example, timestamps, dates, and time intervals). <a href="#back-to-1" class="back-to-note">↩</a>
+    </li>
+    <li id="ref-2">2. <strong>Model</strong>: A model is a mathematical representation of a process or a system that is used to make predictions or decisions based on input data. It captures the patterns and relationships within the data, allowing it to generalize and make accurate predictions on new, unseen data. Models are the core components of AI systems, transforming data into actionable insights. <a href="#back-to-2" class="back-to-note">↩</a>
+    </li>
+    <li id="ref-3">3. <strong>Model's parameters</strong> are the variables within the model that are adjusted during the training process to minimize the error between the model’s predictions and the actual outcomes. Parameters are learned from the data. They are internal variables within a machine learning model that are adjusted during the training process. These parameters define the model’s structure and behavior, influencing how it maps input data to output predictions. The primary goal of training a model is to optimize these parameters to minimize the error between the model’s predictions and the actual target values. <a href="#back-to-3" class="back-to-note">↩</a>
+    </li>
+  </ol>
+</div>
+    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/tech/starting-with-ai-a-beginners-journey-into-ai/"
+    },
+    "headline": "Starting with AI: A Beginner’s Journey into Artificial Intelligence",
+    "description": "Begin an exciting journey into the world of artificial intelligence. This beginner-friendly guide covers fundamental concepts, demystifies AI, and provides practical steps to get started.",
+    
+    "datePublished": "2024-06-24T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b> | Hosted on <b>GitHub Pages</b>.</p>
+      <p><a href="/privacyPolicy/" target="_blank">Privacy Policy</a> | <a href="/commentPolicy/" target="_blank">Comment Policy</a> | <a href="/contact/" target="_blank">Contact</a></p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+  <!-- Include cookie consent -->
+  <!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <p>This site uses cookies to understand the number of visitors and which posts they read the most through Google Analytics. If you consent to this, please click "I Agree." If not, click "I Disagree." For more details, please refer to the <a href="https://senthilnayagan.net/privacyPolicy/#cookies" target="_blank">Cookie Policy</a>.</p>
+    <button id="accept-cookies" class="cookie-button">I Agree</button>
+    <button id="decline-cookies" class="cookie-button">I Disagree</button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptCookiesButton = document.getElementById('accept-cookies');
+      const declineCookiesButton = document.getElementById('decline-cookies');
+  
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+  
+      function getCookie(name) {
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for(let i = 0; i < cookieArray.length; i++) {
+          let cookie = cookieArray[i].trim();
+          if (cookie.indexOf(name + "=") == 0) {
+            return cookie.substring(name.length + 1, cookie.length);
+          }
+        }
+        return "";
+      }
+  
+      function checkCookie() {
+        const cookiesAccepted = getCookie("cookiesAccepted");
+        if (cookiesAccepted !== "true" && cookiesAccepted !== "false") {
+          cookieBanner.style.display = "block";
+        }
+      }
+  
+      acceptCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "true", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      declineCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "false", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      checkCookie();
+    });
+</script>
+</body>
+</html>

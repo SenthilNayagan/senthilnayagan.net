@@ -162,7 +162,7 @@
 <p>Terraform is an open-source <em>infrastructure as a code</em> tool from HashiCorp. It enables us to define both cloud and on-premises resources in <em>human-readable declarative definition files</em> (aka configuration files) that can be <em>versioned</em>, <em>reused</em>, and <em>shared</em>. These definition files contain the steps required to provision and maintain our infrastructure. We can edit, review, and version these definition files <em>just like code</em>.</p>
 <p>Terraform can create infrastructure on a variety of cloud platforms such as AWS, Azure, Google Cloud, etc.</p>
 <h2 id="download-and-install"><a class="to-underline" href="#download-and-install">Download and install</a></h2>
-<p>Terraform distribution consists of a single binary file, which can be obtained for free from Hashicorp’s <a href="https://www.terraform.io/downloads" :target="_blank" rel="noopener">download</a> page. There are no dependencies, so we can just copy the executable binary to a folder of our choice and run it from there. HashiCorp also offers a managed solution known as <a href="https://cloud.hashicorp.com/products/terraform" :target="_blank" rel="noopener">Terraform Cloud</a>.</p>
+<p>Terraform distribution consists of a single binary file, which can be obtained for free from Hashicorp’s <a href="https://www.terraform.io/downloads" :target="_blank" rel="noopener">download</a> page. There are no dependencies, so we can just copy the executable binary to a folder of our choice and run it from there. HashiCorp also offers a managed solution known as <a href="https://cloud.hashicorp.com/products/terraform" target="_blank">Terraform Cloud</a>.</p>
 <p>After we finish the installation, we can run the following command to ensure that everything is working properly:</p>
 <pre class="language-shell"><code tabindex="0" class="language-shell">$ terraform <span class="token parameter variable">-v</span>
 Terraform v1.2.7
@@ -219,7 +219,7 @@ on darwin_amd64
 </ul>
 <p>Each provider adds a set of <em>resource types</em> and/or <em>data sources</em> that Terraform can manage. Every resource type is implemented by a provider; Terraform cannot manage any infrastructure without providers.</p>
 <h4 id="where-do-providers-come-from"><a class="to-underline" href="#where-do-providers-come-from">Where do providers come from?</a></h4>
-<p>The <a href="https://registry.terraform.io/browse/providers" :target="_blank" rel="noopener">Terraform Registry</a> is the primary directory of publicly available Terraform providers, hosting providers for the majority of major infrastructure platforms.</p>
+<p>The <a href="https://registry.terraform.io/browse/providers" target="_blank">Terraform Registry</a> is the primary directory of publicly available Terraform providers, hosting providers for the majority of major infrastructure platforms.</p>
 <h4 id="provider-syntax"><a class="to-underline" href="#provider-syntax">Provider syntax</a></h4>
 <p>The general syntax is as follows:</p>
 <pre class="language-plain"><code tabindex="0" class="language-plain">resource "&lt;PROVIDER>_&lt;TYPE>" "&lt;NAME>" {
@@ -230,7 +230,7 @@ on darwin_amd64
 <p>For instance, the <strong>aws_instance</strong> resource has many different arguments, but for now, we only need to set the following:</p>
 <ul>
 <li><strong><code>ami</code></strong>: The Amazon Machine Image (AMI) to run on the EC2 instance.</li>
-<li><strong><code>instance_type</code></strong>: The type of EC2 Instance that will be used. Each EC2 Instance type has a different amount of CPU, memory, disk space, and networking capacity. We use <code>t2.micro</code> instance. T2 instances are available to use in the <a href="http://aws.amazon.com/free" :target="_blank" rel="noopener">AWS Free Tier</a>, which includes 750 hours of Linux and Windows <code>t2.micro</code> instances each month for one year for new AWS customers.</li>
+<li><strong><code>instance_type</code></strong>: The type of EC2 Instance that will be used. Each EC2 Instance type has a different amount of CPU, memory, disk space, and networking capacity. We use <code>t2.micro</code> instance. T2 instances are available to use in the <a href="http://aws.amazon.com/free" target="_blank">AWS Free Tier</a>, which includes 750 hours of Linux and Windows <code>t2.micro</code> instances each month for one year for new AWS customers.</li>
 </ul>
 <p>An example of a simple configuration is as follows:</p>
 <pre class="language-plaintext"><code tabindex="0" class="language-plaintext">resource "aws_instance" "demo" {
@@ -284,7 +284,7 @@ on darwin_amd64
 <li>Google Cloud Storage</li>
 <li>Alibaba Cloud OSS</li>
 </ul>
-<p>Remote state is implemented by a <a href="https://www.terraform.io/language/settings/backends/configuration" :target="_blank" rel="noopener">backend</a> or by Terraform Cloud, both of which can be configured in the root module of our configuration.</p>
+<p>Remote state is implemented by a <a href="https://www.terraform.io/language/settings/backends/configuration" target="_blank">backend</a> or by Terraform Cloud, both of which can be configured in the root module of our configuration.</p>
 <h3 id="data-sources"><a class="to-underline" href="#data-sources">Data sources</a></h3>
 <p>Terraform can use data sources to get information about resources that are <em>set up outside of Terraform</em> and use that information to set up Terraform resources. It’s a way of getting data from the outside world and making it available to your Terraform configuration.</p>
 <p>A data source is accessed through a special type of resource called a <em>data resource</em>, which is declared using a <code>data</code> block.</p>
@@ -438,7 +438,7 @@ resource "azurerm_role_assignment" "example" {
   </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>Terraform life cycle.</p></figcaption></figure>
 <h3 id="init"><a class="to-underline" href="#init">Init</a></h3>
 <p>Init command initializes the working directories. A working directory must be <em>initialized</em> before Terraform can perform any operations on it, such as provisioning infrastructure or changing state.</p>
-<p>Why do we need to initialize the working directory, and what happens during initialization? The <code>terraform</code> binary contains the basic functionality of Terraform, but it does not include the code for any of the providers (e.g., the AWS provider, Azure provider, GCP provider, and so on), so when we first start using Terraform, we must run the <code>terraform init</code> command to instruct Terraform to scan the code (configuration file), determine which providers we are using, and download the code from the <a href="https://registry.terraform.io/browse/providers" :target="_blank" rel="noopener">Terraform Registry</a>. The provider code is downloaded by default into a <code>.terraform</code> directory.</p>
+<p>Why do we need to initialize the working directory, and what happens during initialization? The <code>terraform</code> binary contains the basic functionality of Terraform, but it does not include the code for any of the providers (e.g., the AWS provider, Azure provider, GCP provider, and so on), so when we first start using Terraform, we must run the <code>terraform init</code> command to instruct Terraform to scan the code (configuration file), determine which providers we are using, and download the code from the <a href="https://registry.terraform.io/browse/providers" target="_blank">Terraform Registry</a>. The provider code is downloaded by default into a <code>.terraform</code> directory.</p>
 <blockquote class="rhythm">
 <p><strong>Note:</strong> It’s safe to run init multiple times because the command is idempotent.</p>
 </blockquote>
@@ -714,7 +714,7 @@ resource "google_compute_instance" "dev_instance" {
   <!-- Include cookie consent -->
   <!-- Cookie Consent Banner -->
 <div id="cookie-banner" class="cookie-banner" style="display: none;">
-    <p>This site uses cookies to understand the number of visitors and which posts they read the most through Google Analytics. If you consent to this, please click "I Agree." If not, click "I Disagree."</p>
+    <p>This site uses cookies to understand the number of visitors and which posts they read the most through Google Analytics. If you consent to this, please click "I Agree." If not, click "I Disagree." For more details, please refer to the <a href="https://senthilnayagan.net/privacyPolicy/#cookies" target="_blank">Cookie Policy</a>.</p>
     <button id="accept-cookies" class="cookie-button">I Agree</button>
     <button id="decline-cookies" class="cookie-button">I Disagree</button>
 </div>
