@@ -54,7 +54,7 @@ Terraform can create infrastructure on a variety of cloud platforms such as AWS,
 
 ## Download and install
 
-Terraform distribution consists of a single binary file, which can be obtained for free from Hashicorp's [download](https://www.terraform.io/downloads){:target="_blank"} page. There are no dependencies, so we can just copy the executable binary to a folder of our choice and run it from there. HashiCorp also offers a managed solution known as [Terraform Cloud](https://cloud.hashicorp.com/products/terraform){:target="_blank"}.
+Terraform distribution consists of a single binary file, which can be obtained for free from Hashicorp's [download](https://www.terraform.io/downloads){:target="_blank"} page. There are no dependencies, so we can just copy the executable binary to a folder of our choice and run it from there. HashiCorp also offers a managed solution known as <a href="https://cloud.hashicorp.com/products/terraform" target="_blank">Terraform Cloud</a>.
 
 After we finish the installation, we can run the following command to ensure that everything is working properly:
 
@@ -133,7 +133,7 @@ Each provider adds a set of *resource types* and/or *data sources* that Terrafor
 
 #### Where do providers come from?
 
-The [Terraform Registry](https://registry.terraform.io/browse/providers){:target="_blank"} is the primary directory of publicly available Terraform providers, hosting providers for the majority of major infrastructure platforms.
+The <a href="https://registry.terraform.io/browse/providers" target="_blank">Terraform Registry</a> is the primary directory of publicly available Terraform providers, hosting providers for the majority of major infrastructure platforms.
 
 #### Provider syntax
 
@@ -150,7 +150,7 @@ The PROVIDER above is the name of the *provider* (e.g., aws). The TYPE is the ty
 For instance, the **aws_instance** resource has many different arguments, but for now, we only need to set the following:
 
 - **`ami`**: The Amazon Machine Image (AMI) to run on the EC2 instance.
-- **`instance_type`**: The type of EC2 Instance that will be used. Each EC2 Instance type has a different amount of CPU, memory, disk space, and networking capacity. We use `t2.micro` instance. T2 instances are available to use in the [AWS Free Tier](http://aws.amazon.com/free){:target="_blank"}, which includes 750 hours of Linux and Windows `t2.micro` instances each month for one year for new AWS customers.
+- **`instance_type`**: The type of EC2 Instance that will be used. Each EC2 Instance type has a different amount of CPU, memory, disk space, and networking capacity. We use `t2.micro` instance. T2 instances are available to use in the <a href="http://aws.amazon.com/free" target="_blank">AWS Free Tier</a>, which includes 750 hours of Linux and Windows `t2.micro` instances each month for one year for new AWS customers.
 
 An example of a simple configuration is as follows:
 
@@ -226,7 +226,7 @@ Terraform can store state in a variety of storage platforms, including, but not 
 - Google Cloud Storage
 - Alibaba Cloud OSS
 
-Remote state is implemented by a [backend](https://www.terraform.io/language/settings/backends/configuration){:target="_blank"} or by Terraform Cloud, both of which can be configured in the root module of our configuration.
+Remote state is implemented by a <a href="https://www.terraform.io/language/settings/backends/configuration" target="_blank">backend</a> or by Terraform Cloud, both of which can be configured in the root module of our configuration.
 
 ### Data sources
 
@@ -450,7 +450,7 @@ The provisioning workflow (Terraform's life cycle) in Terraform is based on the 
 
 Init command initializes the working directories. A working directory must be *initialized* before Terraform can perform any operations on it, such as provisioning infrastructure or changing state.
 
-Why do we need to initialize the working directory, and what happens during initialization? The `terraform` binary contains the basic functionality of Terraform, but it does not include the code for any of the providers (e.g., the AWS provider, Azure provider, GCP provider, and so on), so when we first start using Terraform, we must run the `terraform init` command to instruct Terraform to scan the code (configuration file), determine which providers we are using, and download the code from the [Terraform Registry](https://registry.terraform.io/browse/providers){:target="_blank"}. The provider code is downloaded by default into a `.terraform` directory.
+Why do we need to initialize the working directory, and what happens during initialization? The `terraform` binary contains the basic functionality of Terraform, but it does not include the code for any of the providers (e.g., the AWS provider, Azure provider, GCP provider, and so on), so when we first start using Terraform, we must run the `terraform init` command to instruct Terraform to scan the code (configuration file), determine which providers we are using, and download the code from the <a href="https://registry.terraform.io/browse/providers" target="_blank">Terraform Registry</a>. The provider code is downloaded by default into a `.terraform` directory.
 
 > **Note:** It's safe to run init multiple times because the command is idempotent.
 

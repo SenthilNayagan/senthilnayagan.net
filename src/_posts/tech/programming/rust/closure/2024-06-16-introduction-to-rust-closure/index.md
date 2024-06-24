@@ -158,7 +158,6 @@ println!("{}", s);  // 's' is still accessible after closure call
 
 Anonymous functions are frequently used to create closures. When an anonymous function captures variables from its enclosing scope, it forms a closure. This allows the anonymous function to maintain state across multiple invocations.
 
-
 <div class="references">
   <hr>
   <h2>References</h2>

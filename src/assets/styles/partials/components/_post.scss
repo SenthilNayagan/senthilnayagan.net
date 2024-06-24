@@ -44,6 +44,7 @@
   }
 }
 
+/* Draft or Work in Progress - Start */
 .draft-note {
   border: 1px solid #d1d5da;
   // background-color: #f6f8fa;
@@ -64,7 +65,9 @@
   margin: 0;
   font-size: 16px; /* Increase the font size for the content text */
 }
+/* Draft or Work in Progress - End */
 
+/* Reference appears at the bottom of the post - Start */
 .references {
   font-size: 0.875rem; /* Adjust the font size as needed */
 }
@@ -90,6 +93,7 @@
 a sup {
   font-size: 0.875rem; /* Adjust the font size of the superscript as needed */
 }
+/* Reference appears at the bottom of the post - End */
 
 /* Share share icons - Start */
 :root {
