@@ -23,7 +23,8 @@ module.exports = {
   pagination: {
     itemsPerPage: 30,
   },
-  cookieConsentMessage: 'This site uses cookies to understand the number of visitors and which posts they read the most. If you consent to this, please click "I Agree". If not, click "I Disagree."',
+  cookieConsentMessage:
+    'This site uses cookies to understand the number of visitors and which posts they read the most through Google Analytics. If you consent to this, please click "I Agree." If not, click "I Disagree."',
   email: 'hello@senthilnayagan.net',
   contactMe: 'https://formspree.io/f/mdoqkzjn',
   disqus: 'senthilnayagan',
