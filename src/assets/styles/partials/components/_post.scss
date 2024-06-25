@@ -45,9 +45,32 @@
 }
 
 /* Draft or Work in Progress - Start */
+/* Define theme colors */
+:root {
+  --draft-note-bg-light: #f0f0f0; /* Light grey for light theme */
+  --draft-note-bg-dark: #2d2d2d; /* Adjust this color to match your dark theme */
+  --draft-note-border-light: #d1d5da;
+  --draft-note-border-dark: #444; /* Adjust this color to match your dark theme */
+  --draft-note-text-light: #24292e; /* Adjust text color for light theme */
+  --draft-note-text-dark: #c9d1d9; /* Adjust text color for dark theme */
+}
+
+[data-theme='dark'] {
+  --draft-note-bg: var(--draft-note-bg-dark);
+  --draft-note-border: var(--draft-note-border-dark);
+  --draft-note-text: var(--draft-note-text-dark);
+}
+
+[data-theme='light'] {
+  --draft-note-bg: var(--draft-note-bg-light);
+  --draft-note-border: var(--draft-note-border-light);
+  --draft-note-text: var(--draft-note-text-light);
+}
+
 .draft-note {
-  border: 1px solid #d1d5da;
-  // background-color: #f6f8fa;
+  border: 1px solid var(--draft-note-border);
+  background-color: var(--draft-note-bg);
+  color: var(--draft-note-text); /* Adjust text color based on theme */
   border-radius: 6px;
   padding: 16px;
   margin-bottom: 50px;
@@ -59,11 +82,13 @@
   margin-bottom: 8px;
   font-size: 18px; /* Increase the font size for the heading */
   font-weight: 600;
+  color: var(--draft-note-text); /* Ensure heading color adjusts to theme */
 }
 
 .draft-note p {
   margin: 0;
   font-size: 16px; /* Increase the font size for the content text */
+  color: var(--draft-note-text); /* Ensure paragraph text color adjusts to theme */
 }
 /* Draft or Work in Progress - End */
 
