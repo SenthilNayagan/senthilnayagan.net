@@ -73,11 +73,17 @@ Creating an AI system involves several high-level steps, each crucial to develop
 
 By following these high-level steps, we can develop and deploy AI systems in a step-by-step manner that addresses real-world problems and delivers meaningful results.
 
-# Artificial Intelligence (AI) vs. Machine Learning (ML)
+---
+
+# Key concepts
+
+Let's go over the key concepts in AI, such as models, features, and other essential elements to better understand how AI works.
+
+## Artificial Intelligence (AI) vs. Machine Learning (ML)
 
 The terms "Artificial Intelligence" (AI) and "Machine Learning" (ML)" are often used interchangeably, but they're not quite the same thing. Think of AI as the _grand quest_<a href="#ref-6"><sup id="back-to-6">6</sup></a> to create smart machines that can think and act like humans. Meanwhile, ML is a specialized toolkit within this quest, equipping machines with the ability to *learn and adapt from data*, much like how we humans evolve through experiences.
 
-## Key Differences
+### Key Differences
 
 1. Breadth
    - AI is the overarching discipline that includes all methods to make machines intelligent.
@@ -92,11 +98,6 @@ The terms "Artificial Intelligence" (AI) and "Machine Learning" (ML)" are often 
    - AI applications can be broader and more diverse, including anything from autonomous robotics to game playing to natural language understanding.
    - ML applications are often centered around tasks like predictive analytics, recommendation systems, image and speech recognition, and language translation.
 
----
-
-# Key concepts
-
-Let's go over the key concepts in AI, such as models, features, and other essential elements to better understand how AI works.
 
 ## What is a "model" in the context of AI and ML?
 

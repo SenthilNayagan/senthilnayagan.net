@@ -19,17 +19,17 @@ Furthermore, working with OSS keeps me on the cutting edge of technology. The ra
 
 To give back, I actively participate in discussions, contribute code, and help with documentation.
 
-### Wrting tech-blogs
+### My tech-blog journey
 
-We often think about coding when we consider OSS contributions. Writing code may be a more engaging way to contribute to OSS, but it's certainly not the only option to give back to the community. Writing tech blogs is a great tool to communicate and exchange knowledge, and it’s immensely helpful for the developer community.
+When we think about contributing to open-source software (OSS), coding often comes to mind. While writing code is a dynamic way to contribute, it’s not the only option. Writing tech blogs is a powerful tool to share knowledge and support the developer community.
 
-Blogging is more than just writing notes. It demands a great deal of work to ensure that the content we put together reaches the target developers as simply and clearly as possible.
+Like many, I used to jot down notes in physical notebooks whenever I learned something new. I found that articulating concepts in my own words helped me understand and remember them better. However, referring back to my notebooks was inconvenient since I couldn’t carry them everywhere. So, I started transferring my notes to Google Cloud Drive, which made them accessible and updatable from any device, whether it’s a phone or an iPad. This convenience led me to take things a step further by writing tech blogs on platforms like WordPress and Medium to document my knowledge and learning.
 
-Personally, I like writing technical blogs. Blogging has been an excellent way for me to learn new things and share them with others. Through blogging, I not only share my knowledge with others who are interested in my areas of expertise, but I also share it with myself, in the most clear terms possible.
+However, these platforms didn’t quite meet my needs. I wanted a clutter-free blogging experience without ads and without requiring subscriptions from readers or writers. This desire pushed me to create my own blog platform.  I focus on presenting information clearly and comprehensively, so readers can fully grasp the topics without needing to look elsewhere for more information.
 
-### My blog
+Blogging is more than just writing notes. It demands a great deal of work to ensure that the content we put together reaches the target audience. Personally, I enjoy writing technical blogs. It’s been an excellent way for me to learn new things and share that knowledge with others. Through blogging, I not only share my expertise with others but also reinforce my own understanding by articulating ideas clearly. This personal blog is my little corner of the internet where I share my thoughts, design principles, and coding experiences. I strive to make all my posts as clear and informative as possible, ensuring that readers can grasp the concepts thoroughly.
 
-This personal blog is my little corner of the internet where I delve into personal thoughts, share my design and coding principles, and explore a variety of topics. I'm attempting to make all of my posts as clear as possible while yet providing sufficient information for you to grasp the concepts.
+If you have any suggestions or spot any mistakes, please feel free to let me know!
 
 ### Hobbies and interests
 
