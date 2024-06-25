@@ -9,7 +9,7 @@
             <img src="/assets/images/logo/logo.png" alt="">
           </a>
         </li>
-        {%- assign navLinks = "About" | split: ',' -%}
+        {%- assign navLinks = "About,Tags" | split: ',' -%}
         {%- for link in navLinks -%}
         <li>
           {%- assign href = link | downcase | prepend: "/" | append: "/" -%}
@@ -27,7 +27,7 @@
           </a>
         </li>
         {%- endfor -%}
-        <li>
+        <li class="theme-picker-item">
           {% include "themePicker.html" %}
         </li>        
       </ul>

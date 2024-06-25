@@ -1,6 +1,10 @@
 @use "../functions";
 @use "../mixins";
 
+.theme-picker-item {
+  margin-left: 20px; /* Adjust this value as needed */
+}
+
 #theme-picker {
   border: none;
   display: flex;
