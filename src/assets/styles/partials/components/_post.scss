@@ -180,3 +180,20 @@ a sup {
   margin-top: 20px; /* Adjust the value as needed */
   margin-bottom: 20px; /* Adjust the value as needed */
 }
+
+.scroll-x {
+  overflow-x: auto;
+
+  table {
+    table-layout: fixed;
+    width: 100%; // Ensure the table takes up the full width
+
+    th, td {
+      width: 50%; // Ensure both columns are equal in width
+    }
+
+    th {
+      text-align: center; // Center align the header text
+    }
+  }
+}

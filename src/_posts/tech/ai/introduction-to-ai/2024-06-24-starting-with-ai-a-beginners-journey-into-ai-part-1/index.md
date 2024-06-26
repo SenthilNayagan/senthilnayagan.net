@@ -23,7 +23,7 @@ Let’s dive in and start our journey into the exciting realm of Artificial Inte
 
 ---
 
-# What is AI?
+# What is Artificial Intelligence?
 
 At its core, Artificial Intelligence refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. These intelligent systems can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation. The goal of AI is to create systems that can function autonomously and improve their performance over time through learning and adaptation.
 
@@ -98,6 +98,67 @@ The terms "Artificial Intelligence" (AI) and "Machine Learning" (ML)" are often 
    - AI applications can be broader and more diverse, including anything from autonomous robotics to game playing to natural language understanding.
    - ML applications are often centered around tasks like predictive analytics, recommendation systems, image and speech recognition, and language translation.
 
+## Machine Learning (ML)  vs. Deep Learning (DL)
+
+Machine Learning (ML) and Deep Learning (DL) are both subsets of artificial intelligence (AI), but they differ in complexity, approach, and application.
+
+<div class="scroll-x">
+    <table id="table-1">
+        <colgroup>
+            <col style="width: 50%;">
+            <col style="width: 50%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">Machine Learning (ML)</th>
+                <th scope="col" class="numeric">Deep Learning (DL)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ML is a subset of AI that enables computers to learn from data and improve their performance over time without being explicitly programmed.</td>
+                <td>DL is a subset of ML that involves neural networks with many layers (hence “deep”) to model complex patterns in large amounts of data.</td>
+            </tr>
+            <tr>
+                <td><strong>Algorithms:</strong> ML includes a variety of algorithms, such as: Supervised Learning (e.g., Linear Regression, Decision Trees, Support Vector Machines), Unsupervised Learning (e.g., K-Means Clustering, Principal Component Analysis), Reinforcement Learning (e.g., Q-Learning).</td>
+                <td><strong>Algorithms:</strong> DL primarily uses neural network architectures, such as: Convolutional Neural Networks (CNNs) for image processing, Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks for sequential data, Generative Adversarial Networks (GANs) for generating new data samples, Transformer networks for natural language processing.</td>
+            </tr>
+            <tr>
+                <td><strong>Data Representation:</strong> ML algorithms typically require structured data, and feature engineering is often necessary to transform raw data into a suitable format for learning.</td>
+                <td><strong>Data Representation:</strong> DL can automatically discover representations from raw data, making it highly effective with unstructured data like images, audio, and text. It often requires large datasets for training.</td>
+            </tr> 
+            <tr>
+                <td><strong>Model Complexity:</strong> ML models can range from simple to moderately complex. They typically involve fewer parameters than deep learning models.</td>
+                <td><strong>Model Complexity:</strong> DL models are significantly more complex, involving millions of parameters. They require substantial computational power and often benefit from hardware accelerators like GPUs and TPUs.</td>
+            </tr> 
+            <tr>
+                <td><strong>Interpretability:</strong> ML models are generally more interpretable and easier to understand compared to deep learning models. For example, decision trees and linear regression models provide clear insights into how predictions are made.</td>
+                <td><strong>Interpretability:</strong> DL models are often considered black boxes due to their complexity, making them less interpretable than traditional ML models.</td>
+            </tr> 
+            <tr>
+                <td><strong>Use Cases:</strong> Common applications include spam detection, recommendation systems, predictive maintenance, and more.</td>
+                <td><strong>Use Cases:</strong> Common applications include image and speech recognition, natural language processing, autonomous driving, and more.</td>
+            </tr>                                                   
+        </tbody>
+    </table>
+</div>
+
+<p align="center">
+    <sup><b>Table 1: </b>Machine Learning (ML)  vs. Deep Learning (DL).</sup>
+</p>
+
+**Summary:**
+
+- Machine Learning:
+  - Broad category encompassing many types of algorithms.
+  - Effective with structured data and requires feature engineering.
+  - Generally simpler, more interpretable models.
+- Deep Learning:
+  - Subset of ML focusing on neural networks with many layers.
+  - Excels with unstructured data and can automatically learn features.
+  - More complex, less interpretable models requiring large datasets and computational resources.
+
+Both ML and DL have their strengths and are suited to different types of problems. The choice between them depends on the specific application, the nature of the data, and the available resources.
 
 ## What is a "model" in the context of AI and ML?
 
