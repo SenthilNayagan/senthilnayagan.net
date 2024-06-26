@@ -87,7 +87,7 @@
   
 <article class="post prose rhythm">
   <header class="post-header">
-    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-24" >June 24, 2024</time> - 14 min read</p>
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-24" >June 24, 2024</time> - 16 min read</p>
     <h1 class="post-title">Starting with AI: A Beginner’s Journey into Artificial Intelligence (Part 1)</h1>
     <ul class="post-tags" aria-label="Tags"><li>
           <a href="/tags/ai/" class="post-tag" aria-label="ai">ai</a>
@@ -150,9 +150,9 @@
     <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
 </div>
 <h3 id="table-of-contents">Table of Contents</h3>
-<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-ai">What is AI?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#high-level-steps-involved-in-ai-development">High-level steps involved in AI development</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#key-concepts">Key concepts</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#artificial-intelligence-ai-vs-machine-learning-ml">Artificial Intelligence (AI) vs. Machine Learning (ML)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#key-differences">Key Differences</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#what-is-a-model-in-the-context-of-ai-and-ml">What is a “model” in the context of AI and ML?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-artificial-intelligence">What is Artificial Intelligence?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#high-level-steps-involved-in-ai-development">High-level steps involved in AI development</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#key-concepts">Key concepts</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#artificial-intelligence-ai-vs-machine-learning-ml">Artificial Intelligence (AI) vs. Machine Learning (ML)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#key-differences">Key Differences</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#machine-learning-ml-vs-deep-learning-dl">Machine Learning (ML)  vs. Deep Learning (DL)</a></li><li class="toc-item"><a class="toc-link" href="#what-is-a-model-in-the-context-of-ai-and-ml">What is a “model” in the context of AI and ML?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
 <hr>
-<h1 id="what-is-ai"><a class="to-underline" href="#what-is-ai">What is AI?</a></h1>
+<h1 id="what-is-artificial-intelligence"><a class="to-underline" href="#what-is-artificial-intelligence">What is Artificial Intelligence?</a></h1>
 <p>At its core, Artificial Intelligence refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. These intelligent systems can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation. The goal of AI is to create systems that can function autonomously and improve their performance over time through learning and adaptation.</p>
 <h2 id="high-level-steps-involved-in-ai-development"><a class="to-underline" href="#high-level-steps-involved-in-ai-development">High-level steps involved in AI development</a></h2>
 <p>Creating an AI system involves several high-level steps, each crucial to developing a functional and effective AI solution. Here is an overview of these steps in the order they typically occur:</p>
@@ -260,6 +260,69 @@
 </ul>
 </li>
 </ol>
+<h2 id="machine-learning-ml-vs-deep-learning-dl"><a class="to-underline" href="#machine-learning-ml-vs-deep-learning-dl">Machine Learning (ML)  vs. Deep Learning (DL)</a></h2>
+<p>Machine Learning (ML) and Deep Learning (DL) are both subsets of artificial intelligence (AI), but they differ in complexity, approach, and application.</p>
+<div class="scroll-x">
+    <table id="table-1">
+        <colgroup>
+            <col style="width: 50%;">
+            <col style="width: 50%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">Machine Learning (ML)</th>
+                <th scope="col" class="numeric">Deep Learning (DL)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ML is a subset of AI that enables computers to learn from data and improve their performance over time without being explicitly programmed.</td>
+                <td>DL is a subset of ML that involves neural networks with many layers (hence “deep”) to model complex patterns in large amounts of data.</td>
+            </tr>
+            <tr>
+                <td><strong>Algorithms:</strong> ML includes a variety of algorithms, such as: Supervised Learning (e.g., Linear Regression, Decision Trees, Support Vector Machines), Unsupervised Learning (e.g., K-Means Clustering, Principal Component Analysis), Reinforcement Learning (e.g., Q-Learning).</td>
+                <td><strong>Algorithms:</strong> DL primarily uses neural network architectures, such as: Convolutional Neural Networks (CNNs) for image processing, Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks for sequential data, Generative Adversarial Networks (GANs) for generating new data samples, Transformer networks for natural language processing.</td>
+            </tr>
+            <tr>
+                <td><strong>Data Representation:</strong> ML algorithms typically require structured data, and feature engineering is often necessary to transform raw data into a suitable format for learning.</td>
+                <td><strong>Data Representation:</strong> DL can automatically discover representations from raw data, making it highly effective with unstructured data like images, audio, and text. It often requires large datasets for training.</td>
+            </tr> 
+            <tr>
+                <td><strong>Model Complexity:</strong> ML models can range from simple to moderately complex. They typically involve fewer parameters than deep learning models.</td>
+                <td><strong>Model Complexity:</strong> DL models are significantly more complex, involving millions of parameters. They require substantial computational power and often benefit from hardware accelerators like GPUs and TPUs.</td>
+            </tr> 
+            <tr>
+                <td><strong>Interpretability:</strong> ML models are generally more interpretable and easier to understand compared to deep learning models. For example, decision trees and linear regression models provide clear insights into how predictions are made.</td>
+                <td><strong>Interpretability:</strong> DL models are often considered black boxes due to their complexity, making them less interpretable than traditional ML models.</td>
+            </tr> 
+            <tr>
+                <td><strong>Use Cases:</strong> Common applications include spam detection, recommendation systems, predictive maintenance, and more.</td>
+                <td><strong>Use Cases:</strong> Common applications include image and speech recognition, natural language processing, autonomous driving, and more.</td>
+            </tr>                                                   
+        </tbody>
+    </table>
+</div>
+<p align="center">
+    <sup><b>Table 1: </b>Machine Learning (ML)  vs. Deep Learning (DL).</sup>
+</p>
+<p><strong>Summary:</strong></p>
+<ul>
+<li>Machine Learning:
+<ul>
+<li>Broad category encompassing many types of algorithms.</li>
+<li>Effective with structured data and requires feature engineering.</li>
+<li>Generally simpler, more interpretable models.</li>
+</ul>
+</li>
+<li>Deep Learning:
+<ul>
+<li>Subset of ML focusing on neural networks with many layers.</li>
+<li>Excels with unstructured data and can automatically learn features.</li>
+<li>More complex, less interpretable models requiring large datasets and computational resources.</li>
+</ul>
+</li>
+</ul>
+<p>Both ML and DL have their strengths and are suited to different types of problems. The choice between them depends on the specific application, the nature of the data, and the available resources.</p>
 <h2 id="what-is-a-model-in-the-context-of-ai-and-ml"><a class="to-underline" href="#what-is-a-model-in-the-context-of-ai-and-ml">What is a “model” in the context of AI and ML?</a></h2>
 <p>In the context of artificial intelligence (AI) and machine learning, a model is a mathematical representation of a process or a system that is used to make predictions or decisions based on input data. Here are some examples of mathematical representations for different types of models:</p>
 <p><strong>1. Linear regression</strong></p>
