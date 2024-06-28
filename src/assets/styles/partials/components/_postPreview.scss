@@ -47,6 +47,7 @@
 
   &-description {
     margin-top: functions.spacing("-2");
+    color: #0009;
     // Tighten line height due to short line length
     @include mixins.font($size: "base", $leading: "sm");
   }

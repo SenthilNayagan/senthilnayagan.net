@@ -24,7 +24,7 @@ module.exports = {
     itemsPerPage: 30,
   },
   cookieConsentMessage:
-    'This site uses cookies to understand the number of visitors and which posts they read the most through Google Analytics. If you consent to this, please click "I Agree." If not, click "I Disagree." For more details, please refer to the <a href="https://senthilnayagan.net/privacyPolicy/#cookies" target="_blank">Cookie Policy</a>.',
+    'This site uses cookies to understand the number of visitors and which posts they read the most through Google Analytics. If you consent to this, please click "I Agree." If not, click "I Disagree." For more details, please refer to the <a href="/privacyPolicy/#cookies" target="_blank">Cookie Policy</a>.',
   email: 'hello@senthilnayagan.net',
   contactMe: 'https://formspree.io/f/mdoqkzjn',
   disqus: 'senthilnayagan',

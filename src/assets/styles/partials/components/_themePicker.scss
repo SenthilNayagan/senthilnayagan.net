@@ -20,9 +20,17 @@
     // Light mode styles
     color: #fff;
 
+    &:hover {
+      color: #ccc; // Adjust hover color for light mode
+    }
+
     // Dark mode styles
     [data-theme='dark'] & {
       color: #fff;
+
+      &:hover {
+        color: #bbb; // Adjust hover color for dark mode
+      }
     }
   }
 }
