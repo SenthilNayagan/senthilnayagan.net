@@ -4,12 +4,23 @@
   <subtitle>A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.</subtitle>
   <link href="https://www.senthilnayagan.net/feed.xml" rel="self"/>
   <link href="https://www.senthilnayagan.net/" rel="alternate" type="text/html"/>
-  <updated>2024-06-24T00:00:00.000Z</updated>
+  <updated>2024-06-28T00:00:00.000Z</updated>
   <id>https://www.senthilnayagan.net/</id>
   <author>
     <name>Senthil Nayagan</name>
     <email>hello@senthilnayagan.net</email>
   </author>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/tech/referential-transparency/</id>
+    <title>Code Without Chaos: Adopting Referential Transparency in Programming</title>
+    <link href="https://www.senthilnayagan.net/blog/tech/referential-transparency/"/>
+    <published>2024-06-28T00:00:00.000Z</published>
+    <updated>2024-06-28T00:00:00.000Z</updated>
+    <category term="referential-transparency" />
+    <category term="pure-functions" />
+    <category term="immutability" />
+    <content type="html">Referential transparency is a key concept in functional programming, which allows expressions in a program to be replaced with their values without changing the program’s behavior or result. The post highlights the numerous benefits of adopting referential transparency, including enhanced predictability, simplified debugging, thread-safety in concurrent and parallel executions, and greater confidence in refactoring code. By understanding and applying the principles of referential transparency, programmers can create more reliable, maintainable, and efficient software, ultimately leading to cleaner and more elegant codebases.</content>
+  </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/starting-with-ai-a-beginners-journey-into-ai-part-1/</id>
     <title>Starting with AI: A Beginner’s Journey into Artificial Intelligence (Part 1)</title>

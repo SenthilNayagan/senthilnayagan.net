@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Code Without Chaos: Adopting Referential Transparency in Programming | Senthil Nayagan</title>
+  <meta name="description" content="Referential transparency is a key concept in functional programming, which allows expressions in a program to be replaced with their values without changing the program’s behavior or result. The post highlights the numerous benefits of adopting referential transparency, including enhanced predictability, simplified debugging, thread-safety in concurrent and parallel executions, and greater confidence in refactoring code. By understanding and applying the principles of referential transparency, programmers can create more reliable, maintainable, and efficient software, ultimately leading to cleaner and more elegant codebases.">
+  <meta name="keywords" content="referential-transparency, pure-functions, immutability">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/tech/referential-transparency/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Code Without Chaos: Adopting Referential Transparency in Programming | Senthil Nayagan"><meta property="og:description" content="Referential transparency is a key concept in functional programming, which allows expressions in a program to be replaced with their values without changing the program’s behavior or result. The post highlights the numerous benefits of adopting referential transparency, including enhanced predictability, simplified debugging, thread-safety in concurrent and parallel executions, and greater confidence in refactoring code. By understanding and applying the principles of referential transparency, programmers can create more reliable, maintainable, and efficient software, ultimately leading to cleaner and more elegant codebases.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/tech/referential-transparency/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Code Without Chaos: Adopting Referential Transparency in Programming | Senthil Nayagan">
+  <meta name="twitter:description" content="Referential transparency is a key concept in functional programming, which allows expressions in a program to be replaced with their values without changing the program’s behavior or result. The post highlights the numerous benefits of adopting referential transparency, including enhanced predictability, simplified debugging, thread-safety in concurrent and parallel executions, and greater confidence in refactoring code. By understanding and applying the principles of referential transparency, programmers can create more reliable, maintainable, and efficient software, ultimately leading to cleaner and more elegant codebases.">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8JWFCGCDB4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8JWFCGCDB4');
+</script>
+<!-- End Google tag (gtag.js) -->
+</head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <!-- <span class="site-name">Senthil Nayagan</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li><a
+            href="/tags/"
+            class="navbar-link"
+            >Tags</a>
+        </li><li class="theme-picker-item">
+          <div id="theme-picker" class="theme-toggle">
+  <i id="theme-icon" class="fa-solid fa-moon"></i>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    // Set the initial theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeIcon.classList.toggle('fa-sun', currentTheme === 'dark');
+    themeIcon.classList.toggle('fa-moon', currentTheme === 'light');
+
+    themeIcon.addEventListener('click', () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeIcon.classList.toggle('fa-sun', newTheme === 'dark');
+      themeIcon.classList.toggle('fa-moon', newTheme === 'light');
+    });
+  });
+</script>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-28" >June 28, 2024</time> - 5 min read</p>
+    <h1 class="post-title">Code Without Chaos: Adopting Referential Transparency in Programming</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/referential-transparency/" class="post-tag" aria-label="referential-transparency">referential-transparency</a>
+        </li><li>
+          <a href="/tags/pure-functions/" class="post-tag" aria-label="pure-functions">pure-functions</a>
+        </li><li>
+          <a href="/tags/immutability/" class="post-tag" aria-label="immutability">immutability</a>
+        </li></ul><p class="spacer"></p>
+      <p class="post-subtitle">Referential transparency is a key concept in functional programming, which allows expressions in a program to be replaced with their values without changing the program’s behavior or result. The post highlights the numerous benefits of adopting referential transparency, including enhanced predictability, simplified debugging, thread-safety in concurrent and parallel executions, and greater confidence in refactoring code. By understanding and applying the principles of referential transparency, programmers can create more reliable, maintainable, and efficient software, ultimately leading to cleaner and more elegant codebases.</p>
+      <p class="spacer"></p><!-- Share the post --><div class="social-share">
+    <a href="mailto:?subject=Code Without Chaos: Adopting Referential Transparency in Programming&body=https://www.senthilnayagan.net/blog/tech/referential-transparency/" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon">
+      <i class="fa-regular fa-envelope"></i>
+    </a>
+    <a href="https://api.whatsapp.com/send?text=Code Without Chaos: Adopting Referential Transparency in Programming%20https://www.senthilnayagan.net/blog/tech/referential-transparency/" title="Share on WhatsApp" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?text=Code Without Chaos: Adopting Referential Transparency in Programming&url=https://www.senthilnayagan.net/blog/tech/referential-transparency/" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/referential-transparency/&title=Code Without Chaos: Adopting Referential Transparency in Programming" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <!-- <a href="https://www.reddit.com/submit?url=https://www.senthilnayagan.net/blog/tech/referential-transparency/&title=Code Without Chaos: Adopting Referential Transparency in Programming" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
+        <i class="fa-brands fa-reddit"></i>
+      </a> --><a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
+      <i class="fa-solid fa-link"></i>
+    </a>
+    <span id="copy-message" class="copy-message">Copied to clipboard</span>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyLink = document.getElementById('copy-link');
+      const copyMessage = document.getElementById('copy-message');
+      
+      copyLink.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+        const mainUrl = window.location.href.split('#')[0]; // Get URL without hash
+        navigator.clipboard.writeText(mainUrl).then(() => {
+          copyMessage.style.visibility = 'visible';
+          setTimeout(() => {
+            copyMessage.style.visibility = 'hidden';
+          }, 2000);
+        });
+      });
+    });
+  </script><figure class="full-width"><picture class="full-width">
+    <source type="image/webp" srcset="/assets/images/8NtscHUaEz-400.webp 400w, /assets/images/8NtscHUaEz-800.webp 800w, /assets/images/8NtscHUaEz-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/8NtscHUaEz-400.jpeg 400w, /assets/images/8NtscHUaEz-800.jpeg 800w, /assets/images/8NtscHUaEz-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/8NtscHUaEz-1792.jpeg" alt="Code Without Chaos: Adopting Referential Transparency in Programming"  loading="lazy" decoding="async">
+  </picture><figcaption><p class="image-description">In the scene, basketball players are using a volleyball instead of a basketball. Despite this substitution, the game and the villagers’ behavior remain unchanged, demonstrating that replacing one element with another does not affect the overall outcome or behavior, thus embodying the principle of referential transparency.</p><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption></figure></header>
+  <div class="rhythm">
+    <div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-referential-transparency-in-general">What is referential transparency in General?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-referential-transparency-in-software-context">What is referential transparency in software context?</a></li><li class="toc-item"><a class="toc-link" href="#the-magic-of-pure-functions">The magic of pure functions</a></li><li class="toc-item"><a class="toc-link" href="#why-does-referential-transparency-matter">Why does referential transparency matter?</a></li><li class="toc-item"><a class="toc-link" href="#adopting-referential-transparency-in-our-code">Adopting referential transparency in our code</a></li><li class="toc-item"><a class="toc-link" href="#conclusion">Conclusion</a></li></ol></nav><div id="toc-skipped"></div>
+<hr>
+<h1 id="what-is-referential-transparency-in-general"><a class="to-underline" href="#what-is-referential-transparency-in-general">What is referential transparency in General?</a></h1>
+<p>A context or sentence is referentially transparent if replacing a term in that context or sentence with another term that refers to the same concept doesn’t alter the meaning.</p>
+<p><strong>Example:</strong>
+<em>“The Scottish Parliament meets in the capital of Scotland.”</em></p>
+<p>This means the same as:</p>
+<p><em>“The Scottish Parliament meets in Edinburgh.”</em></p>
+<h1 id="what-is-referential-transparency-in-software-context"><a class="to-underline" href="#what-is-referential-transparency-in-software-context">What is referential transparency in software context?</a></h1>
+<p>Referential transparency is a property of certain expressions in programming that allows them to be replaced with their corresponding values without changing the program’s behavior or result. In simpler terms, an expression is referentially transparent if it can be swapped out with its value without altering the program’s output. This property is a cornerstone of functional programming, a paradigm that emphasizes the use of <em>pure functions</em> and <em>immutable data</em>.</p>
+<h1 id="the-magic-of-pure-functions"><a class="to-underline" href="#the-magic-of-pure-functions">The magic of pure functions</a></h1>
+<p>At the heart of referential transparency lies the concept of pure functions. A pure function is one that, given the same inputs, will always produce the same outputs and has no <em>side effects</em><a href="#ref-1"><sup id="back-to-1">1</sup></a>. This means that pure functions do not modify any external state or depend on mutable data. They are predictable and easy to reason about, which makes debugging and testing a breeze.</p>
+<p>For instance, consider the following pure function in Python:</p>
+<pre class="language-python"><code data-copyable="true" tabindex="0" class="language-python"><span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+</code></pre>
+<p>This function will always return the same result when given the same inputs, and it does not alter any external state. Consequently, it is referentially transparent. If <code>add(2, 3)</code> returns 5, we can replace <code>add(2, 3)</code> with 5 anywhere in the program without changing its behavior.</p>
+<pre class="language-python"><code data-copyable="true" tabindex="0" class="language-python">result <span class="token operator">=</span> add<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span>
+<span class="token comment"># This is equivalent to</span>
+result <span class="token operator">=</span> <span class="token number">5</span> <span class="token operator">*</span> <span class="token number">2</span>
+</code></pre>
+<p>In this case, calling <code>add(2, 3)</code> can be directly replaced with 5, maintaining the same program behavior. This demonstrates referential transparency, where the function call can be replaced by its result without affecting the program’s correctness or behavior.</p>
+<h1 id="why-does-referential-transparency-matter"><a class="to-underline" href="#why-does-referential-transparency-matter">Why does referential transparency matter?</a></h1>
+<ul>
+<li>
+<p><strong>Predictability and debugging</strong>: Programs with referential transparency are more predictable. Since functions always produce the same output for the same input, debugging becomes significantly easier. Developers can trace the source of bugs with greater accuracy, leading to faster and more reliable fixes.</p>
+</li>
+<li>
+<p><strong>Concurrency and parallelism</strong>: Referentially transparent code is inherently thread-safe. Because pure functions do not depend on shared mutable state, they can be executed concurrently or in parallel without fear of race conditions or other concurrency issues. This makes functional programming highly suitable for modern multi-core processors.</p>
+</li>
+<li>
+<p><strong>Refactoring confidence</strong>: With referential transparency, refactoring code becomes less daunting. Developers can confidently replace expressions with their evaluated results or refactor functions, knowing that the program’s behavior will remain unchanged. This leads to cleaner and more maintainable codebases.</p>
+</li>
+</ul>
+<h1 id="adopting-referential-transparency-in-our-code"><a class="to-underline" href="#adopting-referential-transparency-in-our-code">Adopting referential transparency in our code</a></h1>
+<p>To leverage the benefits of referential transparency, here are a few practices you can adopt:</p>
+<ul>
+<li>
+<p><strong>Minimize side effects</strong>: Strive to write functions that do not produce side effects. Avoid modifying global state or mutable objects within your functions.</p>
+</li>
+<li>
+<p><strong>Immutability</strong>: Embrace immutability by using immutable data structures. In languages like Python, you can use tuples instead of lists or dictionaries when possible.</p>
+</li>
+<li>
+<p><strong>Functional programming paradigms</strong>: Explore functional programming languages such as Haskell, Scala, or functional programming features in languages like Python, JavaScript, or Java. These languages provide robust support for writing referentially transparent code.</p>
+</li>
+<li>
+<p><strong>Test-driven development (TDD)</strong>: Adopt TDD practices to ensure that your functions remain pure and predictable. Writing tests before implementing functions helps in adhering to the principles of referential transparency.</p>
+</li>
+</ul>
+<h1 id="conclusion"><a class="to-underline" href="#conclusion">Conclusion</a></h1>
+<p>Referential transparency is more than just a theoretical concept; it is a practical tool that can transform the way you write and think about code. By adopting this property, we can create software that is more reliable, maintainable, and efficient. As the programming landscape continues to evolve, mastering concepts like referential transparency will keep us at the forefront of writing elegant and robust code.</p>
+<p>So, the next time you sit down to write a function, ask yourself: <strong>is this function referentially transparent?</strong> The answer could lead you to a new level of programming excellence.</p>
+<p>Better coding!</p>
+<div class="references">
+  <hr>
+  <h2>References</h2>
+  <ol>
+  <!-- <li>Nil</li> -->
+    <li id="ref-1">1. <strong>Side effect</strong> refers to any operation that modifies some state outside its local environment or interacts with the outside world. This includes but is not limited to: modifying a variable or data structure outside the function’s scope, performing I/O operations such as reading from or writing to a file, printing to the console, etc., and raising an exception or error. <a href="#back-to-1" class="back-to-note">↩</a>
+    </li>
+  </ol>
+</div>
+    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/tech/referential-transparency/"
+    },
+    "headline": "Code Without Chaos: Adopting Referential Transparency in Programming",
+    "description": "Referential transparency is a key concept in functional programming, which allows expressions in a program to be replaced with their values without changing the program’s behavior or result. The post highlights the numerous benefits of adopting referential transparency, including enhanced predictability, simplified debugging, thread-safety in concurrent and parallel executions, and greater confidence in refactoring code. By understanding and applying the principles of referential transparency, programmers can create more reliable, maintainable, and efficient software, ultimately leading to cleaner and more elegant codebases.",
+    
+    "datePublished": "2024-06-28T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b> | Hosted on <b>GitHub Pages</b>.</p>
+      <p class="footer-link-font"><a href="/privacyPolicy/" target="_blank">Privacy Policy</a> | <a href="/privacyPolicy/#cookies" target="_blank">Cookie Policy</a> | <a href="/commentPolicy/" target="_blank">Comment Policy</a>  | <a href="/feed.xml" target="_blank">RSS Feed</a> | <a href="/contact/" target="_blank">Contact</a></p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+  <!-- Include cookie consent -->
+  <!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <p>This site uses cookies to understand the number of visitors and which posts they read the most through Google Analytics. If you consent to this, please click "I Agree." If not, click "I Disagree." For more details, please refer to the <a href="/privacyPolicy/#cookies" target="_blank">Cookie Policy</a>.</p>
+    <button id="accept-cookies" class="cookie-button">I Agree</button>
+    <button id="decline-cookies" class="cookie-button">I Disagree</button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptCookiesButton = document.getElementById('accept-cookies');
+      const declineCookiesButton = document.getElementById('decline-cookies');
+  
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+  
+      function getCookie(name) {
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for(let i = 0; i < cookieArray.length; i++) {
+          let cookie = cookieArray[i].trim();
+          if (cookie.indexOf(name + "=") == 0) {
+            return cookie.substring(name.length + 1, cookie.length);
+          }
+        }
+        return "";
+      }
+  
+      function checkCookie() {
+        const cookiesAccepted = getCookie("cookiesAccepted");
+        if (cookiesAccepted !== "true" && cookiesAccepted !== "false") {
+          cookieBanner.style.display = "block";
+        }
+      }
+  
+      acceptCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "true", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      declineCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "false", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      checkCookie();
+    });
+</script>
+</body>
+</html>
