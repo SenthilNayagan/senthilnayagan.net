@@ -11,7 +11,7 @@ eleventyComputed:
 
 <article class="post prose rhythm">
   <header class="post-header">
-    <p class="post-date"><span class="screen-reader-only">Published </span>{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} &bull; Updated {% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}{% endif %} - {{ content | readingTime }}</p>
+    <p class="post-date"><span class="screen-reader-only">Published </span>{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} (Updated {% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}) {% endif %} - {{ content | readingTime }}</p>
     <h1 class="post-title">{{ title }}</h1>
     <ul class="post-tags" aria-label="Tags">
       {%- for category in categories -%}
