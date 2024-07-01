@@ -22,6 +22,8 @@ hr {
   border: none;
   margin-bottom: 50px;
   margin-top: 50px;
+  margin-left: auto;  // Center the line horizontally
+  margin-right: auto; // Center the line horizontally
 }
 
 .author-img {
@@ -45,6 +47,7 @@ hr {
 figure.full-width {
   width: 100vw; /* Ensure the figure element also spans the full viewport width */
   margin-left: calc(50% - 50vw); /* Center the figure element */
+  border-radius: 0; /* No border-radius */
 }
 
 #page-content {

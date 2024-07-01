@@ -47,7 +47,7 @@
 
   &-description {
     margin-top: functions.spacing("-2");
-    color: #0009;
+    color: var(--description-color);
     // Tighten line height due to short line length
     @include mixins.font($size: "base", $leading: "sm");
   }
@@ -97,4 +97,14 @@
       }
     }
   }
+}
+
+
+// Define custom properties for theme colors
+:root {
+  --description-color: #0009;
+}
+
+[data-theme="dark"] {
+  --description-color: rgba(255, 255, 255, 0.6); /* Adjust the color as needed for dark theme */
 }
