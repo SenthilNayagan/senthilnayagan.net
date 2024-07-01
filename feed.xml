@@ -4,7 +4,7 @@
   <subtitle>A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.</subtitle>
   <link href="https://www.senthilnayagan.net/feed.xml" rel="self"/>
   <link href="https://www.senthilnayagan.net/" rel="alternate" type="text/html"/>
-  <updated>2024-06-28T00:00:00.000Z</updated>
+  <updated>2024-07-01T00:00:00.000Z</updated>
   <id>https://www.senthilnayagan.net/</id>
   <author>
     <name>Senthil Nayagan</name>
@@ -14,8 +14,8 @@
     <id>https://www.senthilnayagan.net/blog/tech/referential-transparency/</id>
     <title>Code Without Chaos: Adopting Referential Transparency in Programming</title>
     <link href="https://www.senthilnayagan.net/blog/tech/referential-transparency/"/>
-    <published>2024-06-28T00:00:00.000Z</published>
-    <updated>2024-06-28T00:00:00.000Z</updated>
+    <published>2024-07-01T00:00:00.000Z</published>
+    <updated>2024-07-01T00:00:00.000Z</updated>
     <category term="referential-transparency" />
     <category term="pure-functions" />
     <category term="immutability" />
