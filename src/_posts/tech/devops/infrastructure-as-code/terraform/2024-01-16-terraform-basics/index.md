@@ -10,8 +10,6 @@ isFeatured: true
 
 {% include "toc.md" %}
 
----
-
 # Introducing infrastructure as code (IaC)
 
 Infrastructure as Code (IaC) refers to the *process of managing and provisioning infrastructure using code* rather than manual processes. When we talk about "infrastructure as code," we mean that we manage our IT infrastructure with code in the form of configuration files.

@@ -11,8 +11,6 @@ isFeatured: true
 
 {% include "toc.md" %}
 
----
-
 # Overview
 
 Windowing in Kafka Streams is a powerful feature that allows us to manage and analyze data that enters a Kafka cluster in a time-sequenced order. It enables the grouping of records based on **time intervals**, or **windows**, which makes temporal operations on data streams easier. The term "temporal operations" refers to operations that are based on time. Having said that, windowing refers to the process of dividing a continuous stream of data into discrete segments, or "windows," based on time. This feature is particularly useful for applications that require real-time analytics, aggregations, or other time-based processing on continuous streams of data. 

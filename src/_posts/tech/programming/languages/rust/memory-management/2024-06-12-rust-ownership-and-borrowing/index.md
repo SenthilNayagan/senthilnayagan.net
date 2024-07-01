@@ -11,8 +11,6 @@ isFeatured: true
 
 {% include "toc.md" %}
 
----
-
 # Overview
 
 The Rust’s *ownership* and *borrowing* might be confusing if we don't grasp what's really going on. This is particularly true when applying a previously learned programming style to a new paradigm; we call this a *paradigm shift*. Ownership is a novel idea, yet tricky to understand at first, but it gets easier the more we work on it.

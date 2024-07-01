@@ -10,8 +10,6 @@ draft: true
 
 {% include "toc.md" %}
 
----
-
 # What is an algorithm?
 
 An algorithm is a set of steps or instructions in a particular order for performing a specific task. 
