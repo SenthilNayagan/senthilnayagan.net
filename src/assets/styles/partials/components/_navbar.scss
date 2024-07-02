@@ -9,15 +9,32 @@
 }
 
 .navbar {
+  // @include mixins.theme-light {
+  //   --color-navbar-bg: var(--color-surface-8);
+  //   --color-navbar-bg-focus: var(--color-surface-7);
+  // }
+
+  // @include mixins.theme-dark {
+  //   --color-navbar-bg: var(--color-surface-2);
+  //   --color-navbar-bg-focus: var(--color-surface-3);
+  // }
+
   @include mixins.theme-light {
-    --color-navbar-bg: var(--color-surface-8);
-    --color-navbar-bg-focus: var(--color-surface-7);
+    --color-navbar-bg: rgba(0, 0, 0, 0.8); /* Semi-transparent black for light theme */
+    --color-navbar-bg-focus: rgba(0, 0, 0, 0.6); /* Semi-transparent black for focus state */
   }
 
   @include mixins.theme-dark {
-    --color-navbar-bg: var(--color-surface-2);
-    --color-navbar-bg-focus: var(--color-surface-3);
+    --color-navbar-bg: rgba(0, 0, 0, 0.8); /* Semi-transparent black for dark theme */
+    --color-navbar-bg-focus: rgba(0, 0, 0, 0.6); /* Semi-transparent black for focus state */
   }
+
+  /* Make navbar fixed at the top */
+  position: fixed !important;
+  top: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  background-color: var(--color-navbar-bg) !important;
 
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
@@ -82,6 +99,10 @@
   }
 }
 
+body {
+  padding-top: 60px; /* Adjust this value to the height of your navbar */
+}
+
 @include mixins.mobile-lg {
   .navbar {
     padding-block: functions.spacing("2");
@@ -91,5 +112,9 @@
       position: unset;
       @include mixins.screen-reader-only-unset;
     }
+  }
+
+  body {
+    padding-top: 80px; /* Adjust this value if the navbar height is different on mobile */
   }
 }
