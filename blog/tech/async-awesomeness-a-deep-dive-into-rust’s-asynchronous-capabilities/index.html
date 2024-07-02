@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities | Senthil Nayagan</title>
+  <meta name="description" content="With async capabilities, developers can write non-blocking code that handles multiple operations simultaneously without the complexity of traditional multithreading. Async programming is ideal for I/O-bound tasks, offering a more responsive and scalable solution for modern applications. Let's dive into the world of Rust’s asynchronous capabilities and discover how to build high-performance, efficient software.">
+  <meta name="keywords" content="asynchronous, asynchronous-programming">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities | Senthil Nayagan"><meta property="og:description" content="With async capabilities, developers can write non-blocking code that handles multiple operations simultaneously without the complexity of traditional multithreading. Async programming is ideal for I/O-bound tasks, offering a more responsive and scalable solution for modern applications. Let's dive into the world of Rust’s asynchronous capabilities and discover how to build high-performance, efficient software.">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities | Senthil Nayagan">
+  <meta name="twitter:description" content="With async capabilities, developers can write non-blocking code that handles multiple operations simultaneously without the complexity of traditional multithreading. Async programming is ideal for I/O-bound tasks, offering a more responsive and scalable solution for modern applications. Let's dive into the world of Rust’s asynchronous capabilities and discover how to build high-performance, efficient software.">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8JWFCGCDB4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8JWFCGCDB4');
+</script>
+<!-- End Google tag (gtag.js) -->
+</head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <!-- <span class="site-name">Senthil Nayagan</span> -->
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li><a
+            href="/tags/"
+            class="navbar-link"
+            >Tags</a>
+        </li><li class="theme-picker-item">
+          <div id="theme-picker" class="theme-toggle">
+  <i id="theme-icon" class="fa-solid fa-moon"></i>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    // Set the initial theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeIcon.classList.toggle('fa-sun', currentTheme === 'dark');
+    themeIcon.classList.toggle('fa-moon', currentTheme === 'light');
+
+    themeIcon.addEventListener('click', () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeIcon.classList.toggle('fa-sun', newTheme === 'dark');
+      themeIcon.classList.toggle('fa-moon', newTheme === 'light');
+    });
+  });
+</script>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-07-02" >July 02, 2024</time> - 26 min read</p>
+    <h1 class="post-title">Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/asynchronous/" class="post-tag" aria-label="asynchronous">asynchronous</a>
+        </li><li>
+          <a href="/tags/asynchronous-programming/" class="post-tag" aria-label="asynchronous-programming">asynchronous-programming</a>
+        </li></ul><p class="spacer"></p>
+      <p class="post-subtitle">With async capabilities, developers can write non-blocking code that handles multiple operations simultaneously without the complexity of traditional multithreading. Async programming is ideal for I/O-bound tasks, offering a more responsive and scalable solution for modern applications. Let's dive into the world of Rust’s asynchronous capabilities and discover how to build high-performance, efficient software.</p>
+      <p class="spacer"></p><!-- Share the post --><div class="social-share">
+    <a href="mailto:?subject=Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities&body=https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon">
+      <i class="fa-regular fa-envelope"></i>
+    </a>
+    <a href="https://api.whatsapp.com/send?text=Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities%20https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/" title="Share on WhatsApp" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?text=Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities&url=https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/&title=Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <!-- <a href="https://www.reddit.com/submit?url=https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/&title=Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
+        <i class="fa-brands fa-reddit"></i>
+      </a> --><a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
+      <i class="fa-solid fa-link"></i>
+    </a>
+    <span id="copy-message" class="copy-message">Copied to clipboard</span>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyLink = document.getElementById('copy-link');
+      const copyMessage = document.getElementById('copy-message');
+      
+      copyLink.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+        const mainUrl = window.location.href.split('#')[0]; // Get URL without hash
+        navigator.clipboard.writeText(mainUrl).then(() => {
+          copyMessage.style.visibility = 'visible';
+          setTimeout(() => {
+            copyMessage.style.visibility = 'hidden';
+          }, 2000);
+        });
+      });
+    });
+  </script><p class="spacer"></p>
+    <div class="draft-note">
+      <h2 class="draft-note-heading">Work in Progress</h2>
+      <p>If you have any suggestions for improving the content or notice any inaccuracies, please email me at <a href="mailto:hello@senthilnayagan.net">hello@senthilnayagan.net</a>. Thanks!</p>
+    </div><figure class="full-width"><picture class="full-width">
+    <source type="image/webp" srcset="/assets/images/0Wnz-8CmaJ-400.webp 400w, /assets/images/0Wnz-8CmaJ-800.webp 800w, /assets/images/0Wnz-8CmaJ-2000.webp 2000w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/0Wnz-8CmaJ-400.jpeg 400w, /assets/images/0Wnz-8CmaJ-800.jpeg 800w, /assets/images/0Wnz-8CmaJ-2000.jpeg 2000w" sizes="100vw">
+    <img width="2000" height="1333" src="/assets/images/0Wnz-8CmaJ-2000.jpeg" alt="Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities"  loading="lazy" decoding="async">
+  </picture><figcaption><p class="image-credits"><b>Image Credits: </b>AI-generated image from <b>freepik</b>.</p></figcaption></figure></header>
+  <div class="rhythm">
+    <p>Let’s face it, most “developers are creatures of habit.” When it comes to I/O-bound intensive tasks, many stick to their trusty old blocking-based programming. It’s like ordering the same coffee every day, even though you know there’s a whole menu of exciting options out there. The focus is usually on getting the expected outcome – who cares if the program takes a scenic route through CPU wasteland to get there?</p>
+<p>But what if I told you that switching to asynchronous programming is like discovering a secret espresso shot that supercharges your app’s performance? In this post, we’re going to shake things up and dive into the wild world of Rust’s async capabilities. Buckle up, because it’s time to break the blocking habit and unlock the true potential of your I/O-bound tasks!</p>
+<div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-asynchronous-programming">What is asynchronous programming?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#async-vs-pure-parallelism">Async vs. pure parallelism</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#async-programming">Async programming</a></li><li class="toc-item"><a class="toc-link" href="#parallelism">Parallelism</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#a-glossary-of-terms-relating-to-concurrency">A glossary of terms relating to concurrency</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#various-concurrency-models">Various concurrency models</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#operating-system-os-threads">Operating System (OS) threads</a></li><li class="toc-item"><a class="toc-link" href="#event-driven-programming">Event-driven programming</a></li><li class="toc-item"><a class="toc-link" href="#coroutines">Coroutines</a></li><li class="toc-item"><a class="toc-link" href="#actor-model">Actor model</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#context-switching">Context switching</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#asynchronous-programming-in-rust">Asynchronous programming in Rust</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#async-vs-threads-in-rust">Async vs. threads in Rust</a></li><li class="toc-item"><a class="toc-link" href="#language-and-external-library-support-for-async-programming-in-rust">Language and external library support for async programming in Rust</a></li><li class="toc-item"><a class="toc-link" href="#asynchronous-code-and-synchronous-code">Asynchronous code and synchronous code</a></li><li class="toc-item"><a class="toc-link" href="#async/await-keyword">async/.await keyword</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#async-keyword">async Keyword</a></li><li class="toc-item"><a class="toc-link" href="#await-keyword">.await Keyword</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#future-crate">future crate</a></li><li class="toc-item"><a class="toc-link" href="#future-trait">Future trait</a></li><li class="toc-item"><a class="toc-link" href="#runtimes-role-in-asynchronous-programming">Runtime’s role in asynchronous programming</a></li><li class="toc-item"><a class="toc-link" href="#async-programming-with-tokio">Async programming with Tokio</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#components-of-tokio">Components of Tokio</a></li><li class="toc-item"><a class="toc-link" href="#error-handling-in-async-programs">Error handling in async programs</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-the-difference-between-concurrency-and-parallelism-and-how-do-the-two-differ-from-asynchronous-programming">What is the difference between concurrency and parallelism, and how do the two differ from asynchronous programming?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-cooperative-and-preemptive-multitasking">What is cooperative and preemptive multitasking?</a></li><li class="toc-item"><a class="toc-link" href="#how-does-a-kernel-level-thread-differ-from-a-user-level-thread">How does a kernel-level thread differ from a user-level thread?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-the-difference-between-await-and-block_on">What is the difference between .await and block_on?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<h1 id="what-is-asynchronous-programming"><a class="to-underline" href="#what-is-asynchronous-programming">What is asynchronous programming?</a></h1>
+<p>Asynchronous programming is a form of <em>concurrency programming model</em> that allows multiple tasks to run independently in a <em>non-blocking manner</em> without waiting for each other.</p>
+<p>This promotes:</p>
+<ul>
+<li><strong>Efficient utilization of resources</strong> - System resources are utilized to their fullest potential, leading to better performance, scalability, and responsiveness in modern applications</li>
+<li><strong>Efficient management of I/O operations</strong> that often involve waiting for external events.</li>
+<li><strong>Improved responsiveness</strong>, especially in scenarios where tasks involve waiting for I/O operations, such as reading from or writing to a file, handling user input, etc.</li>
+</ul>
+<p><strong>Synchronous programming</strong>, aka <strong>sequential programming</strong>, is more widely adopted, mature, and “standardized” than concurrent programming. In traditional synchronous programming, when a program encounters an I/O operation (such as reading from a file or interacting with a database), it typically blocks and waits for the operation to complete before moving on to the next instruction. During this blocking period, the entire program may remain idle, potentially leading to insufficient utilization of resources.</p>
+<p>Asynchronous programming, on the other hand, allows the program to continue executing other tasks while running tasks in the background, especially I/O operations. Upon completion of the background-running task, the program is notified, and the appropriate callback or continuation is executed. Asynchronous programming enables our program to start a potentially long-running task and still be responsive to other events while that task runs, rather than having to wait until that task has finished.</p>
+<p>The asynchronous programming model is typically more complicated for the developer but results in a faster runtime for I/O-heavy workloads. Asynchronous programming pertains to situations where the execution order is not predetermined. External events, often related to I/O, impact the sequence of execution. Examples include a device driver signaling that it is ready.</p>
+<h2 id="async-vs-pure-parallelism"><a class="to-underline" href="#async-vs-pure-parallelism">Async vs. pure parallelism</a></h2>
+<p>Async and parallelism are related concepts within the domain of concurrent programming, but they address different aspects of handling tasks concurrently.</p>
+<h3 id="async-programming"><a class="to-underline" href="#async-programming">Async programming</a></h3>
+<p><strong>Async programming</strong> allows tasks to proceed independently without waiting for the completion of others. It is particularly useful for handling I/O-bound operations where a program can efficiently utilize its time while waiting for data. Async programming does not necessarily imply parallelism. Tasks are designed to overlap in time, but they may not execute simultaneously on multiple processors. The objective is to prevent idle time by allowing the program to continue with other tasks while waiting for certain operations to be completed.</p>
+<h3 id="parallelism"><a class="to-underline" href="#parallelism">Parallelism</a></h3>
+<p>Parallelism, on the other hand, involves the simultaneous execution of multiple tasks on multiple processors or CPU cores. The objective is to improve overall performance by dividing a larger task into smaller subtasks that can be executed concurrently “at the same time”. Parallelism aims to achieve true simultaneous execution. It is commonly used in CPU-bound tasks where computations can be divided to be processed concurrently at the same time.</p>
+<p>While async programming and parallelism are distinct concepts, they can be combined in certain scenarios. For example, a system might use asynchronous programming to handle I/O-bound tasks efficiently and parallelism to process CPU-bound tasks concurrently. Async programming is more focused on task coordination and efficient use of resources, while parallelism is geared toward maximizing computational throughput by leveraging multiple processors or CPU cores.</p>
+<blockquote class="rhythm">
+<p><em><strong>Threads are for working in parallel and async is for waiting in parallel.</strong></em> - Quote from the internet.</p>
+</blockquote>
+<h2 id="a-glossary-of-terms-relating-to-concurrency"><a class="to-underline" href="#a-glossary-of-terms-relating-to-concurrency">A glossary of terms relating to concurrency</a></h2>
+<h3 id="various-concurrency-models"><a class="to-underline" href="#various-concurrency-models">Various concurrency models</a></h3>
+<p>Let’s understand some of the most popular concurrency models that can help us understand how asynchronous programming fits within the wider field of concurrent programming. The creation of a thread involves allocating resources such as a stack and a program counter, and the kernel manages the scheduling of threads on available CPU cores.</p>
+<h4 id="operating-system-os-threads"><a class="to-underline" href="#operating-system-os-threads">Operating System (OS) threads</a></h4>
+<ul>
+<li>OS threads play a crucial role in implementing concurrency.</li>
+<li><strong>Thread creation and management:</strong>
+<ul>
+<li>OS threads are managed by the operating system kernel.</li>
+<li>The creation of an OS thread involves allocating resources such as a stack and a program counter</li>
+</ul>
+</li>
+<li><strong>Implementation</strong>
+<ul>
+<li>Implementing concurrency with OS threads is a straightforward process, as it does not require any changes to the programming model.</li>
+</ul>
+</li>
+<li><strong>Parallelism</strong>
+<ul>
+<li>OS threads can enable parallelism by allowing multiple threads to execute in parallel on different CPU cores.</li>
+</ul>
+</li>
+<li><strong>Synchronization</strong>
+<ul>
+<li>Synchronization mechanisms, such as <strong>locks</strong>, <strong>semaphores</strong><a href="#ref-1"><sup id="back-to-1">1</sup></a>, and <strong>condition variables</strong>, are often used with OS threads to coordinate access to shared resources and avoid race conditions.</li>
+</ul>
+</li>
+<li><strong>Resource overhead</strong>
+<ul>
+<li>Each thread has its own stack, program counter, and other resources, and managing a large number of threads can lead to increased memory usage and context-switching overhead.</li>
+<li>However, <strong>thread pools</strong><a href="#ref-2"><sup id="back-to-2">2</sup></a> can mitigate some of these costs, but not enough to support massive IO-bound workloads.</li>
+</ul>
+</li>
+</ul>
+<h4 id="event-driven-programming"><a class="to-underline" href="#event-driven-programming">Event-driven programming</a></h4>
+<ul>
+<li>Event-driven programming, in conjunction with callbacks, can be very performant but tends to result in complex and non-linear asynchronous control flow.</li>
+<li>Data flow and error propagation is often hard to follow.</li>
+</ul>
+<h4 id="coroutines"><a class="to-underline" href="#coroutines">Coroutines</a></h4>
+<ul>
+<li>Coroutines, like threads, don’t require changes to the programming model, which makes them easy to use. Like async, they can also support a large number of tasks.</li>
+<li>However, they abstract away low-level details that are important for systems programming and custom runtime implementors.</li>
+</ul>
+<h4 id="actor-model"><a class="to-underline" href="#actor-model">Actor model</a></h4>
+<ul>
+<li>The actor model divides all concurrent computation into units called actors, which communicate through message passing, much like in distributed systems.</li>
+<li>The actor model can be efficiently implemented, but it leaves many practical issues unanswered, such as flow control and retry logic.</li>
+</ul>
+<h3 id="context-switching"><a class="to-underline" href="#context-switching">Context switching</a></h3>
+<p>Context switching is the process of switching the CPU (or virtual processor) from one thread to another. It is an essential component of multithreading, enabling the operating system to concurrently execute multiple tasks. When a thread is running, the operating system keeps track of its state, including its <em>program counter</em>, <em>stack</em>, and <em>registers</em>. When the operating system needs to switch to another thread, it saves the state of the current thread and subsequently restores the state of the new or other thread.</p>
+<p><strong>Context switching can incur significant costs</strong> as it forces the operating system to save and restore the thread’s state. However, it is an indispensable evil needed for multitasking.</p>
+<p>The frequency of context switches can be influenced by various factors, such as the number of active threads, the nature of the work performed by those threads, and the scheduling algorithm that the operating system is using. In general, the more threads that are running, the more often context switches will occur.</p>
+<h1 id="asynchronous-programming-in-rust"><a class="to-underline" href="#asynchronous-programming-in-rust">Asynchronous programming in Rust</a></h1>
+<p>Developing a fast and reactive application requires the use of asynchronous programming. Rust’s implementation of async differs from most languages in certain ways, which include:</p>
+<ul>
+<li><strong>Futures are inactive in Rust</strong>
+<ul>
+<li>A future does not start executing its associated code until an executor or a runtime actively polls it.</li>
+<li>Dropping a future typically means that the associated computation is canceled or cleaned up, and it implies that the future will no longer make progress or complete its task.</li>
+</ul>
+</li>
+<li><strong>Async is zero-cost in Rust</strong>
+<ul>
+<li>It emphasizes that using asynchronous programming constructs should not impose any runtime overhead.</li>
+<li>Specifically, we can use async without heap allocations and dynamic dispatch, which is great for performance and this also lets us use async in constrained environments, such as embedded systems.</li>
+</ul>
+</li>
+<li><strong>No built-in async runtime</strong>
+<ul>
+<li>No built-in async runtime is provided by Rust.</li>
+<li>Instead, runtimes (<a href="https://tokio.rs/" :target="_blank" rel="noopener">Tokio</a>, etc.) are provided by community maintained crates.</li>
+</ul>
+</li>
+<li><strong>Both single- and multithreaded runtimes</strong> are available in Rust, which have different strengths and weaknesses.</li>
+</ul>
+<h2 id="async-vs-threads-in-rust"><a class="to-underline" href="#async-vs-threads-in-rust">Async vs. threads in Rust</a></h2>
+<p>The primary alternative to async in Rust is using OS threads, either directly through <code>std::thread</code> or indirectly through a thread pool.</p>
+<p><strong>OS threads</strong> are suitable for a small number of tasks, since threads come with CPU and memory overhead. Spawning and switching between threads is quite expensive as even idle threads consume system resources. A thread pool library can help mitigate some of these costs, but not all. Threads let you reuse existing synchronous code without significant code changes. It is also possible to modify the priority of a thread in certain operating systems, which is beneficial for drivers and other applications that are sensitive to latency.</p>
+<p><strong>Async</strong> provides significantly reduced CPU and memory overhead, especially for workloads with a large amount of IO-bound tasks. <strong>Asynchronous programming is not superior than threads, but different</strong>. When performance does not require asynchronous operations, threads are frequently a more straightforward alternative.</p>
+<h2 id="language-and-external-library-support-for-async-programming-in-rust"><a class="to-underline" href="#language-and-external-library-support-for-async-programming-in-rust">Language and external library support for async programming in Rust</a></h2>
+<p>Although Rust itself provides support for asynchronous programming, the majority of async applications rely on the functionality offered by community crates. Therefore, a combination of language features and library support is required:</p>
+<ul>
+<li>
+<p>The <code>Future</code> trait (<code>std::future::Future</code>) is a fundamental part of the asynchronous programming model <em>offered by the standard library in Rust</em>. Usually, we don’t have to interact with <code>Future</code> directly too often, but it serves as a fundamental component of the entire model. The <code>poll</code> method allows checking whether the future has completed, is still pending, or encountered an error.</p>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">trait</span> <span class="token type-definition class-name">Future</span> <span class="token punctuation">{</span>
+    <span class="token keyword">type</span> <span class="token type-definition class-name">Output</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Required method</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">poll</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">:</span> <span class="token class-name">Pin</span><span class="token operator">&lt;</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">Self</span><span class="token operator">></span><span class="token punctuation">,</span> cx<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token class-name">Context</span><span class="token operator">&lt;</span><span class="token lifetime-annotation symbol">'_</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Poll</span><span class="token operator">&lt;</span><span class="token keyword">Self</span><span class="token punctuation">::</span><span class="token class-name">Output</span><span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li>
+<p>The <code>async</code> keyword is supported directly by the Rust compiler.</p>
+</li>
+<li>
+<p>The <code>.await</code> syntax is also supported directly by the Rust compiler.</p>
+</li>
+<li>
+<p>Many utility types, macros and functions are provided by the <code>futures</code> crate and they can be used in any async Rust application.</p>
+</li>
+<li>
+<p>Execution of async code, IO and task spawning are provided by <strong>async runtimes</strong>, such as <strong>Tokio</strong> and <strong>async-std</strong>. Most async applications, and some async crates, depend on a specific runtime.</p>
+</li>
+</ul>
+<h2 id="asynchronous-code-and-synchronous-code"><a class="to-underline" href="#asynchronous-code-and-synchronous-code">Asynchronous code and synchronous code</a></h2>
+<p>It is not always possible to combine synchronous and asynchronous code freely. For example, we can’t directly call an async function from a sync function. Even asynchronous code cannot always be freely combined. Certain packages require a particular async runtime in order to operate. If so, it is usually specified in the crate’s dependency list. It is crucial to investigate potential crates and async runtimes in advance, as these compatibility issues may restrict your options. Once we have settled in with a runtime, we won’t have to worry much about compatibility.</p>
+<h2 id="async/await-keyword"><a class="to-underline" href="#async/await-keyword">async/.await keyword</a></h2>
+<p><code>async/.await</code> is Rust’s built-in tool or keywords for writing asynchronous functions that look like synchronous code.</p>
+<h3 id="async-keyword"><a class="to-underline" href="#async-keyword">async Keyword</a></h3>
+<ul>
+<li>
+<p>The <code>async</code> keyword is used to define asynchronous functions.</p>
+</li>
+<li>
+<p>An async function returns a <code>Future</code>, which represents a computation or value that may not have been completed yet but will be available later in time.</p>
+</li>
+<li>
+<p>Asynchronous functions are defined using the <code>async fn</code> syntax.</p>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token comment">// It's syntactic sugar</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">async_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">u32</span> <span class="token punctuation">{</span> 
+  <span class="token comment">/* Asynchronous code here */</span> 
+  <span class="token number">50</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Desyntactic sugar</span>
+<span class="token keyword">fn</span> <span class="token function-definition function">async_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">impl</span> <span class="token class-name">Future</span><span class="token operator">&lt;</span><span class="token class-name">Output</span> <span class="token operator">=</span> <span class="token keyword">u32</span><span class="token operator">></span> <span class="token punctuation">{</span> 
+  <span class="token comment">/* Asynchronous code here */</span> 
+  <span class="token keyword">async</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The value returned by <code>async fn</code> is a <code>Future</code>.</p>
+</li>
+<li>
+<p>Under the hood, <code>async</code> transforms a block of code into a <strong>state machine</strong><a href="#ref-3"><sup id="back-to-3">3</sup></a> that implements a trait called <code>Future</code>.</p>
+<p>Dependencies to be added to the <code>Cargo.toml</code> file:</p>
+<pre class="language-toml"><code data-copyable="true" tabindex="0" class="language-toml"><span class="token punctuation">[</span><span class="token table class-name">dependencies</span><span class="token punctuation">]</span>
+<span class="token key property">futures</span> <span class="token punctuation">=</span> <span class="token string">"0.3"</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="await-keyword"><a class="to-underline" href="#await-keyword">.await Keyword</a></h3>
+<ul>
+<li>
+<p>The <code>await</code> keyword is used within an asynchronous function to suspend its execution until the result of a <code>Future</code> is ready.</p>
+</li>
+<li>
+<p>The <code>await</code> keyword can only be used inside functions marked as <code>async</code>.</p>
+</li>
+<li>
+<p><code>await</code> returns control to the executor so that it may proceed. The executor (3rd party) might run the task to completion.</p>
+</li>
+<li>
+<p>The <code>await</code> syntax allows us to describe the “cooperative scheduling” of tasks.</p>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">i32</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token function">example_async_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">;</span>
+    <span class="token comment">// Further code that executes after the awaited Future completes</span>
+    result <span class="token operator">+</span> <span class="token number">10</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<p>For any action to take place, the <code>Future</code> needs to be run on an executor.</p>
+<aside role="note" class="post-aside rhythm"><p><strong>futures::executor::block_on vs .await()</strong>: TODO: <a href="https://rust-lang.github.io/async-book/01_getting_started/04_async_await_primer.html#asyncawait-primer" rel="noopener">https://rust-lang.github.io/async-book/01_getting_started/04_async_await_primer.html#asyncawait-primer</a></p>
+</aside>
+<h2 id="future-crate"><a class="to-underline" href="#future-crate">future crate</a></h2>
+<p>The <code>futures</code> crate in Rust is a foundational library for working with asynchronous programming. The <code>futures</code> crate defines the <code>Future</code> trait, which is a fundamental building block for asynchronous programming. The <code>futures</code> crate is often used in conjunction with the <code>async/.await</code> syntax. Asynchronous functions using the <code>async/await</code> syntax return types that implement the <code>Future</code> trait, and the <code>futures</code> crate provides utilities to work with these async functions. It provides a variety of <em>combinators</em> and <em>utility functions</em>, allowing developers to <em>chain</em>, <em>map</em>, and <em>compose</em> asynchronous operations.</p>
+<p>Also, this crate introduces abstractions for working with <strong>streams</strong> (sequences of values over time) and <strong>sinks</strong> (consumers of values). The <code>futures</code> crate is designed to be executor-agnostic. It doesn’t prescribe a specific runtime or executor, allowing developers to use it with various asynchronous runtimes, such as <strong>Tokio</strong>, <strong>async-std</strong>, or others.</p>
+<h2 id="future-trait"><a class="to-underline" href="#future-trait">Future trait</a></h2>
+<p>A <code>Future</code> is an <em>asynchronous computation</em> that produce a <em>value</em> or an <em>error</em> at <em>some point in the future</em>. The <code>Future</code> trait might look something like this:</p>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">trait</span> <span class="token type-definition class-name">Future</span> <span class="token punctuation">{</span>
+    <span class="token keyword">type</span> <span class="token type-definition class-name">Output</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Required method</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">poll</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">:</span> <span class="token class-name">Pin</span><span class="token operator">&lt;</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">Self</span><span class="token operator">></span><span class="token punctuation">,</span> cx<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token class-name">Context</span><span class="token operator">&lt;</span><span class="token lifetime-annotation symbol">'_</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Poll</span><span class="token operator">&lt;</span><span class="token keyword">Self</span><span class="token punctuation">::</span><span class="token class-name">Output</span><span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>poll</code> method is where the actual work of an asynchronous operation is done, and it determines the current state and progress of the future. In other words, the <code>poll</code> method allows checking whether the future has completed, is still pending, or encountered an error. The <code>poll</code> method is called repeatedly until the final value is available.</p>
+<p>The <code>Self::Output</code> is the associated type of a <code>poll</code> method indicating the type of value that the future will produce upon completion. If the future completes, it returns <code>Poll::Ready(result)</code>. If the future is not able to complete yet, it returns <code>Poll::Pending</code> and arranges for the <code>wake()</code> function to be called when the <code>Future</code> is ready to make more progress. With <code>wake()</code>, the executor knows exactly which futures are ready to be polled.</p>
+<p>Now the question arises: <strong>who constantly calls the poll method repeatedly until the final value is available?</strong> One possible approach is to manually invoke the <code>poll</code> method from our synchronous application multiple times to obtain the final value. I understand what you are thinking. Not to worry. We won’t be doing that kind of manual polling. We will hand over this polling task to <strong>runtime</strong>. Note that asynchronous Rust code does not run on its own, so we must choose a runtime to execute it.</p>
+<p>Having said that, before we can make use of the async syntax, a runtime must be present. Async runtimes are libraries used for executing async applications. Note that there is no asynchronous runtime in the Rust’s standard library. The following is a list of widely known community-provided async runtime crates:</p>
+<ul>
+<li><a href="https://tokio.rs/" target="_blank">Tokio</a>: A popular async ecosystem with HTTP, gRPC, and tracing frameworks.</li>
+<li><a href="https://docs.rs/async-std/" target="_blank">async-std</a>: A crate that provides asynchronous counterparts to standard library components.</li>
+</ul>
+<h2 id="runtimes-role-in-asynchronous-programming"><a class="to-underline" href="#runtimes-role-in-asynchronous-programming">Runtime’s role in asynchronous programming</a></h2>
+<p>As of the writing of this post, the Tokio library is the most widely used runtime. Let’s use Tokio runtime.</p>
+<p>Tokio is an <em>asynchronous runtime</em> for the Rust programming language. The need for an asynchronous runtime in Rust arises from the desire to:</p>
+<ul>
+<li>Scheduling and managing the execution of asynchronous tasks efficiently. It includes an executor, a task scheduler, and various utilities.</li>
+<li>Handling I/O operations concurrently</li>
+<li>Providing a multi-threaded runtime for the execution of asynchronous code</li>
+</ul>
+<p>When writing asynchronous code, we cannot use the ordinary blocking APIs provided by the Rust standard library, and must instead use asynchronous versions of them. These alternate versions are provided by Tokio, mirroring the API of the Rust standard library where it makes sense.</p>
+<h2 id="async-programming-with-tokio"><a class="to-underline" href="#async-programming-with-tokio">Async programming with Tokio</a></h2>
+<p><strong>Tokio</strong> is a resilient Rust asynchronous runtime. The fundamental building block of Tokio is its asynchronous task scheduling and execution model. Tokio’s event loop efficiently manages task scheduling and ensures optimal utilization of CPU cores and minimizes context-switching overhead.</p>
+<p>We can:</p>
+<ul>
+<li>Wait for multiple tasks to complete with <code>join</code></li>
+<li>Select the first completed task with <code>select</code></li>
+<li>Race tasks against each other with <code>race</code></li>
+</ul>
+<p>First thing first: Add the Tokio crate to our <code>Cargo.toml</code> file’s dependencies section:</p>
+<pre class="language-toml"><code tabindex="0" class="language-toml"><span class="token punctuation">[</span><span class="token table class-name">dependencies</span><span class="token punctuation">]</span>
+<span class="token key property">tokio</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token key property">version</span> <span class="token punctuation">=</span> <span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token key property">features</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"full"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+</code></pre>
+<p>Choose the appropriate version of Tokio. The <code>features = [&quot;full&quot;]</code> ensures that we get the full set of features provided by Tokio.</p>
+<p>Here’s how we can use the async/await syntax in our Rust programs with Tokio:</p>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">use</span> <span class="token namespace">tokio<span class="token punctuation">::</span>time<span class="token punctuation">::</span></span>sleep<span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token namespace">std<span class="token punctuation">::</span>time<span class="token punctuation">::</span></span><span class="token class-name">Duration</span><span class="token punctuation">;</span>
+
+<span class="token attribute attr-name">#[tokio::main]</span>  <span class="token comment">// Annotate main function to make it async</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token function">hello_world</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">hello_world</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">::</span><span class="token function">from_secs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In the above code, <code>hello_world</code> is an asynchronous function, as it prefixes <code>async</code>. We use the <code>await</code> keyword to pause its execution until the future is resolved or completed. The <code>hello_world</code> function prints &quot;<code>Hello,</code> &quot; immediately to the console. The invocation of the <code>Duration::from_secs(1)</code> function pauses its execution for one second. The <code>await</code> keyword waits for the sleep future to complete. Finally, the <code>hello_world</code> function prints “<code>World!</code>” to the console.</p>
+<p>The <code>main</code> function is an function (technically, not an async function) with the <code>#[tokio::main]</code> attribute. The <code>#[tokio::main]</code> attribute specifies the entry point of an asynchronous Rust program that runs on the Tokio runtime. Under the hood, the <code>#[tokio::main]</code> attribute transforms the regular main function into an async-aware function, allowing it to use asynchronous code, including async/await syntax.</p>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token comment">// Syntactic sugar version</span>
+<span class="token attribute attr-name">#[tokio::main]</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token function">hello_world</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">// Desugar version</span>
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Results</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> body <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">{</span> <span class="token comment">/* some async code */</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+	<span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token namespace">tokio<span class="token punctuation">::</span>runtime<span class="token punctuation">::</span></span><span class="token class-name">Builder</span><span class="token punctuation">::</span><span class="token function">new_multi_thread</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token punctuation">.</span><span class="token function">enable_all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token string">"Failed building the Runtime"</span><span class="token punctuation">)</span>
+			<span class="token punctuation">.</span><span class="token function">block_on</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="components-of-tokio"><a class="to-underline" href="#components-of-tokio">Components of Tokio</a></h3>
+<ul>
+<li><strong>Executor</strong> maintains a state about what resources it’s waiting on.</li>
+<li><strong>Reactor</strong> interacts with operating system (via crate Mio) to say “Wake me up if any of these file descriptors change state.” It also handles waiting on non-OS events, such as receiving on a channel.</li>
+</ul>
+<h3 id="error-handling-in-async-programs"><a class="to-underline" href="#error-handling-in-async-programs">Error handling in async programs</a></h3>
+<p>Error handling in asynchronous code involves using the <code>Result</code> type and handling errors with the <code>?</code> operator.</p>
+<pre class="language-rust"><code data-copyable="true" tabindex="0" class="language-rust"><span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">process_file</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token namespace">io<span class="token punctuation">::</span></span><span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> contents <span class="token operator">=</span> <span class="token function">read_file_contents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span><span class="token operator">?</span><span class="token punctuation">;</span>  <span class="token comment">// assume read_file_contents() reads file</span>
+    <span class="token comment">// Process the file contents</span>
+    <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token attribute attr-name">#[tokio::main]</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">match</span> <span class="token function">process_file</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">await</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"File processed successfully."</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">Err</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token macro property">eprintln!</span><span class="token punctuation">(</span><span class="token string">"Error processing file: {}"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>process_file</code> function returns an <code>io::Result</code> that represents the possibility of an I/O error. By using the <code>?</code> operator after the asynchronous operation, the Tokio runtime will propagate errors into the call stack. The <code>main</code> function handles the result with a <code>match</code> statement.</p>
+<hr>
+<h1 id="frequently-asked-questions-faqs"><a class="to-underline" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a></h1>
+<h2 id="what-is-the-difference-between-concurrency-and-parallelism-and-how-do-the-two-differ-from-asynchronous-programming"><a class="to-underline" href="#what-is-the-difference-between-concurrency-and-parallelism-and-how-do-the-two-differ-from-asynchronous-programming">What is the difference between concurrency and parallelism, and how do the two differ from asynchronous programming?</a></h2>
+<p><strong>Concurrency</strong> refers to the ability of multiple tasks to be executed independently, making progress in an <em>overlapping time period</em> but not necessarily simultaneously. It’s important to be noted that concurrency is about managing multiple tasks and making progress on each task, but <em>not necessarily at the same time</em>, meaning, <em>tasks are not running simultaneously or in parallel</em>.  One of the tasks can begin before the preceding or previous one is completed; however, both of these tasks won’t be running at the same time. A single processor is used for running the tasks in the concurrency model.</p>
+<p>Under the hood, a CPU can work on only one task at a time. If it is assigned multiple tasks, it simply switches between these tasks. Since this switching is so fast and seamless, it gives us a sense that these tasks are running in parallel. However, they are not parallel. Concurrency pretends that we have multiple cores, or CPUs.</p>
+<p>The main objective of concurrency is to maximize the CPU by minimizing its idle time. Put simply, <strong>concurrency is about doing multiple things, not at once</strong>.</p>
+<p><strong>Parallelism</strong> is the ability to execute independent tasks of a program <em>simultaneously</em> (at the same moment in time). Parallelism takes advantage of multi-core processors. Tasks can run “simultaneously” across multiple cores. Note that parallism is only possible with multiple cores or CPUs. Put simply, <strong>parallelism is about doing multiple things at once</strong>.</p>
+<p><strong>Asynchronous programming</strong> is a language feature that enables concurrency and/or parallelism. As it turns out, asynchronous programming is entirely unrelated to concurrency and parallelism.</p>
+<h2 id="what-is-cooperative-and-preemptive-multitasking"><a class="to-underline" href="#what-is-cooperative-and-preemptive-multitasking">What is cooperative and preemptive multitasking?</a></h2>
+<p><strong>Cooperative multitasking</strong>: Each task in cooperative multitasking decides when it can be handed over to another.</p>
+<p><strong>Preemptive multitasking</strong>: As opposed to cooperative multitasking, the system decides when to switch to other tasks.</p>
+<h2 id="how-does-a-kernel-level-thread-differ-from-a-user-level-thread"><a class="to-underline" href="#how-does-a-kernel-level-thread-differ-from-a-user-level-thread">How does a kernel-level thread differ from a user-level thread?</a></h2>
+<p><strong>Kernel-level threads</strong>, aka native threads, are managed by the operating system kernel. The operating system is responsible for scheduling and context switching. It’s heavier than user-level threads in terms of overhead. It’s better suited for scenarios requiring parallelism and direct interaction with system services.</p>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Relatively limited number we can create!</li>
+</ul>
+<p><strong>User-level threads</strong>, also known as lightweight threads or green threads, are managed entirely by a user-level thread library or runtime. The operating system kernel is unaware of these threads. It’s lightweight and have lower overhead compared to kernel-level threads. Scheduling and context switching are performed by the user-level thread library or runtime. It’s efficient for scenarios where a large number of threads need to be managed. Since it’s lighter weight, we can create many more green threads.</p>
+<p><strong>Disadvantages</strong></p>
+<ul>
+<li>Stack growth can cause issues!</li>
+</ul>
+<h2 id="what-is-the-difference-between-await-and-block_on"><a class="to-underline" href="#what-is-the-difference-between-await-and-block_on">What is the difference between <code>.await</code> and <code>block_on</code>?</a></h2>
+<p>The <code>.await</code> passed the wait along. It doesn’t block; it just propagates the wait, allowing us to continue with other tasks.</p>
+<p>The <code>block_on</code> on the other hand, is different because it doesn’t propagate the wait. It just block until the future is finished. It doesn’t return to the caller of the future. It doesn’t allow us to do other things, it waits until the future has finished.</p>
+<div class="references">
+  <hr>
+  <h2>References</h2>
+  <ol>
+  <!-- <li>Nil</li> -->
+    <li id="ref-1">1. A <strong>semaphore</strong> is a <em>synchronization primitive</em> to control access to a shared resource or a <strong>critical section</strong> of code. Semaphores help prevent race conditions. There are two types of semaphores: <strong>binary semaphores</strong> and <strong>counting semaphores</strong>. A counting semaphore is initialized with a non-negative integer value, which represents the number of available resources. Based on this number, resources will be allocated to threads. <a href="#back-to-1" class="back-to-note">↩</a>
+    </li>
+    <li id="ref-2">2. A <strong>thread pool</strong> is a collection of pre-created threads (ready-to-use threads) that can be reused to execute tasks. A thread pool reduces the resource consumption associated with creating and destroying threads repeatedly for short-lived tasks. Instead of creating a new thread for each task, threads from the pool are assigned to tasks as needed. This reuse helps reduce the overhead associated with thread creation and destruction. <a href="#back-to-2" class="back-to-note">↩</a>
+    </li>
+    <li id="ref-3">3. A <strong>state machine</strong> is a mechanism used to represent the various <em>states</em> and <em>transitions</em> of a future as it progresses through its lifecycle. The <code>Future</code> trait defines an asynchronous computation that produces a result at some point in the future. <code>Future</code>s in Rust are often implemented as state machines, which manage asynchronous computations by utilizing the state machine pattern. <a href="#back-to-3" class="back-to-note">↩</a>
+    </li>
+  </ol>
+</div>
+    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/"
+    },
+    "headline": "Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities",
+    "description": "With async capabilities, developers can write non-blocking code that handles multiple operations simultaneously without the complexity of traditional multithreading. Async programming is ideal for I/O-bound tasks, offering a more responsive and scalable solution for modern applications. Let's dive into the world of Rust’s asynchronous capabilities and discover how to build high-performance, efficient software.",
+    
+    "datePublished": "2024-07-02T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b> | Hosted on <b>GitHub Pages</b>.</p>
+      <p class="footer-link-font"><a href="/privacyPolicy/" target="_blank">Privacy Policy</a> | <a href="/privacyPolicy/#cookies" target="_blank">Cookie Policy</a> | <a href="/commentPolicy/" target="_blank">Comment Policy</a>  | <a href="/feed.xml" target="_blank">RSS Feed</a> | <a href="/contact/" target="_blank">Contact</a></p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+  <!-- Include cookie consent -->
+  <!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <p>This site uses cookies to understand the number of visitors and which posts they read the most through Google Analytics. If you consent to this, please click "I Agree." If not, click "I Disagree." For more details, please refer to the <a href="/privacyPolicy/#cookies" target="_blank">Cookie Policy</a>.</p>
+    <button id="accept-cookies" class="cookie-button">I Agree</button>
+    <button id="decline-cookies" class="cookie-button">I Disagree</button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptCookiesButton = document.getElementById('accept-cookies');
+      const declineCookiesButton = document.getElementById('decline-cookies');
+  
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+  
+      function getCookie(name) {
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for(let i = 0; i < cookieArray.length; i++) {
+          let cookie = cookieArray[i].trim();
+          if (cookie.indexOf(name + "=") == 0) {
+            return cookie.substring(name.length + 1, cookie.length);
+          }
+        }
+        return "";
+      }
+  
+      function checkCookie() {
+        const cookiesAccepted = getCookie("cookiesAccepted");
+        if (cookiesAccepted !== "true" && cookiesAccepted !== "false") {
+          cookieBanner.style.display = "block";
+        }
+      }
+  
+      acceptCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "true", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      declineCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "false", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      checkCookie();
+    });
+</script>
+</body>
+</html>

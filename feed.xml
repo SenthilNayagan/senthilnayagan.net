@@ -4,12 +4,22 @@
   <subtitle>A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.</subtitle>
   <link href="https://www.senthilnayagan.net/feed.xml" rel="self"/>
   <link href="https://www.senthilnayagan.net/" rel="alternate" type="text/html"/>
-  <updated>2024-07-01T00:00:00.000Z</updated>
+  <updated>2024-07-02T00:00:00.000Z</updated>
   <id>https://www.senthilnayagan.net/</id>
   <author>
     <name>Senthil Nayagan</name>
     <email>hello@senthilnayagan.net</email>
   </author>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/</id>
+    <title>Async Awesomeness: A Deep Dive into Rust’s Asynchronous Capabilities</title>
+    <link href="https://www.senthilnayagan.net/blog/tech/async-awesomeness-a-deep-dive-into-rust%E2%80%99s-asynchronous-capabilities/"/>
+    <published>2024-07-02T00:00:00.000Z</published>
+    <updated>2024-07-02T00:00:00.000Z</updated>
+    <category term="asynchronous" />
+    <category term="asynchronous-programming" />
+    <content type="html">With async capabilities, developers can write non-blocking code that handles multiple operations simultaneously without the complexity of traditional multithreading. Async programming is ideal for I/O-bound tasks, offering a more responsive and scalable solution for modern applications. Let&#39;s dive into the world of Rust’s asynchronous capabilities and discover how to build high-performance, efficient software.</content>
+  </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/referential-transparency/</id>
     <title>Code Without Chaos: Adopting Referential Transparency in Programming</title>
