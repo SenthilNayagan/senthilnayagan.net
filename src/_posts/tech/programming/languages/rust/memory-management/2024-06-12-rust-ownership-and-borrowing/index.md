@@ -725,9 +725,6 @@ Hopefully, this clarifies the concepts of ownership and borrowing. I also briefl
 
 Rust is a great choice when performance matters and it solves pain points that bother many other languages, resulting in a significant step forward with a steep learning curve. For the **seventh year** in a row, <a href="https://survey.stackoverflow.co/2022/#technology-most-loved-dreaded-and-wanted" target="_blank">Rust has been Stack Overflow's most loved language</a>, with 87% of developers saying they want to continue using it. This implies that many people who have had the chance to use Rust have fallen in love with it. The Rust community continues to grow! 
 
-<a href="https://blog.rust-lang.org/2024/02/19/2023-Rust-Annual-Survey-2023-results.html" target="_blank">According to the 2023 Annual Rust Survey Results</a>: , there is a continued upward year-over-year trend in Rust usage at work. Additionally, 79% of respondents reported that Rust helped their company achieve its goals.
+<a href="https://blog.rust-lang.org/2024/02/19/2023-Rust-Annual-Survey-2023-results.html" target="_blank">According to the 2023 Annual Rust Survey Results</a>, there is a continued upward year-over-year trend in Rust usage at work. Additionally, 79% of respondents reported that Rust helped their company achieve its goals.
 
-**Challenges:** One of the biggest worries for the future of Rust is that it might become too complex.
-
-
-**Happy learning!**
+Although Rust has many positive aspects, one of the biggest worries for the future of Rust is that it might become too complex. Let's keep a close watch on how the language evolves to ensure it maintains ease of use in the future.

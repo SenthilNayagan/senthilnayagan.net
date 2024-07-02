@@ -42,12 +42,12 @@ hr {
 .full-width {
   width: 100vw; /* Full viewport width */
   margin-left: calc(50% - 50vw); /* Center the image */
+  border-radius: 0; /* No border-radius */
 }
 
 figure.full-width {
   width: 100vw; /* Ensure the figure element also spans the full viewport width */
   margin-left: calc(50% - 50vw); /* Center the figure element */
-  border-radius: 0; /* No border-radius */
 }
 
 #page-content {
