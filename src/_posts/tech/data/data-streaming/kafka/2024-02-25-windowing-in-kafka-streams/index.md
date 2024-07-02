@@ -21,10 +21,10 @@ By segmenting the data temporally, windowing allows for more granular and time-s
 
 Kafka Streams supports various types of windowing operations to group events by time boundaries, allowing for time-sensitive processing of streaming data:
 
-- [Tumbling windows](/kafka-streams/2024/windowing-in-kafka-streams#tumbling-windows)
-- [Hopping windows](/kafka-streams/2024/windowing-in-kafka-streams#hopping-windows)
-- [Session windows](/kafka-streams/2024/windowing-in-kafka-streams#session-windows)
-- [Sliding windows](/kafka-streams/2024/windowing-in-kafka-streams#sliding-windows)
+- [Tumbling windows](/blog/tech/windowing-in-kafka-streams/#tumbling-windows)
+- [Hopping windows](/blog/tech/windowing-in-kafka-streams/#hopping-windows)
+- [Session windows](/blog/tech/windowing-in-kafka-streams/#session-windows)
+- [Sliding windows](/blog/tech/windowing-in-kafka-streams/#sliding-windows)
 
 Before we go further into explaining all these types of windows, let's understand some of the core concepts:
 

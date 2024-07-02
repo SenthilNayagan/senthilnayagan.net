@@ -52,9 +52,7 @@ Take a look at the below pseudocode. As we can see, the scope of `x` is limited 
 int y = &x // can't access x from here; creates dangling reference
 ```
 
-## Dangling reference
-
-A dangling reference is a pointer that points to a memory location that has been given to someone else or released (freed). If a program (aka *process*) refers to memory that has been released or wiped out, it might crash or cause non-deterministic results.
+{% aside %} **Dangling reference**: A dangling reference is a pointer that points to a memory location that has been given to someone else or released (freed). If a program (aka *process*) refers to memory that has been released or wiped out, it might crash or cause non-deterministic results. {% endaside %}
 
 Having said that, *memory unsafety* is a property of some programming languages that allows programmers to deal with invalid data. As a result, memory unsafety introduced a variety of problems that might cause the following major security vulnerabilities:
 
@@ -78,7 +76,7 @@ When compared to heap memory allocation, stack memory allocation is considered t
 
 However, when programmers generate memory on the heap and fail to remove it in the absence of a garbage collector (in the case of C and C++), a memory leak develops. Also, if we lose all references to a chunk of memory without deallocating that memory, then we have a memory leak. Our program will continue to own that memory, but it has no way of ever using it again.
 
-{% aside %} A little memory leak is not a problem, but if a program allocates a larger amount of memory and never deallocates it, the program’s memory footprint will continue to rise, resulting in Denial-of-Service. {% endaside %}
+{% aside %} A little memory leak is not a problem, but if a program allocates a larger amount of memory and never deallocates it, the program’s memory footprint will continue to rise, resulting in a Denial-of-Service (DoS). {% endaside %}
 
 When a program exits, the operating system immediately recovers all of the memory it owns. As a result, a memory leak only affects a program while it’s running; it has no effect once the program has terminated.
 
