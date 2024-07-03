@@ -86,7 +86,8 @@
 }
 
 .draft-note p {
-  margin: 0;
+  // margin: 0;
+  margin-bottom: 1rem; // Add space between paragraphs
   font-size: 16px; /* Increase the font size for the content text */
   color: var(--draft-note-text); /* Ensure paragraph text color adjusts to theme */
 }

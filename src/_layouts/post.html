@@ -30,11 +30,7 @@ eleventyComputed:
     <!-- Share the post -->
     {%- include "socialShare.html" -%}
     {%- if draft -%}
-    <p class="spacer"></p>
-    <div class="draft-note">
-      <h2 class="draft-note-heading">Work in Progress</h2>
-      <p>If you have any suggestions for improving the content or notice any inaccuracies, please email me at <a href="mailto:{{ site.email }}">{{ site.email }}</a>. Thanks!</p>
-    </div>
+      {%- include "draftNote.html" -%}
     {%- endif -%}
     {%- if coverImage -%}
       {% include "postImage.html" src: coverImage, isLinked: false, alt: title, description: imageDescription, credits: imageCredits, className: "full-width" %}
