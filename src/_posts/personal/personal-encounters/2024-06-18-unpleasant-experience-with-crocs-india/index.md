@@ -43,7 +43,7 @@ With no other options left, I resigned myself to the fact that my slides would b
 
 # My final thought
 
-After this experience, I have decided to stay away from Crocs products in the future. It’s clear to me that Crocs does not prioritize customer service or satisfaction, and I would rather support and continue to purchase from a company that treats its customers with the respect and support they deserve. Despite how good Crocs products may be, if they don’t listen to customers or treat them in a way that other brands do, then those good products are ultimately meaningless.
+After this experience, I have decided to stay away from Crocs products in the future. It’s clear to me that Crocs does not prioritize customer service or satisfaction, and I would rather support and continue to purchase from a brand that treats its customers with the respect and support they deserve. Despite how good Crocs products may be, if they don’t listen to customers or treat them in a way that other brands do, then those good products are ultimately meaningless.
 
 One important point to add is that if buyers do not need to interact with customer care—meaning the product they ordered arrives in perfect condition, meets all expectations, and does not require a return for any reason—then they are indeed fortunate. However, this was not my experience.
 
