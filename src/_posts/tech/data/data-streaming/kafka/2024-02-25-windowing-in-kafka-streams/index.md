@@ -344,13 +344,68 @@ Sliding windows are ideal for continuous calculations that need to be updated wi
 
 Hopefully, this clarifies the concepts of windowing in Kafka Streams. Below is a quick comparison of all the window types that we have learned about:
 
-| Feature/Type       | Tumbling Window                                                                                                  | Hopping Window                                                                                                                    | Session Window                                                                                                   | Sliding Window                                                                                                                                                   |
-|--------------------|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Definition**         | A type of window that has a fixed size and does not overlap. Each record belongs to exactly one window.         | Similar to tumbling windows but can overlap. It is defined by two parameters: the window's size and its advance interval (or hop). | Dynamic windows that group events by activity sessions. Windows are defined by periods of activity and inactivity. | A type of window that allows for overlapping windows where each window is defined by a fixed duration and can slide over the data stream.                        |
-| **Window Size**        | Fixed                                                                                                            | Fixed                                                                                                                             | Dynamic, determined by inactivity gap                                                                              | Fixed                                                                                                                                                           |
-| **Overlap**            | No                                                                                                               | Yes, if the advance interval is smaller than the window size                                                                       | No, but windows are not fixed and can vary in length                                                              | Yes, windows can overlap due to the sliding nature                                                                                                              |
-| **Use Cases**          | Aggregations over a uniform time interval, such as hourly metrics.                                               | Aggregations where more frequent updates are needed within a fixed period, allowing overlap.                                      | Aggregations where the activity is bursty or irregular, such as user sessions in web analytics.                    | Fine-grained aggregations where updates are needed for every event or at short intervals, capturing trends over time.                                            |
-| **Key Characteristics** | Simple and non-overlapping, making it suitable for clear-cut time intervals.                                     | Provides flexibility with overlapping windows, useful for more nuanced time-based aggregations.                                    | Ideal for handling irregular or event-driven data, adapting to the data's inherent patterns.                       | Offers the most granular control over windowing, allowing for continuous updates within overlapping periods.                                                     |
+<div class="scroll-x">
+    <style>
+        #table-1 {
+            font-size: 14px;
+        }
+    </style>
+    <table id="table-1">
+        <colgroup>
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">Feature/Type</th>
+                <th scope="col">Tumbling Window</th>
+                <th scope="col">Hopping Window</th>
+                <th scope="col">Session Window</th>
+                <th scope="col">Sliding Window</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Definition</strong></td>
+                <td>A type of window that has a fixed size and does not overlap. Each record belongs to exactly one window.</td>
+                <td>Similar to tumbling windows but can overlap. It is defined by two parameters: the window's size and its advance interval (or hop).</td>
+                <td>Dynamic windows that group events by activity sessions. Windows are defined by periods of activity and inactivity.</td>
+                <td>A type of window that allows for overlapping windows where each window is defined by a fixed duration and can slide over the data stream.</td>
+            </tr>
+            <tr>
+                <td><strong>Window Size</strong></td>
+                <td>Fixed</td>
+                <td>Fixed</td>
+                <td>Dynamic, determined by inactivity gap</td>
+                <td>Fixed</td>
+            </tr>
+            <tr>
+                <td><strong>Overlap</strong></td>
+                <td>No</td>
+                <td>Yes, if the advance interval is smaller than the window size</td>
+                <td>No, but windows are not fixed and can vary in length</td>
+                <td>Yes, windows can overlap due to the sliding nature</td>
+            </tr>
+            <tr>
+                <td><strong>Use Cases</strong></td>
+                <td>Aggregations over a uniform time interval, such as hourly metrics.</td>
+                <td>Aggregations where more frequent updates are needed within a fixed period, allowing overlap.</td>
+                <td>Aggregations where the activity is bursty or irregular, such as user sessions in web analytics.</td>
+                <td>Fine-grained aggregations where updates are needed for every event or at short intervals, capturing trends over time.</td>
+            </tr>
+            <tr>
+                <td><strong>Key Characteristics</strong></td>
+                <td>Simple and non-overlapping, making it suitable for clear-cut time intervals.</td>
+                <td>Provides flexibility with overlapping windows, useful for more nuanced time-based aggregations.</td>
+                <td>Ideal for handling irregular or event-driven data, adapting to the data's inherent patterns.</td>
+                <td>Offers the most granular control over windowing, allowing for continuous updates within overlapping periods.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <p align="center">
     <sup><b>Table 1: </b>Comparison of all windows supported by Kafka Streams.</sup>

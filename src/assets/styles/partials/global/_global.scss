@@ -43,7 +43,7 @@ hr {
 .full-width {
   width: 100vw; /* Full viewport width */
   margin-left: calc(50% - 50vw); /* Center the image */
-  border-radius: 0; /* No border-radius */
+  border-radius: 0 !important; /* No border-radius with importance */
 }
 
 figure.full-width {
