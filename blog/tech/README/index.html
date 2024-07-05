@@ -87,7 +87,7 @@
   
 <article class="post prose rhythm">
   <header class="post-header">
-    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-07-04" >July 04, 2024</time> - 1 min read</p>
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-07-05" >July 05, 2024</time> - 1 min read</p>
     <h1 class="post-title"></h1>
     <ul class="post-tags" aria-label="Tags"></ul><!-- Share the post --><div class="social-share">
     <a href="mailto:?subject=&body=https://www.senthilnayagan.net/blog/tech/README/" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon">
@@ -171,7 +171,7 @@
     "headline": "",
     "description": "",
     
-    "datePublished": "2024-07-04T15:20:02.632Z",
+    "datePublished": "2024-07-05T05:09:55.324Z",
     "author": {
       "@type": "Person",
       "name": "Senthil Nayagan"
@@ -246,5 +246,21 @@
       checkCookie();
     });
 </script>
+  <!-- Include html2pdf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <!-- Script to download HTML as PDF -->
+  <script>
+      document.getElementById('download-pdf').addEventListener('click', function() {
+          var element = document.getElementById('resume-content');
+          var opt = {
+              margin:       0.5,
+              filename:     'resume.pdf',
+              image:        { type: 'jpeg', quality: 0.98 },
+              html2canvas:  { scale: 2 },
+              jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+          };
+          html2pdf().from(element).set(opt).save();
+      });
+  </script>
 </body>
 </html>
