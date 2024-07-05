@@ -60,7 +60,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'fonts'));
   eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'videos'));
-  eleventyConfig.addPassthroughCopy("src/assets/images/logo");
+  eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("CNAME"); // Add this line to copy the CNAME file
 
   // Custom shortcodes
