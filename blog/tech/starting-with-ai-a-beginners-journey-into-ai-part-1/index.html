@@ -87,7 +87,7 @@
   
 <article class="post prose rhythm">
   <header class="post-header">
-    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-24" >June 24, 2024</time> (Updated <time datetime="2024-07-03" >July 03, 2024</time>)  - 19 min read</p>
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-24" >June 24, 2024</time> (Updated <time datetime="2024-07-06" >July 06, 2024</time>)  - 16 min read</p>
     <h1 class="post-title">Starting with AI: A Beginner’s Journey into Artificial Intelligence (Part 1)</h1>
     <ul class="post-tags" aria-label="Tags"><li>
           <a href="/tags/ai/" class="post-tag" aria-label="ai">ai</a>
@@ -152,7 +152,7 @@
     <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
 </div>
 <h3 id="table-of-contents">Table of Contents</h3>
-<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-artificial-intelligence">What is Artificial Intelligence?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#high-level-steps-involved-in-ai-development">High-level steps involved in AI development</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#understanding-the-differences">Understanding the differences</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#artificial-intelligence-ai-vs-machine-learning-ml">Artificial Intelligence (AI) vs. Machine Learning (ML)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#key-differences-ai-vs-ml">Key Differences: AI vs. ML</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#machine-learning-ml-vs-deep-learning-dl">Machine Learning (ML)  vs. Deep Learning (DL)</a></li><li class="toc-item"><a class="toc-link" href="#what-is-a-model-in-the-context-of-ai-and-ml">What is a “model” in the context of AI and ML?</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#key-concepts">Key concepts</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-retrieval-augmented-generation-rag">What is Retrieval-Augmented Generation (RAG)?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#why-is-rag-essentially-needed">Why is RAG essentially needed?</a></li></ol></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-artificial-intelligence">What is Artificial Intelligence?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#high-level-steps-involved-in-ai-development">High-level steps involved in AI development</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#understanding-the-differences">Understanding the differences</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#artificial-intelligence-ai-vs-machine-learning-ml">Artificial Intelligence (AI) vs. Machine Learning (ML)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#key-differences-ai-vs-ml">Key Differences: AI vs. ML</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#machine-learning-ml-vs-deep-learning-dl">Machine Learning (ML)  vs. Deep Learning (DL)</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#key-concepts">Key concepts</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-a-model-in-the-context-of-ai-and-ml">What is a “model” in the context of AI and ML?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#different-types-of-models">Different types of models</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#what-is-retrieval-augmented-generation-rag">What is Retrieval-Augmented Generation (RAG)?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#why-is-rag-essentially-needed">Why is RAG essentially needed?</a></li></ol></li></ol></li></ol></nav><div id="toc-skipped"></div>
 <h1 id="what-is-artificial-intelligence"><a class="to-underline" href="#what-is-artificial-intelligence">What is Artificial Intelligence?</a></h1>
 <p>At its core, Artificial Intelligence refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. These intelligent systems can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation. The goal of AI is to create systems that can function autonomously and improve their performance over time through learning and adaptation.</p>
 <h2 id="high-level-steps-involved-in-ai-development"><a class="to-underline" href="#high-level-steps-involved-in-ai-development">High-level steps involved in AI development</a></h2>
@@ -329,138 +329,21 @@
 </li>
 </ul>
 <p>Both ML and DL have their strengths and are suited to different types of problems. The choice between them depends on the specific application, the nature of the data, and the available resources.</p>
-<h2 id="what-is-a-model-in-the-context-of-ai-and-ml"><a class="to-underline" href="#what-is-a-model-in-the-context-of-ai-and-ml">What is a “model” in the context of AI and ML?</a></h2>
-<p>In the context of artificial intelligence (AI) and machine learning, a model is a mathematical representation of a process or a system that is used to make predictions or decisions based on input data. Here are some examples of mathematical representations for different types of models:</p>
-<p><strong>1. Linear regression</strong></p>
-<p>A linear regression model predicts a continuous outcome based on input features (a feature is measurable property or variable or attribute).</p>
-<p>Mathematical representation:</p>
-<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">y = w_1x_1 + w_2x_2 + ... + w_nx_n + b 
-</code></pre>
-<ul>
-<li><strong>y</strong>: Predicted outcome</li>
-<li><strong>x_1, x_2, …, x_n</strong>: Input features</li>
-<li><strong>w_1, w_2, …, w_n</strong>: Weights (coefficients) for each feature</li>
-<li><strong>b</strong>: Intercept (bias term)</li>
-</ul>
-<p><strong>Example:</strong></p>
-<p>Predicting house prices based on square footage (<code>x_1</code>) and number of bedrooms (<code>x_2</code>):</p>
-<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">Price = 200 x Square Footage + 50 x Number of Bedrooms + 30,000
-</code></pre>
-<p>Components of the equation:</p>
-<ul>
-<li>
-<p><strong>Input features</strong> (Square Footage and Number of Bedrooms)</p>
-<ul>
-<li>These are the characteristics or attributes of the house that are used as inputs to predict the house price.</li>
-<li>Square footage: Represents the total area of the house in square feet. It is a continuous numerical feature.</li>
-<li>Number of bedrooms: Represents the total count of bedrooms in the house. It is a discrete numerical feature.</li>
-<li>These input features are the independent variables that the model uses to learn and make predictions about the house price.</li>
-</ul>
-</li>
-<li>
-<p><strong>Coefficients</strong> (200 and 50)</p>
-<ul>
-<li>These are the weights assigned to each feature (square footage and number of bedrooms) during the training of the model.</li>
-<li>The coefficient of 200 for square footage indicates that for each additional square foot of space, the price of the house increases by 200 units (e.g., dollars). For example, if the square footage increases by 1, the house price increases by 200 units.</li>
-<li>The coefficient of 50 for the number of bedrooms indicates that for each additional bedroom, the price of the house increases by 50 units. For example, if the number of bedrooms increases by 1, the house price increases by 50 units.</li>
-</ul>
-</li>
-<li>
-<p><strong>Intercept</strong> (30,000)</p>
-<ul>
-<li>The intercept (30,000) is a constant term that adjusts the baseline price of the house.</li>
-<li>This is the starting value of the house price when all other factors (square footage and number of bedrooms) are zero.</li>
-<li>It accounts for the base price of the house before considering the contributions from the square footage and the number of bedrooms.</li>
-</ul>
-</li>
-</ul>
-<p><strong>2. Logistic regression</strong></p>
-<p>A logistic regression model predicts the probability of a binary outcome.</p>
-<p>Mathematical representation:</p>
-<figure class=""><a class="outline-offset" href="/assets/images/ViMDJrrB-s-500.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/ViMDJrrB-s-400.webp 400w, /assets/images/ViMDJrrB-s-500.webp 500w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/ViMDJrrB-s-400.jpeg 400w, /assets/images/ViMDJrrB-s-500.jpeg 500w" sizes="100vw">
-    <img width="500" height="96" src="/assets/images/ViMDJrrB-s-500.jpeg" alt="Logistic Regression Formula"  loading="lazy" decoding="async">
-  </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>Logistic Regression Formula.</p></figcaption></figure>
-<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">P(y=1|x) = 1 / 1 + e^(w_1x_1 + w_2x_2 + ... + w_nx_n + b)
-</code></pre>
-<ul>
-<li><strong>P(y=1|x)</strong>: Probability of the positive class (y=1) given the input features</li>
-<li><strong>x_1, x_2, …, x_n</strong>: Input features</li>
-<li><strong>w_1, w_2, …, w_n</strong>: Weights (coefficients) for each feature</li>
-<li><strong>b</strong>: Intercept (bias term)</li>
-<li><strong>e</strong>: Base of the natural logarithm</li>
-</ul>
-<p><strong>Example:</strong></p>
-<p>Predicting the probability that an email is spam based on the presence of certain keywords (<code>x_1</code>) and the number of links in the email (<code>x_2</code>):</p>
-<pre class="language-plaintext"><code tabindex="0" class="language-plaintext">P(Spam = 1|features) = 1 / 1 + e^(2xKeywoard presence + 1.5xNumer of links - 1)
-</code></pre>
-<p><strong>3. Decision trees</strong></p>
-<p>A decision tree model uses a tree-like structure of decisions to predict outcomes.</p>
-<p>Mathematical representation:</p>
-<p>A decision tree consists of nodes representing tests on features and branches representing outcomes of these tests, leading to leaf nodes with final predictions.</p>
-<p><strong>Example:</strong></p>
-<p>Predicting whether a customer will buy a product based on age and income:</p>
-<ol>
-<li>If age ≤ 30:
-<ul>
-<li>If income ≤ 50,000: No</li>
-<li>If income &gt; 50,000: Yes</li>
-</ul>
-</li>
-<li>If age &gt; 30:
-<ul>
-<li>If age ≤ 50: Yes</li>
-<li>If age &gt; 50: No</li>
-</ul>
-</li>
-</ol>
-<p><strong>4. Neural networks</strong></p>
-<p>A neural network consists of layers of interconnected neurons, where each connection has a weight, and each neuron has a bias.</p>
-<p>Mathematical representation:</p>
-<figure class=""><a class="outline-offset" href="/assets/images/88QB6sBSc1-326.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/88QB6sBSc1-326.webp 326w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/88QB6sBSc1-326.jpeg 326w" sizes="100vw">
-    <img width="326" height="254" src="/assets/images/88QB6sBSc1-326.jpeg" alt="Neural Network Formula"  loading="lazy" decoding="async">
-  </picture></a><figcaption><p class="image-description"><b>Figure 2: </b>Neural Network Formula.</p></figcaption></figure>
-<p>For a simple neural network with one hidden layer:</p>
-<ul>
-<li><strong>h_j</strong>: Activation of the j-th neuron in the hidden layer</li>
-<li><strong>x_i</strong>: Input features</li>
-<li><strong>w_{ij}, w_{j}</strong>: Weights</li>
-<li><strong>b_j, b</strong>: Biases</li>
-<li><strong>f, g</strong>: Activation functions</li>
-</ul>
-<p><strong>Example:</strong></p>
-<p>Predicting whether an image contains a cat or not:</p>
-<ol>
-<li>Input layer: Pixel values of the image.</li>
-<li>Hidden layer: Neurons with weights and biases.</li>
-<li>Output layer: Single neuron with a sigmoid activation function giving the probability of the image containing a cat.</li>
-</ol>
-<p><strong>5. K-Means clustering</strong></p>
-<p>A k-means clustering model partitions data into k clusters based on feature similarity.</p>
-<p>Mathematical representation:</p>
-<figure class=""><a class="outline-offset" href="/assets/images/mvZ8Xus_9C-348.webp"><picture >
-    <source type="image/webp" srcset="/assets/images/mvZ8Xus_9C-348.webp 348w" sizes="100vw">
-<source type="image/jpeg" srcset="/assets/images/mvZ8Xus_9C-348.jpeg 348w" sizes="100vw">
-    <img width="348" height="104" src="/assets/images/mvZ8Xus_9C-348.jpeg" alt="K-Means Clustering Formula"  loading="lazy" decoding="async">
-  </picture></a><figcaption><p class="image-description"><b>Figure 3: </b>K-Means Clustering Formula.</p></figcaption></figure>
-<ul>
-<li><strong>k</strong>: Number of clusters</li>
-<li><strong>C_i</strong>: Cluster i</li>
-<li><strong>x</strong>: Data points</li>
-<li><strong>\mu_i</strong>: Centroid of cluster i</li>
-</ul>
-<p><strong>Example:</strong></p>
-<p>Grouping customers into clusters based on their purchase history:</p>
-<ul>
-<li>Feature 1: Number of purchases per month</li>
-<li>Feature 2: Total amount spent per month</li>
-</ul>
-<p>The algorithm assigns customers to clusters such that the sum of squared distances between customers and the <em>centroids</em><a href="#ref-7"><sup id="back-to-7">7</sup></a> of their respective clusters is minimized.</p>
 <hr>
 <h1 id="key-concepts"><a class="to-underline" href="#key-concepts">Key concepts</a></h1>
+<h2 id="what-is-a-model-in-the-context-of-ai-and-ml"><a class="to-underline" href="#what-is-a-model-in-the-context-of-ai-and-ml">What is a “model” in the context of AI and ML?</a></h2>
+<p>In the context of artificial intelligence (AI) and machine learning (ML), a “model” is a set of rules or patterns that a computer program uses to make predictions, classify data, or make decisions. Think of a model like a recipe for making a cake. The recipe tells us what ingredients to use, how to mix them together, and what temperature to bake the cake at. If we follow the recipe correctly, we’ll get a delicious cake!</p>
+<p>The rules or patterns are typically represented as mathematical equations or algorithms that are used to make predictions or decisions based on input data.</p>
+<h3 id="different-types-of-models"><a class="to-underline" href="#different-types-of-models">Different types of models</a></h3>
+<p>There are many different types of models available in machine learning, each with its own strengths and weaknesses. Here are some of the most common types of models:</p>
+<ol>
+<li><strong>Linear regression model</strong>: A linear regression model predicts a continuous outcome based on input features (a feature is measurable property or variable or attribute).</li>
+<li><strong>Logistic regression</strong>: A logistic regression model predicts the probability of a binary outcome.</li>
+<li><strong>Decision tree model</strong>: A decision tree model uses a tree-like structure of decisions to predict outcomes.</li>
+<li><strong>Neural networks model</strong>: A neural network consists of layers of interconnected neurons, where each connection has a weight, and each neuron has a bias.</li>
+<li><strong>K-Means clustering model</strong>: A k-Means clustering model partitions data into K clusters based on feature similarity.</li>
+</ol>
+<p><strong>Does a model refer to an algorithm?</strong> No, a model does not refer to an algorithm. They are related but distinct concepts. An algorithm is a set of rules or a procedure for solving a problem. It is the method or technique used to process data and <em>train a model</em>. Algorithms define how the data is analyzed and how the learning process is carried out. A model, on the other hand, <em>is the result of applying an algorithm to data</em>. It is a mathematical representation of patterns learned from training data. The model can then be used to make predictions or decisions based on new data.</p>
 <h2 id="what-is-retrieval-augmented-generation-rag"><a class="to-underline" href="#what-is-retrieval-augmented-generation-rag">What is Retrieval-Augmented Generation (RAG)?</a></h2>
 <p>Retrieval-Augmented Generation (RAG) is a type of language model that combines the strengths of both retrieval-based and generation-based language models to create more powerful and accurate models for tasks like question answering, summarization, and other natural language processing tasks. In traditional language models, the model generates text from scratch, whereas in retrieval-based models, the model retrieves relevant text snippets from a database or a large corpus<a href="#ref-8"><sup id="back-to-8">8</sup></a> of documents.</p>
 <p>Here’s how RAG works:</p>
@@ -577,7 +460,7 @@ TODO -->
     "description": "Begin an exciting journey into the world of artificial intelligence. This beginner-friendly guide covers fundamental concepts, demystifies AI, and provides practical steps to get started.",
     
     "datePublished": "2024-06-24T00:00:00.000Z",
-    "dateModified": "2024-07-03T00:00:00.000Z",
+    "dateModified": "2024-07-06T00:00:00.000Z",
     "author": {
       "@type": "Person",
       "name": "Senthil Nayagan"
