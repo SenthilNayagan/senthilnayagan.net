@@ -42,10 +42,14 @@
 
      .resume-header-content {
         flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
         .resume-header-text {
            p {
               margin: 0.25rem 0;
+              font-size: 1rem; /* Adjust font size here */
 
               a {
                  color: var(--link-color);
