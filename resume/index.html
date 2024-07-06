@@ -90,7 +90,7 @@
   <div class="rhythm">
     <article class="resume">
    <div class="resume-download">
-      <a href="#" id="download-pdf">
+      <a href="/assets/profiles/CV-SenthilNayagan.pdf" target="_blank">
          <i class="fa fa-download"></i> Download as PDF
       </a>
    </div>
@@ -108,9 +108,9 @@
             <p><i class="fa-regular fa-credit-card"></i> <a href="https://senthilnayagan.net" target="_blank">senthilnayagan.net</a></p>
          </div>
       </div>
-      <div class="resume-header-photo">
+      <!-- <div class="resume-header-photo">
          <img src="/assets/images/my-photo.jpg" alt="Senthil Nayagan">
-      </div>
+      </div> -->
    </header>
    <section>
       <div class="section">
@@ -275,21 +275,5 @@
       checkCookie();
     });
 </script>
-  <!-- Include html2pdf.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
-  <!-- Script to download HTML as PDF -->
-  <script>
-      document.getElementById('download-pdf').addEventListener('click', function() {
-          var element = document.getElementById('resume-content');
-          var opt = {
-              margin:       0.5,
-              filename:     'resume.pdf',
-              image:        { type: 'jpeg', quality: 0.98 },
-              html2canvas:  { scale: 2 },
-              jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-          };
-          html2pdf().from(element).set(opt).save();
-      });
-  </script>
 </body>
 </html>
