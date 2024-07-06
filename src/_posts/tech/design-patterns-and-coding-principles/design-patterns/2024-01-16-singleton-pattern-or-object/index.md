@@ -94,7 +94,7 @@ Since any part of the application can modify the global state, tracking down who
 
 <div class="references">
   <hr>
-  <h2>References</h2>
+  <h2>Notes and references</h2>
   <ol>
   <!-- <li>Nil</li> -->
     <li id="ref-1">1. <strong>Design patterns</strong>: In software engineering, a design pattern is a general, reusable solution to a commonly occurring problem in software design. It’s not a fully finished design that can be put into source code right away. Instead, it serves as a description, model, or template for problem-solving that may be used in a variety of situations. <a href="#back-to-1" class="back-to-note">↩</a>

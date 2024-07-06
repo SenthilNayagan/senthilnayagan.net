@@ -73,7 +73,7 @@ Better coding!
 
 <div class="references">
   <hr>
-  <h2>References</h2>
+  <h2>Notes and references</h2>
   <ol>
   <!-- <li>Nil</li> -->
     <li id="ref-1">1. <strong>Side effect</strong> refers to any operation that modifies some state outside its local environment or interacts with the outside world. This includes but is not limited to: modifying a variable or data structure outside the function’s scope, performing I/O operations such as reading from or writing to a file, printing to the console, etc., and raising an exception or error. <a href="#back-to-1" class="back-to-note">↩</a>

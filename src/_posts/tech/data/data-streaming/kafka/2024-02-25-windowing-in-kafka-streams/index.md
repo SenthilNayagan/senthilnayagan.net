@@ -439,7 +439,7 @@ countStream.groupByKey()
 
 <div class="references">
   <hr>
-  <h2>References</h2>
+  <h2>Notes and references</h2>
   <ol>
   <!-- <li>Nil</li> -->
     <li id="ref-1">1. <strong>Bursts</strong>: In the context of Kafka Streams, the term “bursts” typically refers to sudden increases in the volume of data messages being processed by the stream. These bursts can occur due to various reasons, such as a rapid flood of events from producers, periodic increases in activity (e.g., during specific hours of the day or days of the week), or backlog processing after downtime or maintenance periods. <a href="#back-to-1" class="back-to-note">↩</a></li>

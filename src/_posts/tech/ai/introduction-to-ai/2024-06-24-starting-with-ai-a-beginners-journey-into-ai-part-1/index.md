@@ -226,7 +226,7 @@ TODO -->
 
 <div class="references">
   <hr>
-  <h2>References</h2>
+  <h2>Notes and references</h2>
   <ol>
   <!-- <li>Nil</li> -->
     <li id="ref-1">1. <strong>Feature</strong>: A feature, also known as an <em>attribute</em> or <em>variable</em>, is an individual measurable property or characteristic of a phenomenon being observed. In the context of machine learning, features are the inputs used by models to make predictions. They play a crucial role in determining the performance and accuracy of a model. Features can be thought of as the independent variables that the model uses to learn patterns and relationships within the data. There are various types of features: 1. Numerical features (takes specific integer value, such as the count of sales, etc.), 2. Categorical feature (represent categories without any inherent order. For example, colors [red, green, blue], types of fruits [apple, banana, cherry]), 3. Binary feature (have only two possible values, often represented as 0 and 1. For example, gender [male, female], outcome [success, failure]), 4. Time-based feature (represents temporal data. For example, timestamps, dates, and time intervals). <a href="#back-to-1" class="back-to-note">↩</a>

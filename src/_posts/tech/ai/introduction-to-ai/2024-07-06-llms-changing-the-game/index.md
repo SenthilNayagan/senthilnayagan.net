@@ -72,10 +72,14 @@ An LLM, a large language model, is a neural network designed to understand, gene
 
 LLMs utilize an architecture called the **transformer** (which will be explained in more detail later). This transformer architecture helps LLMs focus on important parts of the input when making predictions, making them particularly good at understanding the details and complexities of human language.
 
+# Building a large language model
+
+[Work in progress]
+
 
 <div class="references">
   <hr>
-  <h2>References</h2>
+  <h2>Notes and references</h2>
   <ol>
   <!-- <li>Nil</li> -->
     <li id="ref-1">1. <strong>Parameter</strong>: In the context of ML and AI, a parameter is a value that is used to adjust the behavior of a model or algorithm. Think of a parameter like a knob on a radio. You can turn the knob to adjust the volume, frequency, or other settings to get the desired sound. Similarly, in the case of a LLM, the parameters are the values that are used to adjust the model's <strong>weights</strong> and <strong>biases</strong> to optimize its performance on a specific task, such as language translation, text classification, or language generation. The number of parameters in a large language model can be very large, often in the millions or even billions. This is because the model needs to learn complex patterns and relationships in language, and the number of parameters determines the model's ability to capture these patterns and relationships. <a href="#back-to-1" class="back-to-note">↩</a>

@@ -160,7 +160,7 @@ Anonymous functions are frequently used to create closures. When an anonymous fu
 
 <div class="references">
   <hr>
-  <h2>References</h2>
+  <h2>Notes and references</h2>
   <ol>
   <!-- <li>Nil</li> -->
     <li id="ref-1">1. <strong>Magic spells</strong>: The term “magic spells” in this context is a metaphor. It’s used to convey the idea that closures have a special ability to perform seemingly magical actions, like accessing and manipulating variables outside their own scope. <a href="#back-to-1" class="back-to-note">↩</a>
