@@ -7,23 +7,22 @@
   @include mixins.mobile-lg {
     gap: functions.spacing("12");
   }
-}
 
-.home-page-hero {
-  display: flex;
-  justify-content: space-between;
-  gap: functions.spacing("5");
-}
+  .home-page-hero {
+    display: flex;
+    justify-content: space-between;
+    gap: functions.spacing("5");
 
-.home-hash-art {
-  display: none;
-
-  @include mixins.desktop {
-    display: unset;
+    .hero-subtitle {
+      &:last-child {
+        margin-bottom: 0; // Remove the bottom margin
+      }
+    }
   }
-}
 
-.hash-art {
-  width: calc(4 * #{functions.spacing("9")});
-  height: auto;
+  section {
+    &.gap-0 {
+      margin-top: 0rem; // Adjust this value to reduce space
+    }
+  }
 }
