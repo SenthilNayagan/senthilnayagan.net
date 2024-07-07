@@ -28,7 +28,7 @@ eleventyComputed:
       <p class="spacer"></p>
     {%- endif -%}
     <!-- Share the post -->
-    {%- include "socialShare.html" -%}
+    {%- include "shareAndComment.html" -%}
     {%- if draft -%}
       {%- include "draftNote.html" -%}
     {%- endif -%}
@@ -38,10 +38,25 @@ eleventyComputed:
   </header>
   <div class="rhythm">
     {{ content }}
-    <button id="show-comments-button" class="comments-button">Post Comments</button>
-    {%- include "disqus.html" -%}
+    <!-- Comments section -->
+    <div id="comments-section">
+      <button id="show-comments-button" class="comments-button">Post Comments</button>
+      {%- include "disqus.html" -%}
+    </div>
   </div>
 </article>
+<script>
+  document.getElementById('comments-icon').addEventListener('click', function(event) {
+    event.preventDefault();
+    const commentsButton = document.getElementById('show-comments-button');
+    if (commentsButton) {
+      commentsButton.click();
+    }
+    setTimeout(() => {
+      document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  });
+</script>
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",

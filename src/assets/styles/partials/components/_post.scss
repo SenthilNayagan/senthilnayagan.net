@@ -141,7 +141,12 @@ a sup {
   align-items: center;
   gap: 20px; // Increased gap between icons
   margin-top: 1rem;
-  margin-bottom: 2rem; 
+  margin-bottom: 2rem;
+  
+  .separator {
+    margin: 0 10px;
+    color: var(--link-color);
+  }
 }
 
 .social-share p {
