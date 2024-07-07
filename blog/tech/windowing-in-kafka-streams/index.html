@@ -114,6 +114,12 @@
       </a> --><a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
       <i class="fa-solid fa-link"></i>
     </a>
+    <!-- Separator -->
+    <span class="separator">&#124;</span>
+    <!-- Comment icon -->
+    <a href="#comments-section" class="social-icon" id="comments-icon">
+      <i class="fa-regular fa-comments"></i>
+    </a>
     <span id="copy-message" class="copy-message">Copied to clipboard</span>
   </div>
   
@@ -511,7 +517,9 @@ countStream<span class="token punctuation">.</span><span class="token function">
     <li id="ref-1">1. <strong>Bursts</strong>: In the context of Kafka Streams, the term “bursts” typically refers to sudden increases in the volume of data messages being processed by the stream. These bursts can occur due to various reasons, such as a rapid flood of events from producers, periodic increases in activity (e.g., during specific hours of the day or days of the week), or backlog processing after downtime or maintenance periods. <a href="#back-to-1" class="back-to-note">↩</a></li>
   </ol>
 </div>
-    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+    <!-- Comments section -->
+    <div id="comments-section">
+      <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
 <script type="text/javascript">
   var disqus_shortname = 'senthilnayagan'; 
   var disqus_developer = 0;
@@ -540,7 +548,20 @@ countStream<span class="token punctuation">.</span><span class="token function">
     }
   });
 </script></div>
+  </div>
 </article>
+<script>
+  document.getElementById('comments-icon').addEventListener('click', function(event) {
+    event.preventDefault();
+    const commentsButton = document.getElementById('show-comments-button');
+    if (commentsButton) {
+      commentsButton.click();
+    }
+    setTimeout(() => {
+      document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  });
+</script>
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",

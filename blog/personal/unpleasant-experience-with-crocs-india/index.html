@@ -113,6 +113,12 @@
       </a><a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
       <i class="fa-solid fa-link"></i>
     </a>
+    <!-- Separator -->
+    <span class="separator">&#124;</span>
+    <!-- Comment icon -->
+    <a href="#comments-section" class="social-icon" id="comments-icon">
+      <i class="fa-regular fa-comments"></i>
+    </a>
     <span id="copy-message" class="copy-message">Copied to clipboard</span>
   </div>
   
@@ -162,7 +168,9 @@
 <p>One important point to add is that if buyers do not need to interact with customer care—meaning the product they ordered arrives in perfect condition, meets all expectations, and does not require a return for any reason—then they are indeed fortunate. However, this was not my experience.</p>
 <p>I hope my experience serves as a warning to others. Think twice before ordering from Crocs India (online), and consider exploring other brands that value their customers.</p>
 
-    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+    <!-- Comments section -->
+    <div id="comments-section">
+      <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
 <script type="text/javascript">
   var disqus_shortname = 'senthilnayagan'; 
   var disqus_developer = 0;
@@ -191,7 +199,20 @@
     }
   });
 </script></div>
+  </div>
 </article>
+<script>
+  document.getElementById('comments-icon').addEventListener('click', function(event) {
+    event.preventDefault();
+    const commentsButton = document.getElementById('show-comments-button');
+    if (commentsButton) {
+      commentsButton.click();
+    }
+    setTimeout(() => {
+      document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  });
+</script>
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",

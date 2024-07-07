@@ -87,7 +87,7 @@
   
 <article class="post prose rhythm">
   <header class="post-header">
-    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-24" >June 24, 2024</time> (Updated <time datetime="2024-07-06" >July 06, 2024</time>)  - 16 min read</p>
+    <p class="post-date"><span class="screen-reader-only">Published </span><time datetime="2024-06-24" >June 24, 2024</time> (Updated <time datetime="2024-07-07" >July 07, 2024</time>)  - 17 min read</p>
     <h1 class="post-title">Starting with AI: A Beginner’s Journey into Artificial Intelligence (Part 1)</h1>
     <ul class="post-tags" aria-label="Tags"><li>
           <a href="/tags/ai/" class="post-tag" aria-label="ai">ai</a>
@@ -111,6 +111,12 @@
         <i class="fa-brands fa-reddit"></i>
       </a> --><a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
       <i class="fa-solid fa-link"></i>
+    </a>
+    <!-- Separator -->
+    <span class="separator">&#124;</span>
+    <!-- Comment icon -->
+    <a href="#comments-section" class="social-icon" id="comments-icon">
+      <i class="fa-regular fa-comments"></i>
     </a>
     <span id="copy-message" class="copy-message">Copied to clipboard</span>
   </div>
@@ -186,7 +192,7 @@
 <li>Feature engineering is a critical step that can significantly impact the model’s performance.</li>
 </ul>
 </li>
-<li><strong>Model<a href="#ref-2"><sup id="back-to-2">2</sup></a> selection</strong>
+<li><strong>Model</strong><a href="#what-is-a-model-in-the-context-of-ai-and-ml"><sup>M</sup></a> <strong>selection</strong>
 <ul>
 <li>Choose the appropriate AI model or algorithm based on the problem type (e.g., classification, regression, clustering).</li>
 <li>Evaluate models based on their suitability for the specific problem and data characteristics.</li>
@@ -334,6 +340,11 @@
 <h2 id="what-is-a-model-in-the-context-of-ai-and-ml"><a class="to-underline" href="#what-is-a-model-in-the-context-of-ai-and-ml">What is a “model” in the context of AI and ML?</a></h2>
 <p>In the context of artificial intelligence (AI) and machine learning (ML), a “model” is a set of rules or patterns that a computer program uses to make predictions, classify data, or make decisions. Think of a model like a recipe for making a cake. The recipe tells us what ingredients to use, how to mix them together, and what temperature to bake the cake at. If we follow the recipe correctly, we’ll get a delicious cake!</p>
 <p>The rules or patterns are typically represented as mathematical equations or algorithms that are used to make predictions or decisions based on input data.</p>
+<p><strong>Does a model refer to an algorithm?</strong> No, a model does not refer to an algorithm. While a model and an algorithm are closely related in the context of AI and ML, they are not the same thing.</p>
+<ul>
+<li><strong>Algorithm</strong>: An algorithm is a set of rules or a procedure for solving a problem. The algorithm addresses the problem of uncovering patterns, correlations, and relationships within the given data. Through this process, it learns how various <strong>features</strong><a href="#ref-1"><sup id="back-to-1">1</sup></a> (input variables) are connected to the <strong>labels</strong><a href="#ref-2"><sup id="back-to-2">2</sup></a> or target variable (output). It is the method or technique used to process data and <em>train a model</em>. Algorithms define how the data is analyzed and how the learning process is carried out.</li>
+<li><strong>Model</strong>: A model, on the other hand, <em>is the result of applying an algorithm to data</em>. It is a mathematical representation of patterns learned from training data. The model can then be used to make predictions or decisions based on new data.</li>
+</ul>
 <h3 id="different-types-of-models"><a class="to-underline" href="#different-types-of-models">Different types of models</a></h3>
 <p>There are many different types of models available in machine learning, each with its own strengths and weaknesses. Here are some of the most common types of models:</p>
 <ol>
@@ -343,7 +354,6 @@
 <li><strong>Neural networks model</strong>: A neural network consists of layers of interconnected neurons, where each connection has a weight, and each neuron has a bias.</li>
 <li><strong>K-Means clustering model</strong>: A k-Means clustering model partitions data into K clusters based on feature similarity.</li>
 </ol>
-<p><strong>Does a model refer to an algorithm?</strong> No, a model does not refer to an algorithm. They are related but distinct concepts. An algorithm is a set of rules or a procedure for solving a problem. It is the method or technique used to process data and <em>train a model</em>. Algorithms define how the data is analyzed and how the learning process is carried out. A model, on the other hand, <em>is the result of applying an algorithm to data</em>. It is a mathematical representation of patterns learned from training data. The model can then be used to make predictions or decisions based on new data.</p>
 <h2 id="what-is-retrieval-augmented-generation-rag"><a class="to-underline" href="#what-is-retrieval-augmented-generation-rag">What is Retrieval-Augmented Generation (RAG)?</a></h2>
 <p>Retrieval-Augmented Generation (RAG) is a type of language model that combines the strengths of both retrieval-based and generation-based language models to create more powerful and accurate models for tasks like question answering, summarization, and other natural language processing tasks. In traditional language models, the model generates text from scratch, whereas in retrieval-based models, the model retrieves relevant text snippets from a database or a large corpus<a href="#ref-8"><sup id="back-to-8">8</sup></a> of documents.</p>
 <p>Here’s how RAG works:</p>
@@ -402,7 +412,7 @@ TODO -->
   <!-- <li>Nil</li> -->
     <li id="ref-1">1. <strong>Feature</strong>: A feature, also known as an <em>attribute</em> or <em>variable</em>, is an individual measurable property or characteristic of a phenomenon being observed. In the context of machine learning, features are the inputs used by models to make predictions. They play a crucial role in determining the performance and accuracy of a model. Features can be thought of as the independent variables that the model uses to learn patterns and relationships within the data. There are various types of features: 1. Numerical features (takes specific integer value, such as the count of sales, etc.), 2. Categorical feature (represent categories without any inherent order. For example, colors [red, green, blue], types of fruits [apple, banana, cherry]), 3. Binary feature (have only two possible values, often represented as 0 and 1. For example, gender [male, female], outcome [success, failure]), 4. Time-based feature (represents temporal data. For example, timestamps, dates, and time intervals). <a href="#back-to-1" class="back-to-note">↩</a>
     </li>
-    <li id="ref-2">2. <strong>Model</strong>: A model is a mathematical representation of a process or a system that is used to make predictions or decisions based on input data. It captures the patterns and relationships within the data, allowing it to generalize and make accurate predictions on new, unseen data. Models are the core components of AI systems, transforming data into actionable insights. <a href="#back-to-2" class="back-to-note">↩</a>
+    <li id="ref-2">2. <strong>Label</strong> is an annotation or tag assigned to data points, providing the desired output for training models. Labels are simply the target output or response that a model learns to predict or classify. Labels are crucial in supervised learning, where algorithms learn from labeled data to make predictions or decisions. Labels can take many forms, including: class labels, regression labels, and so on. <a href="#back-to-2" class="back-to-note">↩</a>
     </li>
     <li id="ref-3">3. <strong>Model's parameters</strong> are the variables within the model that are adjusted during the training process to minimize the error between the model’s predictions and the actual outcomes. Parameters are learned from the data. They are internal variables within a machine learning model that are adjusted during the training process. These parameters define the model’s structure and behavior, influencing how it maps input data to output predictions. The primary goal of training a model is to optimize these parameters to minimize the error between the model’s predictions and the actual target values. <a href="#back-to-3" class="back-to-note">↩</a>
     </li>
@@ -418,7 +428,9 @@ TODO -->
     </li>          
   </ol>
 </div>
-    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+    <!-- Comments section -->
+    <div id="comments-section">
+      <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
 <script type="text/javascript">
   var disqus_shortname = 'senthilnayagan'; 
   var disqus_developer = 0;
@@ -447,7 +459,20 @@ TODO -->
     }
   });
 </script></div>
+  </div>
 </article>
+<script>
+  document.getElementById('comments-icon').addEventListener('click', function(event) {
+    event.preventDefault();
+    const commentsButton = document.getElementById('show-comments-button');
+    if (commentsButton) {
+      commentsButton.click();
+    }
+    setTimeout(() => {
+      document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  });
+</script>
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -460,7 +485,7 @@ TODO -->
     "description": "Begin an exciting journey into the world of artificial intelligence. This beginner-friendly guide covers fundamental concepts, demystifies AI, and provides practical steps to get started.",
     
     "datePublished": "2024-06-24T00:00:00.000Z",
-    "dateModified": "2024-07-06T00:00:00.000Z",
+    "dateModified": "2024-07-07T00:00:00.000Z",
     "author": {
       "@type": "Person",
       "name": "Senthil Nayagan"

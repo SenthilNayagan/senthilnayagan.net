@@ -114,6 +114,12 @@
       </a> --><a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
       <i class="fa-solid fa-link"></i>
     </a>
+    <!-- Separator -->
+    <span class="separator">&#124;</span>
+    <!-- Comment icon -->
+    <a href="#comments-section" class="social-icon" id="comments-icon">
+      <i class="fa-regular fa-comments"></i>
+    </a>
     <span id="copy-message" class="copy-message">Copied to clipboard</span>
   </div>
   
@@ -162,7 +168,9 @@
 <source type="image/jpeg" srcset="/assets/images/IdZsSEIKwJ-400.jpeg 400w, /assets/images/IdZsSEIKwJ-800.jpeg 800w, /assets/images/IdZsSEIKwJ-2971.jpeg 2971w" sizes="100vw">
     <img width="2971" height="2263" src="/assets/images/IdZsSEIKwJ-2971.jpeg" alt="Yanked release from PyPI"  loading="lazy" decoding="async">
   </picture></a><figcaption><p class="image-description"><b>Figure 1: </b>Yanked release from PyPI.</p></figcaption></figure>
-    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+    <!-- Comments section -->
+    <div id="comments-section">
+      <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
 <script type="text/javascript">
   var disqus_shortname = 'senthilnayagan'; 
   var disqus_developer = 0;
@@ -191,7 +199,20 @@
     }
   });
 </script></div>
+  </div>
 </article>
+<script>
+  document.getElementById('comments-icon').addEventListener('click', function(event) {
+    event.preventDefault();
+    const commentsButton = document.getElementById('show-comments-button');
+    if (commentsButton) {
+      commentsButton.click();
+    }
+    setTimeout(() => {
+      document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  });
+</script>
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",

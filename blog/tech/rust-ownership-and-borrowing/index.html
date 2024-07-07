@@ -114,6 +114,12 @@
       </a> --><a href="#" id="copy-link" title="Copy link" aria-label="Copy link" class="social-icon">
       <i class="fa-solid fa-link"></i>
     </a>
+    <!-- Separator -->
+    <span class="separator">&#124;</span>
+    <!-- Comment icon -->
+    <a href="#comments-section" class="social-icon" id="comments-icon">
+      <i class="fa-regular fa-comments"></i>
+    </a>
     <span id="copy-message" class="copy-message">Copied to clipboard</span>
   </div>
   
@@ -717,7 +723,9 @@ Deref of y=5
 <p><a href="https://blog.rust-lang.org/2024/02/19/2023-Rust-Annual-Survey-2023-results.html" target="_blank">According to the 2023 Annual Rust Survey Results</a>, there is a continued upward year-over-year trend in Rust usage at work. Additionally, 79% of respondents reported that Rust helped their company achieve its goals.</p>
 <p>Although Rust has many positive aspects, one of the biggest worries for the future of Rust is that it might become too complex. Let’s keep a close watch on how the language evolves to ensure it maintains ease of use in the future.</p>
 
-    <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+    <!-- Comments section -->
+    <div id="comments-section">
+      <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
 <script type="text/javascript">
   var disqus_shortname = 'senthilnayagan'; 
   var disqus_developer = 0;
@@ -746,7 +754,20 @@ Deref of y=5
     }
   });
 </script></div>
+  </div>
 </article>
+<script>
+  document.getElementById('comments-icon').addEventListener('click', function(event) {
+    event.preventDefault();
+    const commentsButton = document.getElementById('show-comments-button');
+    if (commentsButton) {
+      commentsButton.click();
+    }
+    setTimeout(() => {
+      document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  });
+</script>
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
