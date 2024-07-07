@@ -33,7 +33,7 @@ eleventyComputed:
       {%- include "draftNote.html" -%}
     {%- endif -%}
     {%- if coverImage -%}
-      {% include "postImage.html" src: coverImage, isLinked: false, alt: title, description: imageDescription, credits: imageCredits, className: "full-width" %}
+      {% include "postImage.html" src: coverImage, isLinked: false, alt: title, description: imageDescription, credits: imageCredits, className: "cover-image" %}
     {%- endif -%}
   </header>
   <div class="rhythm">

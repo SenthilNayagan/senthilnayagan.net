@@ -28,8 +28,8 @@ hr {
 }
 
 .author-img {
-  border-radius: 3%;
-  // margin-left: 1rem;
+  // border-radius: 3%;
+  margin-left: 1rem;
   // width: 200px;
   // height: 200px;
   object-fit: cover;
@@ -40,15 +40,10 @@ hr {
   font-size: 0.875rem; /* Smaller font size */
 }
 
-.full-width {
+.cover-image {
   width: 100vw; /* Full viewport width */
   margin-left: calc(50% - 50vw); /* Center the image */
-  border-radius: 0 !important; /* No border-radius with importance */
-}
-
-figure.full-width {
-  width: 100vw; /* Ensure the figure element also spans the full viewport width */
-  margin-left: calc(50% - 50vw); /* Center the figure element */
+  border-radius: 0 /* No border-radius with importance */
 }
 
 #page-content {
