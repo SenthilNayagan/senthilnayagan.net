@@ -96,48 +96,48 @@
         </li></ul><p class="spacer"></p>
       <p class="post-subtitle">Anti-patterns at first seem to be quick and reasonable, they typically have adverse effects in the future. They are design and code smells. It affects our software badly and adds technical debt. We should avoid them at all costs.</p>
       <p class="spacer"></p><!-- Share the post --><div class="social-share">
-    <a href="mailto:?subject=Anti-Pattern&body=https://www.senthilnayagan.net/blog/tech/anti-pattern/" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon">
-      <i class="fa-regular fa-envelope"></i>
+  <a href="mailto:?subject=Anti-Pattern&body=https://www.senthilnayagan.net/blog/tech/anti-pattern/" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon">
+    <i class="fa-regular fa-envelope"></i>
+  </a>
+  <a href="https://api.whatsapp.com/send?text=Anti-Pattern%20https://www.senthilnayagan.net/blog/tech/anti-pattern/" title="Share on WhatsApp" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Anti-Pattern&url=https://www.senthilnayagan.net/blog/tech/anti-pattern/" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon">
+    <i class="fa-brands fa-x-twitter"></i>
+  </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/anti-pattern/&title=Anti-Pattern" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+      <i class="fa-brands fa-linkedin"></i>
     </a>
-    <a href="https://api.whatsapp.com/send?text=Anti-Pattern%20https://www.senthilnayagan.net/blog/tech/anti-pattern/" title="Share on WhatsApp" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-    <a href="https://twitter.com/intent/tweet?text=Anti-Pattern&url=https://www.senthilnayagan.net/blog/tech/anti-pattern/" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon">
-      <i class="fa-brands fa-x-twitter"></i>
-    </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/anti-pattern/&title=Anti-Pattern" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-      <!-- <a href="https://www.reddit.com/submit?url=https://www.senthilnayagan.net/blog/tech/anti-pattern/&title=Anti-Pattern" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
-        <i class="fa-brands fa-reddit"></i>
-      </a> --><a href="#" id="copy-link" title="Copy to Clipboard" aria-label="Copy link" class="social-icon">
-      <i class="fa-solid fa-link"></i>
-    </a>
-    <!-- Separator -->
-    <!-- <span class="separator">&#124;</span> -->
-    <!-- Comment icon -->
-    <a href="#comments-section" class="social-icon" id="comments-icon" title="Post Comments">
-      <i class="fa-regular fa-comments"></i>
-    </a>
-    <span id="copy-message" class="copy-message">Copied to clipboard</span>
-  </div>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const copyLink = document.getElementById('copy-link');
-      const copyMessage = document.getElementById('copy-message');
-      
-      copyLink.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent the default link behavior
-        const mainUrl = window.location.href.split('#')[0]; // Get URL without hash
-        navigator.clipboard.writeText(mainUrl).then(() => {
-          copyMessage.style.visibility = 'visible';
-          setTimeout(() => {
-            copyMessage.style.visibility = 'hidden';
-          }, 2000);
-        });
+    <!-- <a href="https://www.reddit.com/submit?url=https://www.senthilnayagan.net/blog/tech/anti-pattern/&title=Anti-Pattern" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
+      <i class="fa-brands fa-reddit"></i>
+    </a> --><a href="#" id="copy-link" title="Copy to Clipboard" aria-label="Copy link" class="social-icon">
+    <i class="fa-solid fa-link"></i>
+  </a>
+  <!-- Separator -->
+  <!-- <span class="separator">&#183;</span> -->
+  <!-- Comment icon -->
+  <a href="#comments-section" class="social-icon" id="comments-icon" title="Post Comments">
+    <i class="fa-regular fa-comments"></i>
+  </a>
+  <span id="copy-message" class="copy-message">Copied to clipboard</span>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const copyLink = document.getElementById('copy-link');
+    const copyMessage = document.getElementById('copy-message');
+    
+    copyLink.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent the default link behavior
+      const mainUrl = window.location.href.split('#')[0]; // Get URL without hash
+      navigator.clipboard.writeText(mainUrl).then(() => {
+        copyMessage.style.visibility = 'visible';
+        setTimeout(() => {
+          copyMessage.style.visibility = 'hidden';
+        }, 2000);
       });
     });
-  </script><figure class="cover-image"><picture class="cover-image">
+  });
+</script><figure class="cover-image"><picture class="cover-image">
     <source type="image/webp" srcset="/assets/images/S5dJWzQllV-400.webp 400w, /assets/images/S5dJWzQllV-800.webp 800w, /assets/images/S5dJWzQllV-1792.webp 1792w" sizes="100vw">
 <source type="image/jpeg" srcset="/assets/images/S5dJWzQllV-400.jpeg 400w, /assets/images/S5dJWzQllV-800.jpeg 800w, /assets/images/S5dJWzQllV-1792.jpeg 1792w" sizes="100vw">
     <img width="1792" height="1024" src="/assets/images/S5dJWzQllV-1792.jpeg" alt="Anti-Pattern"  loading="lazy" decoding="async">
