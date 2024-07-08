@@ -43,11 +43,14 @@ Well accomplished if you've made it this far :-) 
 
 If you like my stories or have suggestions for their improvement, please feel free to [contact me]({{ site.baseurl }}/contact).
 
-**{{ site.author }}**<br/>
+Best wishes,<br/>
+**{{ site.author }}**
 
-**Email:** [{{ site.email }}](mailto:{{ site.email }})<br/>
-**LinkedIn:** [senthilnayagan]({{ site.linkedIn }}){:target="_blank"}<br/>
-**GitHub:** [SenthilNayagan]({{ site.gitHub }}){:target="_blank"}<br/>
-**Twitter:** [SenthilNayagan]({{ site.twitter }}){:target="_blank"}<br/>
-**Mastodon:** [SenthilNayagan]({{ site.mastodon }}){:target="_blank"}<br/>
-**Instagram:** [senthilnayagan]({{ site.instagram }}){:target="_blank"}
+<div class="about-contact-icons">
+  <a href="mailto:{{ site.email }}"><i class="fa-solid fa-envelope"></i></a>
+  <a href="{{ site.linkedIn }}" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="{{ site.gitHub }}" target="_blank"><i class="fa-brands fa-github"></i></a>
+  <a href="{{ site.twitter }}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+  <a href="{{ site.mastodon }}" target="_blank"><i class="fa-brands fa-mastodon"></i></a>
+  <a href="{{ site.instagram }}" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+</div>

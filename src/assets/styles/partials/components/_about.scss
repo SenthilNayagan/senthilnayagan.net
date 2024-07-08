@@ -1,0 +1,14 @@
+.about-contact-icons {
+    display: flex;
+    gap: 1rem; // Adjust the space between the icons as needed
+  
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+  
+      &:hover {
+        color: var(--highlight-color);
+      }
+    }
+  }

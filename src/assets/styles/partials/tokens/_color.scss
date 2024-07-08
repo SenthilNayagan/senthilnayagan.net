@@ -15,6 +15,8 @@
   --color-text-inverted: white;
   --color-border: var(--color-surface-4);
   --color-scrollbar-thumb: var(--color-surface-4);
+  --link-color: var(--color-surface-8);
+  --highlight-color: var(--color-surface-5);
 }
 
 @mixin colors-dark() {
@@ -33,6 +35,8 @@
   --color-text-inverted: black;
   --color-border: var(--color-surface-5);
   --color-scrollbar-thumb: var(--color-surface-5);
+  --link-color: var(--color-surface-7);
+  --highlight-color: var(--color-surface-6);
 }
 
 html {
