@@ -4,6 +4,6 @@ module.exports = {
   layout: 'default',
   openGraph: {
     type: 'website',
-    image: toAbsoluteImageUrl('src/assets/images/logo/profile.png', 400),
+    image: toAbsoluteImageUrl('src/assets/images/profile-photo.jpg', 400),
   },
 };

@@ -7,8 +7,7 @@ layout: about
 
 Hello! I’m **Senthil Nayagan**, hailing from **India**, a land of vibrant software engineers. I am a seasoned IT professional with years of experience in designing and building complex business solutions. I’ve been working in the ever-evolving world of Data Engineering for the past few years. If I were to describe myself in a few words, I would say that I am a Data Engineer by profession and a Rustacean by interest. When I’m not immersed in data or coding, you can find me sharing insights and explorations on my tech blog, where I connect with fellow enthusiasts and curious minds.
 
-<!-- <img src="{{ site.authorGravatar }}" alt="Senthil Nayagan" class="author-img"> -->
-<img src="/assets/images/logo/profile.png" alt="Site Logo" class="author">
+<img src="/assets/images/logo/profile.png" alt="Senthil Nayagan" class="author">
 
 ### Open-source software (OSS) and the community
 
