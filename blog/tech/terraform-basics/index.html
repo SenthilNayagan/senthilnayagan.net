@@ -168,6 +168,7 @@
 <p>Manual processes are prone to errors. Infrastructure as a code solves this problem by making the configuration files the single source of truth. That way, we can be certain that the same configurations will be deployed repeatedly and without error.</p>
 <h3 id="traceability-with-the-help-of-a-version-control-system"><a class="to-underline" href="#traceability-with-the-help-of-a-version-control-system">Traceability with the help of a version control system</a></h3>
 <p>We have full traceability of the changes made to each configuration because we can version IaC configuration files like any other source code file, which allows us to save time troubleshooting the problem.</p>
+<hr>
 <h1 id="introduction-to-terraform"><a class="to-underline" href="#introduction-to-terraform">Introduction to Terraform</a></h1>
 <p>Terraform is an open-source <em>infrastructure as a code</em> tool from HashiCorp. It enables us to define both cloud and on-premises resources in <em>human-readable declarative definition files</em> (aka configuration files) that can be <em>versioned</em>, <em>reused</em>, and <em>shared</em>. These definition files contain the steps required to provision and maintain our infrastructure. We can edit, review, and version these definition files <em>just like code</em>.</p>
 <p>Terraform can create infrastructure on a variety of cloud platforms such as AWS, Azure, Google Cloud, etc.</p>
@@ -404,6 +405,7 @@ resource "azurerm_role_assignment" "example" {
 <ul>
 <li><code>cdktf version</code></li>
 </ul>
+<hr>
 <h1 id="how-does-terraform-work"><a class="to-underline" href="#how-does-terraform-work">How does Terraform work?</a></h1>
 <p>As stated above, Terraform uses definition files to create and manage resources on cloud or on-premises platforms, as well as other services via their APIs. Terraform’s primary function is to <em>create</em>, <em>modify</em>, and <em>destroy</em> infrastructure resources as described in a Terraform configuration.</p>
 <h2 id="definition-or-configuration-files"><a class="to-underline" href="#definition-or-configuration-files">Definition or configuration files</a></h2>
@@ -653,6 +655,7 @@ resource "google_compute_instance" "dev_instance" {
 <source type="image/jpeg" srcset="/assets/images/MAcRMx7N_7-400.jpeg 400w, /assets/images/MAcRMx7N_7-800.jpeg 800w, /assets/images/MAcRMx7N_7-2194.jpeg 2194w" sizes="100vw">
     <img width="2194" height="976" src="/assets/images/MAcRMx7N_7-2194.jpeg" alt="New EC2 instance created"  loading="lazy" decoding="async">
   </picture></a><figcaption><p class="image-description"><b>Figure 3: </b>A new GCE instance created in GCP.</p></figcaption></figure>
+<hr>
 <h1 id="conclusion"><a class="to-underline" href="#conclusion">Conclusion</a></h1>
 <p>This should help you understand the fundamentals of Terraform and how infrastructure as code can be set up quickly and efficiently. The declarative language simplifies the process of describing the infrastructure we intend to build, as opposed to describing how to build it. Before putting our changes into action, we use the <code>plan</code> command to test them and look for potential bugs.</p>
 <p>This is merely a summary of how efficiently infrastructure as code can be implemented with Terraform. I attempted to make this post as clear as possible while still providing sufficient detail for you to understand the ideas. For more details, check out their online <a href="https://learn.hashicorp.com/terraform" target="_blank">documentation</a>.</p>
