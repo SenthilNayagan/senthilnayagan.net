@@ -65,17 +65,26 @@
     width: functions.spacing("4");
   }
 
-  &-link-home {
+  // &-link-home {
+  .navbar-link-home {
     display: flex;
     gap: functions.spacing("-3");
     align-items: center;
-    padding: functions.spacing("-2");
-    @include mixins.font($family: "body", $weight: "bold");
+    padding: 0;
+    // padding: functions.spacing("-2");
+    // @include mixins.font($family: "body", $weight: "bold");
 
     .site-name {
       font-size: 2rem;
       display: inline-block;
       // @include mixins.screen-reader-only;
+    }
+
+    .site-logo {
+      width: 80px; /* Adjust as necessary */
+      height: 80px; /* Adjust as necessary */
+      // border-radius: 50%; /* Make it round */
+      object-fit: cover; /* Ensure it covers the space nicely */
     }
   }
 
