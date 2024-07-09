@@ -44,6 +44,8 @@ Manual processes are prone to errors. Infrastructure as a code solves this probl
 
 We have full traceability of the changes made to each configuration because we can version IaC configuration files like any other source code file, which allows us to save time troubleshooting the problem.
 
+---
+
 # Introduction to Terraform
 
 Terraform is an open-source *infrastructure as a code* tool from HashiCorp. It enables us to define both cloud and on-premises resources in *human-readable declarative definition files* (aka configuration files) that can be *versioned*, *reused*, and *shared*. These definition files contain the steps required to provision and maintain our infrastructure. We can edit, review, and version these definition files *just like code*.
@@ -394,6 +396,8 @@ The following are some of the CDKTF CLI commands:
 
 - `cdktf version`
 
+---
+
 # How does Terraform work?
 
 As stated above, Terraform uses definition files to create and manage resources on cloud or on-premises platforms, as well as other services via their APIs. Terraform's primary function is to *create*, *modify*, and *destroy* infrastructure resources as described in a Terraform configuration.
@@ -683,6 +687,8 @@ To create a Compute Engine instance (it's a VM) in GCP, the following steps will
 Once Terraform has been successfully executed, a new Google Compute Engine (GCE) instance is created in our GCP account as shown below:
 
 {% include "postImage.html" src: "./images/terraform-new-gce-instance-created.png", alt: "New EC2 instance created", description: "<b>Figure 3: </b>A new GCE instance created in GCP." %}
+
+---
 
 # Conclusion
 
