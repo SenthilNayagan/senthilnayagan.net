@@ -228,9 +228,9 @@ Retrieval-Augmented Generation (RAG) is a type of language model that combines t
 
 Here’s how RAG works:
 
-1. **Retrieval Component**: When a query is made, the model first retrieves a set of relevant documents or pieces of information from a pre-defined knowledge base or corpus. This is often done using information retrieval techniques like TF-IDF, BM25, or dense vector search with embeddings.
+1. **Retrieval component**: When a query is made, the model first retrieves a set of relevant documents or pieces of information from a pre-defined knowledge base or corpus. This is often done using information retrieval techniques like TF-IDF, BM25, or dense vector search with embeddings.
 
-2. **Generation Component**: The retrieved documents are then passed along with the original query to a generative model. The generative model (like a transformer-based model) uses this additional context to produce a more accurate and informed response.
+2. **Generation component**: The retrieved documents are then passed along with the original query to a generative model. The generative model (like a transformer-based model) uses this additional context to produce a more accurate and informed response.
 
 Having said that, RAG models use a hybrid approach. They first retrieve relevant text snippets from a database or corpus using a retrieval algorithm, and these retrieved snippets are then provided as input to a generation model, which generates new text that is influenced and informed by the retrieved snippets.
 

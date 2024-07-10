@@ -207,7 +207,7 @@ Terraform must keep track of what infrastructure it creates in a `terraform.tfst
 
 This state file contains a custom JSON format that records a mapping from the Terraform resources in our templates to their real-world representation.
 
-> **Avoid directly manipulating the state file!** The state file is meant only for internal use within Terraform. This implies that we should never manually edit the Terraform state files or write code that directly reads them. If for some reason we need to manipulate the state file, use the `terraform import` or `terraform state` commands.
+{% aside %} **Avoid directly manipulating the state file!** The state file is meant only for internal use within Terraform. This implies that we should never manually edit the Terraform state files or write code that directly reads them. If for some reason we need to manipulate the state file, use the `terraform import` or `terraform state` commands. {% endaside %}
 
 Terraform makes use of this local state to create plans and modify our infrastructure. Terraform performs a refresh prior to any operation to update the state with the real infrastructure.
 
@@ -454,7 +454,7 @@ Init command initializes the working directories. A working directory must be *i
 
 Why do we need to initialize the working directory, and what happens during initialization? The `terraform` binary contains the basic functionality of Terraform, but it does not include the code for any of the providers (e.g., the AWS provider, Azure provider, GCP provider, and so on), so when we first start using Terraform, we must run the `terraform init` command to instruct Terraform to scan the code (configuration file), determine which providers we are using, and download the code from the <a href="https://registry.terraform.io/browse/providers" target="_blank">Terraform Registry</a>. The provider code is downloaded by default into a `.terraform` directory.
 
-> **Note:** It's safe to run init multiple times because the command is idempotent.
+{% aside %} **Note:** It's safe to run init multiple times because the command is idempotent. {% endaside %}
 
 After initialization, we will be able to perform other commands, like `terraform plan` and `terraform apply`.
 
@@ -625,7 +625,7 @@ The following steps will be performed in order to create an EC2 instance:
 - **Step 4:** Execute Terraform by running the command `terraform apply`. This is the *actual execution step* where Terraform, after successfully authenticating, creates an EC2 instance.
 - **Step 5:** (Optional) Destroys the instance we created in the above step by executing the command `terraform destroy -target aws_instance.example`.
 
-> **Note:** As previously mentioned, Terraform keeps track of the infrastructure it creates in a state file called `terraform.tfstate`, which is stored locally on the provisioning machine by default. This state file is generated during the execution of Terraform, i.e., when the `apply` command is executed.
+{% aside %} **Note:** As previously mentioned, Terraform keeps track of the infrastructure it creates in a state file called `terraform.tfstate`, which is stored locally on the provisioning machine by default. This state file is generated during the execution of Terraform, i.e., when the `apply` command is executed. {% endaside %}
 
 Once Terraform has been successfully executed, a new EC2 instance is created in our AWS account as shown below:
 
