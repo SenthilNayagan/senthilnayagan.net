@@ -279,9 +279,8 @@ on darwin_amd64
 <h3 id="state"><a class="to-underline" href="#state">State</a></h3>
 <p>Terraform must keep track of what infrastructure it creates in a <code>terraform.tfstate</code> Terraform state file-local state stored on the provisioning machine. Terraform uses this state to map real-world resources to our configuration. Terraform <em>state is stored locally by default</em>, but it can also be stored remotely, which is preferable in a team environment.</p>
 <p>This state file contains a custom JSON format that records a mapping from the Terraform resources in our templates to their real-world representation.</p>
-<blockquote class="rhythm">
-<p><strong>Avoid directly manipulating the state file!</strong> The state file is meant only for internal use within Terraform. This implies that we should never manually edit the Terraform state files or write code that directly reads them. If for some reason we need to manipulate the state file, use the <code>terraform import</code> or <code>terraform state</code> commands.</p>
-</blockquote>
+<aside role="note" class="post-aside rhythm"><p><strong>Avoid directly manipulating the state file!</strong> The state file is meant only for internal use within Terraform. This implies that we should never manually edit the Terraform state files or write code that directly reads them. If for some reason we need to manipulate the state file, use the <code>terraform import</code> or <code>terraform state</code> commands.</p>
+</aside>
 <p>Terraform makes use of this local state to create plans and modify our infrastructure. Terraform performs a refresh prior to any operation to update the state with the real infrastructure.</p>
 <h4 id="remote-state"><a class="to-underline" href="#remote-state">Remote state</a></h4>
 <p>When working with Terraform in a team, using a local file complicates Terraform usage because each user must ensure that they always have the most recent state data before running Terraform and that no one else runs Terraform at the same time.</p>
@@ -451,9 +450,8 @@ resource "azurerm_role_assignment" "example" {
 <h3 id="init"><a class="to-underline" href="#init">Init</a></h3>
 <p>Init command initializes the working directories. A working directory must be <em>initialized</em> before Terraform can perform any operations on it, such as provisioning infrastructure or changing state.</p>
 <p>Why do we need to initialize the working directory, and what happens during initialization? The <code>terraform</code> binary contains the basic functionality of Terraform, but it does not include the code for any of the providers (e.g., the AWS provider, Azure provider, GCP provider, and so on), so when we first start using Terraform, we must run the <code>terraform init</code> command to instruct Terraform to scan the code (configuration file), determine which providers we are using, and download the code from the <a href="https://registry.terraform.io/browse/providers" target="_blank">Terraform Registry</a>. The provider code is downloaded by default into a <code>.terraform</code> directory.</p>
-<blockquote class="rhythm">
-<p><strong>Note:</strong> It’s safe to run init multiple times because the command is idempotent.</p>
-</blockquote>
+<aside role="note" class="post-aside rhythm"><p><strong>Note:</strong> It’s safe to run init multiple times because the command is idempotent.</p>
+</aside>
 <p>After initialization, we will be able to perform other commands, like <code>terraform plan</code> and <code>terraform apply</code>.</p>
 <h3 id="plan"><a class="to-underline" href="#plan">Plan</a></h3>
 <p>After we’ve initialized the working directory, we’ll use the <code>plan</code> command to see what actions Terraform will take to create our resources. This step works similar to the “dry run” feature found in other build systems. This is an excellent way to double-check our changes before releasing them.</p>
@@ -593,9 +591,8 @@ resource "aws_instance" "example" {
 <li><strong>Step 4:</strong> Execute Terraform by running the command <code>terraform apply</code>. This is the <em>actual execution step</em> where Terraform, after successfully authenticating, creates an EC2 instance.</li>
 <li><strong>Step 5:</strong> (Optional) Destroys the instance we created in the above step by executing the command <code>terraform destroy -target aws_instance.example</code>.</li>
 </ul>
-<blockquote class="rhythm">
-<p><strong>Note:</strong> As previously mentioned, Terraform keeps track of the infrastructure it creates in a state file called <code>terraform.tfstate</code>, which is stored locally on the provisioning machine by default. This state file is generated during the execution of Terraform, i.e., when the <code>apply</code> command is executed.</p>
-</blockquote>
+<aside role="note" class="post-aside rhythm"><p><strong>Note:</strong> As previously mentioned, Terraform keeps track of the infrastructure it creates in a state file called <code>terraform.tfstate</code>, which is stored locally on the provisioning machine by default. This state file is generated during the execution of Terraform, i.e., when the <code>apply</code> command is executed.</p>
+</aside>
 <p>Once Terraform has been successfully executed, a new EC2 instance is created in our AWS account as shown below:</p>
 <figure class=""><a class="outline-offset" href="/assets/images/lGqqOKg7wF-1874.webp"><picture >
     <source type="image/webp" srcset="/assets/images/lGqqOKg7wF-400.webp 400w, /assets/images/lGqqOKg7wF-800.webp 800w, /assets/images/lGqqOKg7wF-1874.webp 1874w" sizes="100vw">
