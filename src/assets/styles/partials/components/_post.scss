@@ -20,27 +20,12 @@
   &-date {
     color: var(--color-text-soft);
     margin-bottom: functions.spacing("-3");
-    display: flex;
-    align-items: center; /* Ensures text and icons are aligned */
-    gap: functions.spacing("-0.5"); /* Adjust gap between elements */
     @include mixins.font($size: "sm");
 
     dt,
     dd {
       display: inline-block;
     }
-
-    .fa-icon {
-      font-size: 1rem; /* Adjust icon size if needed */
-      margin-right: functions.spacing("-0.5"); /* Adjust space between icon and text */
-      vertical-align: middle; /* Align icon with text */
-    }
-  }
-
-  &-tags-container {
-    display: flex;
-    align-items: center; /* Ensures text and icon are aligned */
-    gap: functions.spacing("-0.5") /* Adjust gap between icon and tags */
   }
 
   &-tags {
@@ -56,12 +41,6 @@
       content: "#";
       user-select: none;
     }
-  }
-
-  .fa-icon {
-    font-size: 1rem; /* Adjust icon size if needed */
-    margin-right: functions.spacing("-0.5"); /* Adjust space between icon and text */
-    vertical-align: middle; /* Align icon with text */
   }
 }
 
@@ -221,29 +200,6 @@ a sup {
 
     th {
       text-align: center; // Center align the header text
-    }
-  }
-}
-
-.fa-icon {
-  font-size: 1.2rem; /* Adjust the icon size if needed */
-  margin-right: 0.5rem; /* Adjust the spacing between the icon and the text */
-  vertical-align: middle; /* Align the icon with the text middle */
-}
-
-.post-tags-container {
-  display: flex;
-  align-items: center;
-  // gap: functions.spacing("1"); /* Reduce space between tag icon and tags */
-  gap: 4px; /* Space between tag icon and tags */
-
-  .post-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: functions.spacing("0.5"); /* Reduce space between each tag */
-
-    li {
-      margin: 0;
     }
   }
 }

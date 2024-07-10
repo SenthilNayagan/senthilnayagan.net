@@ -13,22 +13,19 @@ eleventyComputed:
   <header class="post-header">
     <p class="post-date">
       <span class="screen-reader-only">Published </span>
-      <i class="fa-regular fa-calendar-days fa-icon"></i>{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} (Updated {% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}){% endif %}&nbsp;&#183;&nbsp;
-      <i class="fa-regular fa-clock fa-icon"></i>{{ content | readingTime }}
+      <i class="fa-regular fa-calendar-days"></i>&nbsp;{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} (Updated {% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}){% endif %}&nbsp;&#183;&nbsp;
+      <i class="fa-regular fa-clock"></i>&nbsp;{{ content | readingTime }}
     </p>
     <h1 class="post-title">{{ title }}</h1>
-    <div class="post-tags-container" aria-label="Tags">
-      <i class="fa-solid fa-tags fa-icon"></i>
-      <ul class="post-tags">
-        {%- for category in categories -%}
+    <ul class="post-tags" aria-label="Tags">
+      {%- for category in categories -%}
         <li>
           <a href="/tags/{{ category }}/" class="post-tag" aria-label="{{ category }}">
             {{- category -}}
           </a>
         </li>
-        {%- endfor -%}
-      </ul>
-    </div>
+      {%- endfor -%}
+    </ul>    
     {%- if description -%}
     <p class="spacer"></p>
     <p class="post-subtitle">{{ description }}</p>
