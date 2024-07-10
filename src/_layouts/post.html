@@ -13,8 +13,7 @@ eleventyComputed:
   <header class="post-header">
     <p class="post-date">
       <span class="screen-reader-only">Published </span>
-      <i class="fa-regular fa-calendar-days"></i>&nbsp;{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} (Updated {% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}){% endif %}&nbsp;&#183;&nbsp;
-      <i class="fa-regular fa-clock"></i>&nbsp;{{ content | readingTime }}
+      {% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} (Updated {% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}){% endif %}&nbsp;&#183;&nbsp;{{ content | readingTime }}
     </p>
     <h1 class="post-title">{{ title }}</h1>
     <ul class="post-tags" aria-label="Tags">

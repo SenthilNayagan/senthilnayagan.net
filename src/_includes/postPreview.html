@@ -3,7 +3,7 @@
   <article class="post-preview">
     <div class="post-preview-date">
       <span class="screen-reader-only">Published on </span>
-      <i class="fa-regular fa-calendar-days"></i>&nbsp;{% include "date.html" date: post.date, dateFormat: "MMMM DD, YYYY" %}&nbsp;&#183;&nbsp;<i class="fa-regular fa-clock"></i>&nbsp;{{ post.templateContent | readingTime }}
+      {% include "date.html" date: post.date, dateFormat: "MMMM DD, YYYY" %}&nbsp;&#183;&nbsp;{{ post.templateContent | readingTime }}
     </div>
     <h{{ titleLevel }} class="post-preview-title">
       <a class="post-preview-link to-underline" href="{{ post.url }}">{{ post.data.title }}</a>
