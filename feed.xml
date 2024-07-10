@@ -4,12 +4,21 @@
   <subtitle>A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.</subtitle>
   <link href="https://www.senthilnayagan.net/feed.xml" rel="self"/>
   <link href="https://www.senthilnayagan.net/" rel="alternate" type="text/html"/>
-  <updated>2024-07-08T00:00:00.000Z</updated>
+  <updated>2024-07-10T00:00:00.000Z</updated>
   <id>https://www.senthilnayagan.net/</id>
   <author>
     <name>Senthil Nayagan</name>
     <email>hello@senthilnayagan.net</email>
   </author>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/tech/math-matters-essential-math-for-aspiring-ai-experts/</id>
+    <title>Math Matters: Essential Math for Aspiring AI Experts</title>
+    <link href="https://www.senthilnayagan.net/blog/tech/math-matters-essential-math-for-aspiring-ai-experts/"/>
+    <published>2024-07-10T00:00:00.000Z</published>
+    <updated>2024-07-10T00:00:00.000Z</updated>
+    <category term="math-for-ai" />
+    <content type="html">The journey starts with mastering some essential mathematical concepts! Linear algebra is our toolkit for handling and manipulating data in multiple dimensions. Calculus becomes our guide to understanding how models learn and optimize performance. Probability and statistics are our crystal balls, helping us predict outcomes and discover patterns in the data. Finally, discrete mathematics shapes our ability to design and analyze algorithms. These mathematical foundations enable us to construct, comprehend, and improve advanced AI and ML models.</content>
+  </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/llms-changing-the-game/</id>
     <title>The Evolution of AI: How Large Language Models are Changing the Game</title>
