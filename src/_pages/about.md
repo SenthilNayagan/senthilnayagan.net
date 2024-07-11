@@ -5,13 +5,11 @@ permalink: /about/
 layout: about
 ---
 
-Hello! I’m **Senthil Nayagan**, hailing from **India**, a land of vibrant software engineers. I am a seasoned IT professional with years of experience in designing and building complex business solutions. I’ve been working in the ever-evolving world of Data Engineering for the past few years. If I were to describe myself in a few words, I would say that I am a Data Engineer by profession and a Rustacean by interest. When I’m not immersed in data or coding, you can find me sharing insights and explorations on my tech blog, where I connect with fellow enthusiasts and curious minds.
+Hello! I’m **Senthil Nayagan**, hailing from **India**, a land of vibrant software engineers. I am a seasoned IT professional with years of experience in designing and building complex business solutions. I’ve been working in the ever-evolving world of Data Engineering for the past few years. 
 
 <img src="/assets/images/logo/profile.png" alt="Senthil Nayagan" class="author">
 
-In my writing, you’ll notice that I prefer to use “we,” “us,” and “our” instead of “you” and “your.” This choice is intentional and reflects my desire to create a more engaging and inclusive atmosphere. By using “we,” I aim to cultivate a sense of community and shared experience. I believe that learning and exploring these topics is a journey we embark on together, and this inclusive language helps build a connection, making us feel like we’re part of a collective effort.
-
-Together, we can delve into complex subjects, solve challenging problems, and celebrate our progress. Let’s learn and grow as a community, supporting each other every step of the way.
+If I were to describe myself in a few words, I would say that I am a Data Engineer by profession and a Rustacean by interest. When I’m not immersed in data or coding, you can find me sharing insights and explorations on my tech blog, where I connect with fellow enthusiasts and curious minds.
 
 ### Open-source software (OSS) and the community
 
@@ -32,6 +30,8 @@ Like many, I used to jot down notes in physical notebooks whenever I learned som
 However, these platforms didn’t quite meet my needs. I wanted a clutter-free blogging experience without ads and without requiring subscriptions from readers or writers. This desire pushed me to create my own blog platform.  I focus on presenting information clearly and comprehensively, so readers can fully grasp the topics without needing to look elsewhere for more information.
 
 Blogging is more than just writing notes. It demands a great deal of work to ensure that the content we put together reaches the target audience. Personally, I enjoy writing technical blogs. It’s been an excellent way for me to learn new things and share that knowledge with others. Through blogging, I not only share my expertise with others but also reinforce my own understanding by articulating ideas clearly. This personal blog is my little corner of the internet where I share my thoughts, design principles, and coding experiences. I strive to make all my posts as clear and informative as possible, ensuring that readers can grasp the concepts thoroughly.
+
+In my writing, you’ll notice that I prefer to use “we,” “us,” and “our” instead of “you” and “your.” This choice is intentional and reflects my desire to create a more engaging and inclusive atmosphere. By using “we,” I aim to cultivate a sense of community and shared experience. I believe that learning and exploring these topics is a journey we embark on together, and this inclusive language helps build a connection, making us feel like we’re part of a collective effort.
 
 If you have any suggestions or spot any mistakes, please feel free to let me know!
 

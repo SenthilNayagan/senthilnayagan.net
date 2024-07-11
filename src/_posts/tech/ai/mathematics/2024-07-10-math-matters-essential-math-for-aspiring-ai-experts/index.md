@@ -100,8 +100,9 @@ Here are different number systems:
 
 Linear algebra is a branch of mathematics that has revolutionized the way we understand and interact with the world around us. At its core, linear algebra is about **vectors**. 
 
-{% aside %}
-**Vector**: A vector is a mathematical object that has both *magnitude* (length) and *direction*. In linear algebra, vectors are often represented as *arrows* in a coordinate system, with the length of the arrow representing the magnitude of the vector and the direction of the arrow representing the direction of the vector. Think of them as super-powered lists of numbers that can be added, subtracted, multiplied, and combined in countless ways. With vectors, we can represent everything from data points to directions, velocities, and even complex systems. Vectors are a fundamental concept in linear algebra and are used in many areas of mathematics and science.
+## What is a vector?
+
+A vector is a mathematical object that has both *magnitude* (length) and *direction*, often used to represent quantities<a href="#ref-4"><sup id="back-to-4">4</sup></a> with both size and orientation<a href="#ref-5"><sup id="back-to-5">5</sup></a>, such as displacement, velocity, or force. In linear algebra, vectors are often represented as *arrows* in a coordinate system, with the length of the arrow representing the magnitude of the vector and the direction of the arrow representing the direction of the vector. Think of them as super-powered lists of numbers that can be added, subtracted, multiplied, and combined in countless ways. With vectors, we can represent everything from data points to directions, velocities, and even complex systems. Vectors are a fundamental concept in linear algebra and are used in many areas of mathematics and science.
 
 Example:
 
@@ -124,7 +125,6 @@ Graphically, this vector can be represented as:
 
 - The vector `v` is shown as an arrow starting at the origin `(0,0)` and ending at the point `(3,4)`.
 - The arrow indicates the direction and length (magnitude) of the vector.
-{% endaside %}
 
 But Linear Algebra is more than just vectors. It's about the relationships between them, the transformations that can be applied, and the matrices that govern their behavior. Matrices are the ultimate data structures, allowing us to organize and manipulate vast amounts of information with ease.
 
@@ -157,7 +157,9 @@ Linear algebra deals with the study of **linear equations**, **vector spaces**, 
       </li>
       <li id="ref-3">3. <strong>Euler’s number</strong>: Euler's number, denoted by e, is a mathematical constant that is approximately equal to 2.71828. It is named after the Swiss mathematician Leonhard Euler and is widely used in mathematics, particularly in calculus and complex analysis. It is an irrational number, meaning its decimal representation goes on forever without repeating. It's crucial in describing processes that exhibit exponential growth or decay, such as population growth, radioactive decay, and compound interest. <a href="#back-to-3" class="back-to-note">↩</a>
       </li>
-      <li id="ref-4">4. <strong>Matrice</strong>: A matrix is an array of numbers, symbols, or expressions, arranged in rows and columns. Each entry in the matrix is called an element. <a href="#back-to-4" class="back-to-note">↩</a>
-      </li>        
+      <li id="ref-4">4. <strong>Quantities</strong> refers to measurable properties or attributes that have both size (magnitude) and orientation (direction). <a href="#back-to-4" class="back-to-note">↩</a>
+      </li>
+      <li id="ref-5">5. <strong>Orientation</strong>: A matrix is an array of numbers, symbols, or expressions, arranged in rows and columns. Each entry in the matrix is called an element. <a href="#back-to-5" class="back-to-note">↩</a>
+      </li>                
    </ol>
 </div>
