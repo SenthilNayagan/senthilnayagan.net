@@ -1,16 +1,16 @@
 <figure class="{{ className }}">
   {%- include "image.html" src: src, alt: alt, description: description, credits: credits, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, isLinked: isLinked, isLazy: isLazy -%}
   {%- if description or credits -%}
-  <figcaption>
-    {%- if description -%}
-      <p class="image-description">{{ description }}</p>
-    {%- endif -%}
-    {%- if credits -%}
-      <p class="image-credits"><b>Image Credits: </b>{{ credits }}</p>
-    {%- endif -%}
-  </figcaption>
+    <figcaption>
+      {%- if description -%}
+        <p class="image-description">{{ description | toHtml }}</p>
+      {%- endif -%}
+      {%- if credits -%}
+        <p class="image-credits"><b>Image Credits: </b>{{ credits | toHtml }}</p>
+      {%- endif -%}
+    </figcaption>
   {%- endif -%}
-  {%- if caption and not description and not credits -%}
+  <!-- {%- if caption and not description and not credits -%}
     <figcaption{% if isCaptionAriaHidden %} aria-hidden="true"{% endif %}>{{ caption | toHtml }}</figcaption>
-  {%- endif -%}
+  {%- endif -%} -->
 </figure>
