@@ -9,6 +9,10 @@ Hello! I’m **Senthil Nayagan**, hailing from **India**, a land of vibrant soft
 
 <img src="/assets/images/logo/profile.png" alt="Senthil Nayagan" class="author">
 
+In my writing, you’ll notice that I prefer to use “we,” “us,” and “our” instead of “you” and “your.” This choice is intentional and reflects my desire to create a more engaging and inclusive atmosphere. By using “we,” I aim to cultivate a sense of community and shared experience. I believe that learning and exploring these topics is a journey we embark on together, and this inclusive language helps build a connection, making us feel like we’re part of a collective effort.
+
+Together, we can delve into complex subjects, solve challenging problems, and celebrate our progress. Let’s learn and grow as a community, supporting each other every step of the way.
+
 ### Open-source software (OSS) and the community
 
 I enjoy working with open-source software (OSS). They are open and free to all. They encourage the free exchange of thoughts. I appreciate the freedom they provide. We (developers) are able to engage in ways that wouldn't be possible otherwise. In the end, they deal with our common problems.

@@ -74,24 +74,90 @@ By following this structured path, we not only build a solid foundation in the m
 
 ---
 
+# Number theory
+
+Before we go into detail explaining all these essential mathematics, let’s first know briefly about number theory and why it is important.
+
+Number theory is a branch of mathematics that deals with the properties and relationships of numbers, especially integers. It provides a framework for solving problems related to patterns, relationships, and cryptography, which are critical components of AI and ML.
+
+- **Cryptography**: Secure communication relies heavily on number theory, particularly prime numbers and modular arithmetic.
+- **Algorithms**: Many algorithms in computer science, including those used in AI, are based on number-theoretic principles.
+- **Data structures**: Efficient data storage and retrieval methods often utilize concepts from number theory.
+
+Here are different number systems:
+
+- **Natural numbers**: These are the numbers 1, 2, 3, 4, 5... and so on. Only *positive numbers* are included here.
+- **Whole numbers**: Whole numbers are non-negative integers, including 0. Whole numbers include all natural numbers, plus zero. The set of whole numbers is: 0, 1, 2, 3, 4, 5,...
+- **Integers**: Integers include positive and negative natural numbers as well as 0. 
+- **Rational numbers:** A rational number is a number that can be expressed as the ratio of two integers, i.e., a fraction. It is a number that can be written in the form: `a/b`, where `a` and `b` are integers, and `b` is non-zero.
+- **Irrational numbers:** Irrational numbers cannot be expressed as a fraction. This means they cannot be expressed as a ratio of two integers `a/b`, where `a` and `b` are integers and `b` is not zero. It's non-repeating and non-terminating decimals. This means, the decimal form of an irrational number goes on forever without repeating. For example, the number π (pi) is approximately 3.14159, but its decimal representation goes on infinitely without repeating-it starts as 3.14159265358979323846… and goes on forever. Common examples of irrational numbers include π (pi), √2 (the square root of 2), and e (Euler’s number<a href="#ref-3"><sup id="back-to-3">3</sup></a>).
+- **Real numbers**: A real number is a value that represents a quantity that can be expressed as a decimal or fraction. Real numbers can be either rational or irrational. They include different types of numbers that we use every day, from counting apples to measuring the length of a table. Examples of real numbers: Natural numbers, whole numbers, integers, fractions (rational numbers), and decimals (including irrational numbers).
+- **Complex and imaginary numbers**: In mathematics, complex numbers are numbers that can be expressed in the form: `a + bi`, where `a` is a real number (a scalar), `b` is a real number (a scalar) and `i` is the imaginary unit, which is defined as the square root of -1. Imaginary numbers are a subset of complex numbers, and they are numbers that can be expressed in the form: `bi`. Imaginary numbers are often combined with real numbers to form complex numbers. Imaginary numbers are numbers that, when squared, give a negative result. This is fundamentally different from real numbers, where squaring any real number always gives a positive result. Imaginary numbers are unique because they allow for the square roots of negative numbers. This extension of the number system is crucial for solving many mathematical and real-world problems that cannot be addressed with real numbers alone. By defining `i` and using it to form other imaginary numbers, we can square these numbers and always get a negative result, thus expanding our mathematical toolkit.
+
+---
+
 # Unlock the power of linear algebra: The secret to mastering data
 
-Linear algebra is a branch of mathematics that has revolutionized the way we understand and interact with the world around us. At its core, linear algebra is about vectors-mathematical objects that have both **magnitude** and **direction**. Think of them as super-powered lists of numbers that can be added, subtracted, multiplied, and combined in countless ways. With vectors, we can represent everything from data points to directions, velocities, and even complex systems.
+Linear algebra is a branch of mathematics that has revolutionized the way we understand and interact with the world around us. At its core, linear algebra is about **vectors**. 
+
+{% aside %}
+**Vector**: A vector is a mathematical object that has both *magnitude* (length) and *direction*. In linear algebra, vectors are often represented as *arrows* in a coordinate system, with the length of the arrow representing the magnitude of the vector and the direction of the arrow representing the direction of the vector. Think of them as super-powered lists of numbers that can be added, subtracted, multiplied, and combined in countless ways. With vectors, we can represent everything from data points to directions, velocities, and even complex systems. Vectors are a fundamental concept in linear algebra and are used in many areas of mathematics and science.
+
+Example:
+
+Imagine a vector `v` in a two-dimensional space, starting from the origin `(0,0)` and pointing to the point `(3, 4)`.
+
+Graphically, this vector can be represented as:
+
+```text
+      y
+      ^
+      |
+      |     *
+      |    /
+      |   /
+      |  /
+      | /
+      |/__________________> x
+     (0,0)      (3,4)
+```
+
+- The vector `v` is shown as an arrow starting at the origin `(0,0)` and ending at the point `(3,4)`.
+- The arrow indicates the direction and length (magnitude) of the vector.
+{% endaside %}
 
 But Linear Algebra is more than just vectors. It's about the relationships between them, the transformations that can be applied, and the matrices that govern their behavior. Matrices are the ultimate data structures, allowing us to organize and manipulate vast amounts of information with ease.
 
-So, whether you're a student looking to gain a competitive edge, a professional seeking to stay ahead of the curve, or simply a curious mind eager to explore the wonders of mathematics, linear algebra is the perfect place to start. Join us on a journey to master the art of data manipulation, and discover the incredible possibilities.
+{% aside %} **Matrice**: A matrix is an array of numbers, symbols, or expressions, arranged in rows and columns. Each entry in the matrix is called an element. 
+
+Some common types of matrices include:
+- Square matrix: A square matrix is a matrix with the same number of rows and columns.
+- Rectangular matrix: A rectangular matrix is a matrix with a different number of rows and columns.
+- Diagonal matrix: A diagonal matrix is a matrix with all elements equal to zero, except for the elements on the diagonal.
+- Identity matrix: An identity matrix is a square matrix with all elements equal to zero, except for the elements on the diagonal, which are equal to one.
+- Zero matrix: A zero matrix is a matrix with all elements equal to zero.
+{% endaside %}
+
+So, whether we're a student looking to gain a competitive edge, a professional seeking to stay ahead of the curve, or simply a curious mind eager to explore the wonders of mathematics, linear algebra is the perfect place to start. Join us on a journey to master the art of data manipulation, and discover the incredible possibilities.
+
+## What exactly is linear algebra?
+
+Linear algebra deals with the study of **linear equations**, **vector spaces**, **linear transformations**, and **matrices**. Linear algebra is hugely fundamental to many applied areas of math, statistics, operations research, data science, and machine learning. When we work with data in any of these areas, we are using linear algebra and perhaps we may not even know it.
 
 [Work in progress]
 
 <div class="references">
-  <hr>
-  <h2>Notes and references</h2>
-  <ol>
-  <!-- <li>Nil</li> -->
-    <li id="ref-1">1. <strong>Model's parameters</strong>are the variables within the model that are adjusted during the training process to minimize the error between the model’s predictions and the actual outcomes. Parameters are learned from the data. They are internal variables within a machine learning model that are adjusted during the training process. These parameters define the model’s structure and behavior, influencing how it maps input data to output predictions. The primary goal of training a model is to optimize these parameters to minimize the error between the model’s predictions and the actual target values. <a href="#back-to-1" class="back-to-note">↩</a>
-    </li>
-    <li id="ref-2">2. <strong>Sprint</strong>: Unlike marathon, sprint is short distance and quick run. Sprint vs. marathon is meant to convey that learning mathematics for AI and ML is not a quick or easy task. It requires a sustained effort over a long period, with patience, persistence, and dedication being essential qualities for success. <a href="#back-to-2" class="back-to-note">↩</a>
-    </li>  
-  </ol>
+   <hr>
+   <h2>Notes and references</h2>
+   <ol>
+      <!-- <li>Nil</li> -->
+      <li id="ref-1">1. <strong>Model's parameters</strong> are the variables within the model that are adjusted during the training process to minimize the error between the model’s predictions and the actual outcomes. Parameters are learned from the data. They are internal variables within a machine learning model that are adjusted during the training process. These parameters define the model’s structure and behavior, influencing how it maps input data to output predictions. The primary goal of training a model is to optimize these parameters to minimize the error between the model’s predictions and the actual target values. <a href="#back-to-1" class="back-to-note">↩</a>
+      </li>
+      <li id="ref-2">2. <strong>Sprint</strong>: Unlike marathon, sprint is short distance and quick run. Sprint vs. marathon is meant to convey that learning mathematics for AI and ML is not a quick or easy task. It requires a sustained effort over a long period, with patience, persistence, and dedication being essential qualities for success. <a href="#back-to-2" class="back-to-note">↩</a>
+      </li>
+      <li id="ref-3">3. <strong>Euler’s number</strong>: Euler's number, denoted by e, is a mathematical constant that is approximately equal to 2.71828. It is named after the Swiss mathematician Leonhard Euler and is widely used in mathematics, particularly in calculus and complex analysis. It is an irrational number, meaning its decimal representation goes on forever without repeating. It's crucial in describing processes that exhibit exponential growth or decay, such as population growth, radioactive decay, and compound interest. <a href="#back-to-3" class="back-to-note">↩</a>
+      </li>
+      <li id="ref-4">4. <strong>Matrice</strong>: A matrix is an array of numbers, symbols, or expressions, arranged in rows and columns. Each entry in the matrix is called an element. <a href="#back-to-4" class="back-to-note">↩</a>
+      </li>        
+   </ol>
 </div>
