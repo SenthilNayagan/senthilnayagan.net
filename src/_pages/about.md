@@ -5,11 +5,11 @@ permalink: /about/
 layout: about
 ---
 
-Hello! I’m **Senthil Nayagan**, hailing from **India**, a land of vibrant software engineers. I am a seasoned IT professional with years of experience in designing and building complex business solutions. I’ve been working in the ever-evolving world of Data Engineering for the past few years. 
+Hello! I’m **Senthil Nayagan**, hailing from **India**, a land of vibrant software engineers. I am a seasoned IT professional with years of experience in designing and building complex business solutions. I’ve been working in the ever-evolving world of Data Engineering for the past few years. If I were to describe myself in a few words, I would say that I am a Data Engineer by profession and a Rustacean by interest.
 
 <img src="/assets/images/logo/profile.png" alt="Senthil Nayagan" class="author">
 
-If I were to describe myself in a few words, I would say that I am a Data Engineer by profession and a Rustacean by interest. When I’m not immersed in data or coding, you can find me sharing insights and explorations on my tech blog, where I connect with fellow enthusiasts and curious minds.
+Recently, I’ve embarked on an exciting journey into the field of AI. As I dive into the core concepts of AI, I am also delving into the essential mathematics that forms its foundation, making sure to build a strong base in the necessary math for AI and ML. When I’m not immersed in data or coding, you can find me sharing insights and explorations on my tech blog, where I connect with fellow enthusiasts and curious minds.
 
 ### Open-source software (OSS) and the community
 
