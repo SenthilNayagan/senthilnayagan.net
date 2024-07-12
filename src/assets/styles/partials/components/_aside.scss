@@ -4,6 +4,7 @@
   border-inline-start: functions.spacing("-3") solid;
   padding: functions.relative("0") functions.relative("2");
   background-color: var(--color-surface-2);
+  border-radius: 8px;
   
   code {
     padding: 0;
