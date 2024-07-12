@@ -14,13 +14,13 @@ Before large language models (LLMs) were created, traditional methods worked wel
 
 Traditional methods had difficulty with:
 
-1. **Understanding detailed instructions**:
+1. **Understanding detailed instructions**
    - Example: If we asked a traditional system to follow a recipe, it might fail to correctly interpret and execute multi-step instructions like “beat the eggs until they are frothy, then gently fold in the flour.”
    - Explanation: These systems often couldn’t grasp the nuances and sequential nature of detailed tasks, especially when each step depends on correctly understanding the previous ones.
-2. **Analyzing context**:
+2. **Analyzing context**
    - Example: Consider a sentence like “She gave her dog a bath because it was muddy.” Traditional systems might struggle to determine whether “it” refers to the dog or the bath.
    - Explanation: They lacked the ability to understand context and disambiguate meanings based on surrounding text, leading to errors in interpretation and response.
-3. **Writing clear and relevant text**:
+3. **Writing clear and relevant text**
    - Example: If tasked with generating a summary of a news article, traditional methods might produce disjointed or irrelevant sentences that don’t accurately capture the main points.
    - Explanation: These systems couldn’t generate new, coherent text that stays on topic and makes sense in context, limiting their usefulness in applications requiring natural, human-like writing.
 

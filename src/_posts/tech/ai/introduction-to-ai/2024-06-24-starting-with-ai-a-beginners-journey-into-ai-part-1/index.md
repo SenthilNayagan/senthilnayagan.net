@@ -236,17 +236,17 @@ Having said that, RAG models use a hybrid approach. They first retrieve relevant
 
 ### Why is RAG essentially needed?
 
-1.	**Enhanced context understanding**:
+1.	**Enhanced context understanding**
     - **Context-rich responses**: RAG models leverage external knowledge, leading to responses that are richer in context and more informative.
     - **Dynamic knowledge updates**: Instead of relying solely on pre-trained data, RAG can dynamically pull in the most relevant and up-to-date information, making it more flexible and current.
 
-2. **Improved accuracy**:
+2. **Improved accuracy**
     - **Fact-checking**: By incorporating retrieved documents, RAG models can verify facts and reduce the likelihood of generating incorrect or misleading information.
     - **Domain-specific knowledge**: For specialized queries, RAG can retrieve domain-specific documents that provide the necessary context, improving the accuracy of the generated content.
-3. **Versatility**:
+3. **Versatility**
     - **Multiple applications**: RAG can be applied to various tasks such as question answering, summarization, translation, and more, making it a versatile tool in natural language processing.
     - **Adaptive learning**: RAG models can adapt to new topics or domains by updating the retrieval corpus, making them more adaptable to different use cases.
-4. **Efficiency**:
+4. **Efficiency**
     - **Resource utilization**: By retrieving only relevant information, RAG models can potentially reduce the computational resources needed compared to training a generative model with vast amounts of data.
     - **Focused generation**: The retrieval component narrows down the context, enabling the generative model to focus on producing high-quality responses based on the most pertinent information.
 
