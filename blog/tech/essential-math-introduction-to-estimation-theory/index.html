@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"><title>Essential Math for AI and ML: Introduction to Estimation Theory | Senthil Nayagan</title>
+  <meta name="description" content="Estimation theory is like the detective work of data science. It equips us with methods to infer unknown parameters from observed data. Imagine estimating the average height in a city or the likelihood of a coin flip. Key techniques like Maximum Likelihood and Bayesian Estimation ensure our guesses are accurate and reliable. Used in fields from economics to engineering, estimation theory transforms raw data into meaningful insights. It’s the art and science of turning observations into actionable knowledge, guiding decisions in everyday life and complex industries alike. Dive into this fascinating world and become a data detective!">
+  <meta name="keywords" content="estimation-theory, math-for-ai-ml, essential-math">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Senthil Nayagan">
+  <link rel="canonical" href="https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><style>@font-face{font-family:body-fallback-1;src:local('Segoe UI');ascent-override:108.8942%;descent-override:42.5368%;size-adjust:94.0362%}@font-face{font-family:body-fallback-2;src:local('Arial');ascent-override:108.6538%;descent-override:42.4429%;size-adjust:94.2442%}@font-face{font-family:body-fallback-3;src:local('Roboto');ascent-override:108.774%;descent-override:42.4899%;size-adjust:94.1401%}@font-face{font-family:body-fallback-4;src:local('Ubuntu');ascent-override:111.5077%;descent-override:43.5577%;size-adjust:91.8322%}@font-face{font-family:mono-fallback;src:local("Menlo"),local("Courier New");size-adjust:80%}@font-face{font-family:"Source Sans";font-style:normal;font-weight:200 900;font-display:swap;src:local("SourceSansVF"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-roman.woff2") format("woff2-variations")}@font-face{font-family:"Source Sans";font-style:italic;font-weight:200 900;font-display:swap;src:local("SourceSansItalicVF"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcesans-variable-latin-italic.woff2") format("woff2-variations")}@font-face{font-family:"Source Code Pro";font-style:normal;font-display:swap;src:local("SourceCodeVF"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2 supports variations"),url("/assets/fonts/sourcecode-latin-roman-variable.woff2") format("woff2-variations");size-adjust:79%;ascent-override:94%;descent-override:26%}html{--font-family-body:Source Sans,body-fallback-1,body-fallback-2,body-fallback-3,body-fallback-4;--font-weight-body-regular:400;--font-weight-body-bold:700;--font-family-mono:Source Code Pro,mono-fallback,monospace;--font-weight-mono-regular:400;--font-weight-mono-bold:700}body{font-family:var(--font-family-body);font-weight:var(--font-weight-body-regular)}code{font-family:var(--font-family-mono)}</style><link rel="stylesheet" href="/assets/styles/main.css"><link href="/assets/images/favicons/favicon-16.png" rel="icon" sizes="16x16">
+<link href="/assets/images/favicons/favicon-32.png" rel="icon" sizes="32x32">
+<link href="/assets/images/favicons/favicon-57.png" rel="icon" sizes="57x57">
+<link href="/assets/images/favicons/favicon-76.png" rel="icon" sizes="76x76">
+<link href="/assets/images/favicons/favicon-96.png" rel="icon" sizes="96x96">
+<link href="/assets/images/favicons/favicon-128.png" rel="icon" sizes="128x128">
+<link href="/assets/images/favicons/favicon-180.png" rel="apple-touch-icon">
+<link href="/assets/images/favicons/favicon-192.png" rel="icon" sizes="192x192">
+<link href="/assets/images/favicons/favicon-228.png" rel="icon" sizes="228x228"><script>(function(){const t={AUTO:"auto",LIGHT:"light",DARK:"dark"},c="theme",n=document.documentElement,o=localStorage.getItem(c)||t.LIGHT;n.dataset[c]=o,document.addEventListener("DOMContentLoaded",()=>{if(!document.getElementById("theme-picker"))return;const e=document.getElementById("theme-toggle");!e||(e.addEventListener("change",()=>{const d=e.checked?t.DARK:t.LIGHT;n.dataset[c]=d,localStorage.setItem(c,d)}),o===t.DARK?e.checked=!0:e.checked=!1)})})();
+</script><script src="/assets/scripts/index.mjs" type="module"></script><meta property="og:title" content="Essential Math for AI and ML: Introduction to Estimation Theory | Senthil Nayagan"><meta property="og:description" content="Estimation theory is like the detective work of data science. It equips us with methods to infer unknown parameters from observed data. Imagine estimating the average height in a city or the likelihood of a coin flip. Key techniques like Maximum Likelihood and Bayesian Estimation ensure our guesses are accurate and reliable. Used in fields from economics to engineering, estimation theory transforms raw data into meaningful insights. It’s the art and science of turning observations into actionable knowledge, guiding decisions in everyday life and complex industries alike. Dive into this fascinating world and become a data detective!">
+  <meta property="og:url" content="https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@SenthilNayagan">
+  <meta name="twitter:title" content="Essential Math for AI and ML: Introduction to Estimation Theory | Senthil Nayagan">
+  <meta name="twitter:description" content="Estimation theory is like the detective work of data science. It equips us with methods to infer unknown parameters from observed data. Imagine estimating the average height in a city or the likelihood of a coin flip. Key techniques like Maximum Likelihood and Bayesian Estimation ensure our guesses are accurate and reliable. Used in fields from economics to engineering, estimation theory transforms raw data into meaningful insights. It’s the art and science of turning observations into actionable knowledge, guiding decisions in everyday life and complex industries alike. Dive into this fascinating world and become a data detective!">
+      <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css" >
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcesans-variable-latin-roman.woff2" crossorigin>
+      <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sourcecode-latin-roman-variable.woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="RSS Feed for senthilnayagan.net" href="/feed.xml"><noscript><style>#theme-picker-root,.youtube-embed{display:none;}</style></noscript><meta name="generator" content="Eleventy v2.0.0"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8JWFCGCDB4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8JWFCGCDB4');
+</script>
+<!-- End Google tag (gtag.js) -->
+<!-- MathJax Script -->
+<script src="/assets/scripts/mathjax-config.js"></script>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<!-- End MathJax Script -->
+</head>
+<body>
+  <header class="navbar">
+  <div class="container">
+    <nav aria-label="Primary">
+      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+      <ul class="navbar-links">
+        <li>
+          <a class="navbar-link-home" href="/" >
+            <img src="/assets/images/logo/logo.png" alt="">
+          </a>
+        </li><li><a
+            href="/about/"
+            class="navbar-link"
+            >About</a>
+        </li><li><a
+            href="/tags/"
+            class="navbar-link"
+            >Tags</a>
+        </li><li class="theme-picker-item">
+          <div id="theme-picker" class="theme-toggle">
+  <i id="theme-icon" class="fa-solid fa-moon"></i>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    // Set the initial theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeIcon.classList.toggle('fa-sun', currentTheme === 'dark');
+    themeIcon.classList.toggle('fa-moon', currentTheme === 'light');
+
+    themeIcon.addEventListener('click', () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeIcon.classList.toggle('fa-sun', newTheme === 'dark');
+      themeIcon.classList.toggle('fa-moon', newTheme === 'light');
+    });
+  });
+</script>
+        </li>        
+      </ul>
+    </nav>
+  </div>
+</header><main id="page-content" class="container">
+  
+<article class="post prose rhythm">
+  <header class="post-header">
+    <p class="post-date">
+      <span class="screen-reader-only">Published </span>
+      <i class="fa-regular fa-calendar-days"></i> <time datetime="2024-07-14" >July 14, 2024</time>&nbsp;&#183;&nbsp;<i class="fa-regular fa-clock"></i> 12 min read
+    </p>
+    <h1 class="post-title">Essential Math for AI and ML: Introduction to Estimation Theory</h1>
+    <ul class="post-tags" aria-label="Tags"><li>
+          <a href="/tags/estimation-theory/" class="post-tag" aria-label="estimation-theory">estimation-theory</a>
+        </li><li>
+          <a href="/tags/math-for-ai-ml/" class="post-tag" aria-label="math-for-ai-ml">math-for-ai-ml</a>
+        </li><li>
+          <a href="/tags/essential-math/" class="post-tag" aria-label="essential-math">essential-math</a>
+        </li></ul><p class="spacer"></p>
+    <p class="post-subtitle">Estimation theory is like the detective work of data science. It equips us with methods to infer unknown parameters from observed data. Imagine estimating the average height in a city or the likelihood of a coin flip. Key techniques like Maximum Likelihood and Bayesian Estimation ensure our guesses are accurate and reliable. Used in fields from economics to engineering, estimation theory transforms raw data into meaningful insights. It’s the art and science of turning observations into actionable knowledge, guiding decisions in everyday life and complex industries alike. Dive into this fascinating world and become a data detective!</p>
+    <p class="spacer"></p><!-- Share the post --><div class="social-share">
+  <a href="mailto:?subject=Essential Math for AI and ML: Introduction to Estimation Theory&body=https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon">
+    <i class="fa-regular fa-envelope"></i>
+  </a>
+  <a href="https://api.whatsapp.com/send?text=Essential Math for AI and ML: Introduction to Estimation Theory%20https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/" title="Share on WhatsApp" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Essential Math for AI and ML: Introduction to Estimation Theory&url=https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon">
+    <i class="fa-brands fa-x-twitter"></i>
+  </a><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/&title=Essential Math for AI and ML: Introduction to Estimation Theory" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+    <!-- <a href="https://www.reddit.com/submit?url=https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/&title=Essential Math for AI and ML: Introduction to Estimation Theory" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
+      <i class="fa-brands fa-reddit"></i>
+    </a> --><a href="#" id="copy-link" title="Copy to Clipboard" aria-label="Copy link" class="social-icon">
+    <i class="fa-solid fa-link"></i>
+  </a>
+  <!-- Separator -->
+  <!-- <span class="separator">&#183;</span> -->
+  <!-- Comment icon -->
+  <a href="#comments-section" class="social-icon" id="comments-icon" title="Post Comments">
+    <i class="fa-regular fa-comments"></i>
+  </a>
+  <span id="copy-message" class="copy-message">Copied to clipboard</span>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const copyLink = document.getElementById('copy-link');
+    const copyMessage = document.getElementById('copy-message');
+    
+    copyLink.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent the default link behavior
+      const mainUrl = window.location.href.split('#')[0]; // Get URL without hash
+      navigator.clipboard.writeText(mainUrl).then(() => {
+        copyMessage.style.visibility = 'visible';
+        setTimeout(() => {
+          copyMessage.style.visibility = 'hidden';
+        }, 2000);
+      });
+    });
+  });
+</script><p class="spacer"></p>
+<div class="draft-note">
+  <h2 class="draft-note-heading"><i class="fa-solid fa-person-digging"></i>&nbsp;Work in progress</h2>
+  <p>The content you are about to read is still a work in progress. Because of the topic’s nuances and my quest for perfection, I’m still fine-tuning the details. But I couldn’t wait to share what I have so far with you!</p>
+  <p>Got some brilliant ideas to add or spot something that needs fixing? I’d love to hear from you! Your insights are incredibly valuable and can help make this post even better.</p>
+  <p>Drop me a line at <a href="mailto:hello@senthilnayagan.net">hello@senthilnayagan.net</a> with your thoughts, suggestions, or any corrections. Thanks!</p>
+</div><figure class="cover-image"><picture class="cover-image">
+    <source type="image/webp" srcset="/assets/images/lrIjexYeDI-400.webp 400w, /assets/images/lrIjexYeDI-800.webp 800w, /assets/images/lrIjexYeDI-1792.webp 1792w" sizes="100vw">
+<source type="image/jpeg" srcset="/assets/images/lrIjexYeDI-400.jpeg 400w, /assets/images/lrIjexYeDI-800.jpeg 800w, /assets/images/lrIjexYeDI-1792.jpeg 1792w" sizes="100vw">
+    <img width="1792" height="1024" src="/assets/images/lrIjexYeDI-1792.jpeg" alt="Essential Math for AI and ML: Introduction to Estimation Theory"  loading="lazy" decoding="async">
+  </picture><figcaption><p class="image-description">Old scholars in a grand study room, engaged in estimation.</p><p class="image-credits"><b>Image Credits: </b>Image generated by <b>DALL-E</b>.</p></figcaption><!---->
+</figure></header>
+  <div class="rhythm">
+    <div class="relative">
+    <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
+</div>
+<h3 id="table-of-contents">Table of Contents</h3>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-estimation-theory">What is estimation theory?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#approaches-in-estimation">Approaches in estimation</a></li><li class="toc-item"><a class="toc-link" href="#key-concepts-in-estimation-theory">Key concepts in estimation theory</a></li><li class="toc-item"><a class="toc-link" href="#different-types-of-estimation">Different types of estimation</a></li><li class="toc-item"><a class="toc-link" href="#common-estimation-techniques">Common estimation techniques</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#various-mathematical-notations-uses-in-estimation-theory">Various mathematical notations uses in estimation theory</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#data-and-samples">Data and samples</a></li><li class="toc-item"><a class="toc-link" href="#parameters">Parameters</a></li><li class="toc-item"><a class="toc-link" href="#estimators">Estimators</a></li><li class="toc-item"><a class="toc-link" href="#probability-and-likelihood">Probability and likelihood</a></li><li class="toc-item"><a class="toc-link" href="#statistical-inference">Statistical inference</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-a-probability-distribution">What is a probability distribution?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-independent-and-identically-distributed-iid-or-iid">What is independent and identically distributed (iid or IID)?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-parametric-estimation">What is parametric estimation?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<h1 id="what-is-estimation-theory"><a class="to-underline" href="#what-is-estimation-theory">What is estimation theory?</a></h1>
+<p>Estimation theory is a branch of mathematics and statistics that deals with the process of estimating the value of a parameter<a href="#ref-1"><sup id="back-to-1">1</sup></a> or a function from a set of noisy or uncertain data. In estimation theory, the goal is to find the best possible estimate of a parameter or a function based on a set of observations or measurements aka observed data. In other words, estimation theory is concerned with deriving estimates of parameters or functions based on observed data, which might be noisy or uncertain. The goal is to obtain the best possible estimate that reflects the underlying true value.</p>
+<aside role="note" class="post-aside rhythm"><p><strong>What does estimation theory offer?</strong></p>
+<p>The estimation theory provide us with:</p>
+<ol>
+<li><strong>Methods for estimating</strong> the unknowns (model parameter, signals, etc.)</li>
+<li><strong>Means for accessing</strong> the “goodness” of the resulting estimates.</li>
+<li><strong>Making confidence</strong> statements about the true values.</li>
+</ol>
+</aside>
+<h2 id="approaches-in-estimation"><a class="to-underline" href="#approaches-in-estimation">Approaches in estimation</a></h2>
+<ol>
+<li><strong>Minimizing the difference</strong>
+<ul>
+<li>One common approach is to minimize the difference between the observed data and the predicted values, such as using least squares to find the line that best fits the data points.</li>
+</ul>
+</li>
+<li><strong>Maximizing the likelihood</strong>
+<ul>
+<li>An alternative method is to maximize the likelihood that the observed data occurred given the estimated parameter or function. This technique is known as <strong>maximum likelihood estimation</strong> (<strong>MLE</strong>).</li>
+</ul>
+</li>
+</ol>
+<h2 id="key-concepts-in-estimation-theory"><a class="to-underline" href="#key-concepts-in-estimation-theory">Key concepts in estimation theory</a></h2>
+<p>There are several key concepts in estimation theory, including:</p>
+<ul>
+<li><strong>Estimator</strong>: An estimator is a function that maps the observed data to an estimate of the parameter or function.</li>
+<li><strong>Bias</strong>: Bias refers to the difference between the expected value of an estimator and the true value of the parameter or function.</li>
+<li><strong>Variance</strong>: Variance refers to the spread or dispersion of an estimator around its expected value.</li>
+<li><strong>Consistency</strong>: Consistency refers to the property of an estimator that its expected value converges to the true value of the parameter or function as the sample size increases.</li>
+<li><strong>Efficiency</strong>: Efficiency refers to the property of an estimator that it has the smallest possible variance among all unbiased estimators.</li>
+</ul>
+<h2 id="different-types-of-estimation"><a class="to-underline" href="#different-types-of-estimation">Different types of estimation</a></h2>
+<p>There are several types of estimation, including:</p>
+<ul>
+<li><strong>Point estimation</strong>: Point estimation involves estimating a single value for the parameter or function.</li>
+<li><strong>Interval estimatio</strong>n: Interval estimation involves estimating a range of values for the parameter or function.</li>
+<li><strong>Bayesian estimation</strong>: Bayesian estimation involves using Bayes’ theorem to update the probability distribution of the parameter or function based on the observed data.</li>
+<li><strong>Maximum likelihood estimation</strong>: Maximum likelihood estimation involves finding the value of the parameter or function that maximizes the likelihood of the observed data.</li>
+</ul>
+<h2 id="common-estimation-techniques"><a class="to-underline" href="#common-estimation-techniques">Common estimation techniques</a></h2>
+<p>Some common estimation techniques include:</p>
+<ul>
+<li><strong>Least squares estimation</strong>: Least squares estimation involves minimizing the sum of the squared differences between the observed data and the predicted values.</li>
+<li><strong>Maximum likelihood estimation</strong>: Maximum likelihood estimation involves finding the value of the parameter or function that maximizes the likelihood of the observed data.</li>
+<li><strong>Bayesian estimation</strong>: Bayesian estimation involves using Bayes’ theorem to update the probability distribution of the parameter or function based on the observed data.</li>
+<li><strong>Kalman filter estimation</strong>: Kalman filter estimation involves using a recursive algorithm to estimate the state of a system based on noisy or uncertain data.</li>
+</ul>
+<p>Having said that, estimation theory has many applications in various fields and is an essential tool for making informed decisions in many areas of science and engineering.</p>
+<h1 id="various-mathematical-notations-uses-in-estimation-theory"><a class="to-underline" href="#various-mathematical-notations-uses-in-estimation-theory">Various mathematical notations uses in estimation theory</a></h1>
+<p>In estimation theory, various mathematical notations are used to represent data, parameters, estimators, and distributions. Here are some common notations along with their explanations:</p>
+<h2 id="data-and-samples"><a class="to-underline" href="#data-and-samples">Data and samples</a></h2>
+<ol>
+<li>
+<p><strong>x (Observed data, pronounced “x”)</strong>:</p>
+<ul>
+<li>A vector of observed/realized values from a sample.</li>
+<li>Example: \( x = (x_1, x_2, \ldots, x_n) \)</li>
+</ul>
+</li>
+<li>
+<p><strong>X (Random variables, pronounced “X”)</strong>:</p>
+<ul>
+<li>A vector of random variables.</li>
+<li>Example: \( X = (X_1, X_2, \ldots, X_n) \)</li>
+</ul>
+</li>
+</ol>
+<h2 id="parameters"><a class="to-underline" href="#parameters">Parameters</a></h2>
+<ol>
+<li>
+<p><strong>\( \theta \) (Parameter, pronounced “theta”)</strong>:</p>
+<ul>
+<li>A generic parameter of a probability distribution.</li>
+<li>Example: \( \theta \in \Theta \)</li>
+</ul>
+</li>
+<li>
+<p><strong>\( \mu \) (Mean, pronounced “mu”)</strong>:</p>
+<ul>
+<li>The mean of a distribution.</li>
+</ul>
+</li>
+<li>
+<p><strong>\( \sigma \) (Standard deviation, pronounced “sigma”)</strong>:</p>
+<ul>
+<li>The standard deviation of a distribution.</li>
+</ul>
+</li>
+<li>
+<p><strong>\( \sigma^2 \) (Variance, pronounced “sigma squared”)</strong>:</p>
+<ul>
+<li>The variance of a distribution.</li>
+</ul>
+</li>
+<li>
+<p><strong>\( p \) (Probability, pronounced “p”)</strong>:</p>
+<ul>
+<li>The probability of success in a Bernoulli or binomial distribution.</li>
+</ul>
+</li>
+</ol>
+<h2 id="estimators"><a class="to-underline" href="#estimators">Estimators</a></h2>
+<ol>
+<li>
+<p><strong>\( \hat{\theta} \) (Estimator of $ \theta $, pronounced “theta hat”)</strong>:</p>
+<ul>
+<li>An estimator of the parameter \( \theta \).</li>
+<li>Example: \( \hat{\theta} \) is the sample mean used to estimate the population mean \( \theta \).</li>
+</ul>
+</li>
+<li>
+<p><strong>\( \hat{\mu} \) (Estimator of $ \mu $, pronounced “mu hat”)</strong>:</p>
+<ul>
+<li>An estimator of the mean \( \mu \).</li>
+</ul>
+</li>
+<li>
+<p><strong>\( \hat{\sigma}^2 \) (Estimator of $ \sigma^2 $, pronounced “sigma squared hat”)</strong>:</p>
+<ul>
+<li>An estimator of the variance \( \sigma^2 \).</li>
+</ul>
+</li>
+</ol>
+<h2 id="probability-and-likelihood"><a class="to-underline" href="#probability-and-likelihood">Probability and likelihood</a></h2>
+<ol>
+<li>
+<p><strong>\( P(X) \) (Probability, pronounced “P of X”)</strong>:</p>
+<ul>
+<li>The probability of the random variable \( X \).</li>
+</ul>
+</li>
+<li>
+<p><strong>\( f(x|\theta) \) (Probability density/mass function, pronounced “f of x given theta”)</strong>:</p>
+<ul>
+<li>The probability density function (PDF) or probability mass function (PMF) of \( x \) given parameter \( \theta \).</li>
+<li>Example: \( f(x|\theta) \) for a normal distribution might be \( f(x|\mu, \sigma^2) \).</li>
+</ul>
+</li>
+<li>
+<p><strong>\( L(\theta|x) \) (Likelihood function, pronounced “L of theta given x”)</strong>:</p>
+<ul>
+<li>The likelihood function of the parameter \( \theta \) given the observed data \( x \).</li>
+<li>Example: \( L(\theta|x) = f(x|\theta) \) for the product of individual probabilities or densities.</li>
+</ul>
+</li>
+<li>
+<p><strong>\( \log L(\theta|x) \) (Log-likelihood function, pronounced “log L of theta given x”)</strong>:</p>
+<ul>
+<li>The log-likelihood function, often used for simplification in calculations.</li>
+</ul>
+</li>
+</ol>
+<h2 id="statistical-inference"><a class="to-underline" href="#statistical-inference">Statistical inference</a></h2>
+<ol>
+<li>
+<p><strong>\( \mathcal{F} \) (Family of distributions, pronounced “script F”)</strong>:</p>
+<ul>
+<li>A family of distributions.</li>
+<li>Example: \( \mathcal{F} = { f(x|\theta) | \theta \in \Theta } \)</li>
+</ul>
+</li>
+<li>
+<p><strong>\( \Theta \) (Parameter space, pronounced “Theta”)</strong>:</p>
+<ul>
+<li>The parameter space, representing all possible values of \( \theta \).</li>
+<li>Example: \( \Theta = \mathbb{R} \) for real-valued parameters.</li>
+</ul>
+</li>
+<li>
+<p><strong>\( E[X] \) (Expected value, pronounced “E of X”)</strong>:</p>
+<ul>
+<li>The expected value of the random variable \( X \).</li>
+</ul>
+</li>
+<li>
+<p><strong>\( \text{Var}(X) \) (Variance, pronounced “Variance of X”)</strong>:</p>
+<ul>
+<li>The variance of the random variable \( X \).</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h1 id="frequently-asked-questions-faqs"><a class="to-underline" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a></h1>
+<h2 id="what-is-a-probability-distribution"><a class="to-underline" href="#what-is-a-probability-distribution">What is a probability distribution?</a></h2>
+<p>A probability distribution is a mathematical function that describes the likelihood of different outcomes in a random experiment, such as tossing a coin or rolling a die. It describes the likelihood of various outcomes, which can include the possibility of the same result occurring multiple times. These likelihoods are often uncertain or probabilistic.</p>
+<p>For example, let’s say we’re flipping a fair coin. The probability distribution of the outcome might look like this:</p>
+<ul>
+<li>Heads: 0.5 (or 50%)</li>
+<li>Tails: 0.5 (or 50%)</li>
+</ul>
+<p>In this case, we can’t predict the outcome with certainty because both heads and tails have the same probability of occurring (0.5 or 50%). The probability distribution tells us that the outcome is uncertain, and we can’t know for sure what will happen.</p>
+<p>It’s important to note that a probability distribution means we can predict the likelihood of various outcomes, but we cannot predict the specific outcome of a single trial or event with certainty.</p>
+<p>So, to summarize: The probability distribution provides a way to measure the uncertainty or randomness of an event or phenomenon, and we can use this information to make informed decisions or predictions.</p>
+<h2 id="what-is-independent-and-identically-distributed-iid-or-iid"><a class="to-underline" href="#what-is-independent-and-identically-distributed-iid-or-iid">What is independent and identically distributed (iid or IID)?</a></h2>
+<p>In probability theory and statistics, a collection of random variables is said to be independent and identically distributed (IID) if:</p>
+<ol>
+<li>
+<p><strong>Each random variable has the same probability distribution as the others</strong>:</p>
+<ul>
+<li>This means that every random variable in the collection follows the same <em>probability distribution</em>. In other words, they have the same statistical properties such as mean, variance, and distribution shape.</li>
+<li><strong>Example</strong>: Consider flipping a fair coin multiple times. Let $ X_1, X_2, \ldots, X_n $ represent the outcomes of each flip, where $ X_i = 1 $ if the flip is heads and $ X_i = 0 $ if the flip is tails. Each $ X_i $ follows the same Bernoulli distribution with $ P(X_i = 1) = 0.5 $ and $ P(X_i = 0) = 0.5 $.</li>
+</ul>
+</li>
+<li>
+<p><strong>All random variables are mutually independent</strong>:</p>
+<ul>
+<li>This means that the outcome of any one random variable does not affect the outcome of any other random variable in the collection. There is no dependency between the random variables.</li>
+<li><strong>Example</strong>: Continuing with the coin flip example, the outcome of the first flip $ (X_1) $ does not influence the outcome of the second flip $ (X_2) $, and so on. Each flip is an independent event.</li>
+</ul>
+</li>
+</ol>
+<p>It’s usually abbreviated as i.i.d., iid, or IID.</p>
+<h2 id="what-is-parametric-estimation"><a class="to-underline" href="#what-is-parametric-estimation">What is parametric estimation?</a></h2>
+<p>Parametric estimation is a statistical technique used to estimate the value of a parameter<a href="#ref-1"><sup id="back-to-1">1</sup></a> (a number or a value) that describes a population<a href="#ref-2"><sup id="back-to-2">2</sup></a> or a process. In simple terms, it’s like trying to figure out the exact value of a mysterious number that controls a certain phenomenon.</p>
+<p>Imagine we’re trying to estimate the average height of a group of people. We take a random sample of 100 people and measure their heights. We then use this data to estimate the average height of the entire group. This is an example of parametric estimation. In this case, the parameter is the average height of the group, and the data is the heights of the 100 people in the sample. The goal is to use the data to estimate the value of the parameter, which is the average height of the entire group.</p>
+<p>Parametric estimation is different from non-parametric estimation, which is a technique used when we don’t know the exact form of the distribution of the data. In parametric estimation, we assume that the data follows a specific distribution (such as a normal distribution), and then use the data to estimate the parameters of that distribution.</p>
+<p>Here are some key points to keep in mind:</p>
+<ul>
+<li>Parametric estimation is used to estimate the value of a parameter that describes a population or a process.</li>
+<li>The data is used to estimate the value of the parameter.</li>
+<li>The goal is to use the data to make inferences about the population or process.</li>
+<li>Parametric estimation assumes that the data follows a specific distribution (such as a normal distribution).</li>
+</ul>
+<div class="references">
+   <hr>
+   <h2>Notes and references</h2>
+   <ol>
+      <!-- <li>Nil</li> -->
+      <li id="ref-1">1. <strong>Parameter</strong>: A parameter in estimation theory refers to a characteristic or attribute of a system or process under study or modeling. Parameters are typically numerical values that describe the behavior, properties, or relationships of the system. Parameters are fixed and often unknown values that describe a certain aspect of the population. Consider them as the "hidden" or "latent" variables that control the system's behavior. Examples of parameters in different fields include mean (µ) (the average value of a population), variance (σ²) (the measure of variability or spread in a population), etc. In estimation theory, the goal is to estimate the values of these parameters from a set of observed data, often in the presence of noise or uncertainty. We can then use the estimated values of the parameters to make predictions, simulate system behavior, or guide decision-making. <a href="#back-to-1" class="back-to-note">↩</a>
+      </li>
+      <li id="ref-2">2. <strong>Population</strong>: In the context of parametric estimation, the population refers to the entire group or set of data that we're trying to make inferences about. For example, if we're trying to estimate the average height of a group of people, the population would be the entire group of people, not just the 100 people in our sample. In other words, the population is the entire universe of data that we're interested in, and the sample is a smaller subset of that universe that we're using to make inferences about the population. Here are some examples of populations: A population of students in a school, a population of people in a city, etc. <a href="#back-to-2" class="back-to-note">↩</a>
+      </li>     
+   </ol>
+</div>
+
+    <!-- Comments section -->
+    <div id="comments-section">
+      <button id="show-comments-button" class="comments-button">Post Comments</button><div id="disqus_thread" style="display: none;"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'senthilnayagan'; 
+  var disqus_developer = 0;
+
+  function loadDisqus() {
+    var dsq = document.createElement('script'); 
+    dsq.type = 'text/javascript'; 
+    dsq.async = true;
+    dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }
+
+  var commentsLoaded = false;
+  document.getElementById('show-comments-button').addEventListener('click', function() {
+    var disqusThread = document.getElementById('disqus_thread');
+    if (disqusThread.style.display === 'none') {
+      disqusThread.style.display = 'block';
+      if (!commentsLoaded) {
+        loadDisqus();
+        commentsLoaded = true;
+      }
+      this.textContent = 'Hide Comments';
+    } else {
+      disqusThread.style.display = 'none';
+      this.textContent = 'Post Comments';
+    }
+  });
+</script></div>
+  </div>
+</article>
+<script>
+  document.getElementById('comments-icon').addEventListener('click', function(event) {
+    event.preventDefault();
+    const commentsButton = document.getElementById('show-comments-button');
+    if (commentsButton) {
+      commentsButton.click();
+    }
+    setTimeout(() => {
+      document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  });
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/"
+    },
+    "headline": "Essential Math for AI and ML: Introduction to Estimation Theory",
+    "description": "Estimation theory is like the detective work of data science. It equips us with methods to infer unknown parameters from observed data. Imagine estimating the average height in a city or the likelihood of a coin flip. Key techniques like Maximum Likelihood and Bayesian Estimation ensure our guesses are accurate and reliable. Used in fields from economics to engineering, estimation theory transforms raw data into meaningful insights. It’s the art and science of turning observations into actionable knowledge, guiding decisions in everyday life and complex industries alike. Dive into this fascinating world and become a data detective!",
+    
+    "datePublished": "2024-07-14T00:00:00.000Z",
+    "author": {
+      "@type": "Person",
+      "name": "Senthil Nayagan"
+    }
+  }
+</script>
+</main><footer class="page-footer size-font-sm">
+  <div class="page-footer-container container">
+    <div class="stack gap--1">
+      <p>&copy; 2024 <b>SenthilNayagan.net</b>&nbsp;&#183;&nbsp;Hosted on <i class="fa-brands fa-github" title="GitHub Pages"></i></p>
+      <p class="footer-link-font"><a href="/privacyPolicy/" target="_blank">Privacy Policy</a>&nbsp;&#183;&nbsp;<a href="/privacyPolicy/#cookies" target="_blank">Cookie Policy</a>&nbsp;&#183;&nbsp;<a href="/commentPolicy/" target="_blank">Comment Policy</a>&nbsp;&#183;&nbsp;<a href="/feed.xml" target="_blank">RSS Feed</a>&nbsp;&#183;&nbsp;<a href="/contact/" target="_blank">Contact</a></p>
+    </div>
+  </div>
+</footer>
+  <!-- Back to top icon/button -->
+  <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+  <script>addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(128, 128, 128)',
+      textColor: '#fff'
+      })
+  </script>
+  <!-- Include cookie consent -->
+  <!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <p>This site uses cookies to understand the number of visitors and which posts they read the most through Google Analytics. If you consent to this, please click "I Agree." If not, click "I Disagree." For more details, please refer to the <a href="/privacyPolicy/#cookies" target="_blank">Cookie Policy</a>.</p>
+    <button id="accept-cookies" class="cookie-button">I Agree</button>
+    <button id="decline-cookies" class="cookie-button">I Disagree</button>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptCookiesButton = document.getElementById('accept-cookies');
+      const declineCookiesButton = document.getElementById('decline-cookies');
+  
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+  
+      function getCookie(name) {
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+        for(let i = 0; i < cookieArray.length; i++) {
+          let cookie = cookieArray[i].trim();
+          if (cookie.indexOf(name + "=") == 0) {
+            return cookie.substring(name.length + 1, cookie.length);
+          }
+        }
+        return "";
+      }
+  
+      function checkCookie() {
+        const cookiesAccepted = getCookie("cookiesAccepted");
+        if (cookiesAccepted !== "true" && cookiesAccepted !== "false") {
+          cookieBanner.style.display = "block";
+        }
+      }
+  
+      acceptCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "true", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      declineCookiesButton.addEventListener('click', () => {
+        setCookie("cookiesAccepted", "false", 365);
+        cookieBanner.style.display = "none";
+      });
+  
+      checkCookie();
+    });
+</script>
+</body>
+</html>

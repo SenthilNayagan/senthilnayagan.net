@@ -4,12 +4,23 @@
   <subtitle>A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.</subtitle>
   <link href="https://www.senthilnayagan.net/feed.xml" rel="self"/>
   <link href="https://www.senthilnayagan.net/" rel="alternate" type="text/html"/>
-  <updated>2024-07-11T00:00:00.000Z</updated>
+  <updated>2024-07-14T00:00:00.000Z</updated>
   <id>https://www.senthilnayagan.net/</id>
   <author>
     <name>Senthil Nayagan</name>
     <email>hello@senthilnayagan.net</email>
   </author>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/</id>
+    <title>Essential Math for AI and ML: Introduction to Estimation Theory</title>
+    <link href="https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/"/>
+    <published>2024-07-14T00:00:00.000Z</published>
+    <updated>2024-07-14T00:00:00.000Z</updated>
+    <category term="estimation-theory" />
+    <category term="math-for-ai-ml" />
+    <category term="essential-math" />
+    <content type="html">Estimation theory is like the detective work of data science. It equips us with methods to infer unknown parameters from observed data. Imagine estimating the average height in a city or the likelihood of a coin flip. Key techniques like Maximum Likelihood and Bayesian Estimation ensure our guesses are accurate and reliable. Used in fields from economics to engineering, estimation theory transforms raw data into meaningful insights. It’s the art and science of turning observations into actionable knowledge, guiding decisions in everyday life and complex industries alike. Dive into this fascinating world and become a data detective!</content>
+  </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/math-matters-essential-math-for-aspiring-ai-experts/</id>
     <title>Math Matters: Essential Math for Aspiring AI Experts</title>
