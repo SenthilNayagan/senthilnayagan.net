@@ -119,6 +119,47 @@
 a sup {
   font-size: 0.875rem; /* Adjust the font size of the superscript as needed */
 }
+
+.reference-popup {
+  position: absolute;
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  padding: 10px;
+  max-width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+  color: var(--color-text-normal);
+  border-radius: 5px;
+  font-size: 0.875rem; /* Adjust the font size here */
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-normal);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%; /* Align to the right side of the popup */
+    margin-left: -5px;
+    width: 0;
+    height: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--color-surface-1);
+    
+    @media (prefers-color-scheme: dark) {
+      border-color: transparent transparent transparent var(--color-surface-2);
+    }
+  }
+}
+
+.reference-link:hover .reference-popup {
+  display: block;
+}
 /* Reference appears at the bottom of the post - End */
 
 /* Share share icons - Start */

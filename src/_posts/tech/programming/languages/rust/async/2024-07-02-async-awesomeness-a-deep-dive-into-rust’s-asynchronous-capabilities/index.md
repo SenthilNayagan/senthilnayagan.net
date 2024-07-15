@@ -64,10 +64,10 @@ Let's understand some of the most popular concurrency models that can help us un
 - **Parallelism**
   - OS threads can enable parallelism by allowing multiple threads to execute in parallel on different CPU cores.
 - **Synchronization**
-  - Synchronization mechanisms, such as **locks**, **semaphores**<a href="#ref-1"><sup id="back-to-1">1</sup></a>, and **condition variables**, are often used with OS threads to coordinate access to shared resources and avoid race conditions.
+  - Synchronization mechanisms, such as **locks**, **semaphores**<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a>, and **condition variables**, are often used with OS threads to coordinate access to shared resources and avoid race conditions.
 - **Resource overhead** 
   - Each thread has its own stack, program counter, and other resources, and managing a large number of threads can lead to increased memory usage and context-switching overhead.
-  - However, **thread pools**<a href="#ref-2"><sup id="back-to-2">2</sup></a> can mitigate some of these costs, but not enough to support massive IO-bound workloads.
+  - However, **thread pools**<a href="#ref-2" class="reference-link" data-ref="ref-2"><sup id="back-to-2">2</sup></a> can mitigate some of these costs, but not enough to support massive IO-bound workloads.
 
 #### Event-driven programming
 
@@ -165,7 +165,7 @@ It is not always possible to combine synchronous and asynchronous code freely. F
 
   The value returned by `async fn` is a `Future`. 
 
-- Under the hood, `async` transforms a block of code into a **state machine**<a href="#ref-3"><sup id="back-to-3">3</sup></a> that implements a trait called `Future`.
+- Under the hood, `async` transforms a block of code into a **state machine**<a href="#ref-3" class="reference-link" data-ref="ref-3"><sup id="back-to-3">3</sup></a> that implements a trait called `Future`.
     
   Dependencies to be added to the `Cargo.toml` file:
 

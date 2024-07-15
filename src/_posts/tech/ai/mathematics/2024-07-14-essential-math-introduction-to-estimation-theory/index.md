@@ -14,7 +14,7 @@ draft: true
 
 # What is estimation theory?
 
-Estimation theory is a branch of mathematics and statistics that deals with the process of estimating the value of a parameter<a href="#ref-1"><sup id="back-to-1">1</sup></a> or a function from a set of noisy or uncertain data. In estimation theory, the goal is to find the best possible estimate of a parameter or a function based on a set of observations or measurements aka observed data. In other words, estimation theory is concerned with deriving estimates of parameters or functions based on observed data, which might be noisy or uncertain. The goal is to obtain the best possible estimate that reflects the underlying true value.
+Estimation theory is a branch of mathematics and statistics that deals with the process of estimating the value of a parameter<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a> or a function from a set of noisy or uncertain data. In estimation theory, the goal is to find the best possible estimate of a parameter or a function based on a set of observations or measurements aka observed data. In other words, estimation theory is concerned with deriving estimates of parameters or functions based on observed data, which might be noisy or uncertain. The goal is to obtain the best possible estimate that reflects the underlying true value.
 
 {% aside %}
 **What does estimation theory offer?**
@@ -174,7 +174,7 @@ It's usually abbreviated as i.i.d., iid, or IID.
 
 ## What is parametric estimation?
 
-Parametric estimation is a statistical technique used to estimate the value of a parameter<a href="#ref-1"><sup id="back-to-1">1</sup></a> (a number or a value) that describes a population<a href="#ref-2"><sup id="back-to-2">2</sup></a> or a process. In simple terms, it's like trying to figure out the exact value of a mysterious number that controls a certain phenomenon.
+Parametric estimation is a statistical technique used to estimate the value of a parameter<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a> (a number or a value) that describes a population<a href="#ref-2" class="reference-link" data-ref="ref-2"><sup id="back-to-2">2</sup></a> or a process. In simple terms, it's like trying to figure out the exact value of a mysterious number that controls a certain phenomenon.
 
 Imagine we're trying to estimate the average height of a group of people. We take a random sample of 100 people and measure their heights. We then use this data to estimate the average height of the entire group. This is an example of parametric estimation. In this case, the parameter is the average height of the group, and the data is the heights of the 100 people in the sample. The goal is to use the data to estimate the value of the parameter, which is the average height of the entire group.
 

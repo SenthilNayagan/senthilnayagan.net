@@ -29,7 +29,7 @@ Here’s a structured direction to help you navigate through the essential mathe
 Linear algebra is the first mathematical toolkit we should arm ourselves with. It forms the foundation of how data is structured and manipulated in AI and ML. Here’s a brief look at how linear algebra contributes to AI and ML:
 
 - **Data representation**
-  - **Vectors and matrices**: Data in machine learning is often represented as vectors (1D arrays) and matrices (2D arrays). For example, a dataset with  `n`  features<a href="#ref-1"><sup id="back-to-1">1</sup></a> and  `m`  samples can be represented as an  `m x n`  matrix.
+  - **Vectors and matrices**: Data in machine learning is often represented as vectors (1D arrays) and matrices (2D arrays). For example, a dataset with  `n`  features<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a> and  `m`  samples can be represented as an  `m x n`  matrix.
   - **Images**: Digital images are represented as matrices (2D for grayscale images, 3D for color images with RGB channels).
 - **Linear transformations**
   - **Feature transformation**: Linear transformations, represented by matrices, are used to change the representation of data. This includes scaling, rotating, and translating data points.
@@ -82,14 +82,14 @@ Key topics:
 
 **Finally: Optimization**
 
-Understanding optimization techniques is akin to learning the art of fine-tuning AI models. Optimization in AI is about finding the best configuration of model parameters<a href="#ref-2"><sup id="back-to-2">2</sup></a> to improve accuracy and performance. Familiarity with concepts like convex optimization and learning various gradient descent methods will serve as your final piece of the puzzle.
+Understanding optimization techniques is akin to learning the art of fine-tuning AI models. Optimization in AI is about finding the best configuration of model parameters<a href="#ref-2" class="reference-link" data-ref="ref-2"><sup id="back-to-2">2</sup></a> to improve accuracy and performance. Familiarity with concepts like convex optimization and learning various gradient descent methods will serve as your final piece of the puzzle.
 
 Key topics:
 - Linear programming
 - Convex optimization
 - Gradient descent methods
 
-By following this structured path, we not only build a solid foundation in the mathematics necessary for AI and ML but also develop the practical skills to bring our ideas to life. Don't be fooled - this is no sprint<a href="#ref-3"><sup id="back-to-3">3</sup></a>, but a marathon that requires patience, persistence, and dedication.
+By following this structured path, we not only build a solid foundation in the mathematics necessary for AI and ML but also develop the practical skills to bring our ideas to life. Don't be fooled - this is no sprint<a href="#ref-3" class="reference-link" data-ref="ref-3"><sup id="back-to-3">3</sup></a>, but a marathon that requires patience, persistence, and dedication.
 
 ---
 
@@ -109,7 +109,7 @@ Here are different number systems:
 - **Whole numbers**: Whole numbers are non-negative integers, including 0. Whole numbers include all natural numbers, plus zero. The set of whole numbers is: 0, 1, 2, 3, 4, 5,...
 - **Integers**: Integers include positive and negative natural numbers as well as 0. 
 - **Rational numbers:** A rational number is a number that can be expressed as the ratio of two integers, i.e., a fraction. It is a number that can be written in the form: `a/b`, where `a` and `b` are integers, and `b` is non-zero.
-- **Irrational numbers:** Irrational numbers cannot be expressed as a fraction. This means they cannot be expressed as a ratio of two integers `a/b`, where `a` and `b` are integers and `b` is not zero. It's non-repeating and non-terminating decimals. This means, the decimal form of an irrational number goes on forever without repeating. For example, the number π (pi) is approximately 3.14159, but its decimal representation goes on infinitely without repeating-it starts as 3.14159265358979323846… and goes on forever. Common examples of irrational numbers include π (pi), √2 (the square root of 2), and e (Euler’s number<a href="#ref-4"><sup id="back-to-4">4</sup></a>).
+- **Irrational numbers:** Irrational numbers cannot be expressed as a fraction. This means they cannot be expressed as a ratio of two integers `a/b`, where `a` and `b` are integers and `b` is not zero. It's non-repeating and non-terminating decimals. This means, the decimal form of an irrational number goes on forever without repeating. For example, the number π (pi) is approximately 3.14159, but its decimal representation goes on infinitely without repeating-it starts as 3.14159265358979323846… and goes on forever. Common examples of irrational numbers include π (pi), √2 (the square root of 2), and e (Euler’s number<a href="#ref-4" class="reference-link" data-ref="ref-4"><sup id="back-to-4">4</sup></a>).
 - **Real numbers**: A real number is a value that represents a quantity that can be expressed as a decimal or fraction. Real numbers can be either rational or irrational. They include different types of numbers that we use every day, from counting apples to measuring the length of a table. Examples of real numbers: Natural numbers, whole numbers, integers, fractions (rational numbers), and decimals (including irrational numbers).
 - **Complex and imaginary numbers**: In mathematics, complex numbers are numbers that can be expressed in the form: `a + bi`, where `a` is a real number (a scalar), `b` is a real number (a scalar) and `i` is the imaginary unit, which is defined as the square root of -1. Imaginary numbers are a subset of complex numbers, and they are numbers that can be expressed in the form: `bi`. Imaginary numbers are often combined with real numbers to form complex numbers. Imaginary numbers are numbers that, when squared, give a negative result. This is fundamentally different from real numbers, where squaring any real number always gives a positive result. Imaginary numbers are unique because they allow for the square roots of negative numbers. This extension of the number system is crucial for solving many mathematical and real-world problems that cannot be addressed with real numbers alone. By defining `i` and using it to form other imaginary numbers, we can square these numbers and always get a negative result, thus expanding our mathematical toolkit.
 
@@ -121,7 +121,7 @@ Linear algebra is a branch of mathematics that has revolutionized the way we und
 
 ## What is a vector?
 
-A vector is a mathematical object that has both *magnitude* (length or size) and *direction*, often used to represent quantities<a href="#ref-5"><sup id="back-to-5">5</sup></a> with both size and orientation<a href="#ref-6"><sup id="back-to-6">6</sup></a>, such as displacement<a href="#ref-7"><sup id="back-to-7">7</sup></a>, velocity, or force. In linear algebra, vectors are often represented as *arrows* in a coordinate system, with the length of the arrow representing the magnitude of the vector and the direction of the arrow representing the direction of the vector. Think of them as super-powered lists of numbers that can be added, subtracted, multiplied, and combined in countless ways. With vectors, we can represent everything from data points to directions, velocities, and even complex systems. Vectors are a fundamental concept in linear algebra and are used in many areas of mathematics and science. The purpose of the vector is to visually represent a piece of data.
+A vector is a mathematical object that has both *magnitude* (length or size) and *direction*, often used to represent quantities<a href="#ref-5" class="reference-link" data-ref="ref-5"><sup id="back-to-5">5</sup></a> with both size and orientation<a href="#ref-6" class="reference-link" data-ref="ref-6"><sup id="back-to-6">6</sup></a>, such as displacement<a href="#ref-7" class="reference-link" data-ref="ref-7"><sup id="back-to-7">7</sup></a>, velocity, or force. In linear algebra, vectors are often represented as *arrows* in a coordinate system, with the length of the arrow representing the magnitude of the vector and the direction of the arrow representing the direction of the vector. Think of them as super-powered lists of numbers that can be added, subtracted, multiplied, and combined in countless ways. With vectors, we can represent everything from data points to directions, velocities, and even complex systems. Vectors are a fundamental concept in linear algebra and are used in many areas of mathematics and science. The purpose of the vector is to visually represent a piece of data.
 
 {% aside %}
 ****Understanding the difference: Vectors in programming vs. mathematical vectors****

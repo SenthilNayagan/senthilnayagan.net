@@ -24,7 +24,7 @@ Referential transparency is a property of certain expressions in programming tha
 
 # The magic of pure functions
 
-At the heart of referential transparency lies the concept of pure functions. A pure function is one that, given the same inputs, will always produce the same outputs and has no _side effects_<a href="#ref-1"><sup id="back-to-1">1</sup></a>. This means that pure functions do not modify any external state or depend on mutable data. They are predictable and easy to reason about, which makes debugging and testing a breeze.
+At the heart of referential transparency lies the concept of pure functions. A pure function is one that, given the same inputs, will always produce the same outputs and has no _side effects_<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a>. This means that pure functions do not modify any external state or depend on mutable data. They are predictable and easy to reason about, which makes debugging and testing a breeze.
 
 For instance, consider the following pure function in Python:
 

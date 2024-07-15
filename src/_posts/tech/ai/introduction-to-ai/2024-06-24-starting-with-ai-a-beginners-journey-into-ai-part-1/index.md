@@ -42,7 +42,7 @@ Creating an AI system involves several high-level steps, each crucial to develop
    - Clean the data to remove any inconsistencies, errors, or missing values.
    - Preprocess the data by normalizing, scaling, or encoding categorical variables.
    - Split the data into training, validation, and test sets to evaluate the AI model’s performance.
-4. **Feature<a href="#ref-1"><sup id="back-to-1">1</sup></a> engineering**
+4. **Feature<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a> engineering**
    - Select and create meaningful features from the raw data that will be used as input for the AI model.
    - Transform and combine features to enhance the model’s predictive power.
    - Feature engineering is a critical step that can significantly impact the model’s performance.
@@ -51,11 +51,11 @@ Creating an AI system involves several high-level steps, each crucial to develop
    - Evaluate models based on their suitability for the specific problem and data characteristics.
 6. **Model training**
    - Train the selected AI model using the training data.
-   - Optimize the model’s parameters<a href="#ref-3"><sup id="back-to-3">3</sup></a> and hyperparameters to improve its accuracy and performance.
+   - Optimize the model’s parameters<a href="#ref-3" class="reference-link" data-ref="ref-3"><sup id="back-to-3">3</sup></a> and hyperparameters to improve its accuracy and performance.
    - Use techniques like cross-validation to ensure the model generalizes well to new data.
 7. **Model evaluation**
    - Assess the model’s performance using the validation and test data sets.
-   - Evaluate key metrics such as accuracy, precision, recall<a href="#ref-4"><sup id="back-to-4">4</sup></a>, F1-score<a href="#ref-5"><sup id="back-to-5">5</sup></a>, and others, depending on the problem.
+   - Evaluate key metrics such as accuracy, precision, recall<a href="#ref-4" class="reference-link" data-ref="ref-4"><sup id="back-to-4">4</sup></a>, F1-score<a href="#ref-5" class="reference-link" data-ref="ref-5"><sup id="back-to-5">5</sup></a>, and others, depending on the problem.
    - Identify any potential issues like overfitting or underfitting and address them.
 8. **Model deployment**
    - Deploy the trained AI model into a production environment where it can be used to make predictions or decisions.
@@ -80,7 +80,7 @@ Let's go over the key concepts in AI, such as models, features, and other essent
 
 ## Artificial Intelligence (AI) vs. Machine Learning (ML)
 
-The terms "Artificial Intelligence" (AI) and "Machine Learning" (ML)" are often used interchangeably, but they're not quite the same thing. Think of AI as the _grand quest_<a href="#ref-6"><sup id="back-to-6">6</sup></a> to create smart machines that can think and act like humans. Meanwhile, ML is a specialized toolkit within this quest, equipping machines with the ability to *learn and adapt from data*, much like how we humans evolve through experiences.
+The terms "Artificial Intelligence" (AI) and "Machine Learning" (ML)" are often used interchangeably, but they're not quite the same thing. Think of AI as the _grand quest_<a href="#ref-6" class="reference-link" data-ref="ref-6"><sup id="back-to-6">6</sup></a> to create smart machines that can think and act like humans. Meanwhile, ML is a specialized toolkit within this quest, equipping machines with the ability to *learn and adapt from data*, much like how we humans evolve through experiences.
 
 ### Key Differences: AI vs. ML
 
@@ -178,7 +178,7 @@ The rules or patterns are typically represented as mathematical equations or alg
 
 No, a model does not refer to an algorithm. While a model and an algorithm are closely related in the context of AI and ML, they are not the same thing. 
 
-- **Algorithm**: An algorithm is a set of rules or a procedure for solving a problem. The algorithm addresses the problem of uncovering patterns, correlations, and relationships within the given data. Through this process, it learns how various **features**<a href="#ref-1"><sup id="back-to-1">1</sup></a> (input variables) are connected to the **labels**<a href="#ref-2"><sup id="back-to-2">2</sup></a> or target variable (output). It is the method or technique used to process data and *train a model*. Algorithms define how the data is analyzed and how the learning process is carried out. In short, we apply algorithms to a dataset to achieve a specific function or purpose.
+- **Algorithm**: An algorithm is a set of rules or a procedure for solving a problem. The algorithm addresses the problem of uncovering patterns, correlations, and relationships within the given data. Through this process, it learns how various **features**<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a> (input variables) are connected to the **labels**<a href="#ref-2"><sup id="back-to-2">2</sup></a> or target variable (output). It is the method or technique used to process data and *train a model*. Algorithms define how the data is analyzed and how the learning process is carried out. In short, we apply algorithms to a dataset to achieve a specific function or purpose.
 - **Model**: A model, on the other hand, *is the result of applying an algorithm to data*. Simply put, models are the output of an algorithm that has been applied to a dataset. It is a mathematical representation of patterns learned from training data. The model can then be used to make predictions or decisions based on new data.
 
 In simple terms, an AI model is used to make predictions or decisions, while an algorithm is the logic that enables the AI model to function.
@@ -187,7 +187,7 @@ In simple terms, an AI model is used to make predictions or decisions, while an 
 
 **ML models**: ML models employ learning algorithms to learn patterns from data, enabling them to make decisions or predictions. They are typically categorized into three main types:
 
-- **Supervised learning**: These models learn from labeled<a href="#ref-2"><sup id="back-to-2">2</sup></a> data, where the outcome is known. Examples include classification and regression models. 
+- **Supervised learning**: These models learn from labeled<a href="#ref-2" class="reference-link" data-ref="ref-2"><sup id="back-to-2">2</sup></a> data, where the outcome is known. Examples include classification and regression models. 
 
   Examples: 
     - Linear Regression
@@ -224,7 +224,7 @@ There are many different types of models available in machine learning, each wit
 
 ## What is Retrieval-Augmented Generation (RAG)?
 
-Retrieval-Augmented Generation (RAG) is a type of language model that combines the strengths of both retrieval-based and generation-based language models to create more powerful and accurate models for tasks like question answering, summarization, and other natural language processing tasks. In traditional language models, the model generates text from scratch, whereas in retrieval-based models, the model retrieves relevant text snippets from a database or a large corpus<a href="#ref-8"><sup id="back-to-8">8</sup></a> of documents.
+Retrieval-Augmented Generation (RAG) is a type of language model that combines the strengths of both retrieval-based and generation-based language models to create more powerful and accurate models for tasks like question answering, summarization, and other natural language processing tasks. In traditional language models, the model generates text from scratch, whereas in retrieval-based models, the model retrieves relevant text snippets from a database or a large corpus<a href="#ref-8" class="reference-link" data-ref="ref-8"><sup id="back-to-8">8</sup></a> of documents.
 
 Here’s how RAG works:
 
