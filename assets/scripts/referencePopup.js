@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = refContent;
 
+      // Remove the first three characters (number, dot, space)
+      tempDiv.innerHTML = tempDiv.innerHTML.slice(3);
+
       // Remove the last 'a.back-to-note' element
       const backToNoteLink = tempDiv.querySelector('a.back-to-note');
       if (backToNoteLink) {
