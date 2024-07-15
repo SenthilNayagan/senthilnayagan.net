@@ -210,13 +210,13 @@
 </li>
 <li><strong>Synchronization</strong>
 <ul>
-<li>Synchronization mechanisms, such as <strong>locks</strong>, <strong>semaphores</strong><a href="#ref-1"><sup id="back-to-1">1</sup></a>, and <strong>condition variables</strong>, are often used with OS threads to coordinate access to shared resources and avoid race conditions.</li>
+<li>Synchronization mechanisms, such as <strong>locks</strong>, <strong>semaphores</strong><a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a>, and <strong>condition variables</strong>, are often used with OS threads to coordinate access to shared resources and avoid race conditions.</li>
 </ul>
 </li>
 <li><strong>Resource overhead</strong>
 <ul>
 <li>Each thread has its own stack, program counter, and other resources, and managing a large number of threads can lead to increased memory usage and context-switching overhead.</li>
-<li>However, <strong>thread pools</strong><a href="#ref-2"><sup id="back-to-2">2</sup></a> can mitigate some of these costs, but not enough to support massive IO-bound workloads.</li>
+<li>However, <strong>thread pools</strong><a href="#ref-2" class="reference-link" data-ref="ref-2"><sup id="back-to-2">2</sup></a> can mitigate some of these costs, but not enough to support massive IO-bound workloads.</li>
 </ul>
 </li>
 </ul>
@@ -321,7 +321,7 @@
 <p>The value returned by <code>async fn</code> is a <code>Future</code>.</p>
 </li>
 <li>
-<p>Under the hood, <code>async</code> transforms a block of code into a <strong>state machine</strong><a href="#ref-3"><sup id="back-to-3">3</sup></a> that implements a trait called <code>Future</code>.</p>
+<p>Under the hood, <code>async</code> transforms a block of code into a <strong>state machine</strong><a href="#ref-3" class="reference-link" data-ref="ref-3"><sup id="back-to-3">3</sup></a> that implements a trait called <code>Future</code>.</p>
 <p>Dependencies to be added to the <code>Cargo.toml</code> file:</p>
 <pre class="language-toml"><code data-copyable="true" tabindex="0" class="language-toml"><span class="token punctuation">[</span><span class="token table class-name">dependencies</span><span class="token punctuation">]</span>
 <span class="token key property">futures</span> <span class="token punctuation">=</span> <span class="token string">"0.3"</span>
@@ -622,5 +622,7 @@
       checkCookie();
     });
 </script>
+  <!-- Reference popup -->
+  <script src="/assets/scripts/referencePopup.js"></script>
 </body>
 </html>
