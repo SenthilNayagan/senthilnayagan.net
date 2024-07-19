@@ -104,7 +104,7 @@ Developing a fast and reactive application requires the use of asynchronous prog
   - Specifically, we can use async without heap allocations and dynamic dispatch, which is great for performance and this also lets us use async in constrained environments, such as embedded systems.
 - **No built-in async runtime**
   - No built-in async runtime is provided by Rust.
-  - Instead, runtimes ([Tokio](https://tokio.rs/){:target="_blank"}, etc.) are provided by community maintained crates.
+  - Instead, runtimes (<a href="https://tokio.rs/" target="_blank">Tokio</a>, etc.) are provided by community maintained crates.
 - **Both single- and multithreaded runtimes** are available in Rust, which have different strengths and weaknesses.
 
 ## Async vs. threads in Rust
