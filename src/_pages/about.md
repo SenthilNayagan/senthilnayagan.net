@@ -51,10 +51,10 @@ Best wishes,<br/>
 **{{ site.author }}**
 
 <div class="about-contact-icons">
-  <a href="mailto:{{ site.email }}"><i class="fa-solid fa-envelope"></i></a>
-  <a href="{{ site.linkedIn }}" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-  <a href="{{ site.gitHub }}" target="_blank"><i class="fa-brands fa-github"></i></a>
-  <a href="{{ site.twitter }}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-  <a href="{{ site.mastodon }}" target="_blank"><i class="fa-brands fa-mastodon"></i></a>
-  <a href="{{ site.instagram }}" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+  <a href="mailto:{{ site.email }}" class="no-icon"><i class="fa-solid fa-envelope"></i></a>
+  <a href="{{ site.linkedIn }}" target="_blank" class="no-icon"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="{{ site.gitHub }}" target="_blank" class="no-icon"><i class="fa-brands fa-github"></i></a>
+  <a href="{{ site.twitter }}" target="_blank" class="no-icon"><i class="fa-brands fa-x-twitter"></i></a>
+  <a href="{{ site.mastodon }}" target="_blank" class="no-icon"><i class="fa-brands fa-mastodon"></i></a>
+  <a href="{{ site.instagram }}" target="_blank" class="no-icon"><i class="fa-brands fa-square-instagram"></i></a>
 </div>
