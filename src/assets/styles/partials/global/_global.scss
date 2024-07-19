@@ -61,17 +61,18 @@ hr {
 a {
   color: var(--color-text-link);
 
-  // &[target="_blank"]::after {
-  //   content: "";
-  //   display: inline-block;
-  //   width: 0.6em; /* Adjust size if needed */
-  //   height: 0.6em; /* Adjust size if needed */
-  //   margin-left: 5px;
-  //   background-image: url("/assets/images/icons/arrow-up-right-from-square-solid.svg"); /* Adjust the path as needed */
-  //   background-size: contain;
-  //   background-repeat: no-repeat;
-  //   vertical-align: middle;
-  // }
+  &[target="_blank"]:not(.no-icon)::after {
+    content: "";
+    display: inline-block;
+    width: 0.6em; /* Adjust size if needed */
+    height: 0.6em; /* Adjust size if needed */
+    margin-left: 5px;
+    background-image: url("/assets/images/icons/arrow-up-right-from-square-solid.svg"); /* Adjust the path as needed */
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    // color: blue;
+  }
 }
 
 :is(h1, h2, h3, h4, h5, h6) {

@@ -54,7 +54,7 @@ Terraform can create infrastructure on a variety of cloud platforms such as AWS,
 
 ## Download and install
 
-Terraform distribution consists of a single binary file, which can be obtained for free from Hashicorp's [download](https://www.terraform.io/downloads){:target="_blank"} page. There are no dependencies, so we can just copy the executable binary to a folder of our choice and run it from there. HashiCorp also offers a managed solution known as <a href="https://cloud.hashicorp.com/products/terraform" target="_blank">Terraform Cloud</a>.
+Terraform distribution consists of a single binary file, which can be obtained for free from Hashicorp's <a href="https://www.terraform.io/downloads" target="_blank">download</a> page. There are no dependencies, so we can just copy the executable binary to a folder of our choice and run it from there. HashiCorp also offers a managed solution known as <a href="https://cloud.hashicorp.com/products/terraform" target="_blank">Terraform Cloud</a>.
 
 After we finish the installation, we can run the following command to ensure that everything is working properly:
 

@@ -157,9 +157,9 @@ Central tendency is a math concept that helps us understand how a set of numbers
 
 In math, central tendency is measured by three main values:
 
-- **Mean**: The average value of the group. Imagine a big scale that adds up all the numbers and divides by the number of people in the group.
-- **Median**: The middle value of the group. Imagine a line that divides the group in half, and the median is the value that most people are standing on.
-- **Mode**: The most common value in the group. Imagine a big crowd of people, and the mode is the value that most people are standing on.
+- **Mean**: It's an average of a set of values. Imagine a big scale that adds up all the numbers and divides by the number of people in the group.
+- **Median**: It's the middle value in a dataset when the values are arranged in ascending or descending order. For an odd number of values, the median is the value at the $ (n+1)/2th $ position. For an even number of values, the median is the average of the values at the $ n/2th $ and $ (n/2) + 1th $ positions. Imagine a line that divides the group in half, and the median is the value that most people are standing on.
+- **Mode**: The most common value in the group. In other words, it's the value that appears most frequently in a dataset. Imagine a big crowd of people, and the mode is the value that most people are standing on.
 
 These three values help us understand how the group is clustered around a middle value. For example:
 

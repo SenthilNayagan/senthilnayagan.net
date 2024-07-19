@@ -1,21 +1,21 @@
 <div class="social-share">
-  <a href="mailto:?subject={{ title }}&body={{ page.url | toAbsoluteUrl }}" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon">
+  <a href="mailto:?subject={{ title }}&body={{ page.url | toAbsoluteUrl }}" title="Share via Email" target="_blank" aria-label="Share via Email" class="social-icon no-icon">
     <i class="fa-regular fa-envelope"></i>
   </a>
-  <a href="https://api.whatsapp.com/send?text={{ title }}%20{{ page.url | toAbsoluteUrl }}" title="Share on WhatsApp" target="_blank" aria-label="Share on WhatsApp" class="social-icon">
+  <a href="https://api.whatsapp.com/send?text={{ title }}%20{{ page.url | toAbsoluteUrl }}" title="Share on WhatsApp" target="_blank" aria-label="Share on WhatsApp" class="social-icon no-icon">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
-  <a href="https://twitter.com/intent/tweet?text={{ title }}&url={{ page.url | toAbsoluteUrl }}" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon">
+  <a href="https://twitter.com/intent/tweet?text={{ title }}&url={{ page.url | toAbsoluteUrl }}" title="Tweet" target="_blank" aria-label="Share on Twitter" class="social-icon no-icon">
     <i class="fa-brands fa-x-twitter"></i>
   </a>
   {%- if page.url contains "/blog/personal/" -%}
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | toAbsoluteUrl }}" title="Share on Facebook" target="_blank" aria-label="Share on Facebook" class="social-icon">
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | toAbsoluteUrl }}" title="Share on Facebook" target="_blank" aria-label="Share on Facebook" class="social-icon no-icon">
       <i class="fa-brands fa-facebook"></i>
     </a>
   {%- endif -%}
 
   {%- if page.url contains "/blog/tech/" -%}
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | toAbsoluteUrl }}&title={{ title }}" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | toAbsoluteUrl }}&title={{ title }}" title="Share on LinkedIn" target="_blank" aria-label="Share on LinkedIn" class="social-icon no-icon">
       <i class="fa-brands fa-linkedin"></i>
     </a>
     <!-- <a href="https://www.reddit.com/submit?url={{ page.url | toAbsoluteUrl }}&title={{ title }}" title="Share on Reddit" target="_blank" aria-label="Share on Reddit" class="social-icon">
@@ -23,7 +23,7 @@
     </a> -->
   {%- endif -%}
 
-  <a href="#" id="copy-link" title="Copy to Clipboard" aria-label="Copy link" class="social-icon">
+  <a href="#" id="copy-link" title="Copy to Clipboard" aria-label="Copy link" class="social-icon no-icon">
     <i class="fa-solid fa-link"></i>
   </a>
   <!-- Separator -->
