@@ -157,9 +157,11 @@ Central tendency is a math concept that helps us understand how a set of numbers
 
 In math, central tendency is measured by three main values:
 
-- **Mean**: It's an average of a set of values. Imagine a big scale that adds up all the numbers and divides by the number of people in the group.
-- **Median**: It's the middle value in a dataset when the values are arranged in ascending or descending order. For an odd number of values, the median is the value at the $ (n+1)/2th $ position. For an even number of values, the median is the average of the values at the $ n/2th $ and $ (n/2) + 1th $ positions. Imagine a line that divides the group in half, and the median is the value that most people are standing on.
-- **Mode**: The most common value in the group. In other words, it's the value that appears most frequently in a dataset. Imagine a big crowd of people, and the mode is the value that most people are standing on.
+- **Mean**: It's an *average* of a set of values. It is calculated by adding up all the values and dividing by the number of values. It's a common measure for normally distributed data. Because the calculation includes all values, including the outliers, the mean is sensitive to extreme values (outliers).
+
+- **Median**: It's the *middle value* in a dataset when the values are arranged in ascending or descending order. It's less sensitive to outliers and skewed data than the mean. It provides a better measure of central tendency for skewed distributions or datasets with outliers. Imagine a line that divides the group in half, and the median is the value that most people are standing on. For an odd number of values, the median is the value at the $ (n+1)/2th $ position. For an even number of values, the median is the average of the values at the $ n/2th $ and $ (n/2) + 1th $ positions. 
+
+- **Mode**: The most common value that appears most frequently in a dataset. It's not affected by outliers. It's useful for categorical data and to identify the most common value in a dataset. Note that mode is not a good representation of the typical value because it's influenced by the frequency of the values. Imagine a big crowd of people, and the mode is the value that most people are standing on.
 
 These three values help us understand how the group is clustered around a middle value. For example:
 
@@ -176,11 +178,21 @@ Central tendency is important in math because it helps us:
 
 So, in simple terms, central tendency is like finding the "average" or "middle" value of a group of numbers. It helps us understand how the numbers are clustered and what the typical value is.
 
+## What are the measures of central tendency, and how do they differ from each other?
+
+The commonly used measures of central tendency are the mean, median, and mode. 
+
+**Mean**: The mean is the average value of a dataset. It is calculated by adding up all the values and dividing by the number of values. It's a common measure for normally distributed data. Because the calculation includes all values, including the outliers, the mean is sensitive to extreme values (outliers).
+
+**Median**: The median is the middle value in a dataset when the values are arranged in ascending or descending order. It's less sensitive to outliers and skewed data than the mean. It provides a better measure of central tendency for skewed distributions or datasets with outliers.
+
+**Mode**: The mode is the value that appears most frequently in a dataset. It's not affected by outliers. It's useful for categorical data and to identify the most common value in a dataset. Note that mode is not a good representation of the typical value because it's influenced by the frequency of the values.
+
 ## What is mean, median, variance, standard deviation, mode, range, interquartile range (IQR), and skewness?
 
 These are the most important concepts in statistics.
 
-**Mean**
+### Mean
 
 The mean, also known as the average, is a measure of the central tendency<a href="#what-is-central-tendency-in-math"><sup id="back-to-1">CT</sup></a> of a dataset. It's calculated by adding up all the values and dividing by the number of values. 
 
@@ -194,13 +206,13 @@ For example, if we have the values 2, 4, 6, 8, and 10, the mean would be:
 
 Mean = (2 + 4 + 6 + 8 + 10) / 5 = 30 / 5 = 6
 
-**Median**
+### Median
 
 The median is another measure of central tendency<a href="#what-is-central-tendency-in-math"><sup id="back-to-1">CT</sup></a>. It's the middle value of a dataset when it's sorted in order. If the dataset has an odd number of values, the median is the middle value. If the dataset has an even number of values, the median is the average of the two middle values.
 
 For example, if we have the values 1, 3, 5, 7, 9, the median would be 5.
 
-**Variance**
+### Variance
 
 The variance is a measure of how spread out a dataset is. It's calculated by subtracting the mean from each value, squaring the result, and then averaging those squared differences.
 
@@ -214,7 +226,7 @@ For example, if we have the values 2, 4, 6, 8, 10, the variance would be:
 
 Variance = ((2 - 6)^2 + (4 - 6)^2 + (6 - 6)^2 + (8 - 6)^2 + (10 - 6)^2) / (5 - 1) = 8 / 4 = 2
 
-**Standard deviation**
+### Standard deviation
 
 The standard deviation is the square root of the variance. It's a measure of how spread out a dataset is, but it's on the same scale as the original values.
 
@@ -226,7 +238,7 @@ For example, if the variance is 2, the standard deviation would be:
 
 Standard Deviation = √2 ≈ 1.41
 
-**Mode**
+### Mode
 
 The mode is the value that appears most frequently in a dataset.
 
@@ -246,7 +258,7 @@ To find the mode:
 
 So, the mode of this data set is 4, as it is the number that occurs most often.
 
-**Range**
+### Range
 
 The range is the difference between the largest and smallest values in a dataset. The range is a measure of how spread out the values in a data set are. It is calculated by subtracting the smallest value from the largest value.
 
@@ -262,7 +274,7 @@ So, the range of this data set is 7.
 
 The range provides a simple way to understand the spread of the data by showing the difference between the highest and lowest values.
 
-**Interquartile range (IQR)**
+### Interquartile range (IQR)
 
 Interquartile range is a way to measure how spread out the middle part of a set of numbers is. It helps us understand the range where the middle half of the numbers lie, ignoring the highest and lowest values which might be outliers. It's widely used in statistics and data analysis to understand the spread and variability of a data set.
 
@@ -301,7 +313,7 @@ Uses of IQR:
 
 In summary, the IQR is a valuable tool in statistics and data analysis for understanding and summarizing the spread of a data set, especially when dealing with outliers and skewed distributions.
 
-**Skewness**
+### Skewness
 
 Skewness describes how a set of numbers is not evenly distributed around the average (mean). It tells us if the numbers are leaning more to one side of the average or if they are balanced. 
 
@@ -312,11 +324,24 @@ Types of skewness:
 3. **Zero skewness** (Symmetrical Distribution): Numbers are evenly spread around the average. For example, if we roll a fair die many times, we would expect each number (1 through 6) to come up about the same number of times. The distribution of outcomes is balanced.
 
 Why it matters?
-
 - **Understanding data**: Skewness helps us see if the data is balanced or if there are extreme values that are pulling the average in one direction. For instance, in a business, if sales data is positively skewed, it means there are a few very high sales that are significantly affecting the overall average.
 - **Making decisions**: Knowing about skewness can help in decision-making. For example, if a school notices that test scores are negatively skewed, they might want to provide extra help to the few students with very low scores.
 
 In simple terms, skewness tells us if our data has a lean or tilt towards higher or lower values, or if it is evenly spread out. This can be very helpful in understanding and interpreting the data better.
+
+## How do we interpret the standard deviation in the context of data variability?
+The standard deviation (SD) is a measure of the amount of variation of a set of values from the average value (mean). A small SD suggests that the data points are in close proximity to the mean value, with minimal variation or dispersion. This indicates that the values are consistently similar and predictable. A large SD suggests that the data points span a broader range of values, which indicates the values are more dispersed, less consistent, and unpredictable.
+
+## Explain the significance of the interquartile range (IQR) and how it is used to detect outliers?
+IQR is a measure of the spread in the middle of a dataset. It's the distance between the first quartile (Q1) and the third quartile (Q3). It minimizes the impact of outliers by providing a comprehensive understanding of the spread and variability of the central portion of the dataset.
+
+Here are steps to detect outliers using the IQR:
+
+1. Sort the data: Arrange our data set in ascending order.
+2. Locate the Q1 and Q3 quarters: Q1 is the median of the first half of the data (the 25th percentile), and Q2 is the median of the second half of the data (the 75th percentile).
+3. Calculate the IQR: Subtract Q1 from Q3.
+4. Determine the lower and upper bounds for outliers. To find the lower bound, subtract 1.5 times the IQR from Q1. To determine the upper bound, add 1.5 times the IQR to Q3.
+5. Identify outliers. Any data point that is below the lower bound or above the upper bound is considered an outlier.
 
 ## What is a probability distribution?
 
@@ -340,7 +365,6 @@ In probability theory and statistics, a collection of random variables is said t
 1. **Each random variable has the same probability distribution as the others**: 
    - This means that every random variable in the collection follows the same *probability distribution*. In other words, they have the same statistical properties such as mean, variance, and distribution shape.
    - **Example**: Consider flipping a fair coin multiple times. Let $ X_1, X_2, \ldots, X_n $ represent the outcomes of each flip, where $ X_i = 1 $ if the flip is heads and $ X_i = 0 $ if the flip is tails. Each $ X_i $ follows the same Bernoulli distribution with $ P(X_i = 1) = 0.5 $ and $ P(X_i = 0) = 0.5 $.
-
 2. **All random variables are mutually independent**:
    - This means that the outcome of any one random variable does not affect the outcome of any other random variable in the collection. There is no dependency between the random variables.
    - **Example**: Continuing with the coin flip example, the outcome of the first flip $ (X_1) $ does not influence the outcome of the second flip $ (X_2) $, and so on. Each flip is an independent event.
@@ -360,6 +384,17 @@ Here are some key points to keep in mind:
 - The goal is to use the data to make inferences about the population or process.
 - Parametric estimation assumes that the data follows a specific distribution (such as a normal distribution).
 
+## How do maximum likelihood estimators (MLE) work?
+MLE are a type of statistical estimator that is used to estimate the parameters of a probability distribution. Parameters here are the numerical values that define the specific characteristics of a probability distribution. MLE works by finding the parameter values that make the observed data most likely to occur.
+
+Here's how MLE works:
+
+1. Choose a probability distribution that we think best describes the data.
+2. Identify the parameters of the probability distribution that we want to estimate. These could be the mean, variance, or other parameters that describe the distribution.
+3. Write the likelihood function that calculates the probability of observing the data we have, given the values of the parameters we're trying to estimate. It's like a recipe that helps us estimate the amounts of ingredients we need to make the perfect food item, by calculating the probability of getting the exact food item we want.
+4. Find the values of the parameters that make the likelihood function as high as possible.
+
+Overall, MLE is a powerful tool for estimating the parameters of a probability distribution, but it requires careful consideration of the assumptions and limitations.
 
 <div class="references">
    <hr>
