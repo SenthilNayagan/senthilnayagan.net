@@ -95,7 +95,7 @@
   <header class="post-header">
     <p class="post-date">
       <span class="screen-reader-only">Published </span>
-      <i class="fa-regular fa-calendar-days"></i> <time datetime="2024-07-14" >July 14, 2024</time> (Updated <time datetime="2024-07-16" >July 16, 2024</time>)&nbsp;&#183;&nbsp;<i class="fa-regular fa-clock"></i> 22 min read
+      <i class="fa-regular fa-calendar-days"></i> <time datetime="2024-07-14" >July 14, 2024</time> (Updated <time datetime="2024-07-16" >July 16, 2024</time>)&nbsp;&#183;&nbsp;<i class="fa-regular fa-clock"></i> 26 min read
     </p>
     <h1 class="post-title">Essential Math for AI and ML: Introduction to Estimation Theory</h1>
     <ul class="post-tags" aria-label="Tags"><li>
@@ -163,7 +163,7 @@
     <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
 </div>
 <h3 id="table-of-contents">Table of Contents</h3>
-<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-estimation-theory">What is estimation theory?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#approaches-in-estimation">Approaches in estimation</a></li><li class="toc-item"><a class="toc-link" href="#key-concepts-in-estimation-theory">Key concepts in estimation theory</a></li><li class="toc-item"><a class="toc-link" href="#different-types-of-estimation">Different types of estimation</a></li><li class="toc-item"><a class="toc-link" href="#common-estimation-techniques">Common estimation techniques</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#various-mathematical-notations-uses-in-estimation-theory">Various mathematical notations uses in estimation theory</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#data-and-samples">Data and samples</a></li><li class="toc-item"><a class="toc-link" href="#parameters">Parameters</a></li><li class="toc-item"><a class="toc-link" href="#estimators">Estimators</a></li><li class="toc-item"><a class="toc-link" href="#probability-and-likelihood">Probability and likelihood</a></li><li class="toc-item"><a class="toc-link" href="#statistical-inference">Statistical inference</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-central-tendency-in-math">What is central tendency in math?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-mean-median-variance-standard-deviation-mode-range-interquartile-range-iqr-and-skewness">What is mean, median, variance, standard deviation, mode, range, interquartile range (IQR), and skewness?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-a-probability-distribution">What is a probability distribution?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-independent-and-identically-distributed-iid-or-iid-or-iid">What is independent and identically distributed (i.i.d. or iid or IID)?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-parametric-estimation">What is parametric estimation?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
+<nav id="toc" class="table-of-contents"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-estimation-theory">What is estimation theory?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#approaches-in-estimation">Approaches in estimation</a></li><li class="toc-item"><a class="toc-link" href="#key-concepts-in-estimation-theory">Key concepts in estimation theory</a></li><li class="toc-item"><a class="toc-link" href="#different-types-of-estimation">Different types of estimation</a></li><li class="toc-item"><a class="toc-link" href="#common-estimation-techniques">Common estimation techniques</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#various-mathematical-notations-uses-in-estimation-theory">Various mathematical notations uses in estimation theory</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#data-and-samples">Data and samples</a></li><li class="toc-item"><a class="toc-link" href="#parameters">Parameters</a></li><li class="toc-item"><a class="toc-link" href="#estimators">Estimators</a></li><li class="toc-item"><a class="toc-link" href="#probability-and-likelihood">Probability and likelihood</a></li><li class="toc-item"><a class="toc-link" href="#statistical-inference">Statistical inference</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#frequently-asked-questions-faqs">Frequently asked questions (FAQs)</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#what-is-central-tendency-in-math">What is central tendency in math?</a></li><li class="toc-item"><a class="toc-link" href="#what-are-the-measures-of-central-tendency-and-how-do-they-differ-from-each-other">What are the measures of central tendency, and how do they differ from each other?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-mean-median-variance-standard-deviation-mode-range-interquartile-range-iqr-and-skewness">What is mean, median, variance, standard deviation, mode, range, interquartile range (IQR), and skewness?</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#mean">Mean</a></li><li class="toc-item"><a class="toc-link" href="#median">Median</a></li><li class="toc-item"><a class="toc-link" href="#variance">Variance</a></li><li class="toc-item"><a class="toc-link" href="#standard-deviation">Standard deviation</a></li><li class="toc-item"><a class="toc-link" href="#mode">Mode</a></li><li class="toc-item"><a class="toc-link" href="#range">Range</a></li><li class="toc-item"><a class="toc-link" href="#interquartile-range-iqr">Interquartile range (IQR)</a></li><li class="toc-item"><a class="toc-link" href="#skewness">Skewness</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#how-do-we-interpret-the-standard-deviation-in-the-context-of-data-variability">How do we interpret the standard deviation in the context of data variability?</a></li><li class="toc-item"><a class="toc-link" href="#explain-the-significance-of-the-interquartile-range-iqr-and-how-it-is-used-to-detect-outliers">Explain the significance of the interquartile range (IQR) and how it is used to detect outliers?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-a-probability-distribution">What is a probability distribution?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-independent-and-identically-distributed-iid-or-iid-or-iid">What is independent and identically distributed (i.i.d. or iid or IID)?</a></li><li class="toc-item"><a class="toc-link" href="#what-is-parametric-estimation">What is parametric estimation?</a></li><li class="toc-item"><a class="toc-link" href="#how-do-maximum-likelihood-estimators-mle-work">How do maximum likelihood estimators (MLE) work?</a></li></ol></li></ol></nav><div id="toc-skipped"></div>
 <h1 id="what-is-estimation-theory"><a class="to-underline" href="#what-is-estimation-theory">What is estimation theory?</a></h1>
 <p>Estimation theory is a branch of mathematics and statistics that deals with the process of estimating the value of a parameter<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a> or a function from a set of noisy or uncertain data.  In simple terms, it’s about making educated guesses<a href="#ref-2" class="reference-link" data-ref="ref-2"><sup id="back-to-2">2</sup></a> about things we can’t directly measure or know for sure. In estimation theory, the goal is to find the best possible estimate of a parameter or a function based on a set of observations or measurements aka observed data. Imagine we’re planning a road trip and we want to estimate how long it will take to get to our destination. We can use our knowledge of the distance, traffic patterns, and our own driving speed and skill to make an educated guess about the time it will take. This is an example of estimation theory in action!</p>
 <p>Here are some more examples to help illustrate the concept:</p>
@@ -359,9 +359,15 @@
 <p>Central tendency is a math concept that helps us understand how a set of numbers is clustered around a middle value. Think of it like a big group of people standing in a line, and we want to know where most of them are standing.</p>
 <p>In math, central tendency is measured by three main values:</p>
 <ul>
-<li><strong>Mean</strong>: It’s an average of a set of values. Imagine a big scale that adds up all the numbers and divides by the number of people in the group.</li>
-<li><strong>Median</strong>: It’s the middle value in a dataset when the values are arranged in ascending or descending order. For an odd number of values, the median is the value at the $ (n+1)/2th $ position. For an even number of values, the median is the average of the values at the $ n/2th $ and $ (n/2) + 1th $ positions. Imagine a line that divides the group in half, and the median is the value that most people are standing on.</li>
-<li><strong>Mode</strong>: The most common value in the group. In other words, it’s the value that appears most frequently in a dataset. Imagine a big crowd of people, and the mode is the value that most people are standing on.</li>
+<li>
+<p><strong>Mean</strong>: It’s an <em>average</em> of a set of values. It is calculated by adding up all the values and dividing by the number of values. It’s a common measure for normally distributed data. Because the calculation includes all values, including the outliers, the mean is sensitive to extreme values (outliers).</p>
+</li>
+<li>
+<p><strong>Median</strong>: It’s the <em>middle value</em> in a dataset when the values are arranged in ascending or descending order. It’s less sensitive to outliers and skewed data than the mean. It provides a better measure of central tendency for skewed distributions or datasets with outliers. Imagine a line that divides the group in half, and the median is the value that most people are standing on. For an odd number of values, the median is the value at the $ (n+1)/2th $ position. For an even number of values, the median is the average of the values at the $ n/2th $ and $ (n/2) + 1th $ positions.</p>
+</li>
+<li>
+<p><strong>Mode</strong>: The most common value that appears most frequently in a dataset. It’s not affected by outliers. It’s useful for categorical data and to identify the most common value in a dataset. Note that mode is not a good representation of the typical value because it’s influenced by the frequency of the values. Imagine a big crowd of people, and the mode is the value that most people are standing on.</p>
+</li>
 </ul>
 <p>These three values help us understand how the group is clustered around a middle value. For example:</p>
 <ul>
@@ -377,32 +383,37 @@
 <li>Identify outliers (numbers that are far away from the rest of the group)</li>
 </ul>
 <p>So, in simple terms, central tendency is like finding the “average” or “middle” value of a group of numbers. It helps us understand how the numbers are clustered and what the typical value is.</p>
+<h2 id="what-are-the-measures-of-central-tendency-and-how-do-they-differ-from-each-other"><a class="to-underline" href="#what-are-the-measures-of-central-tendency-and-how-do-they-differ-from-each-other">What are the measures of central tendency, and how do they differ from each other?</a></h2>
+<p>The commonly used measures of central tendency are the mean, median, and mode.</p>
+<p><strong>Mean</strong>: The mean is the average value of a dataset. It is calculated by adding up all the values and dividing by the number of values. It’s a common measure for normally distributed data. Because the calculation includes all values, including the outliers, the mean is sensitive to extreme values (outliers).</p>
+<p><strong>Median</strong>: The median is the middle value in a dataset when the values are arranged in ascending or descending order. It’s less sensitive to outliers and skewed data than the mean. It provides a better measure of central tendency for skewed distributions or datasets with outliers.</p>
+<p><strong>Mode</strong>: The mode is the value that appears most frequently in a dataset. It’s not affected by outliers. It’s useful for categorical data and to identify the most common value in a dataset. Note that mode is not a good representation of the typical value because it’s influenced by the frequency of the values.</p>
 <h2 id="what-is-mean-median-variance-standard-deviation-mode-range-interquartile-range-iqr-and-skewness"><a class="to-underline" href="#what-is-mean-median-variance-standard-deviation-mode-range-interquartile-range-iqr-and-skewness">What is mean, median, variance, standard deviation, mode, range, interquartile range (IQR), and skewness?</a></h2>
 <p>These are the most important concepts in statistics.</p>
-<p><strong>Mean</strong></p>
+<h3 id="mean"><a class="to-underline" href="#mean">Mean</a></h3>
 <p>The mean, also known as the average, is a measure of the central tendency<a href="#what-is-central-tendency-in-math"><sup id="back-to-1">CT</sup></a> of a dataset. It’s calculated by adding up all the values and dividing by the number of values.</p>
 <p>The formula is:</p>
 <pre class="language-text"><code tabindex="0" class="language-text">Mean = (Sum of all values) / (Number of values)
 </code></pre>
 <p>For example, if we have the values 2, 4, 6, 8, and 10, the mean would be:</p>
 <p>Mean = (2 + 4 + 6 + 8 + 10) / 5 = 30 / 5 = 6</p>
-<p><strong>Median</strong></p>
+<h3 id="median"><a class="to-underline" href="#median">Median</a></h3>
 <p>The median is another measure of central tendency<a href="#what-is-central-tendency-in-math"><sup id="back-to-1">CT</sup></a>. It’s the middle value of a dataset when it’s sorted in order. If the dataset has an odd number of values, the median is the middle value. If the dataset has an even number of values, the median is the average of the two middle values.</p>
 <p>For example, if we have the values 1, 3, 5, 7, 9, the median would be 5.</p>
-<p><strong>Variance</strong></p>
+<h3 id="variance"><a class="to-underline" href="#variance">Variance</a></h3>
 <p>The variance is a measure of how spread out a dataset is. It’s calculated by subtracting the mean from each value, squaring the result, and then averaging those squared differences.</p>
 <pre class="language-text"><code tabindex="0" class="language-text">Variance = (Sum of (xi - mean)^2) / (Number of values - 1)
 </code></pre>
 <p>where <code>xi</code> is each value in the dataset.</p>
 <p>For example, if we have the values 2, 4, 6, 8, 10, the variance would be:</p>
 <p>Variance = ((2 - 6)^2 + (4 - 6)^2 + (6 - 6)^2 + (8 - 6)^2 + (10 - 6)^2) / (5 - 1) = 8 / 4 = 2</p>
-<p><strong>Standard deviation</strong></p>
+<h3 id="standard-deviation"><a class="to-underline" href="#standard-deviation">Standard deviation</a></h3>
 <p>The standard deviation is the square root of the variance. It’s a measure of how spread out a dataset is, but it’s on the same scale as the original values.</p>
 <pre class="language-text"><code tabindex="0" class="language-text">Standard Deviation = √Variance
 </code></pre>
 <p>For example, if the variance is 2, the standard deviation would be:</p>
 <p>Standard Deviation = √2 ≈ 1.41</p>
-<p><strong>Mode</strong></p>
+<h3 id="mode"><a class="to-underline" href="#mode">Mode</a></h3>
 <p>The mode is the value that appears most frequently in a dataset.</p>
 <p>Consider the following set of numbers: 2, 4, 4, 4, 5, 6, 6, 7</p>
 <p>To find the mode:</p>
@@ -425,7 +436,7 @@
 </li>
 </ul>
 <p>So, the mode of this data set is 4, as it is the number that occurs most often.</p>
-<p><strong>Range</strong></p>
+<h3 id="range"><a class="to-underline" href="#range">Range</a></h3>
 <p>The range is the difference between the largest and smallest values in a dataset. The range is a measure of how spread out the values in a data set are. It is calculated by subtracting the smallest value from the largest value.</p>
 <p>Consider the following set of numbers: 3, 7, 2, 9, 5</p>
 <p>To find the range:</p>
@@ -436,7 +447,7 @@
 </ol>
 <p>So, the range of this data set is 7.</p>
 <p>The range provides a simple way to understand the spread of the data by showing the difference between the highest and lowest values.</p>
-<p><strong>Interquartile range (IQR)</strong></p>
+<h3 id="interquartile-range-iqr"><a class="to-underline" href="#interquartile-range-iqr">Interquartile range (IQR)</a></h3>
 <p>Interquartile range is a way to measure how spread out the middle part of a set of numbers is. It helps us understand the range where the middle half of the numbers lie, ignoring the highest and lowest values which might be outliers. It’s widely used in statistics and data analysis to understand the spread and variability of a data set.</p>
 <p>Explanation:</p>
 <ol>
@@ -479,7 +490,7 @@
 <li><strong>Robust measure of spread</strong>: IQR is a robust measure of statistical dispersion because it is not affected by extreme values or outliers. This makes it more reliable for understanding the spread of data than the range or the standard deviation in cases where the data contains outliers.</li>
 </ol>
 <p>In summary, the IQR is a valuable tool in statistics and data analysis for understanding and summarizing the spread of a data set, especially when dealing with outliers and skewed distributions.</p>
-<p><strong>Skewness</strong></p>
+<h3 id="skewness"><a class="to-underline" href="#skewness">Skewness</a></h3>
 <p>Skewness describes how a set of numbers is not evenly distributed around the average (mean). It tells us if the numbers are leaning more to one side of the average or if they are balanced.</p>
 <p>Types of skewness:</p>
 <ol>
@@ -493,6 +504,18 @@
 <li><strong>Making decisions</strong>: Knowing about skewness can help in decision-making. For example, if a school notices that test scores are negatively skewed, they might want to provide extra help to the few students with very low scores.</li>
 </ul>
 <p>In simple terms, skewness tells us if our data has a lean or tilt towards higher or lower values, or if it is evenly spread out. This can be very helpful in understanding and interpreting the data better.</p>
+<h2 id="how-do-we-interpret-the-standard-deviation-in-the-context-of-data-variability"><a class="to-underline" href="#how-do-we-interpret-the-standard-deviation-in-the-context-of-data-variability">How do we interpret the standard deviation in the context of data variability?</a></h2>
+<p>The standard deviation (SD) is a measure of the amount of variation of a set of values from the average value (mean). A small SD suggests that the data points are in close proximity to the mean value, with minimal variation or dispersion. This indicates that the values are consistently similar and predictable. A large SD suggests that the data points span a broader range of values, which indicates the values are more dispersed, less consistent, and unpredictable.</p>
+<h2 id="explain-the-significance-of-the-interquartile-range-iqr-and-how-it-is-used-to-detect-outliers"><a class="to-underline" href="#explain-the-significance-of-the-interquartile-range-iqr-and-how-it-is-used-to-detect-outliers">Explain the significance of the interquartile range (IQR) and how it is used to detect outliers?</a></h2>
+<p>IQR is a measure of the spread in the middle of a dataset. It’s the distance between the first quartile (Q1) and the third quartile (Q3). It minimizes the impact of outliers by providing a comprehensive understanding of the spread and variability of the central portion of the dataset.</p>
+<p>Here are steps to detect outliers using the IQR:</p>
+<ol>
+<li>Sort the data: Arrange our data set in ascending order.</li>
+<li>Locate the Q1 and Q3 quarters: Q1 is the median of the first half of the data (the 25th percentile), and Q2 is the median of the second half of the data (the 75th percentile).</li>
+<li>Calculate the IQR: Subtract Q1 from Q3.</li>
+<li>Determine the lower and upper bounds for outliers. To find the lower bound, subtract 1.5 times the IQR from Q1. To determine the upper bound, add 1.5 times the IQR to Q3.</li>
+<li>Identify outliers. Any data point that is below the lower bound or above the upper bound is considered an outlier.</li>
+</ol>
 <h2 id="what-is-a-probability-distribution"><a class="to-underline" href="#what-is-a-probability-distribution">What is a probability distribution?</a></h2>
 <p>A probability distribution is a mathematical function that describes the likelihood of different outcomes in a random experiment, such as tossing a coin or rolling a die. It describes the likelihood of various outcomes, which can include the possibility of the same result occurring multiple times. These likelihoods are often uncertain or probabilistic.</p>
 <p>For example, let’s say we’re flipping a fair coin. The probability distribution of the outcome might look like this:</p>
@@ -506,15 +529,13 @@
 <h2 id="what-is-independent-and-identically-distributed-iid-or-iid-or-iid"><a class="to-underline" href="#what-is-independent-and-identically-distributed-iid-or-iid-or-iid">What is independent and identically distributed (i.i.d. or iid or IID)?</a></h2>
 <p>In probability theory and statistics, a collection of random variables is said to be independent and identically distributed (IID) if:</p>
 <ol>
-<li>
-<p><strong>Each random variable has the same probability distribution as the others</strong>:</p>
+<li><strong>Each random variable has the same probability distribution as the others</strong>:
 <ul>
 <li>This means that every random variable in the collection follows the same <em>probability distribution</em>. In other words, they have the same statistical properties such as mean, variance, and distribution shape.</li>
 <li><strong>Example</strong>: Consider flipping a fair coin multiple times. Let $ X_1, X_2, \ldots, X_n $ represent the outcomes of each flip, where $ X_i = 1 $ if the flip is heads and $ X_i = 0 $ if the flip is tails. Each $ X_i $ follows the same Bernoulli distribution with $ P(X_i = 1) = 0.5 $ and $ P(X_i = 0) = 0.5 $.</li>
 </ul>
 </li>
-<li>
-<p><strong>All random variables are mutually independent</strong>:</p>
+<li><strong>All random variables are mutually independent</strong>:
 <ul>
 <li>This means that the outcome of any one random variable does not affect the outcome of any other random variable in the collection. There is no dependency between the random variables.</li>
 <li><strong>Example</strong>: Continuing with the coin flip example, the outcome of the first flip $ (X_1) $ does not influence the outcome of the second flip $ (X_2) $, and so on. Each flip is an independent event.</li>
@@ -532,6 +553,16 @@
 <li>The goal is to use the data to make inferences about the population or process.</li>
 <li>Parametric estimation assumes that the data follows a specific distribution (such as a normal distribution).</li>
 </ul>
+<h2 id="how-do-maximum-likelihood-estimators-mle-work"><a class="to-underline" href="#how-do-maximum-likelihood-estimators-mle-work">How do maximum likelihood estimators (MLE) work?</a></h2>
+<p>MLE are a type of statistical estimator that is used to estimate the parameters of a probability distribution. Parameters here are the numerical values that define the specific characteristics of a probability distribution. MLE works by finding the parameter values that make the observed data most likely to occur.</p>
+<p>Here’s how MLE works:</p>
+<ol>
+<li>Choose a probability distribution that we think best describes the data.</li>
+<li>Identify the parameters of the probability distribution that we want to estimate. These could be the mean, variance, or other parameters that describe the distribution.</li>
+<li>Write the likelihood function that calculates the probability of observing the data we have, given the values of the parameters we’re trying to estimate. It’s like a recipe that helps us estimate the amounts of ingredients we need to make the perfect food item, by calculating the probability of getting the exact food item we want.</li>
+<li>Find the values of the parameters that make the likelihood function as high as possible.</li>
+</ol>
+<p>Overall, MLE is a powerful tool for estimating the parameters of a probability distribution, but it requires careful consideration of the assumptions and limitations.</p>
 <div class="references">
    <hr>
    <h2>Notes and references</h2>
