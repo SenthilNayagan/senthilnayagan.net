@@ -81,7 +81,13 @@ module.exports = (eleventyConfig) => {
 
   // Custom filters
   eleventyConfig.addFilter('limit', limit);
-  eleventyConfig.addFilter('sortByKey', sortByKey);
+  eleventyConfig.addFilter('sortByKey', (array, key) => {
+    return array.slice().sort((a, b) => {
+      let textA = a[key] ? a[key].toUpperCase() : '';
+      let textB = b[key] ? b[key].toUpperCase() : '';
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+  });
   eleventyConfig.addFilter('where', where);
   eleventyConfig.addFilter('escape', escape);
   eleventyConfig.addFilter('toHtml', toHtml);
@@ -111,7 +117,9 @@ module.exports = (eleventyConfig) => {
 
   // Custom collections
   eleventyConfig.addCollection('posts', getAllPosts);
-  eleventyConfig.addCollection('categories', getAllUniqueCategories);
+  eleventyConfig.addCollection('categories', (collectionApi) => {
+    return getAllUniqueCategories(collectionApi).sort((a, b) => a.title.localeCompare(b.title));
+  });
   eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
 
   // Plugins
