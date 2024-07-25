@@ -28,7 +28,7 @@
   background-image: url("/assets/images/navbar.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-
+  
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   width: 100%;
