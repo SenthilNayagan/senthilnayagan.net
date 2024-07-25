@@ -9,16 +9,6 @@
 }
 
 .navbar {
-  // @include mixins.theme-light {
-  //   --color-navbar-bg: var(--color-surface-8);
-  //   --color-navbar-bg-focus: var(--color-surface-7);
-  // }
-
-  // @include mixins.theme-dark {
-  //   --color-navbar-bg: var(--color-surface-2);
-  //   --color-navbar-bg-focus: var(--color-surface-3);
-  // }
-
   @include mixins.theme-light {
     --color-navbar-bg: rgba(0, 0, 0, 0.8); /* Semi-transparent black for light theme */
     --color-navbar-bg-focus: rgba(0, 0, 0, 0.6); /* Semi-transparent black for focus state */
@@ -35,12 +25,14 @@
   width: 100% !important;
   z-index: 1000 !important;
   background-color: var(--color-navbar-bg) !important;
+  background-image: url("/assets/images/navbar.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   width: 100%;
   padding-block: functions.spacing("-1");
-  background-color: var(--color-navbar-bg);
   overflow-x: auto;
   color: white;
 
@@ -65,25 +57,20 @@
     width: functions.spacing("4");
   }
 
-  // &-link-home {
   .navbar-link-home {
     display: flex;
     gap: functions.spacing("-3");
     align-items: center;
     padding: 0;
-    // padding: functions.spacing("-2");
-    // @include mixins.font($family: "body", $weight: "bold");
 
     .site-name {
       font-size: 2rem;
       display: inline-block;
-      // @include mixins.screen-reader-only;
     }
 
     .site-logo {
       width: 80px; /* Adjust as necessary */
       height: 80px; /* Adjust as necessary */
-      // border-radius: 50%; /* Make it round */
       object-fit: cover; /* Ensure it covers the space nicely */
     }
   }
