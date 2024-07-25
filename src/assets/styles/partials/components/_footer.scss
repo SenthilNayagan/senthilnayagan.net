@@ -3,19 +3,23 @@
 
 .page-footer {
   @include mixins.theme-light {
-    --color-footer-bg: var(--color-surface-8);
+    --color-footer-bg: white;
+    --color-footer-text: black;
+    --color-footer-border: hsl(0deg 0% 80%); // Light grey border
   }
 
   @include mixins.theme-dark {
-    --color-footer-bg: var(--color-surface-2);
+    --color-footer-bg: black;
+    --color-footer-text: white;
+    --color-footer-border: hsl(0deg 0% 80%); // Light grey border for dark theme
   }
 
-  color-scheme: dark;
   background-color: var(--color-footer-bg);
-  color: white;
+  color: var(--color-footer-text);
   text-align: center;
   padding-block: functions.spacing("5");
   accent-color: currentcolor;
+  border-top: 1px solid var(--color-footer-border); // Thin horizontal line at the top
 
   &-container {
     display: flex;
@@ -41,16 +45,16 @@
   }
 
   @include mixins.tablet-sm {
-    text-align: start;
+    text-align: center; // Ensure text is centered on larger screens
 
     &-container {
-      align-items: end;
-      flex-direction: row;
-      justify-content: space-between;
+      align-items: center; // Center align items in container
+      flex-direction: column; // Keep flex direction column
+      justify-content: center; // Center justify content
     }
 
     &-end {
-      align-items: end;
+      align-items: center; // Center align items
     }
   }
 
