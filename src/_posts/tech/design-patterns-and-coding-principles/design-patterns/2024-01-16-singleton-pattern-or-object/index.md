@@ -70,9 +70,91 @@ Singleton pattern is popular in software engineering for various applications, 
 
 ## Global State 
 
-Global state refers to data that is accessible from anywhere in an application, at any time, without being passed through the application flow. In the context of the singleton pattern, the single instance of the class that is globally accessible acts as this global state. 
+Global state refers to data that is accessible from anywhere in an application, at any time, without being passed through the application flow. In the context of the singleton pattern, the single instance of the class that is globally accessible acts as this global state. While global state can simplify access to common resources, it often introduces several problems, such as increased complexity, hidden dependencies, and difficulties in debugging and testing.
 
-**Issue with global state**: Consider an application that manages configuration settings for different parts of the system. Let's say these settings are accessed via a singleton instance, say for example `ConfigManager`, which loads settings from a file and provides global access to these settings. While initially, this approach might seem convenient, it can lead to several problems as follows:
+<!-- **Issue with global state**: Consider an application that manages configuration settings for different parts of the system. Let's say these settings are accessed via a singleton instance, say for example `ConfigManager`, which loads settings from a file and provides global access to these settings. While initially, this approach might seem convenient, it can lead to several problems as follows: -->
+
+**Global state issues**:
+
+1.	**Hidden dependencies**: When components rely on global state, the dependencies between them are not explicit, making the code harder to understand and maintain.
+2.	**Tight coupling**: Components that rely on global state are tightly coupled, meaning changes in the global state can have unpredictable effects on these components.
+3.	**Testing challenges**: Global state makes it difficult to write independent unit tests since the state can persist across tests, leading to flaky tests that pass or fail depending on the order in which they run.
+4.	**Concurrency issues**: In multi-threaded applications, managing global state can lead to race conditions and data inconsistencies.
+5.	**Debugging difficulties**: Tracking down bugs becomes harder when multiple parts of the code can change the global state, making it difficult to pinpoint the source of an issue.
+
+For example, consider a simple application where we have a global configuration object that stores settings for the application. This configuration object is accessed and modified by different parts of the application.
+
+```python {data-copyable=true}
+# Global state example in Python
+class Config:
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super(Config, cls).__new__(cls, *args, **kwargs)
+        return cls._instance
+
+    def __init__(self):
+        self.settings = {}
+
+config = Config()
+
+# Different parts of the application modify the global state
+def initialize_settings():
+    config.settings["database_url"] = "localhost:5432"
+    config.settings["debug"] = True
+
+def update_settings():
+    config.settings["debug"] = False
+
+def read_settings():
+    print(config.settings)
+```
+
+```text {data-copyable=true}
+# Usage
+initialize_settings()
+read_settings()  # Output: {'database_url': 'localhost:5432', 'debug': True}
+update_settings()
+read_settings()  # Output: {'database_url': 'localhost:5432', 'debug': False}
+```
+
+Issues with the above example:
+
+1.	**Hidden dependencies**: Functions `initialize_settings`, `update_settings`, and `read_settings` all rely on the global config object, but this dependency is not explicit in their interfaces.
+2.	**Tight coupling**: If the structure of the config object changes, all functions that interact with it need to be updated, making the code harder to maintain.
+3.	**Testing challenges**: Writing unit tests for these functions is difficult because they share the same config object. Tests might interfere with each other by modifying the global state.
+4.	**Concurrency issues**: If this code were part of a multi-threaded application, accessing and modifying the global config object without proper synchronization could lead to race conditions.
+
+Improved approch:
+
+A better design would be to pass the configuration object explicitly to functions that need it, avoiding the reliance on global state.
+
+```python {data-copyable=true}
+# Improved design without global state
+class Config:
+    def __init__(self):
+        self.settings = {}
+
+def initialize_settings(config):
+    config.settings["database_url"] = "localhost:5432"
+    config.settings["debug"] = True
+
+def update_settings(config):
+    config.settings["debug"] = False
+
+def read_settings(config):
+    print(config.settings)
+
+# Usage
+config = Config()
+initialize_settings(config)
+read_settings(config)  # Output: {'database_url': 'localhost:5432', 'debug': True}
+update_settings(config)
+read_settings(config)  # Output: {'database_url': 'localhost:5432', 'debug': False}
+```
+
+By explicitly passing the config object, we make dependencies clear, reduce tight coupling, and make the code easier to test and maintain.
 
 ## Tight coupling
 
