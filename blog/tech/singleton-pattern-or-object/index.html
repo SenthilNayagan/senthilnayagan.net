@@ -95,7 +95,7 @@
   <header class="post-header">
     <p class="post-date">
       <span class="screen-reader-only">Published </span>
-      <i class="fa-regular fa-calendar-days"></i> <time datetime="2024-01-16" >January 16, 2024</time>&nbsp;&#183;&nbsp;<i class="fa-regular fa-clock"></i> 7 min read
+      <i class="fa-regular fa-calendar-days"></i> <time datetime="2024-01-16" >January 16, 2024</time>&nbsp;&#183;&nbsp;<i class="fa-regular fa-clock"></i> 11 min read
     </p>
     <h1 class="post-title">Singleton Pattern</h1>
     <ul class="post-tags" aria-label="Tags"><li>
@@ -205,8 +205,80 @@
 <h1 id="issues-and-challenges-associated-with-the-singleton-pattern"><a class="to-underline" href="#issues-and-challenges-associated-with-the-singleton-pattern">Issues and challenges associated with the singleton pattern</a></h1>
 <p>Singleton pattern is popular in software engineering for various applications, including logging, driver objects, caching, thread pools, and configuration settings. However, it also introduces several issues and challenges, including:</p>
 <h2 id="global-state"><a class="to-underline" href="#global-state">Global State</a></h2>
-<p>Global state refers to data that is accessible from anywhere in an application, at any time, without being passed through the application flow. In the context of the singleton pattern, the single instance of the class that is globally accessible acts as this global state.</p>
-<p><strong>Issue with global state</strong>: Consider an application that manages configuration settings for different parts of the system. Let’s say these settings are accessed via a singleton instance, say for example <code>ConfigManager</code>, which loads settings from a file and provides global access to these settings. While initially, this approach might seem convenient, it can lead to several problems as follows:</p>
+<p>Global state refers to data that is accessible from anywhere in an application, at any time, without being passed through the application flow. In the context of the singleton pattern, the single instance of the class that is globally accessible acts as this global state. While global state can simplify access to common resources, it often introduces several problems, such as increased complexity, hidden dependencies, and difficulties in debugging and testing.</p>
+<!-- **Issue with global state**: Consider an application that manages configuration settings for different parts of the system. Let's say these settings are accessed via a singleton instance, say for example `ConfigManager`, which loads settings from a file and provides global access to these settings. While initially, this approach might seem convenient, it can lead to several problems as follows: -->
+<p><strong>Global state issues</strong>:</p>
+<ol>
+<li><strong>Hidden dependencies</strong>: When components rely on global state, the dependencies between them are not explicit, making the code harder to understand and maintain.</li>
+<li><strong>Tight coupling</strong>: Components that rely on global state are tightly coupled, meaning changes in the global state can have unpredictable effects on these components.</li>
+<li><strong>Testing challenges</strong>: Global state makes it difficult to write independent unit tests since the state can persist across tests, leading to flaky tests that pass or fail depending on the order in which they run.</li>
+<li><strong>Concurrency issues</strong>: In multi-threaded applications, managing global state can lead to race conditions and data inconsistencies.</li>
+<li><strong>Debugging difficulties</strong>: Tracking down bugs becomes harder when multiple parts of the code can change the global state, making it difficult to pinpoint the source of an issue.</li>
+</ol>
+<p>For example, consider a simple application where we have a global configuration object that stores settings for the application. This configuration object is accessed and modified by different parts of the application.</p>
+<pre class="language-python"><code data-copyable="true" tabindex="0" class="language-python"><span class="token comment"># Global state example in Python</span>
+<span class="token keyword">class</span> <span class="token class-name">Config</span><span class="token punctuation">:</span>
+    _instance <span class="token operator">=</span> <span class="token boolean">None</span>
+
+    <span class="token keyword">def</span> <span class="token function">__new__</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> cls<span class="token punctuation">.</span>_instance<span class="token punctuation">:</span>
+            cls<span class="token punctuation">.</span>_instance <span class="token operator">=</span> <span class="token builtin">super</span><span class="token punctuation">(</span>Config<span class="token punctuation">,</span> cls<span class="token punctuation">)</span><span class="token punctuation">.</span>__new__<span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">.</span>_instance
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>settings <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+config <span class="token operator">=</span> Config<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Different parts of the application modify the global state</span>
+<span class="token keyword">def</span> <span class="token function">initialize_settings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    config<span class="token punctuation">.</span>settings<span class="token punctuation">[</span><span class="token string">"database_url"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"localhost:5432"</span>
+    config<span class="token punctuation">.</span>settings<span class="token punctuation">[</span><span class="token string">"debug"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+
+<span class="token keyword">def</span> <span class="token function">update_settings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    config<span class="token punctuation">.</span>settings<span class="token punctuation">[</span><span class="token string">"debug"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+<span class="token keyword">def</span> <span class="token function">read_settings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>settings<span class="token punctuation">)</span>
+</code></pre>
+<pre class="language-text"><code data-copyable="true" tabindex="0" class="language-text"># Usage
+initialize_settings()
+read_settings()  # Output: {'database_url': 'localhost:5432', 'debug': True}
+update_settings()
+read_settings()  # Output: {'database_url': 'localhost:5432', 'debug': False}
+</code></pre>
+<p>Issues with the above example:</p>
+<ol>
+<li><strong>Hidden dependencies</strong>: Functions <code>initialize_settings</code>, <code>update_settings</code>, and <code>read_settings</code> all rely on the global config object, but this dependency is not explicit in their interfaces.</li>
+<li><strong>Tight coupling</strong>: If the structure of the config object changes, all functions that interact with it need to be updated, making the code harder to maintain.</li>
+<li><strong>Testing challenges</strong>: Writing unit tests for these functions is difficult because they share the same config object. Tests might interfere with each other by modifying the global state.</li>
+<li><strong>Concurrency issues</strong>: If this code were part of a multi-threaded application, accessing and modifying the global config object without proper synchronization could lead to race conditions.</li>
+</ol>
+<p>Improved approch:</p>
+<p>A better design would be to pass the configuration object explicitly to functions that need it, avoiding the reliance on global state.</p>
+<pre class="language-python"><code data-copyable="true" tabindex="0" class="language-python"><span class="token comment"># Improved design without global state</span>
+<span class="token keyword">class</span> <span class="token class-name">Config</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>settings <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">def</span> <span class="token function">initialize_settings</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    config<span class="token punctuation">.</span>settings<span class="token punctuation">[</span><span class="token string">"database_url"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"localhost:5432"</span>
+    config<span class="token punctuation">.</span>settings<span class="token punctuation">[</span><span class="token string">"debug"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+
+<span class="token keyword">def</span> <span class="token function">update_settings</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    config<span class="token punctuation">.</span>settings<span class="token punctuation">[</span><span class="token string">"debug"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+<span class="token keyword">def</span> <span class="token function">read_settings</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>settings<span class="token punctuation">)</span>
+
+<span class="token comment"># Usage</span>
+config <span class="token operator">=</span> Config<span class="token punctuation">(</span><span class="token punctuation">)</span>
+initialize_settings<span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+read_settings<span class="token punctuation">(</span>config<span class="token punctuation">)</span>  <span class="token comment"># Output: {'database_url': 'localhost:5432', 'debug': True}</span>
+update_settings<span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+read_settings<span class="token punctuation">(</span>config<span class="token punctuation">)</span>  <span class="token comment"># Output: {'database_url': 'localhost:5432', 'debug': False}</span>
+</code></pre>
+<p>By explicitly passing the config object, we make dependencies clear, reduce tight coupling, and make the code easier to test and maintain.</p>
 <h2 id="tight-coupling"><a class="to-underline" href="#tight-coupling">Tight coupling</a></h2>
 <p>Let’s take the same example of <code>ConfigManager</code>. All components in the application directly depend on <code>ConfigManager</code> for configuration data, making them tightly coupled to this singleton. This coupling makes it harder to modify or replace <code>ConfigManager</code> without affecting the entire system.</p>
 <h2 id="scalability-concerns"><a class="to-underline" href="#scalability-concerns">Scalability concerns</a></h2>
