@@ -4,7 +4,7 @@ description: With async capabilities, developers can write non-blocking code tha
 keywords: [asynchronous, asynchronous-programming]
 categories: [asynchronous, asynchronous-programming]
 coverImage: ./images/cover-image.jpg
-imageCredits: AI-generated image from <b>freepik</b>.
+imageCredits: AI-generated image from freepik.
 draft: true
 isFeatured: true
 ---
