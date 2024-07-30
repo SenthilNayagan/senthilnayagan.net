@@ -8,11 +8,29 @@ figure {
 
   img {
     margin-inline: auto;
+    max-width: 100%;
     // border-radius: var(--size-spacing--2);
   }
 }
 
 figcaption {
-  text-align: center;
+  &.center-text {
+    text-align: center;
+    word-wrap: break-word; /* Ensure text wrapping */
+    text-wrap: initial; /* Override any global text-wrap settings */
+  }
+
+  &.left-text {
+    text-align: left;
+    word-wrap: break-word; /* Ensure text wrapping */
+    text-wrap: initial; /* Override any global text-wrap settings */
+  }
+
   @include mixins.font($size: "xs");
+  max-width: 100%; /* Ensure the figcaption does not exceed the container width */
+}
+
+.image-description, .image-credits {
+  word-wrap: break-word; /* Ensure text wrapping */
+  max-width: 100%; /* Ensure the description and credits do not exceed the container width */
 }

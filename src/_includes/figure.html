@@ -1,7 +1,7 @@
 <figure class="{{ className }}">
   {%- include "image.html" src: src, alt: alt, description: description, credits: credits, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, isLinked: isLinked, isLazy: isLazy -%}
   {%- if description or credits -%}
-    <figcaption>
+    <figcaption class="{% if className contains 'cover-image' %}center-text{% else %}left-text{% endif %}">
       {%- if description -%}
         <p class="image-description">{{ description | toHtml }}</p>
       {%- endif -%}
