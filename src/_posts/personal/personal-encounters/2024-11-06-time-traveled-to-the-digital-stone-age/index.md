@@ -74,7 +74,7 @@ So here I am, counting down days like a prisoner marking walls, dreaming of the 
 
 # My New Life as a Two-Phone Person
 
-Yes, I'm now that person who pulls out two phones at meetings. One for showing off my vintage 3G connection, and another for, you know, actually doing things. It's not a phase, mom!
+Yes, I'm now that person who pulls out two phones at meetings. One for showing off my vintage 3G connection, and another for, you know, actually doing things. My pants pockets, once in a perfect phone-wallet balance, are now hosting unwanted roommates. The wallet and my second phone are still not on speaking terms.
 
 ## Daily Adventures Include:
 - Playing "Find the Signal" (a fun game where everyone loses)
