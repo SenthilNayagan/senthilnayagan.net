@@ -4,12 +4,24 @@
   <subtitle>A blog covers personal thoughts, design and coding principles, AI, and a variety of topics.</subtitle>
   <link href="https://www.senthilnayagan.net/feed.xml" rel="self"/>
   <link href="https://www.senthilnayagan.net/" rel="alternate" type="text/html"/>
-  <updated>2024-07-21T00:00:00.000Z</updated>
+  <updated>2024-11-06T00:00:00.000Z</updated>
   <id>https://www.senthilnayagan.net/</id>
   <author>
     <name>Senthil Nayagan</name>
     <email>hello@senthilnayagan.net</email>
   </author>
+  <entry>
+    <id>https://www.senthilnayagan.net/blog/personal/time-traveled-to-the-digital-stone-age/</id>
+    <title>Help! I Time-Traveled to the Digital Stone Age - My 90-Day Adventure with 3G</title>
+    <link href="https://www.senthilnayagan.net/blog/personal/time-traveled-to-the-digital-stone-age/"/>
+    <published>2024-11-06T00:00:00.000Z</published>
+    <updated>2024-11-06T00:00:00.000Z</updated>
+    <category term="bsnl" />
+    <category term="mobile-network" />
+    <category term="network-migration" />
+    <category term="personal-encounters" />
+    <content type="html">My journey of switching from VI to BSNL mobile service turned into an unexpected digital nightmare, complete with failed UPI payments, disappearing signals, and a mandatory 90-day stay in the 3G era.</content>
+  </entry>
   <entry>
     <id>https://www.senthilnayagan.net/blog/tech/essential-math-introduction-to-estimation-theory/</id>
     <title>Essential Math for AI and ML: Introduction to Estimation Theory</title>
