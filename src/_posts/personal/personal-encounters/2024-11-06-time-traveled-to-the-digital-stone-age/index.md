@@ -26,7 +26,7 @@ Ever fallen for those inspirational social media posts that make you want to cha
 
 # The "Quick" Switch (Or How I Impulsively Complicated My Life)
 
-Picture this: I was casually walking past a BSNL office with a friend, probably discussing lunch plans. Suddenly, my inner patriot awakened, and before my brain could send emergency signals to stop, I found myself standing in line to port my number. The process was simple - 5 to 10 minutes for a new SIM card. The staff mentioned something about "3G service with a future 4G upgrade", and I nodded like someone who totally knew what they were getting into. Spoiler alert: I didn't.
+Picture this: I was driving past a BSNL office with my friend at the wheel, probably discussing lunch plans. Suddenly, my inner patriot awakened, and before my brain could send emergency signals to stop, I found myself standing in line to port my number. The process was simple - 5 to 10 minutes for a new SIM card. The staff mentioned something about "3G service with a future 4G upgrade", and I nodded like someone who totally knew what they were getting into. Spoiler alert: I didn't.
 
 # Warning Signs I Ignored (Because Who Needs Common Sense?)
 
