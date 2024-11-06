@@ -51,8 +51,9 @@ Picture this: I was at the salon, looking fresh, feeling good, ready to smoothly
 - Phone: "Loading... loading... still loading..."
 - Me: awkward smile "Just a minute..."
 - Phone: "Connection timeout"
-- Me: more awkward smiling "Would you believe I have a 15-year-old number?"
-- Wife (on phone): "I told you so!" (She really loves saying that now)
+- Me: more awkward smiling to the salon staff
+- Me: calls wife for rescue "Hey, could you please make the payment?"
+- Wife (instantly): "I told you so!" (She really loves saying that now)
 
 ## The Hotel California Situation: You Can Check Out, But You Can Never Leave
 
