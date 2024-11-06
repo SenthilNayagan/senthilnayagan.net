@@ -1,5 +1,5 @@
 ---
-title: Help! I Time-Traveled to the Digital Stone Age - My 90-Day Adventure with 3G
+title: I Time-Traveled to the Digital Stone Age - My 90-Day Adventure with 3G
 description: My journey of switching from VI to BSNL mobile service turned into an unexpected digital nightmare, complete with failed UPI payments, disappearing signals, and a mandatory 90-day stay in the 3G era.
 keywords: [bsnl, mobile-network, network-migration, personal-encounters, digital-india, network-porting, 3g-network]
 categories: [bsnl, mobile-network, network-migration, personal-encounters]
