@@ -11,6 +11,8 @@ type: personal
 
 Generally, when someone writes a bad review about something they’ve encountered, they often start with a disclaimer like *“this is my personal opinion”* or *“based on my own experience.”* However, in my case, I feel compelled to skip that preface. The frustration and disappointment I experienced with Crocs are not isolated incidents; many others have endured similar issues. Therefore, I better won’t start with the usual disclaimer because this isn’t just my personal opinion—it’s a shared frustration among many.
 
+{% include "toc.md" %}
+
 # The initial excitement
 
 For the first time, I decided to order a pair of Crocs slides from <a href="https://www.crocs.in/" target="_blank">Crocs India</a>. One of the main reasons I chose to buy online instead of in stores was the 20% discount offered to new customers who sign up for the first time. Since it was my first purchase of Crocs, this discount made the online option particularly appealing.
