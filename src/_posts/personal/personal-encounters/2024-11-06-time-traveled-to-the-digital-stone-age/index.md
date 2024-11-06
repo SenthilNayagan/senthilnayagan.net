@@ -39,7 +39,7 @@ But did I listen? Nope! I was too busy imagining myself as a digital revolutiona
 
 ## The "E" for "Extremely Slow" Era Begins
 
-Remember the good old days when we had to wait five minutes for a single webpage to load? No? Well, I got a refresher course! Stepping outside my WiFi zone was like entering a time machine. Suddenly, my smartphone transformed into a not-so-smart phone, proudly displaying the 'E' symbol (E for "Error in Judgment" in my case).
+Remember the good old days when we had to wait few minutes for a single webpage to load? No? Well, I got a refresher course! Stepping outside my WiFi zone was like entering a time machine. Suddenly, my smartphone transformed into a not-so-smart phone, proudly displaying the 'E' symbol (E for "Error in Judgment" in my case).
 
 Here's the weird part: the network seems to be playing a bizarre game of hide and seek. One moment, you're standing in a spot with a perfect LTE signal, feeling like you've finally made it to the modern era. Then, take three steps to the left, and boom! You're back to 'E'. Take two steps right? Back to LTE! It's like playing a twisted version of digital hopscotch where every square has a different decade of mobile technology. I've actually become quite good at the "LTE dance" - that peculiar shuffle you do trying to find that sweet spot where your signal bars align just right.
 
