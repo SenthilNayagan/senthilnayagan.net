@@ -91,7 +91,7 @@ Yes, I'm now that person who pulls out two phones at meetings. One for showing o
 
 # The Countdown
 
-Two months left in my digital prison. I'm not counting days... okay, I am: exactly 60 days, 14 hours, and 23 minutes left (but who's counting?). 
+Two months left in my digital prison. I'm not counting days... okay, I am: exactly 60 days, 14 hours, and 23 minutes to go (but who's counting?). 
 
 In conclusion, sometimes supporting the government means carrying two phones and having a really good story to tell at parties. At least I'm building character, right? RIGHT?
 
