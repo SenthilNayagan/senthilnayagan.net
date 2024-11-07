@@ -72,6 +72,8 @@ That's right, folks! It turns out switching from one provider to other was like 
 
 So here I am, counting down days like a prisoner marking walls, dreaming of the day I can reunite with my old network - one I now miss like a long-lost friend. Oh, the irony of appreciating what you had only after it's gone!
 
+{% include "postImage.html" src: "./images/inside-prison.jpg", alt: "Generated Adobe Firefly", description: "<b>Figure 1: </b>Caught inside a prison.", credits: "Generated Adobe Firefly." %}
+
 # My New Life as a Two-Phone Person
 
 Yes, I'm now that person who pulls out two phones at meetings. One for showing off my vintage 3G connection, and another for, you know, actually doing things. My pants pockets, once in a perfect phone-wallet balance, are now hosting unwanted roommates. The wallet and my second phone are still not on speaking terms.
