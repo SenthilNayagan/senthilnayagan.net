@@ -30,7 +30,7 @@
     <updated>2024-07-21T00:00:00.000Z</updated>
     <category term="estimation-theory" />
     <category term="math-for-ai-ml" />
-    <category term="essential-math" />
+    <category term="essential-math-for-ai-ml" />
     <content type="html">Estimation theory is like the detective work of data science. It equips us with methods to infer unknown parameters from observed data. Imagine estimating the average height in a city or the likelihood of a coin flip. Key techniques like Maximum Likelihood and Bayesian Estimation ensure our guesses are accurate and reliable. Used in fields from economics to engineering, estimation theory transforms raw data into meaningful insights. It’s the art and science of turning observations into actionable knowledge, guiding decisions in everyday life and complex industries alike. Dive into this fascinating world and become a data detective!</content>
   </entry>
   <entry>
@@ -40,7 +40,7 @@
     <published>2024-07-10T00:00:00.000Z</published>
     <updated>2024-12-21T00:00:00.000Z</updated>
     <category term="math-for-ai-ml" />
-    <category term="essential-math" />
+    <category term="essential-math-for-ai-ml" />
     <content type="html">The journey starts with mastering some essential mathematical concepts! Linear algebra is our toolkit for handling and manipulating data in multiple dimensions. Calculus becomes our guide to understanding how models learn and optimize performance. Probability and statistics are our crystal balls, helping us predict outcomes and discover patterns in the data. Finally, discrete mathematics shapes our ability to design and analyze algorithms. These mathematical foundations enable us to construct, comprehend, and improve advanced AI and ML models.</content>
   </entry>
   <entry>
