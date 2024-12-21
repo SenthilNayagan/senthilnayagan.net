@@ -112,16 +112,16 @@ The Great Escape went something like this:
 - Day 90: Typed "PORT" and sent to 1900 with trembling fingers, half expecting the message to get lost in the 'E' zone.
 - Few seconds later: My phone buzzed! THE UPC ARRIVED! I stared at those 8 digits like they were the winning lottery numbers.
 - Next day: Walked into my new service provider's store, flashing my UPC like I was holding the golden ticket to <a href="https://en.wikipedia.org/wiki/Willy_Wonka" target="_blank">Willy Wonka's Chocolate Factory</a>. The staff probably wondered why I was grinning like a kid who just got unlimited ice cream.
-- 24 hours later: IT HAPPENED! The network bars changed, and suddenly my phone remembered it was a smartphone. It was like watching a caterpillar transform into a butterfly.
+- 3 days later: IT HAPPENED! The network bars changed, and suddenly my phone remembered it was a smartphone. It was like watching a caterpillar transform into a butterfly.
 
 You know what's weird? I actually miss some things about BSNL:
 
 - The daily cardio from running around finding signals.
 - The meditation practice while waiting for websites to load.
-- The excitement of successfully sending a message.
-- The vintage "E" symbol (okay, no, I definitely don't miss that).
+- The excitement of successfully sending a WhatsApp message.
+- The vintage "E" symbol.
 
-To my dear BSNL connection: Goodbye, old friend. You taught me patience (lots of it), humility (even more of it), and the true meaning of "digital detox" (though I never asked for one). You were like that strict teacher everyone hates but learns life lessons from - except in this case, the main lesson was "don't blindly trust social media posts."
+To my dear BSNL connection: Goodbye, old friend. You taught me **patience** (lots of it), **humility** (even more of it), and the true meaning of **digital detox** (though I never asked for one). You were like that strict teacher everyone hates but learns life lessons from - except in this case, the main lesson was "don't blindly trust social media posts."
 
 To everyone still stuck in the 90-day waiting period: Stay strong, warriors! Freedom tastes sweet (and loads really, really fast).
 
