@@ -11,7 +11,7 @@ Hello! I’m **Senthil Nayagan**, hailing from **India**, a land of vibrant soft
 
 Recently, I’ve embarked on an exciting journey into the field of AI. As I dive into the core concepts of AI, I am also delving into the essential mathematics that forms its foundation, making sure to build a strong base in the necessary math for AI and ML. When I’m not immersed in data or coding, you can find me sharing insights and explorations on my tech blog, where I connect with fellow enthusiasts and curious minds.
 
-### Open-source software (OSS) and the community
+### Open-Source Software (OSs) and the Community
 
 I enjoy working with open-source software (OSS). They are open and free to all. They encourage the free exchange of thoughts. I appreciate the freedom they provide. We (developers) are able to engage in ways that wouldn't be possible otherwise. In the end, they deal with our common problems.
 
@@ -21,7 +21,7 @@ Furthermore, working with OSS keeps me on the cutting edge of technology. The ra
 
 To give back, I actively participate in discussions, contribute code, and help with documentation.
 
-### My tech-blog journey
+### My Tech-Blog Journey
 
 When we think about contributing to open-source software (OSS), coding often comes to mind. While writing code is a dynamic way to contribute, it’s not the only option. Writing tech blogs is a powerful tool to share knowledge and support the developer community.
 
@@ -35,7 +35,7 @@ In my writing, you’ll notice that I prefer to use “we,” “us,” and “o
 
 If you have any suggestions or spot any mistakes, please feel free to let me know!
 
-### Hobbies and interests
+### Hobbies and Interests
 
 I am a person who has been fascinated by various interests and hobbies since childhood. Right from my school days, I used to collect stamps, coins, paper money, and more. As I grew up, my interests and hobbies didn’t fade away; instead, more and more got added to the list, and some of these hobbies have even taken on a professional dimension.
 

@@ -12,7 +12,7 @@ draft: true
 
 {% include "toc.md" %}
 
-# What is estimation theory?
+# What is Estimation Theory?
 
 Estimation theory is a branch of mathematics and statistics that deals with the process of estimating the value of a parameter<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a> or a function from a set of noisy or uncertain data.  In simple terms, it's about making educated guesses<a href="#ref-2" class="reference-link" data-ref="ref-2"><sup id="back-to-2">2</sup></a> about things we can't directly measure or know for sure. In estimation theory, the goal is to find the best possible estimate of a parameter or a function based on a set of observations or measurements aka observed data. Imagine we're planning a road trip and we want to estimate how long it will take to get to our destination. We can use our knowledge of the distance, traffic patterns, and our own driving speed and skill to make an educated guess about the time it will take. This is an example of estimation theory in action!
 
@@ -34,14 +34,14 @@ The estimation theory provide us with:
 3. **Making confidence** statements about the true values.
 {% endaside %} -->
 
-## Approaches in estimation
+## Approaches in Estimation
 
-1. **Minimizing the difference**
+1. **Minimizing the Difference**
    - One common approach is to minimize the difference between the observed data and the predicted values, such as using least squares to find the line that best fits the data points.
-2. **Maximizing the likelihood**
+2. **Maximizing the Likelihood**
    - An alternative method is to maximize the likelihood that the observed data occurred given the estimated parameter or function. This technique is known as **maximum likelihood estimation** (**MLE**).
 
-## Key concepts in estimation theory
+## Key Concepts in Estimation Theory
 
 There are several key concepts in estimation theory, including:
 
@@ -51,37 +51,37 @@ There are several key concepts in estimation theory, including:
 - **Consistency**: Consistency refers to the property of an estimator that its expected value converges to the true value of the parameter or function as the sample size increases.
 - **Efficiency**: Efficiency refers to the property of an estimator that it has the smallest possible variance among all unbiased estimators.
 
-## Different types of estimation
+## Different Types of Estimation
 
 There are several types of estimation, including:
 
-- **Point estimation**: Point estimation involves estimating a single value for the parameter or function.
-- **Interval estimatio**n: Interval estimation involves estimating a range of values for the parameter or function.
-- **Bayesian estimation**: Bayesian estimation involves using Bayes' theorem to update the probability distribution of the parameter or function based on the observed data.
-- **Maximum likelihood estimation**: Maximum likelihood estimation involves finding the value of the parameter or function that maximizes the likelihood of the observed data.
+- **Point Estimation**: Point estimation involves estimating a single value for the parameter or function.
+- **Interval Estimatio**n: Interval estimation involves estimating a range of values for the parameter or function.
+- **Bayesian Estimation**: Bayesian estimation involves using Bayes' theorem to update the probability distribution of the parameter or function based on the observed data.
+- **Maximum Likelihood Estimation**: Maximum likelihood estimation involves finding the value of the parameter or function that maximizes the likelihood of the observed data.
 
-## Common estimation techniques
+## Common Estimation Techniques
 
 Some common estimation techniques include:
 
-- **Least squares estimation**: Least squares estimation involves minimizing the sum of the squared differences between the observed data and the predicted values.
-- **Maximum likelihood estimation**: Maximum likelihood estimation involves finding the value of the parameter or function that maximizes the likelihood of the observed data.
-- **Bayesian estimation**: Bayesian estimation involves using Bayes' theorem to update the probability distribution of the parameter or function based on the observed data.
-- **Kalman filter estimation**: Kalman filter estimation involves using a recursive algorithm to estimate the state of a system based on noisy or uncertain data.
+- **Least Squares Estimation**: Least squares estimation involves minimizing the sum of the squared differences between the observed data and the predicted values.
+- **Maximum Likelihood Estimation**: Maximum likelihood estimation involves finding the value of the parameter or function that maximizes the likelihood of the observed data.
+- **Bayesian Estimation**: Bayesian estimation involves using Bayes' theorem to update the probability distribution of the parameter or function based on the observed data.
+- **Kalman Filter Estimation**: Kalman filter estimation involves using a recursive algorithm to estimate the state of a system based on noisy or uncertain data.
 
 Having said that, estimation theory has many applications in various fields and is an essential tool for making informed decisions in many areas of science and engineering.
 
-# Various mathematical notations uses in estimation theory
+# Various Mathematical Notations Used in Estimation Theory
 
 In estimation theory, various mathematical notations are used to represent data, parameters, estimators, and distributions. Here are some common notations along with their explanations:
 
-## Data and samples
+## Data and Samples
 
-1. **x (Observed data, pronounced “x”)**:
+1. **x (Observed Data, pronounced “x”)**:
    - A vector of observed/realized values from a sample.
    - Example: \\( x = (x_1, x_2, \ldots, x_n) \\)
 
-2. **X (Random variables, pronounced “X”)**:
+2. **X (Random Variables, pronounced “X”)**:
    - A vector of random variables.
    - Example: \\( X = (X_1, X_2, \ldots, X_n) \\)
 
@@ -94,7 +94,7 @@ In estimation theory, various mathematical notations are used to represent data,
 2. **\\( \mu \\) (Mean, pronounced “mu”)**:
    - The mean of a distribution.
 
-3. **\\( \sigma \\) (Standard deviation, pronounced “sigma”)**:
+3. **\\( \sigma \\) (Standard Deviation, pronounced “sigma”)**:
    - The standard deviation of a distribution.
 
 4. **\\( \sigma^2 \\) (Variance, pronounced “sigma squared”)**:
@@ -120,28 +120,28 @@ In estimation theory, various mathematical notations are used to represent data,
 1. **\\( P(X) \\) (Probability, pronounced “P of X”)**:
    - The probability of the random variable \\( X \\).
 
-2. **\\( f(x|\theta) \\) (Probability density/mass function, pronounced “f of x given theta”)**:
+2. **\\( f(x|\theta) \\) (Probability Density/Mass function, pronounced “f of x given theta”)**:
    - The probability density function (PDF) or probability mass function (PMF) of \\( x \\) given parameter \\( \theta \\).
    - Example: \\( f(x|\theta) \\) for a normal distribution might be \\( f(x|\mu, \sigma^2) \\).
 
-3. **\\( L(\theta|x) \\) (Likelihood function, pronounced “L of theta given x”)**:
+3. **\\( L(\theta|x) \\) (Likelihood Function, pronounced “L of theta given x”)**:
    - The likelihood function of the parameter \\( \theta \\) given the observed data \\( x \\).
    - Example: \\( L(\theta|x) = f(x|\theta) \\) for the product of individual probabilities or densities.
 
-4. **\\( \log L(\theta|x) \\) (Log-likelihood function, pronounced “log L of theta given x”)**:
+4. **\\( \log L(\theta|x) \\) (Log-likelihood Function, pronounced “log L of theta given x”)**:
    - The log-likelihood function, often used for simplification in calculations.
 
 ## Statistical inference
 
-1. **\\( \mathcal{F} \\) (Family of distributions, pronounced “script F”)**:
+1. **\\( \mathcal{F} \\) (Family of Distributions, pronounced “script F”)**:
    - A family of distributions.
    - Example: \\( \mathcal{F} = \{ f(x|\theta) | \theta \in \Theta \} \\)
 
-2. **\\( \Theta \\) (Parameter space, pronounced “Theta”)**:
+2. **\\( \Theta \\) (Parameter Space, pronounced “Theta”)**:
    - The parameter space, representing all possible values of \\( \theta \\).
    - Example: \\( \Theta = \mathbb{R} \\) for real-valued parameters.
 
-3. **\\( E[X] \\) (Expected value, pronounced “E of X”)**:
+3. **\\( E[X] \\) (Expected Value, pronounced “E of X”)**:
    - The expected value of the random variable \\( X \\).
 
 4. **\\( \text{Var}(X) \\) (Variance, pronounced “Variance of X”)**:
@@ -149,9 +149,9 @@ In estimation theory, various mathematical notations are used to represent data,
 
 ---
 
-# Frequently asked questions (FAQs)
+# Frequently Asked questions (FAQs)
 
-## What is central tendency in math?
+## What is Central Tendency in Math?
 
 Central tendency is a math concept that helps us understand how a set of numbers is clustered around a middle value. Think of it like a big group of people standing in a line, and we want to know where most of them are standing.
 
@@ -178,7 +178,7 @@ Central tendency is important in math because it helps us:
 
 So, in simple terms, central tendency is like finding the "average" or "middle" value of a group of numbers. It helps us understand how the numbers are clustered and what the typical value is.
 
-## What are the measures of central tendency, and how do they differ from each other?
+## What Are the Measures of Central Tendency? How Do They Differ?
 
 The commonly used measures of central tendency are the mean, median, and mode. 
 
@@ -188,7 +188,7 @@ The commonly used measures of central tendency are the mean, median, and mode.
 
 **Mode**: The mode is the value that appears most frequently in a dataset. It's not affected by outliers. It's useful for categorical data and to identify the most common value in a dataset. Note that mode is not a good representation of the typical value because it's influenced by the frequency of the values.
 
-## What is mean, median, variance, standard deviation, mode, range, interquartile range (IQR), and skewness?
+## What is Mean, Median, Variance, Standard Deviation, Mode, Range, Interquartile Range (IQR), and Skewness?
 
 These are the most important concepts in statistics.
 
@@ -226,7 +226,7 @@ For example, if we have the values 2, 4, 6, 8, 10, the variance would be:
 
 Variance = ((2 - 6)^2 + (4 - 6)^2 + (6 - 6)^2 + (8 - 6)^2 + (10 - 6)^2) / (5 - 1) = 8 / 4 = 2
 
-### Standard deviation
+### Standard Deviation
 
 The standard deviation is the square root of the variance. It's a measure of how spread out a dataset is, but it's on the same scale as the original values.
 
@@ -274,7 +274,7 @@ So, the range of this data set is 7.
 
 The range provides a simple way to understand the spread of the data by showing the difference between the highest and lowest values.
 
-### Interquartile range (IQR)
+### Interquartile Range (IQR)
 
 Interquartile range is a way to measure how spread out the middle part of a set of numbers is. It helps us understand the range where the middle half of the numbers lie, ignoring the highest and lowest values which might be outliers. It's widely used in statistics and data analysis to understand the spread and variability of a data set.
 
@@ -306,10 +306,10 @@ Let’s say we have these test scores: 70, 55, 90, 65, 60, 75, 80, 95, 85
 So, the IQR is 25, meaning the middle 50% of the test scores lie within a range of 25 points. This helps us understand the spread of the main body of scores, ignoring the extreme highs and lows.
 
 Uses of IQR:
-1.	**Identifying outliers**
-2. **Summarizing data**: Summary of the middle 50% of the data, offering a sense of where the bulk of the values lie. This is particularly useful for skewed distributions where the mean might not provide a clear picture of the central tendency<a href="#what-is-central-tendency-in-math"><sup id="back-to-1">CT</sup></a>.
-3. **Comparing variability**: IQR is used to compare the spread of different data sets. By comparing the IQRs, we can understand which data set has more variability in the middle 50% of its values.
-4. **Robust measure of spread**: IQR is a robust measure of statistical dispersion because it is not affected by extreme values or outliers. This makes it more reliable for understanding the spread of data than the range or the standard deviation in cases where the data contains outliers.
+1.	**Identifying Outliers**
+2. **Summarizing Data**: Summary of the middle 50% of the data, offering a sense of where the bulk of the values lie. This is particularly useful for skewed distributions where the mean might not provide a clear picture of the central tendency<a href="#what-is-central-tendency-in-math"><sup id="back-to-1">CT</sup></a>.
+3. **Comparing Variability**: IQR is used to compare the spread of different data sets. By comparing the IQRs, we can understand which data set has more variability in the middle 50% of its values.
+4. **Robust Measure of Spread**: IQR is a robust measure of statistical dispersion because it is not affected by extreme values or outliers. This makes it more reliable for understanding the spread of data than the range or the standard deviation in cases where the data contains outliers.
 
 In summary, the IQR is a valuable tool in statistics and data analysis for understanding and summarizing the spread of a data set, especially when dealing with outliers and skewed distributions.
 
@@ -319,20 +319,20 @@ Skewness describes how a set of numbers is not evenly distributed around the ave
 
 Types of skewness:
 
-1. **Positive skewness** (Right-Skewed): Most numbers are smaller, but a few are much larger. For example, imagine a neighborhood where most houses cost between USD 100,000 and USD 300,000, but a few mansions cost over USD 1,000,000. Most house prices are on the lower side, but those few very expensive houses make the distribution lean to the right.
-2. **Negative skewness** (Left-Skewed): Most numbers are larger, but a few are much smaller. For example, Think about a class where most students score between 70 and 100 on a test, but a few students score below 40. Most scores are on the higher side, but those few very low scores make the distribution lean to the left.
-3. **Zero skewness** (Symmetrical Distribution): Numbers are evenly spread around the average. For example, if we roll a fair die many times, we would expect each number (1 through 6) to come up about the same number of times. The distribution of outcomes is balanced.
+1. **Positive Skewness** (Right-Skewed): Most numbers are smaller, but a few are much larger. For example, imagine a neighborhood where most houses cost between USD 100,000 and USD 300,000, but a few mansions cost over USD 1,000,000. Most house prices are on the lower side, but those few very expensive houses make the distribution lean to the right.
+2. **Negative Skewness** (Left-Skewed): Most numbers are larger, but a few are much smaller. For example, Think about a class where most students score between 70 and 100 on a test, but a few students score below 40. Most scores are on the higher side, but those few very low scores make the distribution lean to the left.
+3. **Zero Skewness** (Symmetrical Distribution): Numbers are evenly spread around the average. For example, if we roll a fair die many times, we would expect each number (1 through 6) to come up about the same number of times. The distribution of outcomes is balanced.
 
 Why it matters?
-- **Understanding data**: Skewness helps us see if the data is balanced or if there are extreme values that are pulling the average in one direction. For instance, in a business, if sales data is positively skewed, it means there are a few very high sales that are significantly affecting the overall average.
-- **Making decisions**: Knowing about skewness can help in decision-making. For example, if a school notices that test scores are negatively skewed, they might want to provide extra help to the few students with very low scores.
+- **Understanding Data**: Skewness helps us see if the data is balanced or if there are extreme values that are pulling the average in one direction. For instance, in a business, if sales data is positively skewed, it means there are a few very high sales that are significantly affecting the overall average.
+- **Making Decisions**: Knowing about skewness can help in decision-making. For example, if a school notices that test scores are negatively skewed, they might want to provide extra help to the few students with very low scores.
 
 In simple terms, skewness tells us if our data has a lean or tilt towards higher or lower values, or if it is evenly spread out. This can be very helpful in understanding and interpreting the data better.
 
-## How do we interpret the standard deviation in the context of data variability?
+## How do we Interpret the Standard Deviation in the Context of Data Variability?
 The standard deviation (SD) is a measure of the amount of variation of a set of values from the average value (mean). A small SD suggests that the data points are in close proximity to the mean value, with minimal variation or dispersion. This indicates that the values are consistently similar and predictable. A large SD suggests that the data points span a broader range of values, which indicates the values are more dispersed, less consistent, and unpredictable.
 
-## Explain the significance of the interquartile range (IQR) and how it is used to detect outliers?
+## Explain the Significance of the Interquartile Range (IQR) and How it is used to Detect Outliers?
 IQR is a measure of the spread in the middle of a dataset. It's the distance between the first quartile (Q1) and the third quartile (Q3). It minimizes the impact of outliers by providing a comprehensive understanding of the spread and variability of the central portion of the dataset.
 
 Here are steps to detect outliers using the IQR:
@@ -343,7 +343,7 @@ Here are steps to detect outliers using the IQR:
 4. Determine the lower and upper bounds for outliers. To find the lower bound, subtract 1.5 times the IQR from Q1. To determine the upper bound, add 1.5 times the IQR to Q3.
 5. Identify outliers. Any data point that is below the lower bound or above the upper bound is considered an outlier.
 
-## What is a probability distribution?
+## What is a Probability Distribution?
 
 A probability distribution is a mathematical function that describes the likelihood of different outcomes in a random experiment, such as tossing a coin or rolling a die. It describes the likelihood of various outcomes, which can include the possibility of the same result occurring multiple times. These likelihoods are often uncertain or probabilistic.
 
@@ -358,7 +358,7 @@ It's important to note that a probability distribution means we can predict the 
 
 So, to summarize: The probability distribution provides a way to measure the uncertainty or randomness of an event or phenomenon, and we can use this information to make informed decisions or predictions.
 
-## What is independent and identically distributed (i.i.d. or iid or IID)?
+## What is Independent and Identically Distributed (i.i.d. or iid or IID)?
 
 In probability theory and statistics, a collection of random variables is said to be independent and identically distributed (IID) if:
 
@@ -369,7 +369,7 @@ In probability theory and statistics, a collection of random variables is said t
    - This means that the outcome of any one random variable does not affect the outcome of any other random variable in the collection. There is no dependency between the random variables.
    - **Example**: Continuing with the coin flip example, the outcome of the first flip $ (X_1) $ does not influence the outcome of the second flip $ (X_2) $, and so on. Each flip is an independent event.
 
-## What is parametric estimation?
+## What is Parametric Estimation?
 
 Parametric estimation is a statistical technique used to estimate the value of a parameter<a href="#ref-1" class="reference-link" data-ref="ref-1"><sup id="back-to-1">1</sup></a> (a number or a value) that describes a population<a href="#ref-3" class="reference-link" data-ref="ref-3"><sup id="back-to-2">3</sup></a> or a process. In simple terms, it's like trying to figure out the exact value of a mysterious number that controls a certain phenomenon.
 
@@ -384,7 +384,7 @@ Here are some key points to keep in mind:
 - The goal is to use the data to make inferences about the population or process.
 - Parametric estimation assumes that the data follows a specific distribution (such as a normal distribution).
 
-## How do maximum likelihood estimators (MLE) work?
+## How Do Maximum Likelihood Estimators (MLE) Work?
 MLE are a type of statistical estimator that is used to estimate the parameters of a probability distribution. Parameters here are the numerical values that define the specific characteristics of a probability distribution. MLE works by finding the parameter values that make the observed data most likely to occur.
 
 Here's how MLE works:
@@ -396,7 +396,7 @@ Here's how MLE works:
 
 Overall, MLE is a powerful tool for estimating the parameters of a probability distribution, but it requires careful consideration of the assumptions and limitations.
 
-## What is empirical data?
+## What is Empirical Data?
 
 Empirical data in mathematics refers to observations or measurements that are collected from the real world or from experiments. In other words, empirical data is the concrete evidence that helps us determine if a mathematical theory is correct or not. It's the "real-world" proof that backs up our mathematical ideas.
 

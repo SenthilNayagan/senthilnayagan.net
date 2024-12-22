@@ -30,7 +30,7 @@ Here’s a structured direction to help you navigate through the essential mathe
 
 As part of basic mathematics, we will cover number theory (whole numbers, integers, rational numbers, and irrational numbers).
 
-**Next: 2. [Linear algebra](#2-linear-algebra)** (Most important)
+**Next: 2. [Linear Algebra](#2-linear-algebra)** (Most important)
 
 Linear algebra is the first mathematical toolkit we should arm ourselves with. It forms the foundation of how data is structured and manipulated in AI and ML. Here’s a brief look at how linear algebra contributes to AI and ML:
 
@@ -43,7 +43,7 @@ Linear algebra is the first mathematical toolkit we should arm ourselves with. I
 - **Optimization Algorithms**
   - **Gradient Descent**: This algorithm, fundamental to training many machine learning models, involves operations on vectors to update parameters iteratively.
   - **Convex Optimization**: Many optimization problems in machine learning, such as support vector machines, rely on convex functions, where linear algebra helps in finding optimal solutions.
-- **Neural networks**
+- **Neural Networks**
   - **Weights and Activations**: Neural networks are essentially composed of layers of linear transformations (weights as matrices) followed by non-linear activations. Backpropagation, the algorithm for training neural networks, involves matrix and vector operations.
   - **Convolutional Operations**: Convolutional neural networks (CNNs) use convolutions, which are linear operations applied to data structured as matrices.
 
@@ -125,11 +125,48 @@ Here are different number systems:
 
 # 2. Linear Algebra
 
-Linear algebra is a branch of mathematics that has revolutionized the way we understand and interact with the world around us. deals with **vectors**, **vector spaces**, **linear transformations**, and **systems of linear equations**. At its core, linear algebra is about understanding and working with lines and planes in *higher-dimensional spaces*<a href="#ref-8" class="reference-link" data-ref="ref-8"><sup id="back-to-8">8</sup></a>. At its core, linear algebra is about **vectors**. 
+Linear algebra is a branch of mathematics that has revolutionized the way we understand and interact with the world around us. It deals with:
+
+- **Vectors** (list of ordered numbers)
+- **Vector Spaces** (collections of vectors)
+- **linear Transformations** (functions that map vectors to other vectors in a specific way)
+- **Systems of Linear Equations** (sets of equations solved simultaneously)
+
+{% aside %}
+**Linear Equations**</br>A linear equation is just like a recipe that follows two simple rules:
+
+1. Variables (like x, y, z) can't be multiplied together (no xy, xyz, 2xy - multiplying x and y, even with a **coefficient**<a href="#ref-9" class="reference-link" data-ref="ref-9"><sup id="back-to-9">9</sup></a>. 2 is a coefficient)
+2. Variables can't be squared or cubed (no x², y³)
+
+Think of it like this:
+
+- You can only add or subtract variables
+- You can multiply variables by regular numbers (like 2x or 5y)
+
+Examples of what IS allowed:
+
+- 2x + 3y = 10 (Like saying: 2 apples plus 3 bananas cost $10)
+- 4x - y = 5 (Like saying: 4 times something minus another thing equals 5)
+
+Examples of what's NOT allowed:
+
+- x × y = 6 (Can't multiply variables together)
+- x² + y = 4 (Can't square variables)
+
+**Definition**: A linear equation is an equation that describes a straight line. It's written in the form `a₁x₁ + a₂x₂ + ... + aₙxₙ = b`.
+
+where:
+- `x₁, x₂, ..., xₙ` are the variables (unknowns).
+- `a₁, a₂, ..., aₙ` are constants (coefficients) which are real numbers.
+- `b` is a constant (often called the intercept).
+
+{% endaside %}
+
+At its core, linear algebra is about understanding and working with lines and planes in *higher-dimensional spaces*<a href="#ref-8" class="reference-link" data-ref="ref-8"><sup id="back-to-8">8</sup></a>. At its core, linear algebra is about **vectors**. 
 
 ## What is a Vector?
 
-A vector is a way to represent data as a *list of numbers*. It's typically represented as an ordered list of numbers. These numbers represent **features** or **characteristics** of something. Think of it like a container holding several values, arranged in a specific order. The order of the numbers matters because each position in the vector corresponds to a specific feature or attribute.  Changing the order changes the meaning.  Here's why and how:
+A vector is a way to represent data as a *list of numbers*. It's typically represented as an ordered list of numbers. These numbers represent **features** or **characteristics** of something. Think of it like a container holding several values, arranged in a specific order. The order of the numbers matters because each position in the vector corresponds to a specific feature or attribute. Changing the order changes the meaning.  Here's why and how:
 
 **Customer Data**
 
@@ -156,14 +193,14 @@ Real-World Examples:
 - Wind:
   - Magnitude: 30 mph (how strong the wind is)
   - Direction: Northeast (which way it's blowing)
-  - Vector representation: [30 mph, Northeast]
+  - Vector Representation: [30 mph, Northeast]
 
 - Driving a car:
   - Magnitude: 40 mph (speed)
   - Direction: North
-  - Vector representation: [40 mph, North]
+  - Vector Representation: [40 mph, North]
 
-{% aside %} **Vectors are not just two-dimensional arrays/lists**: </br>A common misconception is thinking that vectors must be stored as two-dimensional arrays (one dimension for magnitude and one for direction) since vectors have two properties (magnitude and direction). This is incorrect! A vector is represented as a single list/array of numbers, where each number represents a component. The magnitude and direction are properties that we can derive from these components - they don't need to be stored separately - all that information is contained in the single list of numbers. {% endaside %}
+{% aside %} **Vectors are not just Two-Dimensional Arrays/Lists** </br>A common misconception is thinking that vectors must be stored as two-dimensional arrays (one dimension for magnitude and one for direction) since vectors have two properties (magnitude and direction). This is incorrect! A vector is represented as a single list/array of numbers, where each number represents a component. The magnitude and direction are properties that we can derive from these components - they don't need to be stored separately - all that information is contained in the single list of numbers. {% endaside %}
 
 Having said that, a vector is a mathematical measurement that has both magnitude and direction, often used to represent quantities<a href="#ref-5" class="reference-link" data-ref="ref-5"><sup id="back-to-5">5</sup></a>. In linear algebra, vectors are often represented as *arrows*, with the length of the arrow representing the magnitude of the vector and the direction of the arrow representing the direction of the vector.
 
@@ -220,7 +257,7 @@ Imagine walking 3 miles east (vector A) and then 2 miles north (vector B).  Thes
 
 In short:  If vectors are collinear, adding them just changes the length (magnitude) along the same line. If they are not collinear, adding them results in a vector pointing in a completely new direction.
 
-### Understanding Vectors vs Matrices
+### Understanding Vectors vs. Matrices
 
 Now that we've got a solid understanding of what vectors are, let's explore how they differ from matrices. Understanding this difference is crucial for working with data and solving real-world problems. Let's break it down using everyday examples that will make these concepts crystal clear.
 
@@ -370,7 +407,7 @@ This is a matrix because it organizes multiple vectors (daily stats) into a stru
 </div>
 
 <p align="center">
-    <sup><b>Table 2: </b>Comparison between Vectors and Matrices.</sup>
+    <sup><b>Table 2: </b>Comparison Between Vectors and Matrices.</sup>
 </p>
 
 <!-- {% aside %}
@@ -496,6 +533,9 @@ Linear algebra deals with the study of **linear equations**, **vector spaces**, 
       </li>
       </li>     
       <li id="ref-8">8. <strong>Higher-dimensional spaces</strong> refers to mathematical spaces that have more than three dimensions. While we are familiar with one-dimensional (lines), two-dimensional (planes), and three-dimensional (volumes) spaces, higher dimensions extend beyond these familiar concepts. <a href="#back-to-8" class="back-to-note">↩</a>
-      </li>                     
+      </li>        
+      </li>     
+      <li id="ref-9">9. A <strong>coefficient</strong> is the number that multiplies a variable in an equation. Examples: In 2x: 2 is the coefficient of x; in -5y: -5 is the coefficient of y; in x: 1 is the coefficient (when no number is shown); in 0x: 0 is the coefficient. <a href="#back-to-9" class="back-to-note">↩</a>
+      </li>                    
    </ol>
 </div>
