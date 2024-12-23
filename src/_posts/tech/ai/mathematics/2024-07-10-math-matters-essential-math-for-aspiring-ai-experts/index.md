@@ -113,19 +113,154 @@ Number theory is a branch of mathematics that deals with the properties and rela
 
 Here are different number systems:
 
-- **Natural Numbers**: These are the numbers 1, 2, 3, 4, 5... and so on. Only *positive numbers* are included here.
-- **Whole Numbers**: Whole numbers are non-negative integers, including 0. Whole numbers include all natural numbers, plus zero. The set of whole numbers is: 0, 1, 2, 3, 4, 5,...
-- **Integers**: Integers include positive and negative natural numbers as well as 0. 
-- **Rational Numbers:** A rational number is a number that can be expressed as the ratio of two integers, i.e., a fraction. It is a number that can be written in the form: `a/b`, where `a` and `b` are integers, and `b` is non-zero.
-- **Irrational Numbers:** Irrational numbers cannot be expressed as a fraction. This means they cannot be expressed as a ratio of two integers `a/b`, where `a` and `b` are integers and `b` is not zero. It's non-repeating and non-terminating decimals. This means, the decimal form of an irrational number goes on forever without repeating. For example, the number π (pi) is approximately 3.14159, but its decimal representation goes on infinitely without repeating-it starts as 3.14159265358979323846… and goes on forever. Common examples of irrational numbers include π (pi), √2 (the square root of 2), and e (Euler’s number<a href="#ref-4" class="reference-link" data-ref="ref-4"><sup id="back-to-4">4</sup></a>).
-- **Real Numbers**: A real number is a value that represents a quantity that can be expressed as a decimal or fraction. Real numbers can be either rational or irrational. They include different types of numbers that we use every day, from counting apples to measuring the length of a table. Examples of real numbers: Natural numbers, whole numbers, integers, fractions (rational numbers), and decimals (including irrational numbers).
-- **Complex and Imaginary Numbers**: In mathematics, complex numbers are numbers that can be expressed in the form: `a + bi`, where `a` is a real number (a scalar), `b` is a real number (a scalar) and `i` is the imaginary unit, which is defined as the square root of -1. Imaginary numbers are a subset of complex numbers, and they are numbers that can be expressed in the form: `bi`. Imaginary numbers are often combined with real numbers to form complex numbers. Imaginary numbers are numbers that, when squared, give a negative result. This is fundamentally different from real numbers, where squaring any real number always gives a positive result. Imaginary numbers are unique because they allow for the square roots of negative numbers. This extension of the number system is crucial for solving many mathematical and real-world problems that cannot be addressed with real numbers alone. By defining `i` and using it to form other imaginary numbers, we can square these numbers and always get a negative result, thus expanding our mathematical toolkit.
+### Natural Numbers
+
+hese are the numbers 1, 2, 3, 4, 5... and so on. Only *positive numbers* are included here.
+
+### Whole Numbers
+
+Whole numbers are non-negative integers, including 0. Whole numbers include all natural numbers, plus zero. The set of whole numbers is: 0, 1, 2, 3, 4, 5,...
+
+### Integers
+
+Integers include positive and negative natural numbers as well as 0.
+
+### Rational Numbers
+
+A rational number is a number that can be expressed as the ratio of two integers, i.e., a fraction. It is a number that can be written in the form: `a/b`, where `a` and `b` are integers, and `b` is non-zero.
+
+### Irrational Numbers
+
+Irrational numbers cannot be expressed as a fraction. This means they cannot be expressed as a ratio of two integers `a/b`, where `a` and `b` are integers and `b` is not zero. It's non-repeating and non-terminating decimals. This means, the decimal form of an irrational number goes on forever without repeating. Think of it like this: if we tried to write out an irrational number's decimal places, we could keep writing forever and never find a pattern or reach the end.
+
+Rational numbers (NOT irrational):
+
+- `0.5` (can be written as `1/2`)
+- `0.333333...` (can be written as `1/3`, has a repeating pattern)
+- `0.75` (can be written as `3/4`)
+
+Irrational numbers:
+
+- `π` (pi) is `3.14159265...` - the digits after the decimal point never end and never fall into a pattern
+- `√2` (`1.41421356...`) - again, the digits keep going forever without repeating
+
+This is why in real-world calculations, we often use approximations of irrational numbers (like using 3.14 for π) since we can't write out their exact value.
+
+{% include "postImage.html" src: "./images/different-number-systems.png", baseFormat: "png", alt: "Different Number Systems", description: "<b>Figure 1</b>: Different Number Systems.", isLinked: false %}
+
+### Complex and Imaginary Numbers 
+
+#### Complex Numbers
+
+In mathematics, complex numbers are numbers that can be expressed in the form: `a + bi`, where `a` is a real number (a scalar), `b` is a real number (a scalar) and `i` is the imaginary part, which is defined as the square root of -1. 
+
+#### Imaginary Numbers
+
+Imaginary numbers are a subset of complex numbers, and they are numbers that can be expressed in the form: `bi`. Imaginary numbers are often combined with real numbers to form complex numbers. Imaginary numbers are numbers that, when squared, give a negative result. This is fundamentally different from real numbers, where squaring any real number always gives a positive result. 
+
+Imaginary numbers are unique because they allow for the square roots of negative numbers. This extension of the number system is crucial for solving many mathematical and real-world problems that cannot be addressed with real numbers alone. By defining `i` and using it to form other imaginary numbers, we can square these numbers and always get a negative result, thus expanding our mathematical toolkit.
 
 ---
 
-# 2. Linear Algebra
+# 2. Algebra
 
-Linear algebra is a branch of mathematics that has revolutionized the way we understand and interact with the world around us. It deals with:
+Before we dive into the world of linear algebra, let's take a step back and understand what algebra actually is. Algebra is a lot like arithmetic<a href="#ref-10" class="reference-link" data-ref="ref-10"><sup id="back-to-10">10</sup></a>. It follows all the rules of arithmetic, and it uses the same four main operations that arithmetic is built on:
+
+- Addition
+- Subtraction
+- Multiplication
+- Division
+
+But algebra introduces a new element— the element of the **unknown**. When we were learning arithmetic, the only thing that was ever unknown was the answer to the problem. For example, we might have the problem `1 + 2 = ?`. The answer isn't known until we go ahead and do the arithmetic.
+
+The crucial aspect of algebra is that, when we are unfamiliar with a number, we substitute it with a symbol, typically any letter from the alphabet. A really popular letter to choose is the letter `x`. So in arithmetic, we would just leave the problem like this: `1 + 2 = "blank"`, and we'd write in the answer when we did the addition. But in algebra, we'd write it like this: `1 + 2 = x`. The `x` is a placeholder that stands for the number that we don't know yet.
+
+What we have here is a very basic algebraic equation. An equation is just a mathematical statement that two things are equal. An equation says: the things on one side of the equal sign have the same value as the things on the other side of the equal sign. In the `1 + 2 = x` case, our equation is telling us that the unknown values on the side (`1 + 2`) are equal to what's on the other side, which happens to be the unknown value that we are calling `x`.
+
+{% include "postImage.html" src: "./images/algebraic-equation.png", baseFormat: "png", alt: "Algebraic Equation", description: "<b>Figure 2</b>: Algebraic Equation.", isLinked: false %}
+
+One of the main goals in algebra is to figure out what the unknown values in equations are. We refer to this process as "solving the equations." In this equation, it's pretty straightforward to see that the unknown value is just `3`. Simply adding `1` and `2` on one left side of the equation yields `3 = x`, which is the same as `x = 3`. So now we know what `x` is. It's just a `3`.
+
+Let's take a little complex equation: `x - 2 = 1`. This is exactly the same equation as `1 + 2 = x`, but it has been rearranged so that it's not quite as straightforward to tell what `x` is. To solve `x` in `x - 2 = 1`, add `2` to both sides: `x - 2 + 2 = 1 + 2`, which is equal to `x = 3`. So in algebra, solving equations is a lot like a game where we are given mixed-up, complicated equations, and it's our job to simplify them and rearrange them until it's a nice, simple equation (like `x = 3`) where it's straightforward to tell what the unknown values are.
+
+Now, let's learn some important rules about how symbols can and can't be used in algebraic equations.
+
+## Rules
+
+**Rule 1: The same symbol/letter can represent different values in different problems**
+
+The first rule we need to know is that the same symbol (or letter) can be used in different algebra problems to stand for different unknown values. For example, in the problem (`1 + 2 = x` where `x = 3`) we just solved, the letter x was used to stand for the number `3`, right? 
+
+But x could stand for a different number in a different problem. For instance, we could be asked to solve the equation `5 + x = 10`. For the two sides of this equation to be equal, `x` must have a value of `5`, as `5 + 5` equals `10`. So `x` (or any other symbol) can stand for different values in different problems. 
+
+**Rule 2: A symbol cannot represent different values in the same problem simultaneously**
+
+That's okay, but what's NOT okay is for a symbol to stand for different values in the same problem at the same time!
+
+{% include "postImage.html" src: "./images/symbol-same-vs-different-problem.png", baseFormat: "png", alt: "Algebraic Equation", description: "<b>Figure 3</b>: Algebraic Equation.", isLinked: false %}
+
+For example, what if we had the equation: `x + x = 10`? This equation says that if we add x to x, we will get `10`. There are a variety of different numbers that we can add together to get `10`.
+
+```text
+x + x = 10
+6 + 4 = 10
+```
+
+But if we had the first x stand for `6` and the second x stand for 4, then x would stand for two different values at the same time, and things could get really confusing!
+
+**Rule 3: Different symbols can be used to represent different values in the same equation**
+
+If we wanted symbols to stand for two different numbers at the same time, we need to use two different symbols, like `x` and `y`.
+
+```text
+x + y = 10
+6 + 4 = 10
+```
+
+So in algebra, whenever we see the same symbol repeated more than once in an equation, it's representing the same unknown value. Like if we see a really complicated algebraic equation like the one below, where `x` is repeated a lot of different times, all of those `x`s stand for the same value, and it will be our job to figure out what the value is.
+
+Having said that, for any particular equation, we can't use the same letter or symbol to represent two different numbers at the same time; what about the other way around?
+
+**Rule 4: Different symbols can represent the same value if that satisfies the equation**
+
+Could we use two different letters to represent the same number? Yes! Here is an example of that.
+
+{% include "postImage.html" src: "./images/complex-algeric-equation.png", baseFormat: "png", alt: "Complex Algebraic Equation", description: "<b>Figure 4</b>: Complex Algebraic Equation.", isLinked: false %}
+
+Let's say we have the equation: `a + b = 2`. What could `a` and `b` stand for so that the equation is true? If a was `0` and `b` was `2`, then the equation would be true. If `a` was `2` and `b` was `0`, the equation would also be true. But there's another possibility: if a was `1` and `b` was also `1`, that would make the equation true, right? 
+
+```text
+a + b = 2
+0 + 2 = 2
+2 + 0 = 2
+1 + 1 = 2
+``` 
+
+So, even though a and b are different symbols and would usually be used to represent different numbers, there are times when they might happen to represent the same number. Indeed, this problem can shed light on a crucial aspect of algebraic symbol usage.
+
+**Rule 5: Variables in an equation can have different valid values depending on the values of other variables**
+
+Did you notice that there were different possible solutions for this equation? In other words, b could have the value 0, 1, or 2 depending on what the value of a was. 
+
+```text
+If a = 0 then b = 2
+if a = 1 then b = 1
+if a = 2 then b = 0
+```
+
+Here, `b` can't have two different values at the same time, but its value can change over time if the value of a changes. In algebra, we refer to b as a variable because its value is subject to variation or change. In this equation, both `a` and `b` are variables because their values will change depending on each other's values. 
+
+In fact, it's really common in algebra to refer to any letter as a variable, since letters can stand for different values in different problems. But in mathematics, we will usually just use the word variable when we are talking about values that can change or vary in the same problem.
+
+So far, we have learned that algebra is a lot like arithmetic, but that includes unknown values and variables that we can solve for in equations.
+
+---
+
+# 3. Linear Algebra
+
+Linear algebra is a branch of mathematics that has revolutionized the way we understand and interact with the world around us. 
+
+It deals with:
 
 - **Vectors** (list of ordered numbers)
 - **Vector Spaces** (collections of vectors)
@@ -212,7 +347,7 @@ Vector often represented graphically as an **arrow**. The length of the arrow re
 
 Imagine a vector `v` in a two-dimensional space, starting from the origin `(0,0)` and pointing to the point `(3, 6)`. Graphically, this vector can be represented as:
 
-{% include "postImage.html" src: "./images/vector_diagram_transparent.png", baseFormat: "png", alt: "Vector diagram (3,6)", description: "<b>Figure 1</b> shows a vector `v` that moves `3` steps in the horizontal direction and `6` steps in the vertical direction.", isLinked: false, widths: "[200, 200]" %}
+{% include "postImage.html" src: "./images/vector_diagram_transparent.png", baseFormat: "png", alt: "Vector diagram (3,6)", description: "<b>Figure 3</b>: Shows a vector `v` that moves `3` steps in the horizontal direction and `6` steps in the vertical direction.", isLinked: false, widths: "[50, 50]" %}
 
 In Figure 1, the vector `v` is shown as an arrow starting at the origin `(0,0)` and ending at the point `(3,6)`. The arrow indicates the direction and length (magnitude) of the vector.
 
@@ -536,6 +671,9 @@ Linear algebra deals with the study of **linear equations**, **vector spaces**, 
       </li>        
       </li>     
       <li id="ref-9">9. A <strong>coefficient</strong> is the number that multiplies a variable in an equation. Examples: In 2x: 2 is the coefficient of x; in -5y: -5 is the coefficient of y; in x: 1 is the coefficient (when no number is shown); in 0x: 0 is the coefficient. <a href="#back-to-9" class="back-to-note">↩</a>
-      </li>                    
+      </li> 
+      </li>     
+      <li id="ref-10">10. <strong>Arithmetic</strong> is the branch of mathematics dealing with basic numerical operations: addition, subtraction, multiplication, and division. <a href="#back-to-10" class="back-to-note">↩</a>
+      </li>                           
    </ol>
 </div>
