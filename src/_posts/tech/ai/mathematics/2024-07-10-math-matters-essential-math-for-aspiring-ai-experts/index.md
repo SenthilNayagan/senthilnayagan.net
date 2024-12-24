@@ -30,7 +30,11 @@ Here’s a structured direction to help you navigate through the essential mathe
 
 As part of basic mathematics, we will cover number theory (whole numbers, integers, rational numbers, and irrational numbers).
 
-**Next: 2. [Linear Algebra](#2-linear-algebra)** (Most important)
+**Next: 2. [Algebra](#2-algebra)** (Foundation for Linear Algebra)
+
+Algebra provides the basic skills needed to manipulate numbers, variables, and expressions, which are crucial in linear algebra.
+
+**Next: 3. [Linear Algebra](#3-linear-algebra)** (Most important)
 
 Linear algebra is the first mathematical toolkit we should arm ourselves with. It forms the foundation of how data is structured and manipulated in AI and ML. Here’s a brief look at how linear algebra contributes to AI and ML:
 
@@ -58,7 +62,7 @@ Key topics:
 - Eigenvalues and eigenvectors
 - Singular value decomposition
 
-**Next: 3. Calculus**
+**Next: 4. Calculus**
 
 Once we are comfortable with linear algebra, calculus should be our next topic. Calculus, particularly *differential calculus*, is essential for understanding how algorithms optimize and learn from data. It allows us to understand *gradient descent*—an optimization algorithm that is fundamental in training deep learning models. By learning about derivatives and integrals, we will be better equipped to understand the dynamics of machine learning algorithms, especially how changes in data affect the learning process.
 
@@ -67,7 +71,7 @@ Key topics:
 - Partial derivatives
 - Multivariable calculus (for advanced learning)
 
-**Next: 3. Statistics and Probability**
+**Next: 5. Statistics and Probability**
 
 Probability and statistics are crucial for handling and making decisions from data, which is inherently noisy and uncertain. These branches of mathematics help in modeling and evaluating the behavior of algorithms under various conditions. Understanding concepts like *probability distributions*, *statistical tests*, and *bayesian thinking* will empower us to design and evaluate ML models more effectively.
 
@@ -76,7 +80,7 @@ Key topics:
 - Descriptive statistics (mean, median, variance)
 - Hypothesis testing and Bayesian methods
 
-**Next: 4. Discrete Mathematics**
+**Next: 6. Discrete Mathematics**
 
 Discrete mathematics introduces us to the logical and structural aspects of mathematics that are important for algorithm design and analysis. This area enhances our understanding of how algorithms function and their limitations, which is essential for debugging and improving AI models.
 
@@ -86,7 +90,7 @@ Key topics:
 - Graph theory
 - Information theory
 
-**Finally: 5. Optimization Theory (Advance Topic)**
+**Finally: 7. Optimization Theory (Advance Topic)**
 
 Understanding optimization techniques is akin to learning the art of fine-tuning AI models. Optimization in AI is about finding the best configuration of model parameters<a href="#ref-2" class="reference-link" data-ref="ref-2"><sup id="back-to-2">2</sup></a> to improve accuracy and performance. Familiarity with concepts like convex optimization and learning various gradient descent methods will serve as your final piece of the puzzle.
 
@@ -164,14 +168,36 @@ Imaginary numbers are unique because they allow for the square roots of negative
 
 # 2. Algebra
 
-Before we dive into the world of linear algebra, let's take a step back and understand what algebra actually is. Algebra is a lot like arithmetic<a href="#ref-10" class="reference-link" data-ref="ref-10"><sup id="back-to-10">10</sup></a>. It follows all the rules of arithmetic, and it uses the same four main operations that arithmetic is built on:
+Before we dive into the world of linear algebra, let's take a step back and understand what algebra actually is.
+
+**Definition**:
+
+Algebra is a branch of mathematics that uses letters or symbols epresent numbers and quantities in equations and expressions. It helps us to solve problems by finding unknown values. For example, in the equation (`x + 3 = 7`), `x` is an unknown number that we can use rules and operations (like addition, subtraction, multiplication, and division) to find the values of those unknowns.
+
+Algebra is a lot like arithmetic<a href="#ref-10" class="reference-link" data-ref="ref-10"><sup id="back-to-10">10</sup></a>. It follows all the rules of arithmetic, and it uses the same four main operations that arithmetic is built on:
 
 - Addition
 - Subtraction
 - Multiplication
 - Division
 
-But algebra introduces a new element— the element of the **unknown**. When we were learning arithmetic, the only thing that was ever unknown was the answer to the problem. For example, we might have the problem `1 + 2 = ?`. The answer isn't known until we go ahead and do the arithmetic.
+Algebra introduces a new element — the element of the **unknown**. In arithmetic, we're working with **known**, specific numbers to find a single unknown answer. Like in the example given: `1 + 2 = ?` - everything before the equals sign is known, and we're just calculating the result.
+
+In algebra, we're often working with:
+
+- Unknown values from the start (like `x + 2 = 5`)
+- Multiple unknowns at once (like `x + y = 10`)
+- Variables that could represent many different values (like in the formula for area of a rectangle: `A = l × w`)
+
+This shift from working with concrete numbers to working with unknowns is what makes algebra more abstract but also more powerful.
+
+It allows us to:
+
+- Write general formulas that work for any numbers (Take rectangle formula (`A = l × w`). Instead of writing "2 × 3 = 6" for one rectangle, we can write just one formula: `A = l × w`. This single formula works for ALL rectangles, no matter how big or small they are) 
+- Solve problems where we don't have all the information upfront
+- Describe relationships between quantities that might change
+
+This change from arithmetic to algebra is a big step in how we think about math because it means we have to think about numbers in a different way. Instead of just working with actual numbers like 1, 2, or 3, we now have to imagine numbers that could be anything. It's like moving from counting real objects to thinking about numbers that we can't see yet.
 
 The crucial aspect of algebra is that, when we are unfamiliar with a number, we substitute it with a symbol, typically any letter from the alphabet. A really popular letter to choose is the letter `x`. So in arithmetic, we would just leave the problem like this: `1 + 2 = "blank"`, and we'd write in the answer when we did the addition. But in algebra, we'd write it like this: `1 + 2 = x`. The `x` is a placeholder that stands for the number that we don't know yet.
 
@@ -179,9 +205,11 @@ What we have here is a very basic algebraic equation. An equation is just a math
 
 {% include "postImage.html" src: "./images/algebraic-equation.png", baseFormat: "png", alt: "Algebraic Equation", description: "<b>Figure 2</b>: Algebraic Equation.", isLinked: false %}
 
-One of the main goals in algebra is to figure out what the unknown values in equations are. We refer to this process as "solving the equations." In this equation, it's pretty straightforward to see that the unknown value is just `3`. Simply adding `1` and `2` on one left side of the equation yields `3 = x`, which is the same as `x = 3`. So now we know what `x` is. It's just a `3`.
+One of the main goals in algebra is to figure out what the unknown values in equations are. We refer to this process as "solving the equations." In this equation, it's pretty straightforward to see that the unknown value is just `3`. Simply adding `1` and `2` on the left side of the equation yields `3 = x`, which is the same as `x = 3`. So now we know what `x` is. It's just a `3`.
 
-Let's take a little complex equation: `x - 2 = 1`. This is exactly the same equation as `1 + 2 = x`, but it has been rearranged so that it's not quite as straightforward to tell what `x` is. To solve `x` in `x - 2 = 1`, add `2` to both sides: `x - 2 + 2 = 1 + 2`, which is equal to `x = 3`. So in algebra, solving equations is a lot like a game where we are given mixed-up, complicated equations, and it's our job to simplify them and rearrange them until it's a nice, simple equation (like `x = 3`) where it's straightforward to tell what the unknown values are.
+Let's take a little complex equation: `x - 2 = 1`. This is exactly the same equation as `1 + 2 = x`, but it has been rearranged so that it's not quite as straightforward to tell what `x` is. To solve `x` in `x - 2 = 1`, add `2` to both sides: `x - 2 + 2 = 1 + 2`, which is equal to `x = 3`. 
+
+So in algebra, solving equations is a lot like a game where we are given mixed-up, complicated equations, and it's our job to simplify them and rearrange them until it's a nice, simple equation (like `x = 3`) where it's straightforward to tell what the unknown values are.
 
 Now, let's learn some important rules about how symbols can and can't be used in algebraic equations.
 
@@ -189,13 +217,13 @@ Now, let's learn some important rules about how symbols can and can't be used in
 
 **Rule 1: The same symbol/letter can represent different values in different problems**
 
-The first rule we need to know is that the same symbol (or letter) can be used in different algebra problems to stand for different unknown values. For example, in the problem (`1 + 2 = x` where `x = 3`) we just solved, the letter x was used to stand for the number `3`, right? 
+The first rule we need to know is that the same symbol (or letter) can be used in different algebra problems to stand for different unknown values. For example, in the problem (`1 + 2 = x` where `x = 3`) we just solved, the letter `x` was used to stand for the number `3`, right? 
 
-But x could stand for a different number in a different problem. For instance, we could be asked to solve the equation `5 + x = 10`. For the two sides of this equation to be equal, `x` must have a value of `5`, as `5 + 5` equals `10`. So `x` (or any other symbol) can stand for different values in different problems. 
+But `x` could stand for a different number in a different problem. For instance, we could be asked to solve the equation `5 + x = 10`. For the two sides of this equation to be equal, `x` must have a value of `5`, as `5 + 5` equals `10`. So `x` (or any other symbol) can stand for different values in different problems. 
 
 **Rule 2: A symbol cannot represent different values in the same problem simultaneously**
 
-That's okay, but what's NOT okay is for a symbol to stand for different values in the same problem at the same time!
+What's NOT okay is for a symbol to stand for different values in the same problem at the same time!
 
 {% include "postImage.html" src: "./images/symbol-same-vs-different-problem.png", baseFormat: "png", alt: "Algebraic Equation", description: "<b>Figure 3</b>: Algebraic Equation.", isLinked: false %}
 
@@ -206,7 +234,7 @@ x + x = 10
 6 + 4 = 10
 ```
 
-But if we had the first x stand for `6` and the second x stand for 4, then x would stand for two different values at the same time, and things could get really confusing!
+But if we had the first `x` stand for `6` and the second `x` stand for 4, then `x` would stand for two different values at the same time, and things could get really confusing!
 
 **Rule 3: Different symbols can be used to represent different values in the same equation**
 
@@ -217,17 +245,17 @@ x + y = 10
 6 + 4 = 10
 ```
 
-So in algebra, whenever we see the same symbol repeated more than once in an equation, it's representing the same unknown value. Like if we see a really complicated algebraic equation like the one below, where `x` is repeated a lot of different times, all of those `x`s stand for the same value, and it will be our job to figure out what the value is.
+So in algebra, whenever we see the same symbol repeated more than once in an equation, it's representing the same unknown value. Like if we see a really complicated algebraic equation like the one below (Figure 4), where `x` is repeated a lot of different times, all of those `x`s stand for the same value, and it will be our job to figure out what the value is.
 
-Having said that, for any particular equation, we can't use the same letter or symbol to represent two different numbers at the same time; what about the other way around?
+{% include "postImage.html" src: "./images/complex-algeric-equation.png", baseFormat: "png", alt: "Complex Algebraic Equation", description: "<b>Figure 4</b>: Complex Algebraic Equation.", isLinked: false %}
+
+Having said that, for any particular equation, we can't use the same letter or symbol to represent two different numbers at the same time.
 
 **Rule 4: Different symbols can represent the same value if that satisfies the equation**
 
 Could we use two different letters to represent the same number? Yes! Here is an example of that.
 
-{% include "postImage.html" src: "./images/complex-algeric-equation.png", baseFormat: "png", alt: "Complex Algebraic Equation", description: "<b>Figure 4</b>: Complex Algebraic Equation.", isLinked: false %}
-
-Let's say we have the equation: `a + b = 2`. What could `a` and `b` stand for so that the equation is true? If a was `0` and `b` was `2`, then the equation would be true. If `a` was `2` and `b` was `0`, the equation would also be true. But there's another possibility: if a was `1` and `b` was also `1`, that would make the equation true, right? 
+Let's say we have the equation: `a + b = 2`. What could `a` and `b` stand for so that the equation is true? If `a` was `0` and `b` was `2`, then the equation would be true. If `a` was `2` and `b` was `0`, the equation would also be true. But there's another possibility: if a was `1` and `b` was also `1`, that would make the equation true, right? 
 
 ```text
 a + b = 2
@@ -236,11 +264,11 @@ a + b = 2
 1 + 1 = 2
 ``` 
 
-So, even though a and b are different symbols and would usually be used to represent different numbers, there are times when they might happen to represent the same number. Indeed, this problem can shed light on a crucial aspect of algebraic symbol usage.
+So, even though `a` and `b` are different symbols and would usually be used to represent different numbers, there are times when they might happen to represent the same number. Indeed, this problem can shed light on a crucial aspect of algebraic symbol usage.
 
 **Rule 5: Variables in an equation can have different valid values depending on the values of other variables**
 
-Did you notice that there were different possible solutions for this equation? In other words, b could have the value 0, 1, or 2 depending on what the value of a was. 
+Did you notice that there were different possible solutions for this equation? In other words, `b` could have the value `0`, `1`, or `2` depending on what the value of `a` was. 
 
 ```text
 If a = 0 then b = 2
@@ -248,9 +276,31 @@ if a = 1 then b = 1
 if a = 2 then b = 0
 ```
 
-Here, `b` can't have two different values at the same time, but its value can change over time if the value of a changes. In algebra, we refer to b as a variable because its value is subject to variation or change. In this equation, both `a` and `b` are variables because their values will change depending on each other's values. 
+Here, `b` can't have two different values at the same time, but its value can change over time if the value of `a` changes. In algebra, we refer to `b` as a variable because its value is subject to variation or change. In this equation, both `a` and `b` are variables because their values will change depending on each other's values. 
 
-In fact, it's really common in algebra to refer to any letter as a variable, since letters can stand for different values in different problems. But in mathematics, we will usually just use the word variable when we are talking about values that can change or vary in the same problem.
+In fact: 
+
+- **Letters as Stand-ins**:
+  - When we say "letters as stand-ins" in algebra, we mean that letters are used to represent numbers or take the place of numbers.
+  - In algebra, we often use letters (like `x`, `y`, `a`, `b`) to represent numbers.
+  - These letters can represent different values in different problems.
+  - For example: `x` might be `5` in one problem and `12` in another problem.
+- **True Variables**:
+  - In mathematics, a "variable" specifically refers to a value that can change within the same problem.
+  - Like temperature changing throughout the day or the speed of a car during a journey.
+
+So while we casually call any letter in algebra a "variable," technically speaking, a true variable is something that can take different values as part of the same situation or problem. 
+
+For example, in the equation `x + 5 = 12`:
+
+- Here, `x` is just standing in for one specific number (`7`)
+- It's not really "varying" - it has one fixed value in this problem
+
+But in a formula like `d = rt` (distance = rate × time):
+
+- Both `r` and `t` are true variables because they can take different values in the same problem
+- The speed (rate) might change during the journey
+- Time is constantly changing as you travel
 
 So far, we have learned that algebra is a lot like arithmetic, but that includes unknown values and variables that we can solve for in equations.
 

@@ -99,6 +99,7 @@ const imageShortcode = async (props) => {
   // Link to the highest resolution optimized image
   if (isLinked) {
     return `<a class="outline-offset" href="${largestImages.optimized.url}">${picture}</a>`;
+    // return `<a class="outline-offset" href="${largestImages.optimized.url}" target="_blank" rel="noopener noreferrer">${picture}</a>`;
   }
 
   // Otherwise just return the plain picture tag
