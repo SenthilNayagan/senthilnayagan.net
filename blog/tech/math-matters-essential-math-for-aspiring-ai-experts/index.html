@@ -95,7 +95,7 @@
   <header class="post-header">
     <p class="post-date">
       <span class="screen-reader-only">Published </span>
-      <i class="fa-regular fa-calendar-days"></i> <time datetime="2024-07-10" >July 10, 2024</time> (Updated <time datetime="2024-12-21" >December 21, 2024</time>)&nbsp;&#183;&nbsp;<i class="fa-regular fa-clock"></i> 35 min read
+      <i class="fa-regular fa-calendar-days"></i> <time datetime="2024-07-10" >July 10, 2024</time> (Updated <time datetime="2024-12-21" >December 21, 2024</time>)&nbsp;&#183;&nbsp;<i class="fa-regular fa-clock"></i> 37 min read
     </p>
     <h1 class="post-title">Math Matters: Essential Math for Aspiring AI Experts</h1>
     <ul class="post-tags" aria-label="Tags"><li>
@@ -171,7 +171,9 @@
 <p>Here’s a structured direction to help you navigate through the essential mathematics for AI and ML:</p>
 <p><strong>Starting with: 1. <a href="#1-basic-mathematics">Basic Mathematics</a></strong> (Foundation level)</p>
 <p>As part of basic mathematics, we will cover number theory (whole numbers, integers, rational numbers, and irrational numbers).</p>
-<p><strong>Next: 2. <a href="#2-linear-algebra">Linear Algebra</a></strong> (Most important)</p>
+<p><strong>Next: 2. <a href="#2-algebra">Algebra</a></strong> (Foundation for Linear Algebra)</p>
+<p>Algebra provides the basic skills needed to manipulate numbers, variables, and expressions, which are crucial in linear algebra.</p>
+<p><strong>Next: 3. <a href="#3-linear-algebra">Linear Algebra</a></strong> (Most important)</p>
 <p>Linear algebra is the first mathematical toolkit we should arm ourselves with. It forms the foundation of how data is structured and manipulated in AI and ML. Here’s a brief look at how linear algebra contributes to AI and ML:</p>
 <ul>
 <li><strong>Data Representation</strong>
@@ -208,7 +210,7 @@
 <li>Eigenvalues and eigenvectors</li>
 <li>Singular value decomposition</li>
 </ul>
-<p><strong>Next: 3. Calculus</strong></p>
+<p><strong>Next: 4. Calculus</strong></p>
 <p>Once we are comfortable with linear algebra, calculus should be our next topic. Calculus, particularly <em>differential calculus</em>, is essential for understanding how algorithms optimize and learn from data. It allows us to understand <em>gradient descent</em>—an optimization algorithm that is fundamental in training deep learning models. By learning about derivatives and integrals, we will be better equipped to understand the dynamics of machine learning algorithms, especially how changes in data affect the learning process.</p>
 <p>Key topics:</p>
 <ul>
@@ -216,7 +218,7 @@
 <li>Partial derivatives</li>
 <li>Multivariable calculus (for advanced learning)</li>
 </ul>
-<p><strong>Next: 3. Statistics and Probability</strong></p>
+<p><strong>Next: 5. Statistics and Probability</strong></p>
 <p>Probability and statistics are crucial for handling and making decisions from data, which is inherently noisy and uncertain. These branches of mathematics help in modeling and evaluating the behavior of algorithms under various conditions. Understanding concepts like <em>probability distributions</em>, <em>statistical tests</em>, and <em>bayesian thinking</em> will empower us to design and evaluate ML models more effectively.</p>
 <p>Key topics:</p>
 <ul>
@@ -224,7 +226,7 @@
 <li>Descriptive statistics (mean, median, variance)</li>
 <li>Hypothesis testing and Bayesian methods</li>
 </ul>
-<p><strong>Next: 4. Discrete Mathematics</strong></p>
+<p><strong>Next: 6. Discrete Mathematics</strong></p>
 <p>Discrete mathematics introduces us to the logical and structural aspects of mathematics that are important for algorithm design and analysis. This area enhances our understanding of how algorithms function and their limitations, which is essential for debugging and improving AI models.</p>
 <p>Key topics:</p>
 <ul>
@@ -233,7 +235,7 @@
 <li>Graph theory</li>
 <li>Information theory</li>
 </ul>
-<p><strong>Finally: 5. Optimization Theory (Advance Topic)</strong></p>
+<p><strong>Finally: 7. Optimization Theory (Advance Topic)</strong></p>
 <p>Understanding optimization techniques is akin to learning the art of fine-tuning AI models. Optimization in AI is about finding the best configuration of model parameters<a href="#ref-2" class="reference-link" data-ref="ref-2"><sup id="back-to-2">2</sup></a> to improve accuracy and performance. Familiarity with concepts like convex optimization and learning various gradient descent methods will serve as your final piece of the puzzle.</p>
 <p>Key topics:</p>
 <ul>
@@ -276,9 +278,9 @@
 </ul>
 <p>This is why in real-world calculations, we often use approximations of irrational numbers (like using 3.14 for π) since we can’t write out their exact value.</p>
 <figure class=""><picture >
-    <source type="image/webp" srcset="/assets/images/9cbtPgkIyL-400.webp 400w, /assets/images/9cbtPgkIyL-800.webp 800w, /assets/images/9cbtPgkIyL-2213.webp 2213w" sizes="100vw">
-<source type="image/png" srcset="/assets/images/9cbtPgkIyL-400.png 400w, /assets/images/9cbtPgkIyL-800.png 800w, /assets/images/9cbtPgkIyL-2213.png 2213w" sizes="100vw">
-    <img width="2213" height="1275" src="/assets/images/9cbtPgkIyL-2213.png" alt="Different Number Systems"  loading="lazy" decoding="async">
+    <source type="image/webp" srcset="/assets/images/TFA-tKSPwx-400.webp 400w, /assets/images/TFA-tKSPwx-800.webp 800w, /assets/images/TFA-tKSPwx-2213.webp 2213w" sizes="100vw">
+<source type="image/png" srcset="/assets/images/TFA-tKSPwx-400.png 400w, /assets/images/TFA-tKSPwx-800.png 800w, /assets/images/TFA-tKSPwx-2213.png 2213w" sizes="100vw">
+    <img width="2213" height="1275" src="/assets/images/TFA-tKSPwx-2213.png" alt="Different Number Systems"  loading="lazy" decoding="async">
   </picture><figcaption class="left-text"><p class="image-description"><b>Figure 1</b>: Different Number Systems.</p></figcaption><!---->
 </figure>
 <h3 id="complex-and-imaginary-numbers"><a class="to-underline" href="#complex-and-imaginary-numbers">Complex and Imaginary Numbers</a></h3>
@@ -289,14 +291,31 @@
 <p>Imaginary numbers are unique because they allow for the square roots of negative numbers. This extension of the number system is crucial for solving many mathematical and real-world problems that cannot be addressed with real numbers alone. By defining <code>i</code> and using it to form other imaginary numbers, we can square these numbers and always get a negative result, thus expanding our mathematical toolkit.</p>
 <hr>
 <h1 id="2-algebra"><a class="to-underline" href="#2-algebra">2. Algebra</a></h1>
-<p>Before we dive into the world of linear algebra, let’s take a step back and understand what algebra actually is. Algebra is a lot like arithmetic<a href="#ref-10" class="reference-link" data-ref="ref-10"><sup id="back-to-10">10</sup></a>. It follows all the rules of arithmetic, and it uses the same four main operations that arithmetic is built on:</p>
+<p>Before we dive into the world of linear algebra, let’s take a step back and understand what algebra actually is.</p>
+<p><strong>Definition</strong>:</p>
+<p>Algebra is a branch of mathematics that uses letters or symbols epresent numbers and quantities in equations and expressions. It helps us to solve problems by finding unknown values. For example, in the equation (<code>x + 3 = 7</code>), <code>x</code> is an unknown number that we can use rules and operations (like addition, subtraction, multiplication, and division) to find the values of those unknowns.</p>
+<p>Algebra is a lot like arithmetic<a href="#ref-10" class="reference-link" data-ref="ref-10"><sup id="back-to-10">10</sup></a>. It follows all the rules of arithmetic, and it uses the same four main operations that arithmetic is built on:</p>
 <ul>
 <li>Addition</li>
 <li>Subtraction</li>
 <li>Multiplication</li>
 <li>Division</li>
 </ul>
-<p>But algebra introduces a new element— the element of the <strong>unknown</strong>. When we were learning arithmetic, the only thing that was ever unknown was the answer to the problem. For example, we might have the problem <code>1 + 2 = ?</code>. The answer isn’t known until we go ahead and do the arithmetic.</p>
+<p>Algebra introduces a new element — the element of the <strong>unknown</strong>. In arithmetic, we’re working with <strong>known</strong>, specific numbers to find a single unknown answer. Like in the example given: <code>1 + 2 = ?</code> - everything before the equals sign is known, and we’re just calculating the result.</p>
+<p>In algebra, we’re often working with:</p>
+<ul>
+<li>Unknown values from the start (like <code>x + 2 = 5</code>)</li>
+<li>Multiple unknowns at once (like <code>x + y = 10</code>)</li>
+<li>Variables that could represent many different values (like in the formula for area of a rectangle: <code>A = l × w</code>)</li>
+</ul>
+<p>This shift from working with concrete numbers to working with unknowns is what makes algebra more abstract but also more powerful.</p>
+<p>It allows us to:</p>
+<ul>
+<li>Write general formulas that work for any numbers (Take rectangle formula (<code>A = l × w</code>). Instead of writing “2 × 3 = 6” for one rectangle, we can write just one formula: <code>A = l × w</code>. This single formula works for ALL rectangles, no matter how big or small they are)</li>
+<li>Solve problems where we don’t have all the information upfront</li>
+<li>Describe relationships between quantities that might change</li>
+</ul>
+<p>This change from arithmetic to algebra is a big step in how we think about math because it means we have to think about numbers in a different way. Instead of just working with actual numbers like 1, 2, or 3, we now have to imagine numbers that could be anything. It’s like moving from counting real objects to thinking about numbers that we can’t see yet.</p>
 <p>The crucial aspect of algebra is that, when we are unfamiliar with a number, we substitute it with a symbol, typically any letter from the alphabet. A really popular letter to choose is the letter <code>x</code>. So in arithmetic, we would just leave the problem like this: <code>1 + 2 = &quot;blank&quot;</code>, and we’d write in the answer when we did the addition. But in algebra, we’d write it like this: <code>1 + 2 = x</code>. The <code>x</code> is a placeholder that stands for the number that we don’t know yet.</p>
 <p>What we have here is a very basic algebraic equation. An equation is just a mathematical statement that two things are equal. An equation says: the things on one side of the equal sign have the same value as the things on the other side of the equal sign. In the <code>1 + 2 = x</code> case, our equation is telling us that the unknown values on the side (<code>1 + 2</code>) are equal to what’s on the other side, which happens to be the unknown value that we are calling <code>x</code>.</p>
 <figure class=""><picture >
@@ -305,15 +324,16 @@
     <img width="122" height="66" src="/assets/images/2scy_MVFy1-122.png" alt="Algebraic Equation"  loading="lazy" decoding="async">
   </picture><figcaption class="left-text"><p class="image-description"><b>Figure 2</b>: Algebraic Equation.</p></figcaption><!---->
 </figure>
-<p>One of the main goals in algebra is to figure out what the unknown values in equations are. We refer to this process as “solving the equations.” In this equation, it’s pretty straightforward to see that the unknown value is just <code>3</code>. Simply adding <code>1</code> and <code>2</code> on one left side of the equation yields <code>3 = x</code>, which is the same as <code>x = 3</code>. So now we know what <code>x</code> is. It’s just a <code>3</code>.</p>
-<p>Let’s take a little complex equation: <code>x - 2 = 1</code>. This is exactly the same equation as <code>1 + 2 = x</code>, but it has been rearranged so that it’s not quite as straightforward to tell what <code>x</code> is. To solve <code>x</code> in <code>x - 2 = 1</code>, add <code>2</code> to both sides: <code>x - 2 + 2 = 1 + 2</code>, which is equal to <code>x = 3</code>. So in algebra, solving equations is a lot like a game where we are given mixed-up, complicated equations, and it’s our job to simplify them and rearrange them until it’s a nice, simple equation (like <code>x = 3</code>) where it’s straightforward to tell what the unknown values are.</p>
+<p>One of the main goals in algebra is to figure out what the unknown values in equations are. We refer to this process as “solving the equations.” In this equation, it’s pretty straightforward to see that the unknown value is just <code>3</code>. Simply adding <code>1</code> and <code>2</code> on the left side of the equation yields <code>3 = x</code>, which is the same as <code>x = 3</code>. So now we know what <code>x</code> is. It’s just a <code>3</code>.</p>
+<p>Let’s take a little complex equation: <code>x - 2 = 1</code>. This is exactly the same equation as <code>1 + 2 = x</code>, but it has been rearranged so that it’s not quite as straightforward to tell what <code>x</code> is. To solve <code>x</code> in <code>x - 2 = 1</code>, add <code>2</code> to both sides: <code>x - 2 + 2 = 1 + 2</code>, which is equal to <code>x = 3</code>.</p>
+<p>So in algebra, solving equations is a lot like a game where we are given mixed-up, complicated equations, and it’s our job to simplify them and rearrange them until it’s a nice, simple equation (like <code>x = 3</code>) where it’s straightforward to tell what the unknown values are.</p>
 <p>Now, let’s learn some important rules about how symbols can and can’t be used in algebraic equations.</p>
 <h2 id="rules"><a class="to-underline" href="#rules">Rules</a></h2>
 <p><strong>Rule 1: The same symbol/letter can represent different values in different problems</strong></p>
-<p>The first rule we need to know is that the same symbol (or letter) can be used in different algebra problems to stand for different unknown values. For example, in the problem (<code>1 + 2 = x</code> where <code>x = 3</code>) we just solved, the letter x was used to stand for the number <code>3</code>, right?</p>
-<p>But x could stand for a different number in a different problem. For instance, we could be asked to solve the equation <code>5 + x = 10</code>. For the two sides of this equation to be equal, <code>x</code> must have a value of <code>5</code>, as <code>5 + 5</code> equals <code>10</code>. So <code>x</code> (or any other symbol) can stand for different values in different problems.</p>
+<p>The first rule we need to know is that the same symbol (or letter) can be used in different algebra problems to stand for different unknown values. For example, in the problem (<code>1 + 2 = x</code> where <code>x = 3</code>) we just solved, the letter <code>x</code> was used to stand for the number <code>3</code>, right?</p>
+<p>But <code>x</code> could stand for a different number in a different problem. For instance, we could be asked to solve the equation <code>5 + x = 10</code>. For the two sides of this equation to be equal, <code>x</code> must have a value of <code>5</code>, as <code>5 + 5</code> equals <code>10</code>. So <code>x</code> (or any other symbol) can stand for different values in different problems.</p>
 <p><strong>Rule 2: A symbol cannot represent different values in the same problem simultaneously</strong></p>
-<p>That’s okay, but what’s NOT okay is for a symbol to stand for different values in the same problem at the same time!</p>
+<p>What’s NOT okay is for a symbol to stand for different values in the same problem at the same time!</p>
 <figure class=""><picture >
     <source type="image/webp" srcset="/assets/images/HVZUiGFMkK-351.webp 351w" sizes="100vw">
 <source type="image/png" srcset="/assets/images/HVZUiGFMkK-351.png 351w" sizes="100vw">
@@ -324,37 +344,65 @@
 <pre class="language-text"><code tabindex="0" class="language-text">x + x = 10
 6 + 4 = 10
 </code></pre>
-<p>But if we had the first x stand for <code>6</code> and the second x stand for 4, then x would stand for two different values at the same time, and things could get really confusing!</p>
+<p>But if we had the first <code>x</code> stand for <code>6</code> and the second <code>x</code> stand for 4, then <code>x</code> would stand for two different values at the same time, and things could get really confusing!</p>
 <p><strong>Rule 3: Different symbols can be used to represent different values in the same equation</strong></p>
 <p>If we wanted symbols to stand for two different numbers at the same time, we need to use two different symbols, like <code>x</code> and <code>y</code>.</p>
 <pre class="language-text"><code tabindex="0" class="language-text">x + y = 10
 6 + 4 = 10
 </code></pre>
-<p>So in algebra, whenever we see the same symbol repeated more than once in an equation, it’s representing the same unknown value. Like if we see a really complicated algebraic equation like the one below, where <code>x</code> is repeated a lot of different times, all of those <code>x</code>s stand for the same value, and it will be our job to figure out what the value is.</p>
-<p>Having said that, for any particular equation, we can’t use the same letter or symbol to represent two different numbers at the same time; what about the other way around?</p>
-<p><strong>Rule 4: Different symbols can represent the same value if that satisfies the equation</strong></p>
-<p>Could we use two different letters to represent the same number? Yes! Here is an example of that.</p>
+<p>So in algebra, whenever we see the same symbol repeated more than once in an equation, it’s representing the same unknown value. Like if we see a really complicated algebraic equation like the one below (Figure 4), where <code>x</code> is repeated a lot of different times, all of those <code>x</code>s stand for the same value, and it will be our job to figure out what the value is.</p>
 <figure class=""><picture >
     <source type="image/webp" srcset="/assets/images/tfufUI9Zd--196.webp 196w" sizes="100vw">
 <source type="image/png" srcset="/assets/images/tfufUI9Zd--196.png 196w" sizes="100vw">
     <img width="196" height="80" src="/assets/images/tfufUI9Zd--196.png" alt="Complex Algebraic Equation"  loading="lazy" decoding="async">
   </picture><figcaption class="left-text"><p class="image-description"><b>Figure 4</b>: Complex Algebraic Equation.</p></figcaption><!---->
 </figure>
-<p>Let’s say we have the equation: <code>a + b = 2</code>. What could <code>a</code> and <code>b</code> stand for so that the equation is true? If a was <code>0</code> and <code>b</code> was <code>2</code>, then the equation would be true. If <code>a</code> was <code>2</code> and <code>b</code> was <code>0</code>, the equation would also be true. But there’s another possibility: if a was <code>1</code> and <code>b</code> was also <code>1</code>, that would make the equation true, right?</p>
+<p>Having said that, for any particular equation, we can’t use the same letter or symbol to represent two different numbers at the same time.</p>
+<p><strong>Rule 4: Different symbols can represent the same value if that satisfies the equation</strong></p>
+<p>Could we use two different letters to represent the same number? Yes! Here is an example of that.</p>
+<p>Let’s say we have the equation: <code>a + b = 2</code>. What could <code>a</code> and <code>b</code> stand for so that the equation is true? If <code>a</code> was <code>0</code> and <code>b</code> was <code>2</code>, then the equation would be true. If <code>a</code> was <code>2</code> and <code>b</code> was <code>0</code>, the equation would also be true. But there’s another possibility: if a was <code>1</code> and <code>b</code> was also <code>1</code>, that would make the equation true, right?</p>
 <pre class="language-text"><code tabindex="0" class="language-text">a + b = 2
 0 + 2 = 2
 2 + 0 = 2
 1 + 1 = 2
 </code></pre>
-<p>So, even though a and b are different symbols and would usually be used to represent different numbers, there are times when they might happen to represent the same number. Indeed, this problem can shed light on a crucial aspect of algebraic symbol usage.</p>
+<p>So, even though <code>a</code> and <code>b</code> are different symbols and would usually be used to represent different numbers, there are times when they might happen to represent the same number. Indeed, this problem can shed light on a crucial aspect of algebraic symbol usage.</p>
 <p><strong>Rule 5: Variables in an equation can have different valid values depending on the values of other variables</strong></p>
-<p>Did you notice that there were different possible solutions for this equation? In other words, b could have the value 0, 1, or 2 depending on what the value of a was.</p>
+<p>Did you notice that there were different possible solutions for this equation? In other words, <code>b</code> could have the value <code>0</code>, <code>1</code>, or <code>2</code> depending on what the value of <code>a</code> was.</p>
 <pre class="language-text"><code tabindex="0" class="language-text">If a = 0 then b = 2
 if a = 1 then b = 1
 if a = 2 then b = 0
 </code></pre>
-<p>Here, <code>b</code> can’t have two different values at the same time, but its value can change over time if the value of a changes. In algebra, we refer to b as a variable because its value is subject to variation or change. In this equation, both <code>a</code> and <code>b</code> are variables because their values will change depending on each other’s values.</p>
-<p>In fact, it’s really common in algebra to refer to any letter as a variable, since letters can stand for different values in different problems. But in mathematics, we will usually just use the word variable when we are talking about values that can change or vary in the same problem.</p>
+<p>Here, <code>b</code> can’t have two different values at the same time, but its value can change over time if the value of <code>a</code> changes. In algebra, we refer to <code>b</code> as a variable because its value is subject to variation or change. In this equation, both <code>a</code> and <code>b</code> are variables because their values will change depending on each other’s values.</p>
+<p>In fact:</p>
+<ul>
+<li><strong>Letters as Stand-ins</strong>:
+<ul>
+<li>When we say “letters as stand-ins” in algebra, we mean that letters are used to represent numbers or take the place of numbers.</li>
+<li>In algebra, we often use letters (like <code>x</code>, <code>y</code>, <code>a</code>, <code>b</code>) to represent numbers.</li>
+<li>These letters can represent different values in different problems.</li>
+<li>For example: <code>x</code> might be <code>5</code> in one problem and <code>12</code> in another problem.</li>
+</ul>
+</li>
+<li><strong>True Variables</strong>:
+<ul>
+<li>In mathematics, a “variable” specifically refers to a value that can change within the same problem.</li>
+<li>Like temperature changing throughout the day or the speed of a car during a journey.</li>
+</ul>
+</li>
+</ul>
+<p>So while we casually call any letter in algebra a “variable,” technically speaking, a true variable is something that can take different values as part of the same situation or problem.</p>
+<p>For example, in the equation <code>x + 5 = 12</code>:</p>
+<ul>
+<li>Here, <code>x</code> is just standing in for one specific number (<code>7</code>)</li>
+<li>It’s not really “varying” - it has one fixed value in this problem</li>
+</ul>
+<p>But in a formula like <code>d = rt</code> (distance = rate × time):</p>
+<ul>
+<li>Both <code>r</code> and <code>t</code> are true variables because they can take different values in the same problem</li>
+<li>The speed (rate) might change during the journey</li>
+<li>Time is constantly changing as you travel</li>
+</ul>
 <p>So far, we have learned that algebra is a lot like arithmetic, but that includes unknown values and variables that we can solve for in equations.</p>
 <hr>
 <h1 id="3-linear-algebra"><a class="to-underline" href="#3-linear-algebra">3. Linear Algebra</a></h1>
