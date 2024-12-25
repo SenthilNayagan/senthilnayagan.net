@@ -71,7 +71,7 @@ Key topics:
 - Partial derivatives
 - Multivariable calculus (for advanced learning)
 
-**Next: 5. Statistics and Probability**
+**Next: 5. [Probability and Statistics](#5-probability-and-statistics)**
 
 Probability and statistics are crucial for handling and making decisions from data, which is inherently noisy and uncertain. These branches of mathematics help in modeling and evaluating the behavior of algorithms under various conditions. Understanding concepts like *probability distributions*, *statistical tests*, and *bayesian thinking* will empower us to design and evaluate ML models more effectively.
 
@@ -163,6 +163,101 @@ In mathematics, complex numbers are numbers that can be expressed in the form: `
 Imaginary numbers are a subset of complex numbers, and they are numbers that can be expressed in the form: `bi`. Imaginary numbers are often combined with real numbers to form complex numbers. Imaginary numbers are numbers that, when squared, give a negative result. This is fundamentally different from real numbers, where squaring any real number always gives a positive result. 
 
 Imaginary numbers are unique because they allow for the square roots of negative numbers. This extension of the number system is crucial for solving many mathematical and real-world problems that cannot be addressed with real numbers alone. By defining `i` and using it to form other imaginary numbers, we can square these numbers and always get a negative result, thus expanding our mathematical toolkit.
+
+## Data
+
+### Qualitative Data vs. Quantitative Data
+
+**Qualitative Data (Categorical Data)**
+
+- Qualitative data describes **qualities, attributes, or characteristics** that are non-numeric and cannot be measured directly.
+- It often involves **categories** or labels.
+
+**Key Characteristics**:
+
+- Descriptive in nature.
+- Cannot perform mathematical operations (e.g., addition, averages).
+- Answers questions like **"what kind?"** or **"which type?"**
+
+**Examples**:
+
+1. **Customer Feedback**: "Good," "Bad," "Neutral."
+2. **Product Colors**: Red, Blue, Green.
+3. **Survey Responses**: "Satisfied," "Very Satisfied," "Dissatisfied."
+4. **Employee Role**: Manager, Engineer, Intern.
+5. **Country of Origin**: USA, UK, India.
+
+**When to Use It**:
+
+- To analyze non-numeric trends and patterns.
+- To classify or group data based on categories.
+
+**Quantitative Data (Numerical Data)**
+
+- Quantitative data consists of **numeric values** that can be measured or counted.
+- It involves **quantities** and allows for mathematical operations.
+
+**Key Characteristics**:
+
+- Numerical in nature.
+- Can perform arithmetic operations (e.g., sum, average, range).
+- Answers questions like **"how many?"** or **"how much?"**
+
+**Types of Quantitative Data**:
+
+- **Discrete Data**: Countable, whole numbers (e.g., 1, 2, 3…).
+- **Continuous Data**: Measured values that can take decimals (e.g., 5.5, 7.8).
+
+**Examples**:
+
+1. **Customer Age**: 25, 30, 45.
+2. **Monthly Sales**: $10,000, $15,000, $20,000.
+3. **Temperature**: 35.5°C, 20.1°C.
+4. **Number of Orders**: 150, 200, 500.
+5. **Height or Weight**: 5.8 feet, 75 kg.
+
+**When to Use It**:
+
+- To analyze trends with measurable data.
+- To perform statistical analysis or calculations.
+
+### Types of Data
+
+1. **Categorical** (Qualitative) Data
+    - **Nominal Data**: Categories with no natural order
+      - Color of cars (Red, Blue, Black)
+      - Gender (Male, Female, Non-binary)
+      - Blood types (A, B, AB, O)
+      - Payment methods (Cash, Credit card, Debit card)
+    - **Ordinal Data**: Categories with a natural order/ranking
+      - Education level (High school, Bachelor's, Master's, PhD)
+      - Customer satisfaction (Very dissatisfied, Dissatisfied, Neutral, Satisfied, Very satisfied)
+      - Spicy food preference (Mild, Medium, Hot, Extra hot)
+      - T-shirt sizes (XS, S, M, L, XL)
+2. **Numerical** (Quantitative) Data
+    - **Discrete Data**: Countable values with clear gaps between them
+      - Number of children in a family (1, 2, 3...)
+      - Number of products sold per day
+      - Number of errors in a program
+      - Count of website visitors
+    - **Continuous Data**: Measurements that can take any value within a range
+      - Height (172.5 cm, 175.3 cm)
+      - Temperature (36.8°C, 37.2°C)
+      - Time to complete a task (15.7 minutes)
+      - Weight (68.3 kg)
+
+Each type of data requires different analysis methods and visualization techniques:
+
+- Categorical data is often analyzed using frequencies, proportions, and mode
+- Ordinal data can use median and percentiles
+- Numerical data can use mean, standard deviation, range, and more complex statistical measures
+
+Understanding these data types is crucial because it determines:
+
+- How you can analyze the data
+- What statistical tests you can apply
+- Which visualization methods are most appropriate
+- What kinds of conclusions you can draw from the data
 
 ---
 
@@ -397,7 +492,7 @@ Vector often represented graphically as an **arrow**. The length of the arrow re
 
 Imagine a vector `v` in a two-dimensional space, starting from the origin `(0,0)` and pointing to the point `(3, 6)`. Graphically, this vector can be represented as:
 
-{% include "postImage.html" src: "./images/vector_diagram_transparent.png", baseFormat: "png", alt: "Vector diagram (3,6)", description: "<b>Figure 3</b>: Shows a vector `v` that moves `3` steps in the horizontal direction and `6` steps in the vertical direction.", isLinked: false, widths: "[50, 50]" %}
+{% include "postImage.html" src: "./images/vector_diagram_transparent.png", baseFormat: "png", alt: "Vector diagram (3,6)", description: "<b>Figure 5</b>: Shows a vector `v` that moves `3` steps in the horizontal direction and `6` steps in the vertical direction.", isLinked: false, widths: "[50, 50]" %}
 
 In Figure 1, the vector `v` is shown as an arrow starting at the origin `(0,0)` and ending at the point `(3,6)`. The arrow indicates the direction and length (magnitude) of the vector.
 
@@ -694,6 +789,36 @@ Dot product of vectors: 26
 <!-- ## What exactly is linear algebra?
 
 Linear algebra deals with the study of **linear equations**, **vector spaces**, **linear transformations**, and **matrices**. Linear algebra is hugely fundamental to many applied areas of math, statistics, operations research, data science, and machine learning. When we work with data in any of these areas, we are using linear algebra and perhaps we may not even know it. -->
+
+# 5. Probability and Statistics
+
+## Population
+
+In statistics and data analysis, a population refers to the total set of all possible observations or elements or items that are relevant to our analysis or experiment. In other words, a population refers to the entire set of possible items that we're interested in studying.
+
+For example:
+
+- In analyzing customer behavior, the population would be all possible customers (past, present, and potential future).
+- All students enrolled in a particular university.
+- All products manufactured by a company in the last year.
+- All voters in a certain election.
+
+### Contrast with Sample
+
+A population is often contrasted with a sample, which is a subset of the population. In many practical scenarios, it is not feasible to collect or analyze data from the entire population, so researchers select samples to estimate population characteristics (like means, proportions, etc.).
+
+So, studying an entire population is often:
+- Impractical (imagine surveying every single customer)
+- Too expensive (testing every single product)
+- Sometimes impossible (like when studying future customers)
+
+This is why we typically collect data from a smaller subset of the population, called a sample, and use statistical methods to make informed inferences about the entire population.
+
+### Population vs. Sample
+
+- **Population**: The complete group of interest.
+- **Sample**: A smaller, representative group drawn from the population that is used to make conclusions about the population.
+- For example, we might survey 1,000 customers (sample) to understand the satisfaction level of 10 million customers (population).
 
 [Work in progress]
 
