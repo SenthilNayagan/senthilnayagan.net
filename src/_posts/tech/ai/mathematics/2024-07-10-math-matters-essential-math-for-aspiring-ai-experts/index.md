@@ -62,7 +62,7 @@ Key topics:
 - Eigenvalues and eigenvectors
 - Singular value decomposition
 
-**Next: 4. Calculus**
+**Next: 4. Calculus** (Highly Recommended)
 
 Once we are comfortable with linear algebra, calculus should be our next topic. Calculus, particularly *differential calculus*, is essential for understanding how algorithms optimize and learn from data. It allows us to understand *gradient descent*—an optimization algorithm that is fundamental in training deep learning models. By learning about derivatives and integrals, we will be better equipped to understand the dynamics of machine learning algorithms, especially how changes in data affect the learning process.
 
@@ -412,6 +412,38 @@ It deals with:
 - **linear Transformations** (functions that map vectors to other vectors in a specific way)
 - **Systems of Linear Equations** (sets of equations solved simultaneously)
 
+## Understanding the Difference Between Algebra and Linear Algebra
+
+The key difference is that algebra deals with a wider range of equations and mathematical structures, while linear algebra focuses specifically on linear equations, vectors, matrices, and their associated operations. Linear algebra can be considered a specialized subset of algebra.  Everything in linear algebra is also algebra, but not everything in algebra is linear algebra.
+
+**Algebra**: Usually solves for one variable
+
+```text
+3x + 4 = 10
+```
+
+**Linear Algebra**: Handles multiple variables at once
+
+```text
+2x + 3y = 8
+4x - y = 6
+```
+
+**Real-World Applications**
+
+- Algebra:
+
+  - Calculating discounts
+  - Finding time for a journey
+  - Basic problem solving
+
+
+- Linear Algebra:
+
+  - Computer graphics (moving objects in games)
+  - Data analysis (handling large datasets)
+  - Machine learning (making predictions)
+
 {% aside %}
 **Linear Equations**</br>A linear equation is just like a recipe that follows two simple rules:
 
@@ -439,7 +471,6 @@ where:
 - `x₁, x₂, ..., xₙ` are the variables (unknowns).
 - `a₁, a₂, ..., aₙ` are constants (coefficients) which are real numbers.
 - `b` is a constant (often called the intercept).
-
 {% endaside %}
 
 At its core, linear algebra is about understanding and working with lines and planes in *higher-dimensional spaces*<a href="#ref-8" class="reference-link" data-ref="ref-8"><sup id="back-to-8">8</sup></a>. At its core, linear algebra is about **vectors**. 
@@ -790,7 +821,79 @@ Dot product of vectors: 26
 
 Linear algebra deals with the study of **linear equations**, **vector spaces**, **linear transformations**, and **matrices**. Linear algebra is hugely fundamental to many applied areas of math, statistics, operations research, data science, and machine learning. When we work with data in any of these areas, we are using linear algebra and perhaps we may not even know it. -->
 
+---
+
 # 5. Probability and Statistics
+
+**Probability** and **statistics** are two interconnected branches of mathematics that deal with analyzing data and making predictions.
+
+## Probability
+
+Probability is the chance or likelihood of something happening. Think of it like predicting the future based on what we know. It ranges from 0 to 1, where 0 means the event will not happen, and 1 means the event will certainly happen.
+
+There are many formulas for calculating probability, depending on what we're trying to calculate. The most basic formula for the probability of an event occurring is:
+
+**Basic Probability Formula**: 
+
+```text
+P(Event) = (Number of favorable outcomes) / (Total number of possible outcomes)
+```
+
+
+Examples:
+
+- When we flip a coin, the probability of getting heads is 50% (or 1/2 chance) (one favorable outcome / 2 possible outcomes).
+- Rolling a 6 on a die is 1/6 (one favorable outcome / six possible outcomes).
+- If we have a bag with 3 red marbles and 1 blue marble, the probability of randomly picking a red marble is 75% (or 3/4) - Probability = Number of favorable outcomes / Total number of possible outcomes; Number of favorable red marbles = 3 and Total number of marbles = 4. So, probability = 3/4 = = 0.75 = 75%.
+
+**Addition Rule for Mutually Exclusive Events**:
+
+If events A and B cannot happen at the same time: 
+
+```text
+P(A or B) = P(A) + P(B)
+```
+
+Examples:
+
+- Coin Toss (Single Coin)
+  - In this case, we cannot get both heads and tails at the same time on a single flip of the coin.
+  - Event A: Getting heads when flipping a coin - P(Heads) = 1/2 = 0.5 = 50%
+  - Event B: Getting tails when flipping the same coin - P(Tails) = 1/2 = 0.5 = 50%
+  - P(Heads or Tails) = 1/2 + 1/2 = 1 = 100%
+
+<!-- - Lottery Draw
+  - In a single lottery draw, we can either win the jackpot or a smaller prize, but not both.
+  - Event A: Winning the jackpot.
+  - Event B: Winning a smaller prize in the same lottery draw.
+  - Choose 6 numbers
+  - Numbers range from 1 to 49 (Order doesn't matter)
+  -  -->
+
+**Addition Rule for Non-Mutually Exclusive Events**:
+
+If events A and B can happen at the same time:
+
+```text
+P(A or B) = P(A) + P(B) - P(A and B)
+```
+
+**Multiplication Rule (for independent events)**:
+
+If the occurrence of one event doesn't affect the probability of the other:
+
+```text
+P(A and B) = P(A) * P(B)
+```
+
+**Multiplication Rule (for dependent events)**:
+
+If the events are dependent:
+
+```text
+P(A and B) = P(A) * P(B|A)
+```
+
 
 ## Population
 
@@ -820,11 +923,179 @@ This is why we typically collect data from a smaller subset of the population, c
 - **Sample**: A smaller, representative group drawn from the population that is used to make conclusions about the population.
 - For example, we might survey 1,000 customers (sample) to understand the satisfaction level of 10 million customers (population).
 
+## Central Tendency
+
+Central tendency is a core concept within probability and statistics that helps us understand how a set of numbers is clustered around a middle value. It refers to the central value around which data points tend to cluster. Simply put, it's the value where most of the data points are gathered around. 
+
+It gives an idea of the "average" or "typical" value in a dataset. Think of it like a big group of people standing in a line, and we want to know where most of them are standing.
+
+In math, central tendency is measured by three main values:
+
+- **Mean**: It's an *average* of a set of values. It is calculated by adding up all the values and dividing by the number of values. It's a common measure for normally distributed data. Because the calculation includes all values, including the outliers, the mean is sensitive to extreme values (outliers).
+
+- **Median**: It's the *middle value* in a dataset when the values are arranged in ascending or descending order. It's less sensitive to outliers and skewed data than the mean. It provides a better measure of central tendency for skewed distributions or datasets with outliers. Imagine a line that divides the group in half, and the median is the value that most people are standing on. For an odd number of values, the median is the value at the $ (n+1)/2th $ position. For an even number of values, the median is the average of the values at the $ n/2th $ and $ (n/2) + 1th $ positions. 
+
+- **Mode**: The most common value that appears most frequently in a dataset. It's not affected by outliers. It's useful for categorical data and to identify the most common value in a dataset. Note that mode is not a good representation of the typical value because it's influenced by the frequency of the values. Imagine a big crowd of people, and the mode is the value that most people are standing on.
+
+These three values help us understand how the group is clustered around a middle value. For example:
+
+- If the mean is 10, it means that if we add up all the numbers and divide by the number of people, we get 10.
+- If the median is 10, it means that half the people are standing on one side of the line and half are standing on the other side, with 10 being the middle value.
+- If the mode is 10, it means that most people are standing on the value 10.
+
+Central tendency is important in math because it helps us:
+
+- Understand patterns and trends in data
+- Make predictions and forecasts
+- Compare different groups of data
+- Identify outliers (numbers that are far away from the rest of the group)
+
+So, in simple terms, central tendency is like finding the "average" or "middle" value of a group of numbers. It helps us understand how the numbers are clustered and what the typical value is.
+
+## Mean, Median, Variance, Standard Deviation, Mode, Range, Interquartile Range (IQR), and Skewness
+
+### Mean
+
+The mean, also known as the average, is a measure of the central tendency<a href="#central-tendency"><sup>CT</sup></a> of a dataset. It's calculated by adding up all the values and dividing by the number of values. 
+
+The formula is: 
+
+```text
+Mean = (Sum of all values) / (Number of values)
+```
+
+For example, if we have the values 2, 4, 6, 8, and 10, the mean would be:
+
+Mean = (2 + 4 + 6 + 8 + 10) / 5 = 30 / 5 = 6
+
+### Median
+
+The median is another measure of central tendency<a href="#what-is-central-tendency-in-math"><sup id="back-to-1">CT</sup></a>. It's the middle value of a dataset when it's sorted in order. If the dataset has an odd number of values, the median is the middle value. If the dataset has an even number of values, the median is the average of the two middle values.
+
+For example, if we have the values 1, 3, 5, 7, 9, the median would be 5.
+
+### Variance
+
+The variance is a measure of how spread out a dataset is. It's calculated by subtracting the mean from each value, squaring the result, and then averaging those squared differences.
+
+```text
+Variance = (Sum of (xi - mean)^2) / (Number of values - 1)
+```
+
+where `xi` is each value in the dataset.
+
+For example, if we have the values 2, 4, 6, 8, 10, the variance would be:
+
+Variance = ((2 - 6)^2 + (4 - 6)^2 + (6 - 6)^2 + (8 - 6)^2 + (10 - 6)^2) / (5 - 1) = 8 / 4 = 2
+
+### Standard Deviation
+
+The standard deviation is the square root of the variance. It's a measure of how spread out a dataset is, but it's on the same scale as the original values.
+
+```text
+Standard Deviation = √Variance
+```
+
+For example, if the variance is 2, the standard deviation would be: 
+
+Standard Deviation = √2 ≈ 1.41
+
+### Mode
+
+The mode is the value that appears most frequently in a dataset.
+
+Consider the following set of numbers: 2, 4, 4, 4, 5, 6, 6, 7
+
+To find the mode:
+
+- Count the frequency of each number:
+  - 2 appears 1 time
+  - 4 appears 3 times
+  - 5 appears 1 time
+  - 6 appears 2 times
+  - 7 appears 1 time
+
+- Identify the number with the highest frequency:
+  - The number 4 appears the most frequently (3 times).
+
+So, the mode of this data set is 4, as it is the number that occurs most often.
+
+### Range
+
+The range is the difference between the largest and smallest values in a dataset. The range is a measure of how spread out the values in a data set are. It is calculated by subtracting the smallest value from the largest value.
+
+Consider the following set of numbers: 3, 7, 2, 9, 5
+
+To find the range:
+
+1.	Identify the smallest value: The smallest value is 2.
+2.	Identify the largest value: The largest value is 9.
+3.	Subtract the smallest value from the largest value: Range = Largest value - Smallest value = 9 - 2 = 7
+
+So, the range of this data set is 7.
+
+The range provides a simple way to understand the spread of the data by showing the difference between the highest and lowest values.
+
+### Interquartile Range (IQR)
+
+Interquartile range is a way to measure how spread out the middle part of a set of numbers is. It helps us understand the range where the middle half of the numbers lie, ignoring the highest and lowest values which might be outliers. It's widely used in statistics and data analysis to understand the spread and variability of a data set.
+
+Explanation:
+
+1.	Imagine we have a list of numbers: Like scores from a test.
+2.	Arrange the numbers in order: From smallest to largest.
+3.	Find the middle number: This is called the "median". If there are an odd number of numbers, the median is the one right in the middle. If there are an even number, it’s the average of the two middle numbers.
+4.	Split the list into two halves:
+   - The lower half (below the median).
+   - The upper half (above the median).
+5.	Find the median of the lower half: This is called the first quartile (Q1).
+6.	Find the median of the upper half: This is called the third quartile (Q3).
+7.	Calculate the IQR: Subtract the first quartile (Q1) from the third quartile (Q3).
+
+Example:
+
+Let’s say we have these test scores: 70, 55, 90, 65, 60, 75, 80, 95, 85  
+
+1.	Arrange the scores: 55, 60, 65, 70, 75, 80, 85, 90, 95
+2.	Find the overall median: 75 (the middle score).
+3.	Split into lower and upper halves:
+   - Lower half: 55, 60, 65, 70
+   - Upper half: 80, 85, 90, 95
+4.	Find Q1 (median of lower half): 62.5 (average of 60 and 65).
+5.	Find Q3 (median of upper half): 87.5 (average of 85 and 90).
+6.	Calculate the IQR: Q3 - Q1 = 87.5 - 62.5 = 25
+
+So, the IQR is 25, meaning the middle 50% of the test scores lie within a range of 25 points. This helps us understand the spread of the main body of scores, ignoring the extreme highs and lows.
+
+Uses of IQR:
+1.	**Identifying Outliers**
+2. **Summarizing Data**: Summary of the middle 50% of the data, offering a sense of where the bulk of the values lie. This is particularly useful for skewed distributions where the mean might not provide a clear picture of the central tendency<a href="#what-is-central-tendency-in-math"><sup id="back-to-1">CT</sup></a>.
+3. **Comparing Variability**: IQR is used to compare the spread of different data sets. By comparing the IQRs, we can understand which data set has more variability in the middle 50% of its values.
+4. **Robust Measure of Spread**: IQR is a robust measure of statistical dispersion because it is not affected by extreme values or outliers. This makes it more reliable for understanding the spread of data than the range or the standard deviation in cases where the data contains outliers.
+
+In summary, the IQR is a valuable tool in statistics and data analysis for understanding and summarizing the spread of a data set, especially when dealing with outliers and skewed distributions.
+
+### Skewness
+
+Skewness describes how a set of numbers is not evenly distributed around the average (mean). It tells us if the numbers are leaning more to one side of the average or if they are balanced. 
+
+Types of skewness:
+
+1. **Positive Skewness** (Right-Skewed): Most numbers are smaller, but a few are much larger. For example, imagine a neighborhood where most houses cost between USD 100,000 and USD 300,000, but a few mansions cost over USD 1,000,000. Most house prices are on the lower side, but those few very expensive houses make the distribution lean to the right.
+2. **Negative Skewness** (Left-Skewed): Most numbers are larger, but a few are much smaller. For example, Think about a class where most students score between 70 and 100 on a test, but a few students score below 40. Most scores are on the higher side, but those few very low scores make the distribution lean to the left.
+3. **Zero Skewness** (Symmetrical Distribution): Numbers are evenly spread around the average. For example, if we roll a fair die many times, we would expect each number (1 through 6) to come up about the same number of times. The distribution of outcomes is balanced.
+
+Why it matters?
+- **Understanding Data**: Skewness helps us see if the data is balanced or if there are extreme values that are pulling the average in one direction. For instance, in a business, if sales data is positively skewed, it means there are a few very high sales that are significantly affecting the overall average.
+- **Making Decisions**: Knowing about skewness can help in decision-making. For example, if a school notices that test scores are negatively skewed, they might want to provide extra help to the few students with very low scores.
+
+In simple terms, skewness tells us if our data has a lean or tilt towards higher or lower values, or if it is evenly spread out. This can be very helpful in understanding and interpreting the data better.
+
 [Work in progress]
 
 <div class="references">
    <hr>
-   <h2>Notes and references</h2>
+   <h2>Notes and References</h2>
    <ol>
       <!-- <li>Nil</li> -->
       <li id="ref-1">1. <strong>Feature</strong>: In ML, a feature is a measurable <em>property</em> or <em>variable</em> of the data that is used to train a model. Features are the inputs used by models to make predictions. In other words, features are the attributes or variables that describe the data, such as: Numerical values (e.g., age, temperature), categorical values (e.g., gender, color), textual data (e.g., words, sentences), and image data (e.g., pixels, shapes). They play a crucial role in determining the performance and accuracy of a model. A good feature set can help the model learn meaningful patterns and relationships in the data, leading to better predictions and decision-making. <a href="#back-to-1" class="back-to-note">↩</a>

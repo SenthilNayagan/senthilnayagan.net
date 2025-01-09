@@ -52,6 +52,9 @@ module.exports = (eleventyConfig) => {
     dynamicPartials: true,
   });
 
+  // Add shortcode for current year
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
   // Watch targets
   eleventyConfig.addWatchTarget(imagePaths.input);
   eleventyConfig.addWatchTarget(scriptDirs.input);

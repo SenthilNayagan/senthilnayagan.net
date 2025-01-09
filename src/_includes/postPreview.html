@@ -1,4 +1,5 @@
 {%- assign titleLevel = titleLevel | default: 3 -%}
+{%- unless post.data.hidden -%}
 <li>
   <article class="post-preview">
     <div class="post-preview-date">
@@ -20,3 +21,4 @@
     </ul>
   </article>
 </li>
+{%- endunless -%}

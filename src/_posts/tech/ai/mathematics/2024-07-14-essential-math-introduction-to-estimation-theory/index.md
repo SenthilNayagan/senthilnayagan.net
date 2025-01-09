@@ -406,7 +406,7 @@ So, in short, empirical data is the "real-world" evidence that helps us validate
 
 <div class="references">
    <hr>
-   <h2>Notes and references</h2>
+   <h2>Notes and References</h2>
    <ol>
       <!-- <li>Nil</li> -->
       <li id="ref-1">1. <strong>Parameter</strong>: A parameter in estimation theory refers to a characteristic or attribute of a system or process under study or modeling. Parameters are typically numerical values that describe the behavior, properties, or relationships of the system. Parameters are fixed and often unknown values that describe a certain aspect of the population. Consider them as the "hidden" or "latent" variables that control the system's behavior. Examples of parameters in different fields include mean (µ) (the average value of a population), variance (σ²) (the measure of variability or spread in a population), etc. In estimation theory, the goal is to estimate the values of these parameters from a set of observed data, often in the presence of noise or uncertainty. We can then use the estimated values of the parameters to make predictions, simulate system behavior, or guide decision-making. <a href="#back-to-1" class="back-to-note">↩</a>
