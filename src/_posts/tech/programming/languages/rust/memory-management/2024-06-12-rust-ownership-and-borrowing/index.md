@@ -22,6 +22,8 @@ With ownership and borrowing, Rust doesn't need a "garbage collector," which inc
 
 Before we go further about Rust’s ownership and borrowing, let’s first understand what *memory safety* and *memory leak* are and how programming languages deal with them.
 
+---
+
 # What is memory safety?
 
 Memory safety refers to the state of a software application where memory pointers or references always refer to valid memory. Because memory corruption is a possibility, there are very few guarantees about a program's behaviour if it is not memory safe. Simply put, if a program isn't really memory safe, there are few assurances about its functionality. When dealing with a memory-unsafe program, a malicious party is able to use the flaw to read secrets or execute arbitrary code on someone else's machine.
